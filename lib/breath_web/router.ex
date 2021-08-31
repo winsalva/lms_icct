@@ -8,6 +8,7 @@ defmodule BreathWeb.Router do
     plug :put_root_layout, {BreathWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug BreathWeb.Authenticator
   end
 
   pipeline :api do
@@ -17,7 +18,8 @@ defmodule BreathWeb.Router do
   scope "/", BreathWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
+    get "/", PageController, :index
+
   end
 
   # Other scopes may use custom stacks.
