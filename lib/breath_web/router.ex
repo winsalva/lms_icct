@@ -22,6 +22,15 @@ defmodule BreathWeb.Router do
 
   end
 
+  scope "/items", BreathWeb do
+    pipe_through :browser
+
+    resources "/", PageController, only: [
+      :index
+    ]
+
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", BreathWeb do
   #   pipe_through :api

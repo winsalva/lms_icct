@@ -1,1 +1,9 @@
 <h1>Home Page</h1>
+<%= if @items == [] do %>
+<p>No items here</p>
+<% else %>
+<%= for item <- @items do %>
+    <span><strong><%= item.title %></strong> -- <%= item.description %></span>
+    <% end %>
+    <% end %>
+    
