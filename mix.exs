@@ -49,7 +49,8 @@ defmodule Breath.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:timex, "> 0.0.0"},
       {:faker, "> 0.0.0"},
-      {:money, "> 0.0.0"}
+      {:money, "> 0.0.0"},
+      {:pbkdf2_elixir, "~> 1.4"}
     ]
   end
 
