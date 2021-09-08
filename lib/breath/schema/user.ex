@@ -3,10 +3,13 @@ defmodule Breath.Schema.User do
   import Ecto.Changeset
 
   schema "users" do
+    has_many :items, Breath.Schema.Item
     field :first_name, :string
     field :middle_name, :string
     field :last_name, :string
     field :phone_number, :string
+    field :password, :string, virtual: true
+    field :hashed_password, :string
     field :seen, :boolean, default: false
     timestamps([type: :utc_datetime_usec])
   end
@@ -17,6 +20,7 @@ defmodule Breath.Schema.User do
     :middle_name,
     :last_name,
     :phone_number,
+    :hashed_password,
     :seen
   ]
 
@@ -25,6 +29,7 @@ defmodule Breath.Schema.User do
     :middle_name,
     :last_name,
     :phone_number,
+    :hashed_password,
     :seen
   ]
 
@@ -33,5 +38,26 @@ defmodule Breath.Schema.User do
     user
     |> cast(params, @allowed_fields)
     |> validate_required(@required_fields)
+    |> validate_length(:phone_number, min: 11)
+    |> unique_constraint(:phone_number)
   end
+
+  @doc false
+  def changeset_with_password(user, params \\ %{}) do
+    user
+    |> cast(params, [:password])
+    |> validate_required(:password)
+    |> validate_length(:password, min: 8)
+    |> validate_length(:password, max: 20)
+    |> validate_confirmation(:password, required: true)
+    |> hash_password()
+    |> changeset(params)
+  end
+
+  defp hash_password(%Ecto.Changeset{changes: %{password: password}} = changeset) do
+    changeset
+    |> put_change(:hashed_password, Breath.Password.hash_pwd_salt(password))
+  end
+
+  defp hash_password(changeset), do: changeset
 end

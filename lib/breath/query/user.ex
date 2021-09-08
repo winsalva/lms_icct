@@ -10,7 +10,7 @@ defmodule Breath.Query.User do
 
   def insert_user(params) do
     %User{}
-    |> User.changeset(params)
+    |> User.changeset_with_password(params)
     |> Repo.insert()
   end
 
