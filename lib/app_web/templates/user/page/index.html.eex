@@ -1,0 +1,12 @@
+<h2>Users</h2>
+<%= if @users == [] do %>
+<p>No users yet.</p>
+<% else %>
+<table>
+  <tbody>
+    <%= for user <- @users do %>
+	<tr><td><%= user.first_name %></td></tr>
+	<% end %>
+  </tbody>
+</table>
+<% end %>

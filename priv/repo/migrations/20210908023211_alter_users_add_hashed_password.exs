@@ -1,4 +1,4 @@
-defmodule Breath.Repo.Migrations.AlterUsersAddHashedPassword do
+defmodule App.Repo.Migrations.AlterUsersAddHashedPassword do
   use Ecto.Migration
 
   def change do

@@ -1,4 +1,4 @@
-# Breath
+# App
 
 To start your Phoenix server:
 

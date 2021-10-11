@@ -1,10 +1,10 @@
 use Mix.Config
 
 # Configure your database
-config :breath, Breath.Repo,
+config :app, App.Repo,
   username: "postgres",
   password: "postgres",
-  database: "breath_dev",
+  database: "app_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,7 +15,7 @@ config :breath, Breath.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :breath, BreathWeb.Endpoint,
+config :app, AppWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -55,13 +55,13 @@ config :breath, BreathWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :breath, BreathWeb.Endpoint,
+config :app, AppWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/breath_web/(live|views)/.*(ex)$",
-      ~r"lib/breath_web/templates/.*(eex)$"
+      ~r"lib/app_web/(live|views)/.*(ex)$",
+      ~r"lib/app_web/templates/.*(eex)$"
     ]
   ]
 

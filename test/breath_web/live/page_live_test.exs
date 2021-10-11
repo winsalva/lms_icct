@@ -1,5 +1,5 @@
-defmodule BreathWeb.PageLiveTest do
-  use BreathWeb.ConnCase
+defmodule AppWeb.PageLiveTest do
+  use AppWeb.ConnCase
 
   import Phoenix.LiveViewTest
 

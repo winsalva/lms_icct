@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :breath,
-  ecto_repos: [Breath.Repo]
+config :app,
+  ecto_repos: [App.Repo]
 
 # Configures the endpoint
-config :breath, BreathWeb.Endpoint,
+config :app, AppWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "0jhFAIW9SCglrPsLnAzk9UULbLI6Pvzj3tsoUrIaJ4Fwx7UZYsfhEYWiKWC/OTV0",
-  render_errors: [view: BreathWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Breath.PubSub,
+  render_errors: [view: AppWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: App.PubSub,
   live_view: [signing_salt: "PFkKQ/cK"]
 
 # Configures Elixir's Logger

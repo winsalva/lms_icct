@@ -1,4 +1,4 @@
-defmodule Breath.Repo.Migrations.CreateItems do
+defmodule App.Repo.Migrations.CreateItems do
   use Ecto.Migration
 
   def change do
