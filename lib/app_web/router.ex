@@ -42,6 +42,14 @@ defmodule AppWeb.Router do
 
   end
 
+  scope "/admins", AppWeb.Admin, as: :admin do
+    pipe_through :browser
+
+    resources "/", PageController, only: [
+      :index, :new, :create, :show, :edit, :update, :delete
+    ]
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", AppWeb do
   #   pipe_through :api

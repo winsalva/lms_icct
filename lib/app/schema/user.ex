@@ -7,7 +7,7 @@ defmodule App.Schema.User do
     field :first_name, :string
     field :middle_name, :string
     field :last_name, :string
-    field :phone_number, :string
+    field :email, :string
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :seen, :boolean, default: false
@@ -19,7 +19,7 @@ defmodule App.Schema.User do
     :first_name,
     :middle_name,
     :last_name,
-    :phone_number,
+    :email,
     :hashed_password,
     :seen
   ]
@@ -28,7 +28,7 @@ defmodule App.Schema.User do
     :first_name,
     :middle_name,
     :last_name,
-    :phone_number,
+    :email,
     :hashed_password,
     :seen
   ]
@@ -38,8 +38,8 @@ defmodule App.Schema.User do
     user
     |> cast(params, @allowed_fields)
     |> validate_required(@required_fields)
-    |> validate_length(:phone_number, min: 11)
-    |> unique_constraint(:phone_number)
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email)
   end
 
   @doc false

@@ -1,3 +1,4 @@
+<div class="sub-container">
 <h1>Home Page</h1>
 <%= if @items == [] do %>
 <p>No items here</p>
@@ -7,3 +8,4 @@
     <% end %>
     <% end %>
     
+</div>

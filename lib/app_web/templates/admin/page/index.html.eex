@@ -1,0 +1,16 @@
+<div class="sub-container">
+  <%= if @admins == [] do %>
+  <p>No admins yet.</p>
+  <% else %>
+  <table>
+    <tbody>
+      <%= for admin <- @admins do %>
+	  <tr>
+	    <td><%= admin.username %></td>
+	  </tr>
+	  <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>
+

@@ -10,7 +10,7 @@ defmodule App.Query.Admin do
 
   def insert_admin(params) do
     %Admin{}
-    |> Admin.changeset(params)
+    |> Admin.changeset_with_password(params)
     |> Repo.insert()
   end
 

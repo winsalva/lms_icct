@@ -24,5 +24,27 @@ defmodule App.Schema.Admin do
   def changeset(admin, params \\ %{}) do
     admin
     |> cast(params, @allowed_fields)
+    |> validate_required(@allowed_fields)
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email)
   end
+
+  @doc false
+  def changeset_with_password(admin, params \\ %{}) do
+    admin
+    |> cast(params, [:password])
+    |> validate_required(:password)
+    |> validate_length(:password, min: 8)
+    |> validate_length(:password, max: 20)
+    |> validate_confirmation(:password, required: true)
+    |> hash_password()
+    |> changeset(params)
+  end
+
+  defp hash_password(%Ecto.Changeset{changes: %{password: password}} = changeset) do
+    changeset
+    |> put_change(:hashed_password, App.Password.hash_pwd_salt(password))
+  end
+
+  defp hash_password(changeset), do: changeset
 end
