@@ -1,7 +1,7 @@
 defmodule AppWeb.Admin.PageController do
   use AppWeb, :controller
 
-  plug :ensure_logged_in_admin
+  plug :ensure_logged_in_admin when action not in [:new, :create]
 
 
   alias App.Query.Admin

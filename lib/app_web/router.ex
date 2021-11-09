@@ -45,10 +45,17 @@ defmodule AppWeb.Router do
   scope "/admins", AppWeb.Admin, as: :admin do
     pipe_through :browser
 
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
+    delete "/logout", SessionController, :delete
+
     resources "/", PageController, only: [
       :index, :new, :create, :show, :edit, :update, :delete
     ]
+
+    resources "/uploads", UploadController, only: [:index, :new, :create, :show]
   end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", AppWeb do

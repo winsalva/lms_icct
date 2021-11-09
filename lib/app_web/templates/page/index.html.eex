@@ -1,10 +1,14 @@
 <div class="sub-container">
-<h1>Home Page</h1>
-<%= if @items == [] do %>
-<p>No items here</p>
+  <h1>Home Page</h1>
+  <%= if @conn.assigns.current_admin do %>
+  <%= link "Upload", to: Routes.admin_upload_path(@conn, :new) %>
+  <% end %>
+  
+<%= if @uploads == [] do %>
+<p>No uploads here</p>
 <% else %>
-<%= for item <- @items do %>
-    <span><strong><%= item.title %></strong> -- <%= item.description %></span>
+<%= for upload <- @uploads do %>
+    <p><span><strong><%= upload.title %></strong></p> <%= upload.description %></span>
     <% end %>
     <% end %>
     

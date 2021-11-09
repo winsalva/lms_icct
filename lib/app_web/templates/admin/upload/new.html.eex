@@ -1,0 +1,15 @@
+<div class="sub-container">
+  <h2>New Upload</h2>
+<%= form_for @upload, Routes.admin_upload_path(@conn, :create), fn f -> %>
+<label>Title</label>
+<%= text_input f, :title %>
+<%= error_tag f, :title %>
+<label>File</label>
+<%= text_input f, :file1 %>
+<%= error_tag f, :file1 %>
+<label>Description</label>
+<%= textarea f, :description %>
+<%= error_tag f, :description %>
+<%= submit "Upload" %>
+<% end %>
+</div>
