@@ -1,6 +1,9 @@
 defmodule AppWeb.Admin.PageController do
   use AppWeb, :controller
 
+  plug :ensure_logged_in_admin
+
+
   alias App.Query.Admin
   
   def index(conn, _params) do
@@ -62,7 +65,7 @@ defmodule AppWeb.Admin.PageController do
       conn
     else
       conn
-      |> redirect(to: Routes.page_path(@conn, :index))
+      |> redirect(to: Routes.page_path(conn, :index))
       |> halt()
     end
   end
