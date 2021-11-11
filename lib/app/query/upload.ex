@@ -35,4 +35,29 @@ defmodule App.Query.Upload do
   def get_upload(id) do
     Repo.get(Upload, id)
   end
+
+  @doc """
+  Edit upload.
+  """
+  def edit_upload(id) do
+    Repo.get(Upload, id)
+    |> Upload.changeset()
+  end
+
+  @doc """
+  Update upload
+  """
+  def update_upload(id, params) do
+    get_upload(id)
+    |> Upload.changeset(params)
+    |> Repo.update()
+  end
+
+  @doc """
+  Delete upload
+  """
+  def delete_upload(id) do
+    get_upload(id)
+    |> Repo.delete()
+  end
 end

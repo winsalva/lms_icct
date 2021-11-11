@@ -9,10 +9,31 @@ defmodule App.Schema.Upload do
     field :title, :string
     field :description, :string
     field :file1, :string
+    field :file2, :string
+    field :file3, :string
+    field :file4, :string
+    field :file5, :string
+    field :file6, :string
+    field :file7, :string
+    field :file8, :string
     timestamps()
   end
 
   @allowed_fields [
+    :admin_id,
+    :title,
+    :description,
+    :file1,
+    :file2,
+    :file3,
+    :file4,
+    :file5,
+    :file6,
+    :file7,
+    :file8
+  ]
+
+  @required_fields [
     :admin_id,
     :title,
     :description,
@@ -23,7 +44,7 @@ defmodule App.Schema.Upload do
   def changeset(upload, params \\ %{}) do
     upload
     |> cast(params, @allowed_fields)
-    |> validate_required(@allowed_fields)
+    |> validate_required(@required_fields)
     |> assoc_constraint(:admin)
   end
 end

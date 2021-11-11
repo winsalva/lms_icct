@@ -53,7 +53,7 @@ defmodule AppWeb.Router do
       :index, :new, :create, :show, :edit, :update, :delete
     ]
 
-    resources "/uploads", UploadController, only: [:index, :new, :create, :show]
+    resources "/uploads", UploadController, only: [:index, :new, :create, :show, :edit, :update, :delete]
   end
 
 

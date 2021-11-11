@@ -1,0 +1,13 @@
+<div class="sub-container">
+  <h1>Show Upload</h1>
+  <select>
+    <option>Select Option</option>
+    <option value="edit">Edit</option>
+    <option value="delete">Delete</option>
+  </select>
+
+  <div class="upload-container">
+    <%= @upload.title %>
+  </div>
+  <%= link "Edit", to: Routes.admin_upload_path(@conn, :edit, @upload.id) %> | <%= link "Delete", to: Routes.admin_upload_path(@conn, :delete, @upload.id), method: :delete, data: [confirm: "Are you sure to delete this upload?"] %>
+</div>
