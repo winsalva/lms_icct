@@ -3,6 +3,7 @@ defmodule App.Repo.Migrations.AlterUploadsAddFiles do
 
   def change do
     alter table(:uploads) do
+      add :category, :string
       add :file2, :string
       add :file3, :string
       add :file4, :string
@@ -10,6 +11,7 @@ defmodule App.Repo.Migrations.AlterUploadsAddFiles do
       add :file6, :string
       add :file7, :string
       add :file8, :string
+      add :files, {:array, :string}
     end
   end
 end

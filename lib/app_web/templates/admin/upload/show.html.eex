@@ -1,13 +1,50 @@
 <div class="sub-container">
   <h1>Show Upload</h1>
-  <select>
-    <option>Select Option</option>
-    <option value="edit">Edit</option>
-    <option value="delete">Delete</option>
-  </select>
 
   <div class="upload-container">
-    <%= @upload.title %>
+
+  <%= if @upload.files do %>
+  <div class="row">
+    <div class="image-container">
+    <!--span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span-->
+
+  <!-- Expanded image -->
+  <img src="<%= @upload.file1 %>" id="expandedImg" style="width:100%">
+
+  <!-- Image text -->
+  <div id="imgtext"></div>
+</div>
+    <div class="column">
+    <%= for {file, index} <- enum_with_index(@upload.files) do %>
+	<%= if file != "" do %>
+	
+	  <img src="/images/brokerage-image1.jpg" alt="Image <%= index %>" onclick="myFunction(this);"/>
+	<% end %>
+	<% end %>
+    </div>
   </div>
+  <% end %>
+  <div>
+    <%= @upload.title %>
+    <%= @upload.description %>
+  </div>
+  </div>
+      
+    
   <%= link "Edit", to: Routes.admin_upload_path(@conn, :edit, @upload.id) %> | <%= link "Delete", to: Routes.admin_upload_path(@conn, :delete, @upload.id), method: :delete, data: [confirm: "Are you sure to delete this upload?"] %>
 </div>
+
+<script>
+  function myFunction(imgs) {
+  // Get the expanded image
+  var expandImg = document.getElementById("expandedImg");
+  // Get the image text
+  var imgText = document.getElementById("imgtext");
+  // Use the same src in the expanded image as the image being clicked on from the grid
+  expandImg.src = imgs.src;
+  // Use the value of the alt attribute of the clickable image as text inside the expanded image
+  imgText.innerHTML = imgs.alt;
+  // Show the container element (hidden with CSS)
+  //expandImg.parentElement.style.display = "block";
+  }
+  </script>

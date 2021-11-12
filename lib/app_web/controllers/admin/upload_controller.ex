@@ -1,7 +1,7 @@
 defmodule AppWeb.Admin.UploadController do
   use AppWeb, :controller
 
-  plug :ensure_logged_in_admin
+  plug :ensure_logged_in_admin when action not in [:show]
 
   alias App.Query.Upload
 
@@ -10,9 +10,23 @@ defmodule AppWeb.Admin.UploadController do
     render(conn, :new, upload: upload)
   end
 
-  def create(conn, %{"upload" => params}) do
+  def create(conn, %{"upload" => %{"category" => category, "title" => title, "description" => description, "file1" => file1, "file2" => file2, "file3" => file3, "file4" => file4, "file5" => file5, "file6" => file6, "file7" => file7, "file8" => file8}}) do
     admin_id = conn.assigns.current_admin.id
-    params = Map.put(params, "admin_id", admin_id)
+    params = %{
+      admin_id: admin_id,
+      category: category,
+      title: title,
+      description: description,
+      file1: file1,
+      file2: file2,
+      file3: file3,
+      file4: file4,
+      file5: file5,
+      file6: file6,
+      file7: file7,
+      file8: file8,
+      files: [file1, file2, file3, file4, file5, file6, file7, file8]
+    }
     case Upload.insert_upload(params) do
       {:ok, _upload} ->
         conn
@@ -34,9 +48,23 @@ defmodule AppWeb.Admin.UploadController do
     render(conn, :edit, upload: upload)
   end
 
-  def update(conn, %{"upload" => params, "id" => id}) do
+  def update(conn, %{"upload" => %{"category" => category, "title" => title, "description" => description, "file1" => file1, "file2" => file2, "file3" => file3, "file4" => file4, "file5" => file5, "file6" => file6, "file7" => file7, "file8" => file8}, "id" => id}) do
     admin_id = conn.assigns.current_admin.id
-    params = Map.put(params, "admin_id", admin_id)
+    params = %{
+      admin_id: admin_id,
+      category: category,
+      title: title,
+      description: description,
+      file1: file1,
+      file2: file2,
+      file3: file3,
+      file4: file4,
+      file5: file5,
+      file6: file6,
+      file7: file7,
+      file8: file8,
+      files: [file1, file2, file3, file4, file5, file6, file7, file8]
+    }
     case Upload.update_upload(id, params) do
       {:ok, _upload} ->
         conn

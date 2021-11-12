@@ -6,6 +6,7 @@ defmodule App.Schema.Upload do
 
   schema "uploads" do
     belongs_to :admin, Admin
+    field :category, :string
     field :title, :string
     field :description, :string
     field :file1, :string
@@ -16,11 +17,13 @@ defmodule App.Schema.Upload do
     field :file6, :string
     field :file7, :string
     field :file8, :string
+    field :files, {:array, :string}
     timestamps()
   end
 
   @allowed_fields [
     :admin_id,
+    :category,
     :title,
     :description,
     :file1,
@@ -30,11 +33,13 @@ defmodule App.Schema.Upload do
     :file5,
     :file6,
     :file7,
-    :file8
+    :file8,
+    :files
   ]
 
   @required_fields [
     :admin_id,
+    :category,
     :title,
     :description,
     :file1

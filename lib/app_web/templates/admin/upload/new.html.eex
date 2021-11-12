@@ -2,6 +2,9 @@
   
   <h2>New Upload</h2>
   <%= form_for @upload, Routes.admin_upload_path(@conn, :create), fn f -> %>
+  <label>Category</label>
+  <%= text_input f, :category %>
+  <%= error_tag f, :category %>
   <label>Title</label>
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
