@@ -1,0 +1,16 @@
+<footer>
+  <h2 class="footer-company-name">JG Brokerage</h2>
+  <div class="under-line"></div>
+  <div class="contact-link-container">
+    <span class="contact-icon fb"></span>
+  </div>
+  
+  <ul>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Our Company</a></li>
+    <li><a href="#">Our Mission</a></li>
+    <li><a href="#">Terms Of Use</a></li>
+  </ul>
+  
+</footer>
+

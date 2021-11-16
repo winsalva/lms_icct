@@ -1,5 +1,7 @@
 <div class="nav">
-  <img src="/images/brokerage-logo.jpg"/>
+  <img class="company-bg-image" src="/images/brokerage-logo.jpg"/>
+  <h2 class="company-name">JG Brokerage</h2>
+  <p class="company-tag-name">Company tag name here</p>
   <div class="nav-options-container">
     <input type="search" placeholder="Search.."/>
   </div>
@@ -24,7 +26,7 @@
 	    <strong><%= upload.title %></strong> 
 	  </p>
 	  <div class="upload-description">
-	    <%= upload.description %>  
+	    <%= upload.category %>  
 	  </div>
 	</div>
       </div>
@@ -32,3 +34,4 @@
 </div>
 <% end %>
 </div>
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
