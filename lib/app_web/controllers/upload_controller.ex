@@ -1,4 +1,4 @@
-defmodule AppWeb.Admin.UploadController do
+defmodule AppWeb.UploadController do
   use AppWeb, :controller
 
   plug :ensure_logged_in_admin when action not in [:show]

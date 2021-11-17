@@ -1,7 +1,7 @@
 <div class="sub-container">
-
-  <h2>Edit Upload</h2>
-  <%= form_for @upload, Routes.admin_upload_path(@conn, :update, @upload.data), fn f -> %>
+  
+  <h2>New Upload</h2>
+  <%= form_for @upload, Routes.upload_path(@conn, :create), fn f -> %>
   <label>Category</label>
   <%= text_input f, :category %>
   <%= error_tag f, :category %>
@@ -21,7 +21,8 @@
   <%= text_input f, :file6 %>
   <%= text_input f, :file7 %>
   <%= text_input f, :file8 %>
-  <%= submit "Save Changes" %>
-  <% end %>
-
+  <%= submit "Upload" %>
+  <% end %>  
+  
 </div>
+

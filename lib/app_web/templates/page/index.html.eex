@@ -9,7 +9,7 @@
 
 <div class="sub-container">
   <%= if @conn.assigns.current_admin do %>
-  <%= link "Upload", to: Routes.admin_upload_path(@conn, :new) %>
+  <%= link "Upload", to: Routes.upload_path(@conn, :new) %>
   <% end %>
   
 <%= if @uploads == [] do %>
@@ -18,7 +18,7 @@
 <div class="uploads-container">
   <%= for upload <- @uploads do %>
       <div class="upload-container">
-	<a href="<%= Routes.admin_upload_path(@conn, :show, upload.id) %>">
+	<a href="<%= Routes.upload_path(@conn, :show, upload.id) %>">
 	  <img src="/images/brokerage-logo.jpg"/>
 	</a>
 	<div class="upload-title-description">

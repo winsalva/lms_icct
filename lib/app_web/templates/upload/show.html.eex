@@ -1,18 +1,18 @@
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: @upload.title) %>
+
 <div class="sub-container">
-  <div class="upload-container">
   <%= if @upload.files do %>
-  <div class="row">
+  <div class="images-container-show">
     <div class="image-container">
-    <!--span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span-->
 
-  <!-- Expanded image -->
-  <img src="<%= @upload.file1 %>" id="expandedImg" style="width:100%">
-
-  <!-- Image text -->
-  <div id="imgtext"></div>
-</div>
-    <div class="column">
+      <!-- Expanded image -->
+      <img src="/images/brokerage-image1.jpg" id="expandedImg"/>
+      
+      <!-- Image text -->
+      <div id="imgtext">Sample Image</div>
+    </div>
+    
+    <div class="tab-images-container">
     <%= for {file, index} <- enum_with_index(@upload.files) do %>
 	<%= if file != "" do %>
 	
@@ -22,14 +22,14 @@
     </div>
   </div>
   <% end %>
+  
   <div>
-    <%= @upload.title %>
+    <h2><%= @upload.title %></h2>
     <%= @upload.description %>
-  </div>
   </div>
       
     
-  <%= link "Edit", to: Routes.admin_upload_path(@conn, :edit, @upload.id) %> | <%= link "Delete", to: Routes.admin_upload_path(@conn, :delete, @upload.id), method: :delete, data: [confirm: "Are you sure to delete this upload?"] %>
+  <%= link "Edit", to: Routes.upload_path(@conn, :edit, @upload.id) %> | <%= link "Delete", to: Routes.upload_path(@conn, :delete, @upload.id), method: :delete, data: [confirm: "Are you sure to delete this upload?"] %>
 </div>
 
 <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

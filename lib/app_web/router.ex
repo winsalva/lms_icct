@@ -23,6 +23,8 @@ defmodule AppWeb.Router do
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
 
+    resources "/uploads", UploadController, only: [:index, :new, :create, :show, :edit, :update, :delete]
+
   end
 
   scope "/users", AppWeb.User, as: :user do
@@ -53,7 +55,6 @@ defmodule AppWeb.Router do
       :index, :new, :create, :show, :edit, :update, :delete
     ]
 
-    resources "/uploads", UploadController, only: [:index, :new, :create, :show, :edit, :update, :delete]
   end
 
 
