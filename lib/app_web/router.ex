@@ -19,6 +19,7 @@ defmodule AppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/terms-of-use", PageController, :term_of_use
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete

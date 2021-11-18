@@ -1,4 +1,4 @@
 <div class="back-nav-container">
-  <div class="icons arrow-back"></div>
+  <div class="icons arrow-back" onclick="back()"></div>
   <div class="back-nav-title"><%= @title %></div>
 </div>

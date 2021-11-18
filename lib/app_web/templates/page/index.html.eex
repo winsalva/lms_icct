@@ -1,23 +1,48 @@
-<div class="nav">
+<div class="nav-container">
   <img class="company-bg-image" src="/images/brokerage-logo.jpg"/>
-  <h2 class="company-name">JG Brokerage</h2>
-  <p class="company-tag-name">Company tag name here</p>
-  <div class="nav-options-container">
-    <input type="search" placeholder="Search.."/>
-  </div>
 </div>
 
-<div class="sub-container">
-  <%= if @conn.assigns.current_admin do %>
-  <%= link "Upload", to: Routes.upload_path(@conn, :new) %>
-  <% end %>
-  
+  <div class="nav-options-container">
+    <div class="nav-option1-container">
+      <div class="menu-icon" id="openNav">  
+        <span class="icon"></span>
+	<span class="icon"></span>
+        <span class="icon"></span>
+      </div>
+    
+      <div class="company-name">JG Brokerage</div>
+      <div class="icons search-icon"></div>
+    </div>
+
+    <div class="nav-option2-container">
+      <%= if @conn.assigns.current_admin do %>
+    <%= link "Upload", to: Routes.upload_path(@conn, :new) %>
+    <% end %>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Term Of Use</a>
+    </div>
+    
+  </div>
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" id="closeNav">&times;</a>
+    <%= if @conn.assigns.current_admin do %>
+    <%= link "Upload", to: Routes.upload_path(@conn, :new) %>
+    <% end %>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Terms Of Use</a>
+  </div>
+
+
+<div class="sub-container">  
 <%= if @uploads == [] do %>
 <p>No uploads yet.</p>
 <% else %>
 <div class="uploads-container">
   <%= for upload <- @uploads do %>
-      <div class="upload-container">
+      <div class="upload-container" data-aos="fade-up">
 	<a href="<%= Routes.upload_path(@conn, :show, upload.id) %>">
 	  <img src="/images/brokerage-logo.jpg"/>
 	</a>

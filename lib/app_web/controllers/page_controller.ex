@@ -7,4 +7,8 @@ defmodule AppWeb.PageController do
     uploads = Upload.list_uploads
     render(conn, :index, uploads: uploads)
   end
+
+  def term_of_use(conn, _params) do
+    render(conn, "term-of-use.html")
+  end
 end

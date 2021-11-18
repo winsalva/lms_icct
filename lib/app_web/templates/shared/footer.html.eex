@@ -2,15 +2,21 @@
   <h2 class="footer-company-name">JG Brokerage</h2>
   <div class="under-line"></div>
   <div class="icons-container">
-    <center><div class="icons fb"></div></center>
+    <center><div class="icons fb-icon"></div></center>
+    <center><div class="icons email-icon"></div></center>
+    <center><div class="icons phone-icon"></div></center>
   </div>
   
   <ul>
     <li><a href="#">About Us</a></li>
     <li><a href="#">Our Company</a></li>
     <li><a href="#">Our Mission</a></li>
-    <li><a href="#">Terms Of Use</a></li>
+    <li><%= link "Terms Of Use", to: Routes.page_path(@conn, :term_of_use) %></li>
   </ul>
+
+  <div class="copyright">
+    <p>&copy; 2021 JG Brokerage. All Rights Reserved.</p>
+  </div>
   
 </footer>
 
