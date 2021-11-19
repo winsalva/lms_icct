@@ -20,6 +20,9 @@ defmodule AppWeb.Router do
 
     get "/", PageController, :index
     get "/terms-of-use", PageController, :term_of_use
+    get "/privacy-policy", PageController, :privacy_policy
+    get "/menus", PageController, :menus
+    get "/about-us", PageController, :about_us
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete

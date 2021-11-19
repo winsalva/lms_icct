@@ -1,6 +1,12 @@
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: @upload.title) %>
 
 <div class="sub-container">
+  <%= if @current_admin do %>
+  <div class="upload-options">
+    <%= link "Edit", to: Routes.upload_path(@conn, :edit, @upload.id) %> <%= link "Delete", to: Routes.upload_path(@conn, :delete, @upload.id), method: :delete, data: [confirm: "Are you sure to delete this upload?"] %>
+  </div>
+  <% end %>
+  
   <%= if @upload.files do %>
   <div class="images-container-show">
     <div class="image-container">
@@ -27,9 +33,6 @@
     <h2><%= @upload.title %></h2>
     <%= @upload.description %>
   </div>
-      
-    
-  <%= link "Edit", to: Routes.upload_path(@conn, :edit, @upload.id) %> | <%= link "Delete", to: Routes.upload_path(@conn, :delete, @upload.id), method: :delete, data: [confirm: "Are you sure to delete this upload?"] %>
 </div>
 
 <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

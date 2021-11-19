@@ -1,0 +1,5 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "About Us") %>
+
+<h1>About us page</h1>
+
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

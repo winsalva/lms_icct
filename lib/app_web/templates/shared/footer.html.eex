@@ -2,20 +2,25 @@
   <h2 class="footer-company-name">JG Brokerage</h2>
   <div class="under-line"></div>
   <div class="icons-container">
-    <center><div class="icons fb-icon"></div></center>
-    <center><div class="icons email-icon"></div></center>
-    <center><div class="icons phone-icon"></div></center>
+    <div class="icons fb-icon"></div>
+    <div class="icons email-icon"></div>
+    <div class="icons phone-icon"></div>
   </div>
   
   <ul>
-    <li><a href="#">About Us</a></li>
+    <li><%= link "Home", to: Routes.page_path(@conn, :index) %></li>
+    <li><%= link "About Us", to: Routes.page_path(@conn, :about_us) %></li>
     <li><a href="#">Our Company</a></li>
     <li><a href="#">Our Mission</a></li>
     <li><%= link "Terms Of Use", to: Routes.page_path(@conn, :term_of_use) %></li>
+    <li><%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %></li>
+    <%= if @conn.assigns.current_admin || @conn.assigns.current_user do %>
+    <li><%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %></li>
+    <% end %>
   </ul>
 
   <div class="copyright">
-    <p>&copy; 2021 JG Brokerage. All Rights Reserved.</p>
+    <p>&copy; 2021 <%= company_name() %>. All Rights Reserved.</p>
   </div>
   
 </footer>

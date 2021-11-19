@@ -1,6 +1,5 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Edit Upload") %>
 <div class="sub-container">
-
-  <h2>Edit Upload</h2>
   <%= form_for @upload, Routes.upload_path(@conn, :update, @upload.data), fn f -> %>
   <label>Category</label>
   <%= text_input f, :category %>

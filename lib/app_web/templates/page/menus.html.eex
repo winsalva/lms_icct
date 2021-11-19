@@ -1,0 +1,15 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Menus") %>
+
+<input type="search" placeholder="Search here.."/>
+<div class="menu-container">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About Us</a></li>
+    <p>About</p>
+    <li><a href="#">Terms of Use</a></li>
+    <li><a href="#">Privacy Policy</a></li>
+  </ul>
+</div>
+
+
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

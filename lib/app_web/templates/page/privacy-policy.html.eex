@@ -1,0 +1,4 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Privacy Policy") %>
+<h1>Privacy Policy here</h1>
+
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

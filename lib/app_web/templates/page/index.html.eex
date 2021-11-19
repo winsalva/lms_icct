@@ -4,26 +4,30 @@
 
   <div class="nav-options-container">
     <div class="nav-option1-container">
-      <div class="menu-icon" id="openNav">  
+      <a href="<%= Routes.page_path(@conn, :menus) %>">
+      <div class="menu-icon" id="openNav">
         <span class="icon"></span>
 	<span class="icon"></span>
         <span class="icon"></span>
       </div>
+      </a>
     
-      <div class="company-name">JG Brokerage</div>
-      <div class="icons search-icon"></div>
+      <div class="company-name"><%= company_name() %></div>
+      <a href="<%= Routes.user_page_path(@conn, :new) %>">
+	<div class="login-icon"></div>
+      </a>
     </div>
+  </div>
+  
 
     <div class="nav-option2-container">
       <%= if @conn.assigns.current_admin do %>
     <%= link "Upload", to: Routes.upload_path(@conn, :new) %>
     <% end %>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Term Of Use</a>
+      <a href="#">Category</a>
+      <a href="#">Prices</a>
+      <a href="#">About Us</a>
     </div>
-    
-  </div>
 
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" id="closeNav">&times;</a>
@@ -45,7 +49,6 @@
       <div class="upload-container" data-aos="fade-up">
 	<a href="<%= Routes.upload_path(@conn, :show, upload.id) %>">
 	  <img src="/images/brokerage-logo.jpg"/>
-	</a>
 	<div class="upload-title-description">
 	  <p class="upload-title">
 	    <strong><%= upload.title %></strong> 
@@ -54,6 +57,7 @@
 	    <%= upload.category %>  
 	  </div>
 	</div>
+	</a>
       </div>
       <% end %>
 </div>

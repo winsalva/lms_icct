@@ -1,8 +1,10 @@
-<h2>Login Admin</h2>
-<%= form_for @conn, Routes.admin_session_path(@conn, :create), fn f -> %>
-<label>Email</label>
-<%= text_input f, :email %>
-<label>Password</label>
-<%= text_input f, :password %>
-<%= submit "Login" %>
-<% end %>
+<div class="sub-container">
+  <h2>Login Admin</h2>
+  <%= form_for @conn, Routes.admin_session_path(@conn, :create), fn f -> %>
+  <label>Email</label>
+  <%= text_input f, :email %>
+  <label>Password</label>
+  <%= password_input f, :password %>
+  <%= submit "Login" %>
+  <% end %>
+</div>
