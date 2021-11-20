@@ -13,17 +13,20 @@
       </a>
     
       <div class="company-name"><%= company_name() %></div>
-      <a href="<%= Routes.user_page_path(@conn, :new) %>">
-	<div class="login-icon"></div>
+      <%= if @conn.assigns.current_user do %>
+      <a href="<%= Routes.user_page_path(@conn, :show, @current_user.id) %>">
+	<div class="account-icon"></div>
       </a>
+	<% else %>
+	<a href="<%= Routes.user_page_path(@conn, :new) %>">
+	  <div class="login-icon"></div>
+	</a>
+	<% end %>
     </div>
   </div>
   
 
     <div class="nav-option2-container">
-      <%= if @conn.assigns.current_admin do %>
-    <%= link "Upload", to: Routes.upload_path(@conn, :new) %>
-    <% end %>
       <a href="#">Category</a>
       <a href="#">Prices</a>
       <a href="#">About Us</a>

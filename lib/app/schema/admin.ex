@@ -9,6 +9,7 @@ defmodule App.Schema.Admin do
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :super_admin, :boolean, default: false
+    has_many :blogs, App.Schema.Blog
     timestamps()
   end
 

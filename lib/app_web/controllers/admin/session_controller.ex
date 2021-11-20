@@ -31,7 +31,7 @@ defmodule AppWeb.Admin.SessionController do
         |> redirect(to: Routes.page_path(conn, :index))
       false ->
         conn
-	|> put_flash(:error, "Email/Password not found!")
+	|> put_flash(:error, "Email and password combination cannot be found!")
 	|> redirect(to: Routes.admin_session_path(conn, :new))
     end
   end

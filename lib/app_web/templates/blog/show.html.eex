@@ -1,0 +1,14 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Blogs") %>
+<div class="sub-container">
+
+  <%= if @current_admin do %>
+  <div class="upload-options">
+    <%= link "Edit", to: Routes.blog_path(@conn, :edit, @blog.id) %> <%= link "Delete", to: Routes.blog_path(@conn, :delete, @blog.id), method: :delete, data: [confirm: "Are you sure to delete this blog?"] %>
+  </div>
+  <% end %>
+
+  <h2><%= @blog.title %></h2>
+  <img src="/images/brokerage-image1.jpg">
+  <p><%= @blog.body %></p>
+</div>
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

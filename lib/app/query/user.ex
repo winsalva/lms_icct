@@ -32,4 +32,20 @@ defmodule App.Query.User do
     |> User.changeset(params)
     |> Repo.update()
   end
+
+  def get_user_by(attr) do
+    Repo.get_by(User, attr)
+  end
+
+  @doc """
+  Get user by email and password.
+  """
+  def get_user_by_email_and_password(email, password) do
+    with user when not is_nil(user) <- get_user_by(%{email: String.trim(email)}),
+         true <- App.Password.verify_pass(password, user.hashed_password) do
+      user
+    else
+      _ -> App.Password.no_user_verify
+    end
+  end
 end

@@ -1,0 +1,31 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Blogs") %>
+
+<div class="sub-container">
+
+  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+
+  <%= if @current_admin do %>
+  <div class="upload-options">
+    <%= link "Create New Blog", to: Routes.blog_path(@conn, :new) %>
+  </div>
+  <% end %>
+
+  <%= if @blogs == [] do %>
+<h3 class="center">Coming soon..</h3>
+<% else %>
+<div class="blogs-container">
+  <%= for blog <- @blogs do %>
+      <div class="blog-container">
+	<a href="<%= Routes.blog_path(@conn, :show, blog.id) %>">
+	<img class="blog-thumbnail" src="/images/brokerage-image1.jpg"/>
+	<div class="blog-title">
+	  <%= blog.title %>
+	</div>
+	</a>
+      </div>
+      <% end %>
+</div>
+<% end %>
+      
+</div>
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

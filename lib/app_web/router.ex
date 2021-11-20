@@ -29,13 +29,15 @@ defmodule AppWeb.Router do
 
     resources "/uploads", UploadController, only: [:index, :new, :create, :show, :edit, :update, :delete]
 
+    resources "/blogs", BlogController, only: [:index, :new, :create, :show, :edit, :update, :delete]
+
   end
 
   scope "/users", AppWeb.User, as: :user do
     pipe_through :browser
 
     resources "/", PageController, only: [
-      :new, :create, :index
+      :new, :create, :index, :show
     ]
   end
 

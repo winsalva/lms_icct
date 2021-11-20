@@ -1,0 +1,26 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Edit blog") %>
+
+<div class="sub-container">
+
+  <%= form_for @blog, Routes.blog_path(@conn, :update, @blog.data), fn f -> %>
+<%= if @blog.action do %>
+<div class="alert alert-danger">
+  <p>Oops, something went wrong. Please check the errors below.</p>
+</div>
+<% end %>
+
+<label>Title</label>
+<%= text_input f, :title, placeholder: "Blog title.." %>
+<%= error_tag f, :title %>
+
+<label>Thumbnail</label>
+<%= text_input f, :thumbnail %>
+<%= error_tag f, :thumbnail %>
+
+<label>Content</label>
+<%= textarea f, :body %>
+<%= error_tag f, :body %>
+
+<%= submit "Save Changes" %>
+<% end %>
+</div>

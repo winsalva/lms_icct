@@ -16,6 +16,9 @@
     <li><%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %></li>
     <%= if @conn.assigns.current_admin || @conn.assigns.current_user do %>
     <li><%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %></li>
+    <% else %>
+    <li><%= link "Log in", to: Routes.session_path(@conn, :new) %></li>
+    <li><%= link "Sign up", to: Routes.user_page_path(@conn, :new) %></li>
     <% end %>
   </ul>
 

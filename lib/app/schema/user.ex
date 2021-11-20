@@ -47,7 +47,7 @@ defmodule App.Schema.User do
     user
     |> cast(params, [:password])
     |> validate_required(:password)
-    |> validate_length(:password, min: 8)
+    |> validate_length(:password, min: 6)
     |> validate_length(:password, max: 20)
     |> validate_confirmation(:password, required: true)
     |> hash_password()
