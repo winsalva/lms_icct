@@ -1,0 +1,49 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", title: "Frequently Asked Questions") %>
+
+<div class="sub-container">
+
+  <%= if @current_admin do %>
+  <div class="upload-options">
+    <%= link "Add New FAQ", to: Routes.faq_path(@conn, :new) %>
+  </div>
+  <% end %>
+
+  <%= if @faqs == [] do %>
+  <h2 class="center">Coming soon..</h2>
+  <% else %>
+  <div class="faqs-container">
+    <%= for faq <- @faqs do %>
+	<div class="faq-container">
+	  <div class="faq-title">
+	    <%= faq.title %>
+	  </div>
+	  <%= if @current_admin do %>
+	  <a href="<%= Routes.faq_path(@conn, :edit, faq.id) %>">
+	  <div class="faq-content">
+	    <%= raw(as_html(faq.content)) %>
+	  </div>
+	  </a>
+	  <% else %>
+	  <div class="faq-content">
+            <%= raw(as_html(faq.content)) %>
+          </div>
+	  <% end %>
+	</div>
+	<% end %>
+  </div>
+  <% end %>
+  
+</div>
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+
+<!--
+<script>
+  let faqTitles = document.getElementsByClassName("faq-title");
+  let faqContents = document.getElementsByClassName("faq-content");
+  for(var i=0; i<faqTitles.length; i++) {
+      faqTitles[i].addEventListener("click", () => {
+	  faqContents[i].style.display = "block";
+      })
+  }
+</script>
+-->

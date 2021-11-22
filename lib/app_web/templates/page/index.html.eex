@@ -45,7 +45,7 @@
 
 <div class="sub-container">  
 <%= if @uploads == [] do %>
-<p>No uploads yet.</p>
+<h3 class="center">Coming soon..</h3>
 <% else %>
 <div class="uploads-container">
   <%= for upload <- @uploads do %>

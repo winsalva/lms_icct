@@ -3,12 +3,29 @@ defmodule AppWeb.Admin.PageController do
 
   plug :ensure_logged_in_admin when action not in [:new, :create]
 
-
-  alias App.Query.Admin
+  alias App.Util
+  alias App.Query.{
+    Admin,
+    Upload,
+    User,
+    Blog
+  }
   
   def index(conn, _params) do
     admins = Admin.list_admins()
-    render(conn, :index, admins: admins)
+    blogs = Blog.list_blogs()
+    faqs = Util.list_faqs()
+    uploads = Upload.list_uploads()
+    users = User.list_users
+
+    assigns = [
+      admins: admins,
+      blogs: blogs,
+      faqs: faqs,
+      uploads: uploads,
+      users: users
+    ]
+    render(conn, :index, assigns)
   end
 
   def new(conn, _params) do

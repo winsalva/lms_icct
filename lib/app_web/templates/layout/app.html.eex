@@ -1,2 +1,19 @@
 
-  <%= @inner_content %>
+<%= @inner_content %>
+
+<script>
+
+  let faqTitles = document.getElementsByClassName("faq-title");
+  let faqContents = document.getElementsByClassName("faq-content");
+
+  for(var i=0; i<faqTitles.length; i++) {
+      faqTitles[i].addEventListener("click", () => {
+          if(faqContents[i].style.display === "none") {
+	      faqContents[i].style.display = "block";
+	  } else {
+	      faqContents[i].style.display = "none";
+	  }
+      })
+  }
+
+</script>

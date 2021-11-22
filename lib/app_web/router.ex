@@ -31,6 +31,8 @@ defmodule AppWeb.Router do
 
     resources "/blogs", BlogController, only: [:index, :new, :create, :show, :edit, :update, :delete]
 
+    resources "/faqs", FaqController
+
   end
 
   scope "/users", AppWeb.User, as: :user do

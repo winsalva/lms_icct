@@ -1,0 +1,32 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Uploads") %>
+<div class="sub-container">
+
+  <%= if @current_admin do %>
+  <div class="upload-options">
+    <%= link "New Upload", to: Routes.upload_path(@conn, :new) %>
+  </div>
+  <% end %>
+
+  <%= if @uploads == [] do %>
+  <h3 class="center">No uploads yet!</h3>
+  <% else %>
+  <div class="uploads-container">
+    <%= for upload <- @uploads do %>
+	<div class="upload-container" data-aos="fade-up">
+          <a href="<%= Routes.upload_path(@conn, :show, upload.id) %>">	    
+            <img src="/images/brokerage-logo.jpg"/>	    
+            <div class="upload-title-description">
+              <p class="upload-title">
+		<strong><%= upload.title %></strong>
+              </p>
+              <div class="upload-description">
+		<%= upload.category %>
+              </div>
+            </div>
+          </a>
+	</div>
+	<% end %>
+  </div>  
+  <% end %>
+</div>
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

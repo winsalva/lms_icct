@@ -15,14 +15,15 @@
 <% else %>
 <div class="blogs-container">
   <%= for blog <- @blogs do %>
+      <a href="<%= Routes.blog_path(@conn, :show, blog.id) %>">
       <div class="blog-container">
-	<a href="<%= Routes.blog_path(@conn, :show, blog.id) %>">
-	<img class="blog-thumbnail" src="/images/brokerage-image1.jpg"/>
+	<img class="blog-thumbnail" src="/images/brokerage-logo.jpg"/>
 	<div class="blog-title">
-	  <%= blog.title %>
+	  <p><%= blog.title %></p>
+	  <p><%= blog.inserted_at %></p>
 	</div>
-	</a>
       </div>
+	</a>
       <% end %>
 </div>
 <% end %>

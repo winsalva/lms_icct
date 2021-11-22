@@ -31,7 +31,15 @@ defmodule AppWeb.BlogController do
 
   def show(conn, %{"id" => id}) do
     blog = Blog.get_blog(id)
-    render(conn, :show, blog: blog)
+    case App.as_html(blog.body) do
+      {:ok, content, _} ->
+	conn
+	|> render(:show, blog: blog, content: content, page_title: blog.title)
+      {:error, _content, _list} ->
+	conn
+	|> put_flash(:error, "Something went wrong!")
+	|> redirect(to: Routes.blog_path(conn, :index))
+    end	
   end
 
   def edit(conn, %{"id" => id}) do

@@ -1,9 +1,14 @@
 defmodule AppWeb.UploadController do
   use AppWeb, :controller
 
-  plug :ensure_logged_in_admin when action not in [:show]
+  plug :ensure_admin_logged_in when action not in [:show]
 
   alias App.Query.Upload
+
+  def index(conn, _params) do
+    uploads = Upload.list_uploads()
+    render(conn, :index, uploads: uploads)
+  end
 
   def new(conn, _params) do
     upload = Upload.new_upload()
@@ -89,8 +94,8 @@ defmodule AppWeb.UploadController do
     end
   end
 
-  ## Ensure logged in admin
-  defp ensure_logged_in_admin(conn, _options) do
+  ## Ensure admin logged in
+  defp ensure_admin_logged_in(conn, _options) do
     if conn.assigns.current_admin do
       conn
     else

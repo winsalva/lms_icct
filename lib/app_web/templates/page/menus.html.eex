@@ -3,7 +3,13 @@
 <input type="search" placeholder="Search here.."/>
 <div class="menu-container">
   <ul>
-    <li><a href="#">Home</a></li>
+    <%= if @current_admin do %>
+    <li><%= link "Admin Dashboard", to: Routes.admin_page_path(@conn, :index) %></li>
+    <% end %>
+    <%= if @current_user do %>
+    <li><%= link "My Account", to: Routes.user_page_path(@conn, :index) %></li>
+    <% end %>
+    <li></li>
     <li><a href="#">About Us</a></li>
     <p>About</p>
     <li><a href="#">Terms of Use</a></li>

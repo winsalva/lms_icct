@@ -1,0 +1,5 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "New FAQ") %>
+<div class="sub-container">
+<%= render "form.html", Map.put(assigns, :action, Routes.faq_path(@conn, :create)) %>
+
+</div>

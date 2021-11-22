@@ -6,9 +6,14 @@
     <%= link "Edit", to: Routes.blog_path(@conn, :edit, @blog.id) %> <%= link "Delete", to: Routes.blog_path(@conn, :delete, @blog.id), method: :delete, data: [confirm: "Are you sure to delete this blog?"] %>
   </div>
   <% end %>
-
-  <h2><%= @blog.title %></h2>
-  <img src="/images/brokerage-image1.jpg">
-  <p><%= @blog.body %></p>
+  
+  <img src="/images/brokerage-logo.jpg">
+  <h3 class="blog-title-show"><%= @blog.title %></h3>
+  <p><%= raw(strip_script(@content)) %></p>
 </div>
 <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+
+<div class="menu-bottom">
+  <a href="#">Button Here</a>
+</div>
+

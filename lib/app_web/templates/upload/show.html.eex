@@ -31,7 +31,7 @@
   
   <div>
     <h2><%= @upload.title %></h2>
-    <%= @upload.description %>
+    <%= raw(as_html(@upload.description)) %>
   </div>
 </div>
 

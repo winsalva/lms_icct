@@ -1,16 +1,35 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Admin Dashboard") %>
+
 <div class="sub-container">
-  <%= if @admins == [] do %>
-  <p>No admins yet.</p>
-  <% else %>
-  <table>
-    <tbody>
-      <%= for admin <- @admins do %>
-	  <tr>
-	    <td><%= admin.username %></td>
-	  </tr>
-	  <% end %>
-    </tbody>
-  </table>
-  <% end %>
+
+  <div class="menu-categories-container">
+    <div class="menu-category bg-border-yellowgreen">
+      Admins <%= length(@admins) %>
+    </div>
+    <div class="menu-category bg-border-orange">
+      Users <%= length(@users) %>
+    </div>
+
+    <a href="<%= Routes.upload_path(@conn, :index) %>">
+    <div class="menu-category bg-border-lightblue">
+      Uploads <%= length(@uploads) %>
+    </div>
+    </a>
+
+    <a href="<%= Routes.blog_path(@conn, :index) %>">
+    <div class="menu-category bg-border-yellow">
+      Blogs <%= length(@blogs) %>
+    </div>
+    </a>
+
+    <a href="<%= Routes.faq_path(@conn, :index) %>">
+    <div class="menu-category bg-border-green">
+      FAQs <%= length(@faqs) %>
+    </div>
+    </a>
+   
+  </div>
+  
 </div>
 
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
