@@ -1,0 +1,35 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Admins") %>
+<div class="sub-container">
+
+  <%= if @current_admin.super_admin do %>
+  <div class="upload-options">
+    <%= link "Add New Admin", to: Routes.admin_page_path(@conn, :new) %>
+  </div>
+  <% end %>
+  
+  <%= if @admins == [] do %>
+  <h2 class="center">No admins yet!</h2>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+	<th>Name</th>
+	<th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for admin <- @admins do %>
+          <tr>
+	    <%= if @current_admin.id == admin.id do %>
+            <td><%= link admin.username, to: Routes.admin_page_path(@conn, :show, admin.id) %></td>
+	    <% else %>
+	    <td><%= admin.username %></td>
+	    <% end %>
+          <td><%= admin.email %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>
+

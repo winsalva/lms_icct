@@ -33,6 +33,12 @@ defmodule App.Query.User do
     |> Repo.update()
   end
 
+  def update_user_password(id, params) do
+    get_user(id)
+    |> User.changeset_with_password(params)
+    |> Repo.update()
+  end
+
   def get_user_by(attr) do
     Repo.get_by(User, attr)
   end

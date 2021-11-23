@@ -7,7 +7,7 @@
     <li><%= link "Admin Dashboard", to: Routes.admin_page_path(@conn, :index) %></li>
     <% end %>
     <%= if @current_user do %>
-    <li><%= link "My Account", to: Routes.user_page_path(@conn, :index) %></li>
+    <li><%= link "My Account", to: Routes.user_account_path(@conn, :show, @current_user.id) %></li>
     <% end %>
     <li></li>
     <li><a href="#">About Us</a></li>

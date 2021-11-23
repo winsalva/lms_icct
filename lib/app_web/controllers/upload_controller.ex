@@ -93,15 +93,4 @@ defmodule AppWeb.UploadController do
 	|> redirect(to: Routes.page_path(conn, :index))
     end
   end
-
-  ## Ensure admin logged in
-  defp ensure_admin_logged_in(conn, _options) do
-    if conn.assigns.current_admin do
-      conn
-    else
-      conn
-      |> redirect(to: Routes.page_path(conn, :index))
-      |> halt()
-    end
-  end
 end

@@ -1,0 +1,28 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "My Account") %>
+
+<div class="sub-container">
+
+  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+  
+  <table>
+    <tbody>
+      <tr>
+	<td><b>Name: </b></td>
+	<td><%= @user.first_name %> <%= @user.middle_name %> <%= @user.last_name %></td>
+	<td><%= link "Edit", to: Routes.user_account_path(@conn, :edit_name, @user.id) %></td>
+      </tr>
+      <tr>
+	<td><b>Email: </b></td>
+	<td><%= @user.email %></td>
+	<td><%= link "Edit", to: "#" %></td>
+      </tr>
+      <tr>
+	<td><b>Password: </b></td>
+	<td>******</td>
+	<td><%= link "Edit", to: Routes.user_account_path(@conn, :change_password, @user.id) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

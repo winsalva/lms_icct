@@ -1,4 +1,9 @@
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Terms Of Use") %>
-<h1>Terms of use page here</h1>
+
+<div class="sub-container">
+  <br>
+  <h2 class="center">Terms of use content here</h2>
+  <br>
+</div>
 
 <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

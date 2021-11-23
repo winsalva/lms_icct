@@ -1,5 +1,6 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "New Admin") %>
+
 <div class="sub-container">
-  <h2>New Admin</h2>
 <%= form_for @admin, Routes.admin_page_path(@conn, :create), fn f -> %>
 <%= if @admin.action do %>
 <div class="alert alert-danger">

@@ -38,9 +38,13 @@ defmodule AppWeb.Router do
   scope "/users", AppWeb.User, as: :user do
     pipe_through :browser
 
-    resources "/", PageController, only: [
-      :new, :create, :index, :show
-    ]
+    get "/", PageController, :index
+    resources "/accounts", AccountController, only: [:new, :create, :show]
+
+    get "/accounts/:id/edit-name", AccountController, :edit_name
+    put "/accounts/edit-name", AccountController, :update_name
+    get "/accounts/:id/change-password", AccountController, :change_password
+    put "/accounts/change-password", AccountController, :update_password
   end
 
   scope "/items", AppWeb do
@@ -59,6 +63,7 @@ defmodule AppWeb.Router do
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
 
+    get "/list-admins", PageController, :list_admins
     resources "/", PageController, only: [
       :index, :new, :create, :show, :edit, :update, :delete
     ]

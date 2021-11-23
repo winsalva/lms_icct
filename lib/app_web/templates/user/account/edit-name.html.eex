@@ -1,0 +1,27 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Edit Account Name") %>
+
+<div class="sub-container">
+<%= form_for @user, Routes.user_account_path(@conn, :update_name, %{id: @user.data.id}), fn f -> %>
+<%= if @user.action do %>
+<div class="alert alert-danger">
+  <p>Something went wrong. Please check the errors below.</p>
+</div>
+<% end %>
+<label>First name</label>
+<%= text_input f, :first_name, placeholder: "ex. Juan" %>
+<%= error_tag f, :first_name %>
+
+<label>Middle name</label>
+<%= text_input f, :middle_name, placeholder: "ex. Dela Cruz" %>
+<%= error_tag f, :middle_name %>
+
+<label>Last name</label>
+<%= text_input f, :last_name, placeholder: "ex. Ramirez" %>
+<%= error_tag f, :last_name %>
+
+<label>Current password</label>
+<%= password_input f, :password, placeholder: "Enter your current password to save this changes.." %>
+
+<%= submit "Save Changes" %>
+<% end %>
+</div>

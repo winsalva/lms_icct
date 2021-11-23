@@ -14,11 +14,11 @@
     
       <div class="company-name"><%= company_name() %></div>
       <%= if @conn.assigns.current_user do %>
-      <a href="<%= Routes.user_page_path(@conn, :show, @current_user.id) %>">
+      <a href="<%= Routes.user_account_path(@conn, :show, @current_user.id) %>">
 	<div class="account-icon"></div>
       </a>
 	<% else %>
-	<a href="<%= Routes.user_page_path(@conn, :new) %>">
+	<a href="<%= Routes.user_account_path(@conn, :new) %>">
 	  <div class="login-icon"></div>
 	</a>
 	<% end %>

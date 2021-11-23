@@ -1,7 +1,8 @@
 defmodule AppWeb.Admin.PageController do
   use AppWeb, :controller
 
-  plug :ensure_logged_in_admin when action not in [:new, :create]
+  plug :ensure_superadmin_logged_in when action in [:new, :create]
+  plug :ensure_admin_logged_in when action not in [:new, :create]
 
   alias App.Util
   alias App.Query.{
@@ -10,6 +11,11 @@ defmodule AppWeb.Admin.PageController do
     User,
     Blog
   }
+
+  def list_admins(conn, _params) do
+    admins = Admin.list_admins()
+    render(conn, "list-admins.html", admins: admins)
+  end
   
   def index(conn, _params) do
     admins = Admin.list_admins()
@@ -45,6 +51,12 @@ defmodule AppWeb.Admin.PageController do
     end
   end
 
+  def show(conn, %{"id" => id}) do
+    admin = Admin.get_admin(id)
+    render(conn, :show, admin: admin)
+  end
+  
+
   def edit(conn, %{"id" => id}) do
     admin = Admin.edit_admin(id)
     render(conn, :edit, admin: admin)
@@ -71,19 +83,6 @@ defmodule AppWeb.Admin.PageController do
         conn
 	|> put_flash(:info, "Unable to delete this account.")
 	|> redirect(to: Routes.admin_page_path(conn, :index))
-    end
-  end
-
-
-
-  ## Ensure logged in admin
-  defp ensure_logged_in_admin(conn, _options) do
-    if conn.assigns.current_admin do
-      conn
-    else
-      conn
-      |> redirect(to: Routes.page_path(conn, :index))
-      |> halt()
     end
   end
 end

@@ -1,12 +1,22 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Users") %>
+
 <div class="sub-container">
-<h2>Users</h2>
 <%= if @users == [] do %>
-<p>No users yet.</p>
+<h3 class="center">No users yet.</h3>
 <% else %>
 <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
   <tbody>
     <%= for user <- @users do %>
-	<tr><td><%= user.first_name %></td></tr>
+	<tr>
+	  <td><%= user.first_name %> <%= user.middle_name %> <%= user.last_name %></td>
+	  <td><%= user.email %></td>
+	</tr>
 	<% end %>
   </tbody>
 </table>

@@ -24,6 +24,7 @@ defmodule AppWeb do
       import Plug.Conn
       import AppWeb.Gettext
       alias AppWeb.Router.Helpers, as: Routes
+      import AppWeb.GuardPlugs
     end
   end
 

@@ -63,15 +63,4 @@ defmodule AppWeb.FaqController do
     |> put_flash(:info, "FAQ deleted successfully.")
     |> redirect(to: Routes.faq_path(conn, :index))
   end
-
-  # Ensure logged in admin
-  defp ensure_admin_logged_in(conn, _opts) do
-    if conn.assigns.current_admin do
-      conn
-    else
-      conn
-      |> redirect(to: Routes.page_path(conn, :index))
-      |> halt()
-    end
-  end
 end

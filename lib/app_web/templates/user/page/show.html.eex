@@ -1,5 +1,0 @@
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "My Account") %>
-<div class="sub-container">
-  <h1><%= @user.first_name %></h1>
-</div>
-<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

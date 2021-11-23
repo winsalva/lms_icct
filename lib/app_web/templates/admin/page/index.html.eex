@@ -3,12 +3,18 @@
 <div class="sub-container">
 
   <div class="menu-categories-container">
+
+    <a href="<%= Routes.admin_page_path(@conn, :list_admins) %>">
     <div class="menu-category bg-border-yellowgreen">
       Admins <%= length(@admins) %>
     </div>
+    </a>
+
+    <a href="<%= Routes.user_page_path(@conn, :index) %>">
     <div class="menu-category bg-border-orange">
       Users <%= length(@users) %>
     </div>
+    </a>
 
     <a href="<%= Routes.upload_path(@conn, :index) %>">
     <div class="menu-category bg-border-lightblue">
@@ -25,6 +31,12 @@
     <a href="<%= Routes.faq_path(@conn, :index) %>">
     <div class="menu-category bg-border-green">
       FAQs <%= length(@faqs) %>
+    </div>
+    </a>
+
+    <a href="<%= Routes.faq_path(@conn, :index) %>">
+    <div class="menu-category bg-border-red">
+      Settings 
     </div>
     </a>
    
