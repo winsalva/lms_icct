@@ -44,6 +44,12 @@ defmodule App.Query.Admin do
     |> Repo.update()
   end
 
+  def update_admin_password(id, params) do
+    get_admin(id)
+    |> Admin.changeset_with_password(params)
+    |> Repo.update()
+  end
+
   def delete_admin(id) do
     get_admin(id)
     |> Repo.delete()

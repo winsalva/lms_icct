@@ -1,0 +1,19 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Edit Admin Usename") %>
+
+<div class="sub-container">
+<%= form_for @admin, Routes.admin_account_path(@conn, :update_username, %{id: @admin.data.id}), fn f -> %>
+<%= if @admin.action do %>
+<div class="alert alert-danger">
+  <p>Something went wrong. Please check the errors below.</p>
+</div>
+<% end %>
+<label>Username (required)</label>
+<%= text_input f, :username, placeholder: "ex. Jhon.." %>
+<%= error_tag f, :username %>
+
+<label>Current password (required)</label>
+<%= password_input f, :password, placeholder: "Enter your current password to save this changes.." %>
+
+<%= submit "Save Changes" %>
+<% end %>
+</div>

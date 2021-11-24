@@ -16,7 +16,6 @@ defmodule App.Schema.Admin do
   @allowed_fields [
     :username,
     :email,
-    :password,
     :hashed_password,
     :super_admin
   ]

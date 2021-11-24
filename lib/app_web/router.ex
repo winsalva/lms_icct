@@ -68,6 +68,11 @@ defmodule AppWeb.Router do
       :index, :new, :create, :show, :edit, :update, :delete
     ]
 
+     get "/accounts/:id/edit-username", AccountController, :edit_username
+     put "/accounts/update-username", AccountController, :update_username
+     get "/accoutns/:id/change-password", AccountController, :change_password
+     put "/accounts/update-password", AccountController, :update_password
+
   end
 
 

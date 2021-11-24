@@ -1,5 +1,28 @@
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Account Settings") %>
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "My Admin Account") %>
 
 <div class="sub-container">
 
+  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+
+  <table>
+    <tbody>
+      <tr>
+        <td><b>Username: </b></td>
+        <td><%= @admin.username %></td>
+        <td><%= link "Edit", to: Routes.admin_account_path(@conn, :edit_username, @admin.id) %></td>
+      </tr>
+      <tr>
+        <td><b>Email: </b></td>
+        <td><%= @admin.email %></td>
+        <td><%= link "Edit", to: "#" %></td>
+      </tr>
+      <tr>
+        <td><b>Password: </b></td>
+        <td>******</td>
+        <td><%= link "Edit", to: Routes.admin_account_path(@conn, :change_password, @admin.id) %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
