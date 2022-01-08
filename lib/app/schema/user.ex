@@ -5,7 +5,6 @@ defmodule App.Schema.User do
   schema "users" do
     has_many :items, App.Schema.Item
     field :first_name, :string
-    field :middle_name, :string
     field :last_name, :string
     field :email, :string
     field :password, :string, virtual: true
@@ -17,7 +16,6 @@ defmodule App.Schema.User do
 
   @allowed_fields [
     :first_name,
-    :middle_name,
     :last_name,
     :email,
     :hashed_password,
@@ -26,7 +24,6 @@ defmodule App.Schema.User do
 
   @required_fields [
     :first_name,
-    :middle_name,
     :last_name,
     :email,
     :hashed_password,

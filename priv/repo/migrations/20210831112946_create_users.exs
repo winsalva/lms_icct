@@ -4,7 +4,6 @@ defmodule App.Repo.Migrations.CreateUsers do
   def change do
     create table(:users) do
       add :first_name, :string
-      add :middle_name, :string
       add :last_name, :string
       add :email, :string
       add :seen, :boolean, default: false

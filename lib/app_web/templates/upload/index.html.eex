@@ -1,14 +1,14 @@
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Uploads") %>
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Rooms") %>
 <div class="sub-container">
 
   <%= if @current_admin do %>
   <div class="upload-options">
-    <%= link "New Upload", to: Routes.upload_path(@conn, :new) %>
+    <%= link "Add New Room", to: Routes.upload_path(@conn, :new) %>
   </div>
   <% end %>
 
   <%= if @uploads == [] do %>
-  <h3 class="center">No uploads yet!</h3>
+  <h3 class="center">No rooms yet!</h3>
   <% else %>
   <div class="uploads-container">
     <%= for upload <- @uploads do %>

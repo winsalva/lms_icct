@@ -18,7 +18,7 @@
 
     <a href="<%= Routes.upload_path(@conn, :index) %>">
     <div class="menu-category bg-border-lightblue">
-      Uploads <%= length(@uploads) %>
+      Rooms <%= length(@uploads) %>
     </div>
     </a>
 

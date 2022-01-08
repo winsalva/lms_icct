@@ -11,10 +11,6 @@
 <%= text_input f, :first_name, placeholder: "ex. Juan" %>
 <%= error_tag f, :first_name %>
 
-<label>Middle name</label>
-<%= text_input f, :middle_name, placeholder: "ex. Dela Cruz" %>
-<%= error_tag f, :middle_name %>
-
 <label>Last name</label>
 <%= text_input f, :last_name, placeholder: "ex. Ramirez" %>
 <%= error_tag f, :last_name %>

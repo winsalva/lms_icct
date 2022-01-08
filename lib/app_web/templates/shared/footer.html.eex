@@ -1,5 +1,5 @@
 <footer>
-  <h2 class="footer-company-name">JG Brokerage</h2>
+  <h2 class="footer-company-name"><%= company_name() %></h2>
   <div class="under-line"></div>
   <div class="icons-container">
     <div class="icons fb-icon"></div>

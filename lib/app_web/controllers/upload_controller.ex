@@ -15,7 +15,7 @@ defmodule AppWeb.UploadController do
     render(conn, :new, upload: upload)
   end
 
-  def create(conn, %{"upload" => %{"category" => category, "title" => title, "description" => description, "file1" => file1, "file2" => file2, "file3" => file3, "file4" => file4, "file5" => file5, "file6" => file6, "file7" => file7, "file8" => file8}}) do
+  def create(conn, %{"upload" => %{"category" => category, "title" => title, "description" => description, "file1" => file1, "file2" => file2, "file3" => file3, "file4" => file4}}) do
     admin_id = conn.assigns.current_admin.id
     params = %{
       admin_id: admin_id,
@@ -26,16 +26,12 @@ defmodule AppWeb.UploadController do
       file2: file2,
       file3: file3,
       file4: file4,
-      file5: file5,
-      file6: file6,
-      file7: file7,
-      file8: file8,
-      files: [file1, file2, file3, file4, file5, file6, file7, file8]
+      files: [file1, file2, file3, file4]
     }
     case Upload.insert_upload(params) do
       {:ok, _upload} ->
         conn
-	|> put_flash(:info, "New upload added.")
+	|> put_flash(:info, "New room added.")
 	|> redirect(to: Routes.page_path(conn, :index))
       {:error, %Ecto.Changeset{} = upload} ->
         conn
@@ -53,7 +49,7 @@ defmodule AppWeb.UploadController do
     render(conn, :edit, upload: upload)
   end
 
-  def update(conn, %{"upload" => %{"category" => category, "title" => title, "description" => description, "file1" => file1, "file2" => file2, "file3" => file3, "file4" => file4, "file5" => file5, "file6" => file6, "file7" => file7, "file8" => file8}, "id" => id}) do
+  def update(conn, %{"upload" => %{"category" => category, "title" => title, "description" => description, "file1" => file1, "file2" => file2, "file3" => file3, "file4" => file4}, "id" => id}) do
     admin_id = conn.assigns.current_admin.id
     params = %{
       admin_id: admin_id,
@@ -64,16 +60,12 @@ defmodule AppWeb.UploadController do
       file2: file2,
       file3: file3,
       file4: file4,
-      file5: file5,
-      file6: file6,
-      file7: file7,
-      file8: file8,
-      files: [file1, file2, file3, file4, file5, file6, file7, file8]
+      files: [file1, file2, file3, file4]
     }
     case Upload.update_upload(id, params) do
       {:ok, _upload} ->
         conn
-        |> put_flash(:info, "Update an upload successfully.")
+        |> put_flash(:info, "Updated room details successfully.")
         |> redirect(to: Routes.page_path(conn, :index))
       {:error, %Ecto.Changeset{} = upload} ->
         conn
@@ -85,7 +77,7 @@ defmodule AppWeb.UploadController do
     case Upload.delete_upload(id) do
       {:ok, _upload} ->
         conn
-	|> put_flash(:info, "Upload was deleted successfully.")
+	|> put_flash(:info, "Room was deleted successfully.")
 	|> redirect(to: Routes.page_path(conn, :index))
       _ ->
         conn

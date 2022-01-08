@@ -1,10 +1,13 @@
+<div class="back-nav-container">
+  <div class="icons arrow-back" onclick="back()"></div>
+  <div class="back-nav-title">Admin Login</div>
+</div>
 <div class="sub-container">
-  <h2>Login Admin</h2>
   <%= form_for @conn, Routes.admin_session_path(@conn, :create), fn f -> %>
   <label>Email</label>
-  <%= text_input f, :email %>
+  <%= text_input f, :email, placeholder: "Enter email.." %>
   <label>Password</label>
-  <%= password_input f, :password %>
+  <%= password_input f, :password, placeholder: "Enter password.." %>
   <%= submit "Login" %>
   <% end %>
 </div>

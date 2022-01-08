@@ -51,7 +51,9 @@ defmodule App.MixProject do
       {:faker, "> 0.0.0"},
       {:money, "> 0.0.0"},
       {:pbkdf2_elixir, "~> 1.4"},
-      {:earmark, "> 0.0.0"}
+      {:earmark, "> 0.0.0"},
+      {:nimble_totp, "> 0.0.0"},
+      {:eqrcode, "> 0.0.0"}
     ]
   end
 

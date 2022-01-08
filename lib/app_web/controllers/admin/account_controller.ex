@@ -7,7 +7,7 @@ defmodule AppWeb.Admin.AccountController do
     :change_password,
     :update_password
   ]
-
+  
   alias App.Query.Admin
 
   def edit_username(conn, %{"id" => id}) do

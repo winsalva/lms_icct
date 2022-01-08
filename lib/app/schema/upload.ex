@@ -13,10 +13,6 @@ defmodule App.Schema.Upload do
     field :file2, :string
     field :file3, :string
     field :file4, :string
-    field :file5, :string
-    field :file6, :string
-    field :file7, :string
-    field :file8, :string
     field :files, {:array, :string}
     timestamps()
   end
@@ -30,10 +26,6 @@ defmodule App.Schema.Upload do
     :file2,
     :file3,
     :file4,
-    :file5,
-    :file6,
-    :file7,
-    :file8,
     :files
   ]
 

@@ -8,7 +8,7 @@
     <tbody>
       <tr>
 	<td><b>Name: </b></td>
-	<td><%= @user.first_name %> <%= @user.middle_name %> <%= @user.last_name %></td>
+	<td><%= @user.first_name %> <%= @user.last_name %></td>
 	<td><%= link "Edit", to: Routes.user_account_path(@conn, :edit_name, @user.id) %></td>
       </tr>
       <tr>

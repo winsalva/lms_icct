@@ -41,12 +41,12 @@ defmodule AppWeb.User.AccountController do
     render(conn, "edit-name.html", user: user)
   end
 
-  def update_name(conn, %{"id" => id, "user" => %{"first_name" => first_name, "middle_name" => middle_name, "last_name" => last_name, "password" => password}}) do
+  def update_name(conn, %{"id" => id, "user" => %{"first_name" => first_name, "last_name" => last_name, "password" => password}}) do
     user_email = conn.assigns.current_user.email
     user_id = conn.assigns.current_user.id
 
     with _user = %App.Schema.User{} <- User.get_user_by_email_and_password(user_email, password),
-      {:ok, _user} <- User.update_user(id, %{first_name: first_name, middle_name: middle_name, last_name: last_name}) do
+      {:ok, _user} <- User.update_user(id, %{first_name: first_name, last_name: last_name}) do
         conn
 	|> put_flash(:info, "Your name was updated successfully.")
 	|> redirect(to: Routes.user_account_path(conn, :show, user_id))
