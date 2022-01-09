@@ -1,0 +1,400 @@
+
+.company-bg-image {
+    width: 100%;
+}
+.back-nav-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #000000;
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    padding: .5rem 0;
+    z-index: 999;
+}
+.back-nav-container > .arrow-back {
+    margin: 0 0 0 .5rem;
+}
+.back-nav-container > .back-nav-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 0 1.5rem;
+}
+.blog-container {
+    display: flex;
+    margin: 1.5rem 0;
+    padding: 1rem;
+}
+.blog-container:hover {
+    background-color: #ddd;
+    border-radius: .2rem;
+    border: 1px solid #ccc;
+}
+.blog-container img {
+    height: 8rem;
+    width: 12rem;
+    object-fit: cover;
+}
+.blog-container .blog-title {
+    padding-left: 2rem;
+    flex: 1;
+    color: #000000;
+}
+.blog-title > p:first-child {
+    margin: auto;
+    font-weight: 500;
+    font-size: 1.8rem;
+}
+.blog-title > p:last-child {
+    padding: .5rem 0 0 0;
+    font-size: 1.2rem;
+    color: #555;
+}
+.blog-title-show {
+    font-weight: 500;
+}
+
+:root {
+    --blue: #ff6a00;
+    --white: #fff;
+}
+.center {
+    text-align: center;
+}
+.company-name {
+    margin: auto;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+.company-tag-name {
+    position: absolute;
+    color: var(--white);
+    top: 19%;
+    left: 10%;
+}
+.contact-link-container {
+    border: 1px solid red;
+    text-align: center;
+}
+
+.contact-icon {
+    padding: 2.4rem;
+    /*background-color: #fff;*/
+}
+.copyright {
+    text-align: center;
+    padding: 1rem 0;
+    color: #c0c0c0;
+}
+.faqs-container {
+    margin: 2rem 0;
+}
+.faq-container {
+    border: 1px solid #ddd;
+}
+.faq-title {
+    font-weight: 450;
+    font-size: 1.8rem;
+    padding: 1rem;
+    border-radius: 2px;
+    background-color: var(--blue);
+    color: #fff;
+}
+.faq-title:hover {
+    background-color: var(--blue);
+    color: #fff;
+}
+.faq-content {
+    padding: 1rem;
+    color: #020;
+}
+.faq-content:hover {
+    background-color: #ddd;
+}
+.footer-company-name {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 2rem 0 .5rem 0;
+}
+footer {
+    background-color: #131313;
+    color: var(--white);
+    margin-top: .2rem;
+    margin-bottom: -2.5rem;
+}
+.footer-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem 1rem 0 5rem;
+}
+.image-container {
+    margin-bottom: 1rem;
+}
+#expandedImg {
+    width: 100%;
+    /*max-height: 35rem;*/
+    object-fit: cover;
+}
+/* Expanding image text */
+#imgtext {
+    margin: -5rem 0 0 1rem;
+    padding: 0;
+    color: #fff;
+    font-size: 20px;
+}
+.upload-content-details {
+    margin: 2.5rem 1rem;
+}
+.upload-content-details h2 {
+    font-weight: bold;
+    color: var(--blue);
+}
+.images-container-show {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+.icons-container {
+    display: flex;
+    text-align: center;
+    margin: 3rem 0;
+}
+.icons-container > * {
+    margin: auto;
+}
+.menu-bottom {
+    padding: 2rem 0;
+    background-color: var(--blue);
+    text-align: center;
+    bottom: 0;
+    position: sticky;
+}
+.menu-bottom a {
+    color: #fff;
+    padding: 2rem 0;
+}
+.menu-container {
+    padding: 1rem;
+    background-color: #181818;
+}
+.menu-container > ul {
+    list-style-type: none;
+}
+.menu-container > ul > li > a {
+    font-weight: 350;
+    font-size: 1.8rem;
+}
+.menu-container > ul > li > a:hover {
+    font-weight: 550;
+    color: var(--blue);
+}
+.menu-container li {
+    border-bottom: 1px solid #ddd;
+}
+.menu-container li:last-child {
+    border: none;
+}
+.menu-icon {
+    margin: .5rem 0 0 .5rem;
+    width: 5rem;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.menu-icon:hover {
+    border: 1px solid #fff;
+    border-radius: 2px;
+}
+.icon {
+    width: 2.5rem;
+    height: 0.3rem;
+    margin: 1.8px;
+    background-color: #fff;
+}
+
+.menu-icon:hover ~ .icon {
+    background-color: #000000;
+}
+
+/* Admin dashboard */
+.menu-categories-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+.menu-categories-container a {
+    color: #000000;
+    font-weight: 450;
+}
+.menu-categories-container > a > div:hover {
+    background-color: #606c76;
+    border: 1px solid #606c76;
+}
+.menu-category {
+    padding: 3rem;
+    border-radius: 1rem;
+}
+.nav-container {
+    position: relative;
+}
+.nav-options-container {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    margin: -5rem 0 0 0;
+    color: #fff;
+    top: 0;
+    position: sticky;
+    position: -webkit-sticky;
+    z-index: 999;
+    background-color: var(--blue);
+    padding: .5rem 0;
+}
+.nav-option1-container {
+    display: flex;
+    justify-content: space-between;
+}
+.nav-option1-container > .search-icon {
+    margin-right: 1rem;
+}
+.nav-option2-container {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+.nav-option2-container a {
+    flex: 1;
+    text-align: center;
+    padding: 1rem 0;
+    border-left: 1px solid #ddd;
+}
+.nav-option2-container a:hover {
+    color: var(--blue);
+    font-weight: 450;
+    border-bottom: 1.5px solid var(--blue);
+}
+/* The side navigation menu */
+.sidenav {
+    z-index: 1001;
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript*/
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #6e2585; /*  */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 5rem; /* Place content 30px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    font-weight: 450;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 1.7rem;
+    background-color: #6e2585;
+    color: #eee;
+    display: block;
+    transition: 0.15s;
+}
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #000000;
+    background-color: #eee;
+    opacity: 0.8;
+}
+
+.sub-container {
+    background-color: #181818;
+    margin-bottom: .2rem;
+    padding: 0 1rem;
+}
+.under-line {
+    border-bottom: 3px solid #eee;
+    width: 10rem;
+    margin: 0 auto 1rem auto;
+}
+.uploads-container {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+    padding: 2rem 0;
+}
+.upload-container {
+    background-color: #131313;
+    border: 1px solid #;
+    margin: 1rem 0 1.5rem 0;
+    box-shadow: 4px 4px 4px #808080;
+}
+.upload-container:hover {
+    box-shadow: 4px 4px 4px #ff6a00;
+}
+.upload-container img {
+    padding: 0;
+    margin: 0;
+}
+.upload-options {
+    margin: 2rem 0;
+    text-align: center;
+}
+.upload-options a {
+    padding: .6rem 2rem;
+    margin: 0 1rem;
+    background-color: #000000;
+    color: #ff6a00;
+    border: 1px solid #ff6a00;
+    font-weight: 450;
+    border-radius: 2px;
+}
+.upload-options a:hover {
+    border: 1px solid #ff6a00;
+    color: #fff;
+    background-color: #ff6a00;
+}
+.upload-title-description {
+    padding: 0 1rem 1rem 1rem;
+}
+.upload-title {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+
+/* The grid: Four equal columns that floats next to each other */
+/*.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+*/
+/* Style the images inside the grid */
+.tab-images-container img {
+  opacity: 1;
+  /*cursor: pointer;*/
+}
+
+.tab-images-container img:hover {
+    opacity: 1;
+    border: 2px solid #ff6a00;
+}
+
+/* Clear floats after the columns */
+/*.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+*/
+.tab-images-container {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+}

@@ -1,0 +1,56 @@
+.fb-icon {
+    background-image: url("/images/brokerage-fb.png");
+}
+.fb-icon:hover {
+    opacity: 0.5;
+}
+.email-icon {
+    background-image: url("/images/brokerage-email.png");
+}
+.email-icon:hover {
+    opacity: 0.5;
+}
+.phone-icon {
+    background-image: url("/images/brokerage-phone.png");
+}
+.phone-icon:hover {
+    opacity: 0.5;
+}
+.arrow-back {
+    background-image: url("/images/brokerage-arrow-back.png");
+}
+.arrow-back:hover {
+    opacity: 0.5;
+}
+.search-icon {
+    background-image: url("/images/brokerage-search-icon.png");
+}
+.account-icon {
+    background-image: url("/images/brokerage-account-icon.png");
+    background-size: 3.4rem 3.4rem;
+    height: 3.4rem;
+    width: 3.4rem;
+    background-repeat: no-repeat;
+    margin: 0 1.2rem 0 0;
+}
+.account-icon:hover {
+    opacity: 0.5;
+}
+.login-icon {
+    background-image: url("/images/brokerage-login.png");
+    background-size: 3.4rem 3.4rem;
+    height: 3.4rem;
+    width: 3.4rem;
+    background-repeat: no-repeat;
+    margin: 0 1.2rem 0 0;
+}
+.login-icon:hover {
+    opacity: 0.5;
+}
+.icons {
+    background-size: 3rem 3rem;
+    height: 3rem;
+    width: 3rem;
+    background-repeat: no-repeat;
+}
+
