@@ -9,15 +9,25 @@ defmodule AppWeb.Admin.PageController do
     Admin,
     Upload,
     User,
-    Blog
+    Blog,
+    Reservation
   }
 
   def list_admins(conn, _params) do
     admins = Admin.list_admins()
     render(conn, "list-admins.html", admins: admins)
   end
+
+  def list_reservations(conn, _params) do
+    reservations = Reservation.list_reservations
+    params = [
+      reservations: reservations
+    ]
+    render(conn, "list-reservations.html", params)
+  end
   
   def index(conn, _params) do
+    reservations = Reservation.list_reservations
     admins = Admin.list_admins()
     blogs = Blog.list_blogs()
     faqs = Util.list_faqs()
@@ -29,7 +39,8 @@ defmodule AppWeb.Admin.PageController do
       blogs: blogs,
       faqs: faqs,
       uploads: uploads,
-      users: users
+      users: users,
+      reservations: reservations
     ]
     render(conn, :index, assigns)
   end

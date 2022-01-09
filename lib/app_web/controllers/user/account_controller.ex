@@ -9,7 +9,10 @@ defmodule AppWeb.User.AccountController do
     :show
   ]
   
-  alias App.Query.User
+  alias App.Query.{
+    User,
+    Reservation
+  }
 
   def change_password(conn, %{"id" => id}) do
     user = User.edit_user(id)
@@ -81,6 +84,11 @@ defmodule AppWeb.User.AccountController do
 
   def show(conn, %{"id" => id}) do
     user = User.get_user(id)
-    render(conn, :show, user: user)
+    reservations = Reservation.get_reservations_for_user(id)
+    params = [
+      user: user,
+      reservations: reservations
+    ]
+    render(conn, :show, params)
   end
 end

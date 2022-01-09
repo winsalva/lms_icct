@@ -4,7 +4,7 @@ defmodule AppWeb.GuardPlugs do
   """
 
   alias AppWeb.Router.Helpers, as: Routes
-  import Phoenix.Controller, only: [redirect: 2]
+  import Phoenix.Controller #, only: [redirect: 2]
   import Plug.Conn, only: [halt: 1]
   
   @doc """
@@ -15,7 +15,8 @@ defmodule AppWeb.GuardPlugs do
       conn
     else
       conn
-      |> redirect(to: Routes.page_path(conn, :index))
+      |> put_flash(:error, "You need to log in first!")
+      |> redirect(to: Routes.session_path(conn, :new))
       |> halt()
     end
   end

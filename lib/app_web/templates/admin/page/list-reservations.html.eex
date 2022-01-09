@@ -1,0 +1,40 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Reservations") %>
+<div class="sub-container">
+  <%= if @reservations == [] do %>
+  <br>
+  <h3 align="center">No reservations yet.</h3>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="7"><h3 align="center"><b>RESERVATIONS</b></h3></th>
+      </tr>
+
+      <tr>
+        <th>Date</th>
+	<th>User</th>
+        <th>Room</th>
+        <th>Type</th>
+        <th>Rates</th>
+        <th>Quests</th>
+	<th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for reservation <- @reservations do %>
+          <tr>
+            <td><%= reservation.date %></td>
+	    <td><%= reservation.user.first_name %> <%= reservation.user.last_name %></td>
+            <td><%= reservation.upload.title %></td>
+            <td><%= reservation.upload.category %></td>
+            <td><%= reservation.upload.rates %></td>
+            <td><%= reservation.no_of_guests %></td>
+	    <td><%= reservation_charge(reservation) %></td>
+	    
+          </tr>
+          <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>
+

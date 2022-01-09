@@ -24,14 +24,14 @@
 	<% end %>
     </div>
   </div>
-  
 
+  <!--
     <div class="nav-option2-container">
       <a href="#">Category</a>
       <a href="#">Prices</a>
       <a href="#">About Us</a>
     </div>
-
+-->
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" id="closeNav">&times;</a>
     <%= if @conn.assigns.current_admin do %>
@@ -51,10 +51,10 @@
   <%= for upload <- @uploads do %>
       <div class="upload-container" data-aos="fade-up">
 	<a href="<%= Routes.upload_path(@conn, :show, upload.id) %>">
-	  <img src="/images/brokerage-logo.jpg"/>
+	  <img src="/images/hrs-logo.jpeg"/>
 	<div class="upload-title-description">
 	  <p class="upload-title">
-	    <strong><%= upload.title %></strong> 
+	    <strong><%= upload.title %> • <%= upload.rates %></strong> 
 	  </p>
 	  <div class="upload-description">
 	    <%= upload.category %>  

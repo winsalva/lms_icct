@@ -2,8 +2,10 @@ defmodule App.Schema.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias App.Schema.Reservation
+
   schema "users" do
-    has_many :items, App.Schema.Item
+    has_many :reservations, Reservation
     field :first_name, :string
     field :last_name, :string
     field :email, :string

@@ -28,6 +28,7 @@ defmodule AppWeb.Router do
     delete "/logout", SessionController, :delete
 
     resources "/uploads", UploadController, only: [:index, :new, :create, :show, :edit, :update, :delete]
+    post "/uploads/reservations", UploadController, :create_reservation
 
     resources "/blogs", BlogController, only: [:index, :new, :create, :show, :edit, :update, :delete]
 
@@ -64,6 +65,7 @@ defmodule AppWeb.Router do
     delete "/logout", SessionController, :delete
 
     get "/list-admins", PageController, :list_admins
+    get "/list-reservations", PageController, :list_reservations
     resources "/", PageController, only: [
       :index, :new, :create, :show, :edit, :update, :delete
     ]

@@ -1,9 +1,13 @@
 defmodule AppWeb.UploadController do
   use AppWeb, :controller
 
-  plug :ensure_admin_logged_in when action not in [:show]
+  plug :ensure_admin_logged_in when action not in [:show, :create_reservation]
+  plug :ensure_user_logged_in when action in [:create_reservation]
 
-  alias App.Query.Upload
+  alias App.Query.{
+    Upload,
+    Reservation
+  }
 
   def index(conn, _params) do
     uploads = Upload.list_uploads()
@@ -15,7 +19,7 @@ defmodule AppWeb.UploadController do
     render(conn, :new, upload: upload)
   end
 
-  def create(conn, %{"upload" => %{"category" => category, "title" => title, "description" => description, "file1" => file1, "file2" => file2, "file3" => file3, "file4" => file4}}) do
+  def create(conn, %{"upload" => %{"category" => category, "title" => title, "description" => description, "file1" => file1, "file2" => file2, "file3" => file3, "file4" => file4, "rates" => rates}}) do
     admin_id = conn.assigns.current_admin.id
     params = %{
       admin_id: admin_id,
@@ -26,6 +30,7 @@ defmodule AppWeb.UploadController do
       file2: file2,
       file3: file3,
       file4: file4,
+      rates: rates,
       files: [file1, file2, file3, file4]
     }
     case Upload.insert_upload(params) do
@@ -41,7 +46,33 @@ defmodule AppWeb.UploadController do
 
   def show(conn, %{"id" => id}) do
     upload = Upload.get_upload(id)
-    render(conn, :show, upload: upload)
+    reservation = Reservation.new_reservation
+    params = [
+      upload: upload,
+      reservation: reservation
+    ]
+    render(conn, :show, params)
+  end
+
+  def create_reservation(conn, %{"reservation" => params, "upload_id" => upload_id}) do
+    user = conn.assigns.current_user
+    params =
+      Map.put(params, "upload_id", upload_id)
+      |> Map.put("user_id", user.id)
+    
+    case Reservation.insert_reservation(params) do
+      {:ok, _reservation} ->
+        conn
+	|> put_flash(:info, "You made a reservation.")
+	|> redirect(to: Routes.page_path(conn, :index))
+      {:error, %Ecto.Changeset{} = reservation} ->
+        upload = Upload.get_upload(upload_id)
+	params = [
+	  upload: upload,
+	  reservation: reservation
+	]
+	render(conn, :show, params)
+    end
   end
 
   def edit(conn, %{"id" => id}) do
@@ -49,7 +80,7 @@ defmodule AppWeb.UploadController do
     render(conn, :edit, upload: upload)
   end
 
-  def update(conn, %{"upload" => %{"category" => category, "title" => title, "description" => description, "file1" => file1, "file2" => file2, "file3" => file3, "file4" => file4}, "id" => id}) do
+  def update(conn, %{"upload" => %{"category" => category, "title" => title, "description" => description, "file1" => file1, "file2" => file2, "file3" => file3, "file4" => file4, "rates" => rates}, "id" => id}) do
     admin_id = conn.assigns.current_admin.id
     params = %{
       admin_id: admin_id,
@@ -60,6 +91,7 @@ defmodule AppWeb.UploadController do
       file2: file2,
       file3: file3,
       file4: file4,
+      rates: rates,
       files: [file1, file2, file3, file4]
     }
     case Upload.update_upload(id, params) do

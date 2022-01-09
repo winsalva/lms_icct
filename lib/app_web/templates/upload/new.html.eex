@@ -10,6 +10,10 @@
   <label>Description</label>
   <%= textarea f, :description, placeholder: "Features of this room.." %>
   <%= error_tag f, :description %>
+  <label>Rates</label>
+  <%= number_input f, :rates, placeholder: "Rate per day.." %>
+  <%= error_tag f, :rates %>
+  
   <label>Files</label>
   <%= text_input f, :file1, placeholder: "Sample images.." %>
   <%= error_tag f, :file1 %>

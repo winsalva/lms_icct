@@ -22,9 +22,9 @@
     </div>
     </a>
 
-    <a href="<%= Routes.blog_path(@conn, :index) %>">
+    <a href="<%= Routes.admin_page_path(@conn, :list_reservations) %>">
     <div class="menu-category bg-border-yellow">
-      Blogs <%= length(@blogs) %>
+      Reservations <%= length(@reservations) %>
     </div>
     </a>
 

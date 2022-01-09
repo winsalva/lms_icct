@@ -2,10 +2,16 @@ defmodule App.Schema.Upload do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias App.Schema.Admin
+  alias App.Schema.{
+    Admin,
+    Reservation,
+    User
+  }
 
   schema "uploads" do
     belongs_to :admin, Admin
+    has_many :reservations, Reservation
+    has_many :users, User
     field :category, :string
     field :title, :string
     field :description, :string
@@ -14,6 +20,7 @@ defmodule App.Schema.Upload do
     field :file3, :string
     field :file4, :string
     field :files, {:array, :string}
+    field :rates, :integer
     timestamps()
   end
 
@@ -26,7 +33,8 @@ defmodule App.Schema.Upload do
     :file2,
     :file3,
     :file4,
-    :files
+    :files,
+    :rates
   ]
 
   @required_fields [
@@ -34,7 +42,8 @@ defmodule App.Schema.Upload do
     :category,
     :title,
     :description,
-    :file1
+    :file1,
+    :rates
   ]
 
   @doc false

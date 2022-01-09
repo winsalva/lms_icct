@@ -28,7 +28,7 @@ defmodule AppWeb.Admin.SessionController do
         conn
         |> put_session(:admin_id, admin.id)
         |> configure_session(renew: true)
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> redirect(to: Routes.admin_page_path(conn, :index))
       false ->
         conn
 	|> put_flash(:error, "Email and password combination cannot be found!")
