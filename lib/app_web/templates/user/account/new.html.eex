@@ -15,6 +15,10 @@
 <%= text_input f, :last_name, placeholder: "ex. Ramirez" %>
 <%= error_tag f, :last_name %>
 
+<label>Student Id</label>
+<%= text_input f, :student_id, placeholder: "Enter your student id.." %>
+<%= error_tag f, :student_id %>
+
 <label>Email</label>
 <%= text_input f, :email, placeholder: "Enter your active email.." %>
 <%= error_tag f, :email %>

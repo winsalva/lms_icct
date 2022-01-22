@@ -7,40 +7,21 @@ defmodule AppWeb.Admin.PageController do
   alias App.Util
   alias App.Query.{
     Admin,
-    Upload,
-    User,
-    Blog,
-    Reservation
+    User
   }
 
   def list_admins(conn, _params) do
     admins = Admin.list_admins()
     render(conn, "list-admins.html", admins: admins)
   end
-
-  def list_reservations(conn, _params) do
-    reservations = Reservation.list_reservations
-    params = [
-      reservations: reservations
-    ]
-    render(conn, "list-reservations.html", params)
-  end
   
   def index(conn, _params) do
-    reservations = Reservation.list_reservations
     admins = Admin.list_admins()
-    blogs = Blog.list_blogs()
-    faqs = Util.list_faqs()
-    uploads = Upload.list_uploads()
     users = User.list_users
 
     assigns = [
       admins: admins,
-      blogs: blogs,
-      faqs: faqs,
-      uploads: uploads,
-      users: users,
-      reservations: reservations
+      users: users
     ]
     render(conn, :index, assigns)
   end

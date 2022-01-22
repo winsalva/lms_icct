@@ -14,10 +14,8 @@
     <p>About</p>
     <li><a href="#">Terms of Use</a></li>
     <li><a href="#">Privacy Policy</a></li>
-    <li><%= link "Blogs", to: Routes.blog_path(@conn, :index) %></li>
     <li><%= link "Terms Of Use", to: Routes.page_path(@conn, :term_of_use) %></li>
     <li><%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %></li>
-    <li><%= link "FAQs", to: Routes.faq_path(@conn, :index) %></li>
     <%= if @conn.assigns.current_admin || @conn.assigns.current_user do %>
     <li><%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %></li>
     <% else %>

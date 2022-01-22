@@ -27,15 +27,11 @@ defmodule AppWeb.Router do
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
 
-    resources "/uploads", UploadController, only: [:index, :new, :create, :show, :edit, :update, :delete]
-    post "/uploads/reservations", UploadController, :create_reservation
-
-    resources "/blogs", BlogController, only: [:index, :new, :create, :show, :edit, :update, :delete]
-
-    resources "/faqs", FaqController
-
   end
 
+
+  ## User Routes
+  
   scope "/users", AppWeb.User, as: :user do
     pipe_through :browser
 
@@ -48,14 +44,8 @@ defmodule AppWeb.Router do
     put "/accounts/change-password", AccountController, :update_password
   end
 
-  scope "/items", AppWeb do
-    pipe_through :browser
 
-    resources "/", PageController, only: [
-      :index
-    ]
-
-  end
+  ## Admin Routes
 
   scope "/admins", AppWeb.Admin, as: :admin do
     pipe_through :browser

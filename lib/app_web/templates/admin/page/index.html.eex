@@ -15,30 +15,6 @@
       Users <%= length(@users) %>
     </div>
     </a>
-
-    <a href="<%= Routes.upload_path(@conn, :index) %>">
-    <div class="menu-category bg-border-lightblue">
-      Rooms <%= length(@uploads) %>
-    </div>
-    </a>
-
-    <a href="<%= Routes.admin_page_path(@conn, :list_reservations) %>">
-    <div class="menu-category bg-border-yellow">
-      Reservations <%= length(@reservations) %>
-    </div>
-    </a>
-
-    <a href="<%= Routes.faq_path(@conn, :index) %>">
-    <div class="menu-category bg-border-green">
-      FAQs <%= length(@faqs) %>
-    </div>
-    </a>
-
-    <a href="<%= Routes.faq_path(@conn, :index) %>">
-    <div class="menu-category bg-border-red">
-      Settings 
-    </div>
-    </a>
    
   </div>
   

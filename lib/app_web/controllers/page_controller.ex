@@ -1,11 +1,8 @@
 defmodule AppWeb.PageController do
   use AppWeb, :controller
-
-  alias App.Query.Upload
   
   def index(conn, _params) do
-    uploads = Upload.list_uploads
-    render(conn, :index, uploads: uploads)
+    render(conn, :index)
   end
 
   def term_of_use(conn, _params) do

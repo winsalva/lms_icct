@@ -2,12 +2,10 @@ defmodule App.Schema.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias App.Schema.Reservation
-
   schema "users" do
-    has_many :reservations, Reservation
     field :first_name, :string
     field :last_name, :string
+    field :student_id, :string
     field :email, :string
     field :password, :string, virtual: true
     field :hashed_password, :string
@@ -19,6 +17,7 @@ defmodule App.Schema.User do
   @allowed_fields [
     :first_name,
     :last_name,
+    :student_id,
     :email,
     :hashed_password,
     :seen
@@ -27,6 +26,7 @@ defmodule App.Schema.User do
   @required_fields [
     :first_name,
     :last_name,
+    :student_id,
     :email,
     :hashed_password,
     :seen
@@ -39,6 +39,7 @@ defmodule App.Schema.User do
     |> validate_required(@required_fields)
     |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
+    |> unique_constraint(:student_id)
   end
 
   @doc false

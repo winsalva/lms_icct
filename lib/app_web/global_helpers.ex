@@ -9,7 +9,7 @@ defmodule AppWeb.GlobalHelpers do
   end
 
   def company_name do
-    "LMS"
+    "Library Management System"
   end
 
   @doc """

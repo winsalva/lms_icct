@@ -4,12 +4,12 @@ defmodule App.Schema.Admin do
 
 
   schema "admins" do
+    has_many :books, App.Schema.Book
     field :username, :string
     field :email, :string
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :super_admin, :boolean, default: false
-    has_many :blogs, App.Schema.Blog
     timestamps()
   end
 
