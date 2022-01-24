@@ -1,0 +1,36 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Edit Book") %>
+
+<div class="sub-container">
+  <%= form_for @book, Routes.book_page_path(@conn, :update, @book.data), fn f -> %>
+  <%= if @book.action do %>
+  <div class="alert alert-danger">
+    <p>Oops, something went wrong. Please check the errors below.</p>
+  </div>
+  <% end %>
+
+  <label>ISBN</label>
+  <%= text_input f, :isbn, placeholder: "Enter book isbn #.." %>
+  <%= error_tag f, :isbn %>
+
+  <label>Title</label>
+  <%= text_input f, :title, placeholder: "Enter book title.." %>
+  <%= error_tag f, :title %>
+
+  <label>Author</label>
+  <%= text_input f, :author, placeholder: "Enter book autthor.." %>
+  <%= error_tag f, :author %>
+
+  <label>Category</label>
+  <%= text_input f, :category, placeholder: "Enter book category.." %>
+  <%= error_tag f, :category %>
+
+  <label>Copies</label>
+  <%= number_input f, :copies, placeholder: "Enter number of book copies.." %>
+  <%= error_tag f, :copies %>
+
+  <%= submit "Save" %>
+  <% end %>
+
+
+</div>
+

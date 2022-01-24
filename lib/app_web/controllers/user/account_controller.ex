@@ -5,11 +5,11 @@ defmodule AppWeb.User.AccountController do
     :change_password,
     :update_password,
     :edit_name,
-    :update_name,
-    :show
+    :update_name
   ]
+ 
   
-  alias App.Query.User
+  alias App.Query.{User, Lend}
     
 
   def change_password(conn, %{"id" => id}) do
@@ -81,10 +81,18 @@ defmodule AppWeb.User.AccountController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = User.get_user(id)
-    params = [
-      user: user
-    ]
-    render(conn, :show, params)
+    {id, _} = Integer.parse(id)
+    if conn.assigns.current_user && conn.assigns.current_user.id == id || conn.assigns.current_admin do
+      borrows = Lend.get_user_borrowed_books(id)
+      user = User.get_user(id)
+        params = [
+	  user: user,
+	  borrows: borrows
+	]
+	render(conn, :show, params)
+    else
+      conn
+      |> redirect(to: Routes.page_path(conn, :index))
+    end
   end
 end

@@ -7,7 +7,9 @@ defmodule AppWeb.Admin.PageController do
   alias App.Util
   alias App.Query.{
     Admin,
-    User
+    User,
+    Book,
+    Lend
   }
 
   def list_admins(conn, _params) do
@@ -18,10 +20,14 @@ defmodule AppWeb.Admin.PageController do
   def index(conn, _params) do
     admins = Admin.list_admins()
     users = User.list_users
+    books = Book.list_books
+    lends = Lend.list_lends
 
     assigns = [
       admins: admins,
-      users: users
+      users: users,
+      books: books,
+      lends: lends
     ]
     render(conn, :index, assigns)
   end

@@ -4,8 +4,8 @@ defmodule AppWeb.GlobalHelpers do
     Enum.with_index(list)
   end
 
-  def reservation_charge(reservation) do
-    reservation.upload.rates * reservation.no_of_guests
+  def username(firstname, lastname) do
+    firstname <> " " <> lastname
   end
 
   def company_name do

@@ -29,5 +29,6 @@ defmodule App.Schema.Book do
     |> cast(params, @allowed_fields)
     |> validate_required(@allowed_fields)
     |> assoc_constraint(:admin)
+    |> unique_constraint(:isbn)
   end
 end

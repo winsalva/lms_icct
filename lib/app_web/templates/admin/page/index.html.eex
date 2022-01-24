@@ -15,6 +15,18 @@
       Users <%= length(@users) %>
     </div>
     </a>
+
+    <a href="<%= Routes.book_page_path(@conn, :index) %>">
+    <div class="menu-category bg-border-orange">
+      Books <%= length(@books) %>
+    </div>
+    </a>
+
+    <a href="<%= Routes.lend_page_path(@conn, :index) %>">
+    <div class="menu-category bg-border-orange">
+      Lends <%= length(@lends) %>
+    </div>
+    </a>
    
   </div>
   

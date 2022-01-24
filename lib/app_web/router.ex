@@ -45,6 +45,27 @@ defmodule AppWeb.Router do
   end
 
 
+  ## Book Routes
+
+  scope "/books", AppWeb.Book, as: :book do
+    pipe_through :browser
+
+    resources "/", PageController
+
+  end
+
+  ## Lend Routes
+
+  scope "/lends", AppWeb.Lend, as: :lend do
+    pipe_through :browser
+
+    get "/new/:book_id", PageController, :new
+    post "/", PageController, :create
+    get "/", PageController, :index
+
+  end
+
+
   ## Admin Routes
 
   scope "/admins", AppWeb.Admin, as: :admin do

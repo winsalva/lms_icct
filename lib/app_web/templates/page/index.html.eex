@@ -42,29 +42,39 @@
     <a href="#">Terms Of Use</a>
   </div>
 
-<!--
-<div class="sub-container">  
-< if uploads == [] do >
-<h3 class="center">Coming soon..</h3>
-< else >
-<div class="uploads-container">
-  < for upload <- uploads do >
-      <div class="upload-container" data-aos="fade-up">
-	<a href="< Routes.upload_path(conn, :show, upload.id) %>">
-	  <img src="/images/hrs-logo.jpeg"/>
-	<div class="upload-title-description">
-	  <p class="upload-title">
-	    <strong>< upload.title > • < upload.rates ></strong> 
-	  </p>
-	  <div class="upload-description">
-	    < upload.category >  
-	  </div>
-	</div>
-	</a>
-      </div>
-      < end >
-</div>
-< end >
--->
+  <%= if @books == [] do %>
+  <h2 align="center">No Books Available Yet</h2>
+  <% else %>
+  <br>
+  <table>
+    <thead>
+      <tr>
+	<th colspan="6"><h2 align="center">Available Books</h2></th>
+      </tr>
+      <tr>
+	<th>ISBN</th>
+	<th>Title</th>
+	<th>Author</th>
+	<th>Category</th>
+	<th>Copies</th>
+	<th>Lended</th>
+      </tr>
+      
+    </thead>
+    <tbody>
+      <%= for book <- @books do %>
+	  <tr>
+	    <td><%= link book.isbn, to: Routes.book_page_path(@conn, :edit, book.id)  %></td>
+	    <td><%= book.title %></td>
+	    <td><%= book.author %></td>
+	    <td><%= book.category %></td>
+	    <td><%= book.copies %></td>
+	    <td><%= book.lended %></td>
+	  </tr>
+	  <% end %>
+    </tbody>
+  </table>
+  <% end %>
+  
 </div>
 <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

@@ -1,8 +1,11 @@
 defmodule AppWeb.PageController do
   use AppWeb, :controller
+
+  alias App.Query.Book
   
   def index(conn, _params) do
-    render(conn, :index)
+    books = Book.list_books
+    render(conn, :index, books: books)
   end
 
   def term_of_use(conn, _params) do

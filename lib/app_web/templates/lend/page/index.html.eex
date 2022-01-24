@@ -1,0 +1,43 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Lended Books") %>
+
+<div class="sub-container">
+
+  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+
+  <%= if @lends == [] do %>
+  <br>
+  <h2 align="center">No Lends Record Yet</h2>
+  <br>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="6"><h2 align="center">Lended Books</h2></th>
+      </tr>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+	<th>Borrower</th>
+	<th>Copies</th>
+	<th>Issued</th>
+	<th>Return Date</th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <%= for lend <- @lends do %>
+          <tr>
+	    <td><%= link lend.book.title, to: Routes.book_page_path(@conn, :show, lend.book.id) %></td>
+	    <td><%= lend.book.author %></td>
+	    <td><%= link username(lend.user.first_name, lend.user.last_name), to: Routes.user_account_path(@conn, :show, lend.user.id) %></td>
+            <td><%= lend.copies %></td>
+	    <td><%= lend.inserted_at %></td>
+	    <td><%= lend.expected_date_return %></td>
+	  </tr>
+	  <% end %>
+    </tbody>
+  </table>
+  <% end %>
+
+</div>
+

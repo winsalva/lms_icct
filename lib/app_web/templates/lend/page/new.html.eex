@@ -1,0 +1,24 @@
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: @book.title) %>
+
+<div class="sub-container">
+
+  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+
+  <%= form_for @lend, Routes.lend_page_path(@conn, :create, %{book_id: @book.id}), fn f -> %>
+
+  <label>Return Date</label>
+<%= date_select f, :expected_date_return, year: [options: 2022..2025], builder: fn b -> %>
+ <%= b.(:day, []) %> / <%= b.(:month, []) %> / <%= b.(:year, []) %>
+<% end %>
+<%= error_tag f, :expected_date_return %>
+
+  <label>Copies</label>
+  <%= number_input f, :copies %>
+  <%= error_tag f, :copies %>
+
+  <%= submit "Borrow Book" %>
+  <% end %>
+  
+
+
+</div>

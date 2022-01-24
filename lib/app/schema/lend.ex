@@ -21,11 +21,18 @@ defmodule App.Schema.Lend do
     :penalty
   ]
 
+  @required_fields [
+    :book_id,
+    :user_id,
+    :copies,
+    :expected_date_return
+  ]
+
   @doc false
   def changeset(lend, params \\ %{}) do
     lend
     |> cast(params, @allowed_fields)
-    |> validate_required(@allowed_fields)
+    |> validate_required(@required_fields)
     |> assoc_constraint(:user)
     |> assoc_constraint(:book)
   end

@@ -23,37 +23,6 @@
       </tr>
     </tbody>
   </table>
-
-  <%= if @reservations == [] do %>
-  <h2>No have not made any reservations yet!</h2>
-  <% else %>
-  <table>
-    <thead>
-      <tr>
-	<th colspan="5"><h3 align="center"><b>MY RESERVATIONS</b></h3></th>
-      </tr>
-      
-      <tr>
-	<th>Date</th>
-	<th>Room</th>
-	<th>Type</th>
-	<th>Rates</th>
-	<th>No. of Quests</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= for reservation <- @reservations do %>
-	  <tr>
-	    <td><%= reservation.date %></td>
-	    <td><%= reservation.upload.title %></td>
-	    <td><%= reservation.upload.category %></td>
-	    <td><%= reservation.upload.rates %></td>
-	    <td><%= reservation.no_of_guests %></td>
-	  </tr>
-	  <% end %>
-    </tbody>
-  </table>
-  <% end %>	    
 	    
 </div>
 
