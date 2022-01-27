@@ -1,29 +1,49 @@
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "My Account") %>
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: username(@user.first_name, @user.last_name)) %>
 
 <div class="sub-container">
 
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
-  
+
+  <%= if @borrows == [] do %>
+  <h3 align="center">No records yet</h3>
+  <% else %>
   <table>
+    <thead>
+      <tr>
+        <th colspan="7"><h3 align="center">Borrowed Books</h3></th>
+      </tr>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Copies</th>
+        <th>Issued</th>
+        <th>Return Date</th>
+	<th>Penalty</th>
+      </tr>
+
+    </thead>
     <tbody>
-      <tr>
-	<td><b>Name: </b></td>
-	<td><%= @user.first_name %> <%= @user.last_name %></td>
-	<td><%= link "Edit", to: Routes.user_account_path(@conn, :edit_name, @user.id) %></td>
-      </tr>
-      <tr>
-	<td><b>Email: </b></td>
-	<td><%= @user.email %></td>
-	<td><%= link "Edit", to: "#" %></td>
-      </tr>
-      <tr>
-	<td><b>Password: </b></td>
-	<td>******</td>
-	<td><%= link "Edit", to: Routes.user_account_path(@conn, :change_password, @user.id) %></td>
-      </tr>
+      <%= for borrow <- @borrows do %>
+          <tr>
+            <td><%= link borrow.book.title, to: Routes.book_page_path(@conn, :show, borrow.book.id) %></td>
+            <td><%= borrow.book.author %></td>
+            <td><%= borrow.copies %></td>
+            <td><%= borrow.inserted_at %></td>
+            <td><%= borrow.expected_date_return %></td>
+	    <td><%= calculate_penalty(borrow.expected_date_return, borrow.date_returned) %></td>
+	    <%= if borrow.date_returned == nil do %>
+	    <td><%= link "Return", to: Routes.lend_page_path(@conn, :return_lend, borrow.id) %></td>
+	    <% else %>
+	    <td><%= link "Returned", to: "" %></td>
+	    <% end %>
+          </tr>
+	  
+          <% end %>
     </tbody>
   </table>
+  <% end %>
 	    
 </div>
-
-<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+</div>

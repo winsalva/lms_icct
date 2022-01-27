@@ -1,3 +1,5 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "My Admin Account") %>
 
 <div class="sub-container">
@@ -24,5 +26,4 @@
     </tbody>
   </table>
 </div>
-
-<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+</div>

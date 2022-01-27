@@ -19,6 +19,7 @@ defmodule AppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/home", PageController, :home
     get "/terms-of-use", PageController, :term_of_use
     get "/privacy-policy", PageController, :privacy_policy
     get "/menus", PageController, :menus
@@ -62,6 +63,7 @@ defmodule AppWeb.Router do
     get "/new/:book_id", PageController, :new
     post "/", PageController, :create
     get "/", PageController, :index
+    get "/:id", PageController, :return_lend
 
   end
 

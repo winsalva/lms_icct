@@ -1,28 +1,63 @@
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Menus") %>
 
-<input type="search" placeholder="Search here.."/>
-<div class="menu-container">
-  <ul>
+<div class="sub-container">
+  <div class="menu-categories-container">
     <%= if @current_admin do %>
-    <li><%= link "Admin Dashboard", to: Routes.admin_page_path(@conn, :index) %></li>
+
+    <a href="<%= Routes.admin_page_path(@conn, :index) %>">
+    <div class="menu-category bg-border-red">
+      Admin Dashboard
+    </div>
+    </a>
     <% end %>
     <%= if @current_user do %>
-    <li><%= link "My Account", to: Routes.user_account_path(@conn, :show, @current_user.id) %></li>
+    <a href="<%= Routes.user_account_path(@conn, :show, @current_user.id) %>">
+    <div class="menu-category bg-border-yellowgreen">
+      My Account
+    </div>
+    </a>
     <% end %>
-    <li></li>
-    <li><a href="#">About Us</a></li>
-    <p>About</p>
-    <li><a href="#">Terms of Use</a></li>
-    <li><a href="#">Privacy Policy</a></li>
-    <li><%= link "Terms Of Use", to: Routes.page_path(@conn, :term_of_use) %></li>
-    <li><%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %></li>
+    <a href="<%= Routes.page_path(@conn, :index) %>">
+    <div class="menu-category bg-border-lightblue">
+      Home
+    </div>
+    </a>
+    <a href="<%= Routes.book_page_path(@conn, :index) %>">
+    <div class="menu-category bg-border-green">
+      Books
+    </div>
+    </a>
+    <a href="">
+    <div class="menu-category bg-border-red">
+      Privacy Policy
+    </div>
+    </a>
+    <a href="">
+    <div class="menu-category bg-border-lightblue">
+      Terms Of Use
+    </div>
+    </a>
+    <a href="">
+    <div class="menu-category bg-border-yellowgreen">
+      About
+    </div>
+    </a>
     <%= if @conn.assigns.current_admin || @conn.assigns.current_user do %>
-    <li><%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %></li>
+    <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete, class: "menu-category bg-border-red", data: [confirm: "Are you sure?"]  %>
+    
     <% else %>
-    <li><%= link "Log in", to: Routes.session_path(@conn, :new) %></li>
-    <li><%= link "Sign up", to: Routes.user_account_path(@conn, :new) %></li>
+    <a href="<%= Routes.session_path(@conn, :new) %>">
+    <div class="menu-category bg-border-orange">
+      Log in
+    </div>
+    </a>
+    <a href="<%= Routes.user_account_path(@conn, :new) %>">
+    <div class="menu-category bg-border-yellowgreen">
+      Sign up
+    </div>
+    </a>
     <% end %>
-  </ul>
+  </div>
 </div>
 
 

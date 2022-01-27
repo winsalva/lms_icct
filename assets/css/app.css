@@ -4,6 +4,7 @@
 @import "./medium-devices.css";
 @import "./icons.css";
 @import "./colors.css";
+@import "./sidenav.css";
 @import "../node_modules/nprogress/nprogress.css";
 
 /* LiveView specific classes for your customizations */

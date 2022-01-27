@@ -1,3 +1,5 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "New Book") %>
 
 <div class="sub-container">
@@ -30,6 +32,5 @@
 
   <%= submit "Save" %>
   <% end %>
-
-
+</div>
 </div>

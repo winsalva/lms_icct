@@ -1,4 +1,6 @@
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Log in") %>
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Student Login") %>
 <div class="sub-container">
 
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
@@ -12,5 +14,5 @@
   <% end %>
   <p class="center">No account yet? <%= link "Create account.", to: Routes.user_account_path(@conn, :new) %></p>
 </div>
-
+</div>
 

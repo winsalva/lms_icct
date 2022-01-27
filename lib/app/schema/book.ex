@@ -4,12 +4,14 @@ defmodule App.Schema.Book do
 
   schema "books" do
     belongs_to :admin, App.Schema.Admin
+    has_many :lends, App.Schema.Lend
     field :isbn, :string
     field :title, :string
     field :author, :string
     field :category, :string
     field :copies, :integer
     field :lended, :integer, default: 0
+    field :available, :integer, default: 0
     timestamps()
   end
 
@@ -20,7 +22,8 @@ defmodule App.Schema.Book do
     :author,
     :category,
     :copies,
-    :lended
+    :lended,
+    :available
   ]
 
   @doc false

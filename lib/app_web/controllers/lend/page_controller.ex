@@ -38,4 +38,18 @@ defmodule AppWeb.Lend.PageController do
     lends = Lend.list_lends
     render(conn, :index, lends: lends)
   end
+
+  def return_lend(conn, %{"id" => id}) do
+    params = %{date_returned: Date.utc_today()}
+    case Lend.update_lend(id, params) do
+      {:ok, _} ->
+        conn
+	|> put_flash(:info, "Book was returned succesafully.")
+	|> redirect(to: Routes.user_account_path(conn, :show, conn.assigns.current_user.id))
+      {:error, _} ->
+        conn
+	|> put_flash(:error, "Something went wrong")
+	|> redirect(to: Routes.user_account_path(conn, :show, conn.assigns.current_user.id))
+    end
+  end
 end

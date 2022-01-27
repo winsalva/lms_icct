@@ -1,80 +1,28 @@
-<div class="nav-container">
-  <img class="company-bg-image" src="/images/lms-logo.jpeg"/>
-</div>
 
-  <div class="nav-options-container">
-    <div class="nav-option1-container">
-      <a href="<%= Routes.page_path(@conn, :menus) %>">
-      <div class="menu-icon" id="openNav">
-        <span class="icon"></span>
-	<span class="icon"></span>
-        <span class="icon"></span>
-      </div>
-      </a>
-    
-      <div class="company-name"><%= company_name() %></div>
-      <%= if @conn.assigns.current_user do %>
-      <a href="<%= Routes.user_account_path(@conn, :show, @current_user.id) %>">
-	<div class="account-icon"></div>
-      </a>
-	<% else %>
-	<a href="<%= Routes.user_account_path(@conn, :new) %>">
-	  <div class="login-icon"></div>
-	</a>
-	<% end %>
-    </div>
+
+<nav>
+  <div id="schoolname">Philippine Christian University</div>
+  <div class="menus">
+    <li><a href="<%= Routes.user_account_path(@conn, :new) %>">SIGN UP</a></li>
+    <li><a href="<%= Routes.admin_session_path(@conn, :new) %>">ADMIN LOGIN</a></li>
+    <li><a href="<%= Routes.session_path(@conn, :new) %>">STUDENT LOGIN</a></li>
+  </div>
+</nav>
+
+<div class="sub-container">
+  <div class="landing-page-content-container">
+    <p class="landing-page-titles"align="center">REQUEST A BOOK</p>
+<p  class="landing-page-contents"align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p class="landing-page-titles"align="center">RESERVE BOOKS</p>
+<p  class="landing-page-contents"align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+<p class="landing-page-titles" align="center">RETURN BOOKS</p>
+<p class="landing-page-contents" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+<p class="landing-page-titles" align="center">TRACKS TRANSACTION</p>
+  <p class="landing-page-contents" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis.</p>
   </div>
 
-  <!--
-    <div class="nav-option2-container">
-      <a href="#">Category</a>
-      <a href="#">Prices</a>
-      <a href="#">About Us</a>
-    </div>
--->
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" id="closeNav">&times;</a>
-    <%= if @conn.assigns.current_admin do %>
-    <%= link "Upload", to: "#" %>
-    <% end %>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Terms Of Use</a>
-  </div>
+</div>  
 
-  <%= if @books == [] do %>
-  <h2 align="center">No Books Available Yet</h2>
-  <% else %>
-  <br>
-  <table>
-    <thead>
-      <tr>
-	<th colspan="6"><h2 align="center">Available Books</h2></th>
-      </tr>
-      <tr>
-	<th>ISBN</th>
-	<th>Title</th>
-	<th>Author</th>
-	<th>Category</th>
-	<th>Copies</th>
-	<th>Lended</th>
-      </tr>
-      
-    </thead>
-    <tbody>
-      <%= for book <- @books do %>
-	  <tr>
-	    <td><%= link book.isbn, to: Routes.book_page_path(@conn, :edit, book.id)  %></td>
-	    <td><%= book.title %></td>
-	    <td><%= book.author %></td>
-	    <td><%= book.category %></td>
-	    <td><%= book.copies %></td>
-	    <td><%= book.lended %></td>
-	  </tr>
-	  <% end %>
-    </tbody>
-  </table>
-  <% end %>
-  
-</div>
 <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

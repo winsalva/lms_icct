@@ -35,5 +35,13 @@ defmodule App.Schema.Lend do
     |> validate_required(@required_fields)
     |> assoc_constraint(:user)
     |> assoc_constraint(:book)
+    |> validate_change(:expected_date_return, &validate/2)
+  end
+
+  defp validate(:expected_date_return, ends_at_date) do
+    case Date.compare(ends_at_date, Date.utc_today()) do
+      :lt -> [expected_date_return: "Return date cannot be in the past"]
+      _ -> []
+    end
   end
 end

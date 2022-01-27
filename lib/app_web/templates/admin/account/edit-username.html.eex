@@ -1,3 +1,5 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Edit Admin Usename") %>
 
 <div class="sub-container">
@@ -16,4 +18,5 @@
 
 <%= submit "Save Changes" %>
 <% end %>
+</div>
 </div>

@@ -5,7 +5,7 @@ defmodule AppWeb.Book.PageController do
     :new, :create, :edit, :update, :delete
   ]
   
-  alias App.Query.Book
+  alias App.Query.{Book, Lend}
 
   def index(conn, _params) do
     books = Book.list_books
@@ -49,8 +49,23 @@ defmodule AppWeb.Book.PageController do
   end
 
   def show(conn, %{"id" => id}) do
-    book = Book.get_book(id)
-    render(conn, :show, book: book)
+    if conn.assigns.current_user do
+      borrow = Lend.user_borrowed?(conn.assigns.current_user.id, id)
+      book = Book.get_book(id)
+      params = [
+        borrow: borrow,
+	book: book
+      ]
+      render(conn, :show, params)
+    else
+      book = Book.get_book(id)
+      borrow = nil
+      params = [
+        book: book,
+	borrow: borrow
+      ]
+      render(conn, :show, params)
+    end
   end
 
   def delete(conn, %{"id" => id}) do

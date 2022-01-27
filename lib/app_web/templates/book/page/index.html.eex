@@ -1,44 +1,39 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Books") %>
 
 <div class="sub-container">
 
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
 
-  <%= if @current_admin do %>
-  <div class="upload-options">
-    <%= link "Add New Book", to: Routes.book_page_path(@conn, :new) %>
-  </div>
-  <% end %>
-  
   <%= if @books == [] do %>
   <br>
   <h2 align="center">No Books Available Yet</h2>
   <br>
   <% else %>
-  <table>
-    <thead>
-      <tr>
-        <th colspan="6"><h2 align="center">Available Books</h2></th>
-      </tr>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-      </tr>
-
-    </thead>
-    <tbody>
+  <div class="sub-container">
+    <%= if @books == [] do %>
+    <h3 class="center">Coming soon..</h3>
+    <% else %>
+    <div class="uploads-container">
       <%= for book <- @books do %>
-          <tr>
-            <td><%= book.title %></td>
-            <td><%= book.author %></td>
-	    <%= if @conn.assigns.current_admin do %>
-	    <td><%= link "Show", to: Routes.book_page_path(@conn, :show, book.id) %></td>
-	    <% else %>
-	    <td><%= link "Show", to: Routes.book_page_path(@conn, :show, book.id) %></td>
-	    <% end %>
-          </tr>
-          <% end %>
-    </tbody>
-  </table>
+      <div class="upload-container" data-aos="fade-up">
+        <a href="<%= Routes.book_page_path(@conn, :show, book.id) %>">
+          <img src="/images/book.png"/>
+        <div class="upload-title-description">
+          <p class="upload-title">
+            <strong><%= book.title %> • <%= book.category %></strong>
+          </p>
+          <div class="upload-description">
+            <%= book.author %>
+          </div>
+        </div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
   <% end %>
+</div>
 </div>

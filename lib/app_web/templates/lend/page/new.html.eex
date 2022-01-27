@@ -1,8 +1,25 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: @book.title) %>
 
 <div class="sub-container">
 
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+
+  <div class="book-container-show">
+    <img src="/images/book.png"/>
+    <div class="book-details-container">
+      <ul>
+        <li><strong>ISBN:</strong> <%= @book.isbn %></li>
+        <li><strong>TITLE:</strong> <%= @book.title %></li>
+        <li><strong>AUTHOR:</strong> <%= @book.author %></li>
+        <li><strong>CATEGORY:</strong> <%= @book.category %></li>
+        <li><strong>COPIES:</strong> <%= @book.copies %></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
 
   <%= form_for @lend, Routes.lend_page_path(@conn, :create, %{book_id: @book.id}), fn f -> %>
 
@@ -13,12 +30,12 @@
 <%= error_tag f, :expected_date_return %>
 
   <label>Copies</label>
-  <%= number_input f, :copies %>
+  <%= select f, :copies, [options: 1..@book.copies], prompt: "Select copies" %>
   <%= error_tag f, :copies %>
 
+  <br>
+  
   <%= submit "Borrow Book" %>
   <% end %>
-  
-
-
+</div>
 </div>

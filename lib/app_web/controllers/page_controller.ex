@@ -4,8 +4,13 @@ defmodule AppWeb.PageController do
   alias App.Query.Book
   
   def index(conn, _params) do
-    books = Book.list_books
-    render(conn, :index, books: books)
+    conn
+    |> redirect(to: Routes.page_path(conn, :home))
+  end
+
+  def home(conn, _params) do
+    conn
+    |> render("index.html")
   end
 
   def term_of_use(conn, _params) do

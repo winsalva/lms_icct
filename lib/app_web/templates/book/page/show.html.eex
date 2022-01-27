@@ -1,35 +1,35 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: @book.title) %>
 
 <div class="sub-container">
 
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
 
-  <table>
-    <thead>
-      <tr>
-        <th>ISBN</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Category</th>
-        <th>Copies</th>
-        <th>Lended</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-	<td><%= @book.isbn %></td>
-	<td><%= @book.title %></td>
-	<td><%= @book.author %></td>
-	<td><%= @book.category %></td>
-	<td><%= @book.copies %></td>
-	<td><%= @book.lended %></td>
-	<%= if @conn.assigns.current_admin do %>
-	<td><%= link "Edit", to: Routes.book_page_path(@conn, :edit, @book.id) %> | <%= link "Delete", to: Routes.book_page_path(@conn, :delete, @book.id), method: :delete, data: [confirm: "Are you sure?"] %></td>
-	<% else %>
-	<td><%= link "Borrow", to: Routes.lend_page_path(@conn, :new, @book.id) %></td>
-	<% end %>
-      </tr>
-    </tbody>
-  </table>
+  <div class="book-container-show">
+    <img src="/images/book.png"/>
+    <div class="book-details-container">
+      <ul>
+	<li><strong>ISBN:</strong> <%= @book.isbn %></li>
+	<li><strong>TITLE:</strong> <%= @book.title %></li>
+	<li><strong>AUTHOR:</strong> <%= @book.author %></li>
+	<li><strong>CATEGORY:</strong> <%= @book.category %></li>
+	<li><strong>COPIES:</strong> <%= @book.copies %></li>
+      </ul>
+    </div>
+  </div>
 
+  <div class="book-container-options">
+    <%= if @conn.assigns.current_admin && @conn.assigns.current_user == nil do %>
+    <%= link "Edit", to: Routes.book_page_path(@conn, :edit, @book.id) %>
+    <%= link "Delete", to: Routes.book_page_path(@conn, :delete, @book.id), method: :delete, data: [confirm: "Are you sure?"] %>
+    <% end %>
+    <%= if @conn.assigns.current_user && @borrow == nil || @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
+    <%= link "Borrow", to: Routes.lend_page_path(@conn, :new, @book.id) %>
+    <% end %>
+    <%= if @conn.assigns.current_user && @borrow do %>
+    <%= link "Already Borrowed", to: "" %>
+    <% end %>
+  </div>
+</div>
 </div>

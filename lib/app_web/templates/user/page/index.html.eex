@@ -1,3 +1,5 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Users") %>
 
 <div class="sub-container">
@@ -14,11 +16,12 @@
   <tbody>
     <%= for user <- @users do %>
 	<tr>
-	  <td><%= user.first_name %> <%= user.last_name %></td>
+	  <td><%= link username(user.first_name, user.last_name), to: Routes.user_account_path(@conn, :show, user.id) %></td>
 	  <td><%= user.email %></td>
 	</tr>
 	<% end %>
   </tbody>
 </table>
 <% end %>
+</div>
 </div>

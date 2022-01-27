@@ -14,7 +14,7 @@ defmodule AppWeb.SessionController do
 	|> put_session(:user_id, user.id)
 	|> configure_session(renew: true)
 	|> put_flash(:info, "Welcome back #{user.first_name}!")
-	|> redirect(to: Routes.page_path(conn, :index))
+	|> redirect(to: Routes.user_account_path(conn, :show, user.id))
       false ->
         conn
 	|> put_flash(:error, "Email and password combination cannot be found!")

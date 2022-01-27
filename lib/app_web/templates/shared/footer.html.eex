@@ -1,11 +1,6 @@
 <footer>
-  <h2 class="footer-company-name"><%= company_name() %></h2>
+  <p class="footer-company-name">Library Management System</p>
   <div class="under-line"></div>
-  <div class="icons-container">
-    <div class="icons fb-icon"></div>
-    <div class="icons email-icon"></div>
-    <div class="icons phone-icon"></div>
-  </div>
 
   <div class="footer-options">
   
@@ -23,7 +18,8 @@
   </div>
 
   <div class="copyright">
-    <p>&copy; 2021 <%= company_name() %>. All Rights Reserved.</p>
+    <p>&copy; 2021 <%= company_name() %>. <p>
+      <p>All Rights Reserved.</p>
   </div>
   
 </footer>

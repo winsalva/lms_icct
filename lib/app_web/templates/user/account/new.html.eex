@@ -1,3 +1,5 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Create Account") %>
 
 <div class="sub-container">
@@ -35,4 +37,5 @@
 <% end %>
 
 <p class="center">Already have an account? <%= link "Log in.", to: Routes.session_path(@conn, :new) %></p>
+</div>
 </div>

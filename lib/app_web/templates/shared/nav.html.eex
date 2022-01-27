@@ -1,0 +1,42 @@
+<div class="sidenav-container">
+  <%= if @conn.assigns.current_admin do %>
+  <div class="icon-container">
+    <img src="/images/profile-icon.png"/>
+    <p><%= link "Admin User", to: Routes.admin_page_path(@conn, :index) %></p>
+  </div>
+  <%= link "Add Admin", to: Routes.admin_page_path(@conn, :new) %>
+  <%= link "View Admins", to: Routes.admin_page_path(@conn, :list_admins) %>
+  <%= link "View Users", to: Routes.user_page_path(@conn, :index) %>
+  <%= link "Add Book", to: Routes.book_page_path(@conn, :new) %>
+  <%= link "View Books", to: Routes.book_page_path(@conn, :index) %>
+  <%= link "Lended Books", to: Routes.lend_page_path(@conn, :index) %>
+  <% end %>
+
+  <%= if @conn.assigns.current_user do %>
+  <div class="icon-container">
+    <img src="/images/profile-icon.png"/>
+    <p><%= link username(@conn.assigns.current_user.first_name, @conn.assigns.current_user.last_name), to: Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %></p>
+  </div>
+  <%= link "Edit Name", to: Routes.user_account_path(@conn, :edit_name, @conn.assigns.current_user.id) %>
+  <%= link "Change Password", to: Routes.user_account_path(@conn, :change_password, @conn.assigns.current_user.id) %>
+  <%= link "View Books", to: Routes.book_page_path(@conn, :index) %>
+  <% end %>
+
+  <%= if @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
+  <div class="icon-container">
+    <img src="/images/profile-icon.png"/>
+    <p>PCU LOGO</p>
+  </div>
+  <%= link "Home", to: Routes.page_path(@conn, :index) %>
+  <% end %>
+	  
+  <%= link "About Us", to: Routes.page_path(@conn, :about_us) %>
+    <%= link "Terms Of Use", to: Routes.page_path(@conn, :term_of_use) %>
+    <%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %>
+    <%= if @conn.assigns.current_admin || @conn.assigns.current_user do %>
+    <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %>
+    <% else %>
+    <%= link "Log in", to: Routes.session_path(@conn, :new) %>
+    <%= link "Sign up", to: Routes.user_account_path(@conn, :new) %>
+    <% end %>
+</div>
