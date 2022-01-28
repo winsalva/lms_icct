@@ -10,6 +10,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>ID</th>
       <th>Email</th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
     <%= for user <- @users do %>
 	<tr>
 	  <td><%= link username(user.first_name, user.last_name), to: Routes.user_account_path(@conn, :show, user.id) %></td>
+	  <td><%= user.student_id %></td>
 	  <td><%= user.email %></td>
 	</tr>
 	<% end %>
