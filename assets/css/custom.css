@@ -23,20 +23,21 @@ nav {
     background-color: #ddd;
 }
 nav #schoolname {
-    font-size: 20px;
+    font-size: 25px;
     font-family: serif;
     font-weight: bold;
-    padding: 10px;
+    padding: 0 10px;
     position: relative;
 }
-      nav .menus {
+nav .menus {
+    padding-top: 15px;
           display: flex;
           gap: .5em;
           font-size: 15px;
       }
       .menus li {
 	  list-style: none;
-          padding: 5px 14px;
+          padding: 10px;
       }
       .menus a {
           font-size: 14px;
