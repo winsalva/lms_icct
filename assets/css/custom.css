@@ -210,6 +210,7 @@ footer {
 }
 .footer-options li {
     list-style: none;
+    text-align: center;
 }
 .copyright p {
     margin: 0;
@@ -416,7 +417,7 @@ footer {
 .upload-container {
     background-color: #fff;
     /*border: 1px solid #;*/
-    margin: 1rem 0 1.5rem 0;
+    margin: .5rem;
     box-shadow: 4px 4px 4px #ddd;
 }
 .upload-container:hover {
@@ -449,7 +450,7 @@ footer {
 }
 .upload-title {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 500;
 }
 .book-container-options {
@@ -469,6 +470,19 @@ footer {
     border: 1px solid var(--blue);
     color: var(--blue);
     background-color: #fff;
+}
+.book-container-show {
+    margin: 1.5rem 0;
+    display: flex;
+}
+.book-details-container {
+    padding-right: 5rem;
+}
+.book-container-show img {
+    object-fit: cover;
+    max-width: 250px;
+    max-height: 180px;
+    flex: 1;
 }
 .see-more {
     width: 50%;

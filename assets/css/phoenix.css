@@ -20,8 +20,8 @@ pre{padding: 1em;}
 .container{
   background-color: #eee;
   margin: 0 auto;
-  max-width: 90.0rem;
-  padding-left: 5rem;
+  max-width: 100.0rem;
+  padding: 0;
   position: relative;
   width: 100%
 }

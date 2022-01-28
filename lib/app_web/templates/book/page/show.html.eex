@@ -7,7 +7,6 @@
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
 
   <div class="book-container-show">
-    <img src="/images/book.png"/>
     <div class="book-details-container">
       <ul>
 	<li><strong>ISBN:</strong> <%= @book.isbn %></li>
@@ -17,6 +16,7 @@
 	<li><strong>COPIES:</strong> <%= @book.copies %></li>
       </ul>
     </div>
+    <img src="/images/book.png"/>
   </div>
 
   <div class="book-container-options">
