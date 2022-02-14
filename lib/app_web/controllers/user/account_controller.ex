@@ -10,7 +10,18 @@ defmodule AppWeb.User.AccountController do
  
   
   alias App.Query.{User, Lend}
-    
+
+  def approve_disapprove_user(conn, %{"id" => id}) do
+    user = User.get_user(id)
+    if user.approve do
+      User.update_user(id, %{approve: false})
+    else
+      User.update_user(id, %{approve: true})
+    end
+
+    conn
+    |> redirect(to: Routes.user_page_path(conn, :index))
+  end
 
   def change_password(conn, %{"id" => id}) do
     user = User.edit_user(id)
@@ -71,9 +82,8 @@ defmodule AppWeb.User.AccountController do
     case User.insert_user(params) do
       {:ok, user} ->
         conn
-        |> put_session(:user_id, user.id)
-        |> configure_session(renew: true)
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> put_flash(:info, "Your account was successfully created! Please wait or contact the admins for approval.")
+        |> redirect(to: Routes.session_path(conn, :new))
       {:error, %Ecto.Changeset{} = user} ->
         conn
         |> render("new.html", user: user)

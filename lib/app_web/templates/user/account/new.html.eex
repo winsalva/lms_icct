@@ -21,8 +21,8 @@
 <%= text_input f, :student_id, placeholder: "Enter your student id.." %>
 <%= error_tag f, :student_id %>
 
-<label>Email</label>
-<%= text_input f, :email, placeholder: "Enter your active email.." %>
+<label>PCU Email</label>
+<%= text_input f, :email, placeholder: "Enter your pcu email.." %>
 <%= error_tag f, :email %>
 
 <label>Password</label>

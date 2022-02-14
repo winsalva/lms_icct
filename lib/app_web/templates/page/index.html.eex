@@ -1,28 +1,28 @@
 
 
 <nav>
-  <div id="schoolname">Philippine Christian University</div>
+  <div id="schoolname">Philippine Christian University
+  <p id="tagname">Online Library Management System</p></div>
   <div class="menus">
-    <li><a href="<%= Routes.user_account_path(@conn, :new) %>">SIGN UP</a></li>
-    <li><a href="<%= Routes.admin_session_path(@conn, :new) %>">ADMIN LOGIN</a></li>
-    <li><a href="<%= Routes.session_path(@conn, :new) %>">STUDENT LOGIN</a></li>
+    <li><a href="<%= Routes.session_path(@conn, :new) %>">SIGN IN</a></li>
+    <li><a href="">CONTACT US</a></li>
+    <li><a href="<%= Routes.page_path(@conn, :about_us) %>">ABOUT</a></li>
   </div>
 </nav>
 
 <div class="sub-container">
   <div class="landing-page-content-container">
-    <p class="landing-page-titles"align="center">REQUEST A BOOK</p>
+    <p class="landing-page-titles"align="center">ANNOUCEMENTS</p>
 <p  class="landing-page-contents"align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  <p class="landing-page-titles"align="center">RESERVE BOOKS</p>
+  <p class="landing-page-titles"align="center">GALLERY</p>
 <p  class="landing-page-contents"align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-<p class="landing-page-titles" align="center">RETURN BOOKS</p>
+<p class="landing-page-titles" align="center">OTHER OPTIONS</p>
 <p class="landing-page-contents" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-<p class="landing-page-titles" align="center">TRACKS TRANSACTION</p>
+<p class="landing-page-titles" align="center">MORE OPTIONS</p>
   <p class="landing-page-contents" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis.</p>
   </div>
-
 </div>  
 
 <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

@@ -43,6 +43,7 @@ defmodule AppWeb.Router do
     put "/accounts/edit-name", AccountController, :update_name
     get "/accounts/:id/change-password", AccountController, :change_password
     put "/accounts/change-password", AccountController, :update_password
+    post "/accounts/approves/:id", AccountController, :approve_disapprove_user
   end
 
 

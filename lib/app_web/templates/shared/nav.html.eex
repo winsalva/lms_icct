@@ -36,7 +36,6 @@
     <%= if @conn.assigns.current_admin || @conn.assigns.current_user do %>
     <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %>
     <% else %>
-    <%= link "Log in", to: Routes.session_path(@conn, :new) %>
-    <%= link "Sign up", to: Routes.user_account_path(@conn, :new) %>
+    <%= link "Sign in", to: Routes.session_path(@conn, :new) %>
     <% end %>
 </div>

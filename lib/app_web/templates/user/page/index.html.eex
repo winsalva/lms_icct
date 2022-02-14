@@ -12,6 +12,7 @@
       <th>Name</th>
       <th>ID</th>
       <th>Email</th>
+      <th>Approve</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,11 @@
 	  <td><%= link username(user.first_name, user.last_name), to: Routes.user_account_path(@conn, :show, user.id) %></td>
 	  <td><%= user.student_id %></td>
 	  <td><%= user.email %></td>
+	  <%= if user.approve do %>
+	  <td><%= link "True", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></td>
+	  <% else %>
+	  <td><%= link "False", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></td>
+	  <% end %>
 	</tr>
 	<% end %>
   </tbody>

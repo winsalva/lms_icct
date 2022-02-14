@@ -1,6 +1,6 @@
 <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 <div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Student Login") %>
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Sign in") %>
 <div class="sub-container">
 
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
