@@ -23,7 +23,11 @@
   <%= error_tag f, :author %>
 
   <label>Category</label>
-  <%= text_input f, :category, placeholder: "Enter book category.." %>
+  <%= select f, :category, [options: [
+      "Circulation": "Circulation",
+      "Filipiniana": "Filipiniana",
+      "Fiction": "Fiction"
+      ]], prompt: "Select Category" %>
   <%= error_tag f, :category %>
 
   <label>Copies</label>

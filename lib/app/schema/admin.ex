@@ -5,6 +5,7 @@ defmodule App.Schema.Admin do
 
   schema "admins" do
     has_many :books, App.Schema.Book
+    has_one :announcements, App.Schema.Announcement
     field :username, :string
     field :email, :string
     field :password, :string, virtual: true

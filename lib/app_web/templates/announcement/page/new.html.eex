@@ -1,0 +1,14 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
+  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "New Announcement") %>
+  <div class="sub-container">
+    <%= form_for @announcement, Routes.announcement_page_path(@conn, :create), fn f -> %>
+    <label>Content</label>
+    <%= textarea f, :body, placeholder: "You can use mark down syntax.." %>
+    <%= error_tag f, :body %>
+
+    <%= submit "Save" %>
+    <% end %>
+  </div>
+</div>
+

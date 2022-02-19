@@ -23,19 +23,19 @@
 
   <%= form_for @lend, Routes.lend_page_path(@conn, :create, %{book_id: @book.id}), fn f -> %>
 
-  <label>Return Date</label>
-<%= date_select f, :expected_date_return, year: [options: 2022..2025], builder: fn b -> %>
- <%= b.(:day, []) %> / <%= b.(:month, []) %> / <%= b.(:year, []) %>
-<% end %>
-<%= error_tag f, :expected_date_return %>
-
-  <label>Copies</label>
-  <%= select f, :copies, [options: 1..@book.copies], prompt: "Select copies" %>
-  <%= error_tag f, :copies %>
+  <label>Pick Up Date</label>
+  <%= select f, :pickup_date, options: ["Tomorrow": "Tomorrow", "Next Day": "Next Day"] %>
+  <%= error_tag f, :pickup_date %>
+  
+  <label>
+    <%= checkbox f, :accept_term %> I accept terms and conditions
+  </label>
+  <%= error_tag f, :accept_term %>
+  
 
   <br>
   
-  <%= submit "Borrow Book" %>
+  <%= submit "Request Book" %>
   <% end %>
 </div>
 </div>

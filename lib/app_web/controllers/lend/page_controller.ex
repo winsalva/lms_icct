@@ -26,7 +26,7 @@ defmodule AppWeb.Lend.PageController do
     case Lend.insert_lend(params) do
       {:ok, lend} ->
         conn
-	|> put_flash(:info, "You have borrowed a book titled \"#{book.title}\" successfully.")
+	|> put_flash(:info, "You requested a book titled \"#{book.title}\" successfully.")
 	|> redirect(to: Routes.book_page_path(conn, :index))
       {:error, %Ecto.Changeset{} = lend} ->
         conn

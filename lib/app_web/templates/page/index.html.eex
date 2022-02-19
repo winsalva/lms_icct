@@ -5,7 +5,7 @@
   <p id="tagname">Online Library Management System</p></div>
   <div class="menus">
     <li><a href="<%= Routes.session_path(@conn, :new) %>">SIGN IN</a></li>
-    <li><a href="">CONTACT US</a></li>
+    <li><a href="<%= Routes.page_path(@conn, :contact_us) %>">CONTACT US</a></li>
     <li><a href="<%= Routes.page_path(@conn, :about_us) %>">ABOUT</a></li>
   </div>
 </nav>
@@ -14,13 +14,13 @@
   <div class="landing-page-content-container">
     <p class="landing-page-titles"align="center">ANNOUCEMENTS</p>
 <p  class="landing-page-contents"align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  <p class="landing-page-titles"align="center">GALLERY</p>
+  <p class="landing-page-titles"align="center">INTRODUCTIONS</p>
 <p  class="landing-page-contents"align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-<p class="landing-page-titles" align="center">OTHER OPTIONS</p>
+<p class="landing-page-titles" align="center">GALLERY</p>
 <p class="landing-page-contents" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-<p class="landing-page-titles" align="center">MORE OPTIONS</p>
+<p class="landing-page-titles" align="center">OTHER OPTIONS</p>
   <p class="landing-page-contents" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis.</p>
   </div>
 </div>  

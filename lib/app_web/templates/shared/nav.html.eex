@@ -10,6 +10,16 @@
   <%= link "Add Book", to: Routes.book_page_path(@conn, :new) %>
   <%= link "View Books", to: Routes.book_page_path(@conn, :index) %>
   <%= link "Lended Books", to: Routes.lend_page_path(@conn, :index) %>
+  <%= link "Transactions", to: "#" %>
+  <a id="announcement">Announcements</a>
+  <div id="announcement-option-container">
+    <%= if announcement() == 0 do %>
+    <%= link "New Announcement", to: Routes.announcement_page_path(@conn, :new) %>
+    <% else %>
+    <%= link "Edit", to: Routes.announcement_page_path(@conn, :edit, announcement()) %>
+    <%= link "Delete", to: "#" %>
+    <% end %>
+  </div>
   <% end %>
 
   <%= if @conn.assigns.current_user do %>
@@ -19,7 +29,8 @@
   </div>
   <%= link "Edit Name", to: Routes.user_account_path(@conn, :edit_name, @conn.assigns.current_user.id) %>
   <%= link "Change Password", to: Routes.user_account_path(@conn, :change_password, @conn.assigns.current_user.id) %>
-  <%= link "View Books", to: Routes.book_page_path(@conn, :index) %>
+  <%= link "Books", to: Routes.book_page_path(@conn, :index) %>
+  <%= link "Transactions", to: "#" %>
   <% end %>
 
   <%= if @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
@@ -31,11 +42,26 @@
   <% end %>
 	  
   <%= link "About Us", to: Routes.page_path(@conn, :about_us) %>
+  <%= link "Contact Us", to: Routes.page_path(@conn, :contact_us) %>
     <%= link "Terms Of Use", to: Routes.page_path(@conn, :term_of_use) %>
     <%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %>
+    
     <%= if @conn.assigns.current_admin || @conn.assigns.current_user do %>
     <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %>
     <% else %>
-    <%= link "Sign in", to: Routes.session_path(@conn, :new) %>
+    <%= link "Sign In", to: Routes.session_path(@conn, :new) %>
     <% end %>
 </div>
+
+<script>
+  var option-container = document.getElementById("announcement-option-container").style.display;
+  var announcement = document.getElementById("announcement");
+
+  announcement.addEventLister("click", function() {
+      if(option-container == "none") {
+	  option-container = "block";
+      } else {
+	  option-container = "none";
+      }
+  });
+</script>

@@ -1,3 +1,21 @@
+
+
+#announcement-option-container {
+    display: block;
+}
+
+#announcement-option-container a {
+    background-color: #fff;
+    color: #136ad5;
+    border-bottom: .1px solid #eee;
+    padding: 8px;
+    font-size: 14px;
+}
+#announcement-option-container a:hover {
+    background-color: #0099e5;
+    color: #fff;
+}
+
 .icon-container {
     padding-top: 10px;
     display: flex;

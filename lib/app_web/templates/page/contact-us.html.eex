@@ -1,0 +1,10 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Contact Us") %>
+
+<div class="sub-container">
+  <br>
+  <h2 class="center">Contact us content here</h2>
+  <br>
+</div>
+</div>

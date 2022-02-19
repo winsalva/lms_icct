@@ -25,6 +25,10 @@ defmodule AppWeb.PageController do
     render(conn, "about-us.html")
   end
 
+  def contact_us(conn, _params) do
+    render(conn, "contact-us.html")
+  end
+
   def menus(conn, _params) do
     render(conn, "menus.html")
   end

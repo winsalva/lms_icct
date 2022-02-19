@@ -18,12 +18,13 @@ defmodule AppWeb.Authenticator do
         user_id -> App.Query.User.get_user(user_id)
       end
 
+
     cond do
       admin != nil and user != nil ->
         conn
         |> assign(:current_admin, admin)
         |> assign(:current_user, nil)
-
+	
       admin != nil and user == nil ->
         conn
         |> assign(:current_admin, admin)

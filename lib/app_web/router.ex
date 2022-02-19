@@ -24,12 +24,23 @@ defmodule AppWeb.Router do
     get "/privacy-policy", PageController, :privacy_policy
     get "/menus", PageController, :menus
     get "/about-us", PageController, :about_us
+    get "/contact-us", PageController, :contact_us
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
 
   end
 
+
+  ## Announcement Routes
+  
+  scope "/announcements", AppWeb.Announcement, as: :announcement do
+    pipe_through :browser
+
+    resources "/", PageController
+
+  end
+ 
 
   ## User Routes
   

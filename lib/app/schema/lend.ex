@@ -9,23 +9,25 @@ defmodule App.Schema.Lend do
     field :expected_date_return, :date
     field :date_returned, :date
     field :penalty, :integer
+    field :accept_term, :boolean, default: false
+    field :pickup_date, :string
     timestamps()
   end
 
   @allowed_fields [
     :book_id,
     :user_id,
-    :copies,
-    :expected_date_return,
     :date_returned,
-    :penalty
+    :penalty,
+    :accept_term,
+    :pickup_date
   ]
 
   @required_fields [
     :book_id,
     :user_id,
-    :copies,
-    :expected_date_return
+    :accept_term,
+    :pickup_date
   ]
 
   @doc false
@@ -35,8 +37,16 @@ defmodule App.Schema.Lend do
     |> validate_required(@required_fields)
     |> assoc_constraint(:user)
     |> assoc_constraint(:book)
-    |> validate_change(:expected_date_return, &validate/2)
+    |> validate_acceptance(:accept_term, message: "Please accept terms and conditions")
   end
+
+  defp validate_accept_term(:accept_term, term_accepted) do
+    case term_accepted do
+      false -> [accept_term: "You must accept terms and conditions"]
+      _ -> []
+    end
+  end
+  
 
   defp validate(:expected_date_return, ends_at_date) do
     case Date.compare(ends_at_date, Date.utc_today()) do

@@ -11,14 +11,14 @@
     <%= if @conn.assigns.current_admin || @conn.assigns.current_user do %>
     <li><%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %></li>
     <% else %>
-    <li><%= link "Log in", to: Routes.session_path(@conn, :new) %></li>
-    <li><%= link "Sign up", to: Routes.user_account_path(@conn, :new) %></li>
+    <li><%= link "Sign In", to: Routes.session_path(@conn, :new) %></li>
+    <li><%= link "Contact Us", to: Routes.page_path(@conn, :contact_us) %></li>
     <% end %>
   
   </div>
 
   <div class="copyright">
-    <p>&copy; 2021 <%= company_name() %>. <p>
+    <p>Copyright &copy; 2022 <%= company_name() %>. <p>
       <p>All Rights Reserved.</p>
   </div>
   

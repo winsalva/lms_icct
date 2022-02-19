@@ -1,5 +1,14 @@
 defmodule AppWeb.GlobalHelpers do
 
+  def announcement do
+    announcement = App.Query.Announcement.list_announcements
+    if announcement == [] do
+      0
+    else
+      announcement.id
+    end
+  end
+
   def calculate_penalty(expected_date, date_returned) do
     cond do
       date_returned != nil ->
