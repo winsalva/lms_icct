@@ -11,6 +11,24 @@ defmodule AppWeb.User.AccountController do
   
   alias App.Query.{User, Lend}
 
+  def reset_password(conn, %{"id" => id}) do
+    default_password = "abcxyz"
+    params = %{
+      password: default_password,
+      password_confirmation: default_password
+    }
+    case User.update_user_password(id, params) do
+      {:ok, user} ->
+        conn
+	|> put_flash(:info, "#{user.first_name}\'s password was reset to default!")
+	|> redirect(to: Routes.user_account_path(conn, :show, user.id))
+      _ ->
+        conn
+	|> put_flash(:error, "Something went wrong!")
+	|> redirect(to: Routes.user_account_path(conn, :show, id))
+    end
+  end
+
   def approve_disapprove_user(conn, %{"id" => id}) do
     user = User.get_user(id)
     if user.approve do

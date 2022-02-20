@@ -1,4 +1,21 @@
 
+.user-options {
+    padding-bottom: 10px;
+    text-align: center;
+}
+.user-options a {
+    margin: 2px 3px 2px 3px;
+    padding: 5px 10px;
+    background-color: #136ad5;
+    color: #fff;
+    font-weight: 500;
+    border: 1px solid #136ad5;
+    border-radius: 4px;
+}
+.user-options a:hover {
+    background-color: #fff;
+    color: #136ad5;
+}
 
 #announcement-option-container {
     display: block;

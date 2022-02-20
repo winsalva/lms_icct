@@ -20,6 +20,17 @@
       function back() {
 	  window.history.back();
       }
+
+      var option-container = document.getElementById("announcement-option-container").style.display;
+      var announcement = document.getElementById("announcement");
+
+      announcement.addEventLister("click", function() {
+	  if(option-container == "none") {
+	      option-container = "block";
+	  } else {
+	      option-container = "none";
+	  }
+      });
     </script>
   </body>
 </html>

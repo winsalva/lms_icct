@@ -13,7 +13,12 @@
 <div class="sub-container">
   <div class="landing-page-content-container">
     <p class="landing-page-titles"align="center">ANNOUCEMENTS</p>
-<p  class="landing-page-contents"align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div  class="landing-page-contents"><%= if @announcement == [] do %>
+      <p align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <% else %>
+      <%= raw(as_html(@announcement.body)) %>
+      <% end %>
+    </div>
   <p class="landing-page-titles"align="center">INTRODUCTIONS</p>
 <p  class="landing-page-contents"align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 

@@ -18,8 +18,19 @@ defmodule AppWeb.Book.PageController do
   end
 
   def create(conn, %{"book" => params}) do
+    category =
+      if params["category"] == "Circulation" do
+        3
+      else
+        7
+      end
+      
     admin = conn.assigns.current_admin
-    params = Map.put(params, "admin_id", admin.id)
+    params =
+      Map.put(params, "admin_id", admin.id)
+      |> Map.put("lend_duration", category)
+      |> Map.put("available", params["copies"])
+      
     case Book.insert_book(params) do
       {:ok, book} ->
         conn
@@ -37,6 +48,18 @@ defmodule AppWeb.Book.PageController do
   end
 
   def update(conn, %{"book" => params, "id" => id}) do
+    category =
+      if params["category"] == "Circulation" do
+        3
+      else
+        7
+      end
+
+    admin = conn.assigns.current_admin
+    params =
+      Map.put(params, "admin_id", admin.id)
+      |> Map.put("lend_duration", category)
+     
     case Book.update_book(id, params) do
       {:ok, book} ->
         conn

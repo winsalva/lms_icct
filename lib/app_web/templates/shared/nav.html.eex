@@ -1,9 +1,11 @@
 <div class="sidenav-container">
+  
   <%= if @conn.assigns.current_admin do %>
   <div class="icon-container">
     <img src="/images/profile-icon.png"/>
-    <p><%= link "Admin User", to: Routes.admin_page_path(@conn, :index) %></p>
+    <p><%= link "Admin Dashboard", to: Routes.admin_page_path(@conn, :index) %></p>
   </div>
+  <%= link "Home", to: Routes.page_path(@conn, :index) %>
   <%= link "Add Admin", to: Routes.admin_page_path(@conn, :new) %>
   <%= link "View Admins", to: Routes.admin_page_path(@conn, :list_admins) %>
   <%= link "View Users", to: Routes.user_page_path(@conn, :index) %>
@@ -14,10 +16,10 @@
   <a id="announcement">Announcements</a>
   <div id="announcement-option-container">
     <%= if announcement() == 0 do %>
-    <%= link "New Announcement", to: Routes.announcement_page_path(@conn, :new) %>
+    <%= link "New", to: Routes.announcement_page_path(@conn, :new) %>
     <% else %>
     <%= link "Edit", to: Routes.announcement_page_path(@conn, :edit, announcement()) %>
-    <%= link "Delete", to: "#" %>
+    <%= link "Delete", to: Routes.announcement_page_path(@conn, :delete, announcement()), method: :delete, data: [confirm: "Are you sure?"] %>
     <% end %>
   </div>
   <% end %>
@@ -27,8 +29,7 @@
     <img src="/images/profile-icon.png"/>
     <p><%= link username(@conn.assigns.current_user.first_name, @conn.assigns.current_user.last_name), to: Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %></p>
   </div>
-  <%= link "Edit Name", to: Routes.user_account_path(@conn, :edit_name, @conn.assigns.current_user.id) %>
-  <%= link "Change Password", to: Routes.user_account_path(@conn, :change_password, @conn.assigns.current_user.id) %>
+  <%= link "Home", to: Routes.page_path(@conn, :index) %>
   <%= link "Books", to: Routes.book_page_path(@conn, :index) %>
   <%= link "Transactions", to: "#" %>
   <% end %>
@@ -52,16 +53,3 @@
     <%= link "Sign In", to: Routes.session_path(@conn, :new) %>
     <% end %>
 </div>
-
-<script>
-  var option-container = document.getElementById("announcement-option-container").style.display;
-  var announcement = document.getElementById("announcement");
-
-  announcement.addEventLister("click", function() {
-      if(option-container == "none") {
-	  option-container = "block";
-      } else {
-	  option-container = "none";
-      }
-  });
-</script>

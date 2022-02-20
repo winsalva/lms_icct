@@ -56,7 +56,7 @@ defmodule AppWeb.GlobalHelpers do
   end
 
   @doc """
-  Converts plain to to html.
+  Converts plain text to html.
   """
   def as_html(string) do
     case App.as_html(string) do

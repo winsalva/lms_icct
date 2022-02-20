@@ -22,10 +22,10 @@
           <img src="/images/book.png"/>
         <div class="upload-title-description">
           <p class="upload-title">
-            <strong><%= book.title %> • <%= book.category %></strong>
+            <strong><%= book.title %></strong>
           </p>
           <div class="upload-description">
-            <%= book.author %>
+            Available: <%= book.available %>
           </div>
         </div>
         </a>

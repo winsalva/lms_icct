@@ -34,6 +34,10 @@
   <%= number_input f, :copies, placeholder: "Enter number of book copies.." %>
   <%= error_tag f, :copies %>
 
+  <label>Available</label>
+  <%= number_input f, :available, placeholder: "Enter update of available copies.." %>
+  <%= error_tag f, :available %>
+
   <%= submit "Save" %>
   <% end %>
 </div>

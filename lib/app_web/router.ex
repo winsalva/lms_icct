@@ -55,6 +55,7 @@ defmodule AppWeb.Router do
     get "/accounts/:id/change-password", AccountController, :change_password
     put "/accounts/change-password", AccountController, :update_password
     post "/accounts/approves/:id", AccountController, :approve_disapprove_user
+    post "/accounts/reset-password/:id", AccountController, :reset_password
   end
 
 

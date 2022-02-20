@@ -42,4 +42,12 @@ defmodule App.Query.Announcement do
     |> Announcement.changeset(params)
     |> Repo.update()
   end
+
+  @doc """
+  Deletes an announcement by its id
+  """
+  def delete_announcement(id) do
+    get_announcement(id)
+    |> Repo.delete()
+  end
 end

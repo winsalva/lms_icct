@@ -13,7 +13,11 @@
 	<li><strong>TITLE:</strong> <%= @book.title %></li>
 	<li><strong>AUTHOR:</strong> <%= @book.author %></li>
 	<li><strong>CATEGORY:</strong> <%= @book.category %></li>
+	<%= if @conn.assigns.current_admin do %>
 	<li><strong>COPIES:</strong> <%= @book.copies %></li>
+	<% end %>
+	<li><strong>AVAILABLE:</strong> <%= @book.available %></li>
+	<li><strong>LEND DURATION:</strong> <%= @book.lend_duration %> days</li>
       </ul>
     </div>
     <img src="/images/book.png"/>

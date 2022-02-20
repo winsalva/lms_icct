@@ -7,7 +7,7 @@ defmodule AppWeb.Announcement.PageController do
 
   def new(conn, _params) do
     announcement = Announcement.new_announcement
-    render(conn, :new, announcement: announcement)
+    render(conn, :new, announcement: announcement)  
   end
 
   def create(conn, %{"announcement" => params}) do
@@ -18,7 +18,7 @@ defmodule AppWeb.Announcement.PageController do
       {:ok, _} ->
         conn
 	|> put_flash(:info, "Announcement created!")
-	|> redirect(to: Routes.page_path(conn, :home))
+	|> redirect(to: Routes.admin_page_path(conn, :index))
       {:error, %Ecto.Changeset{} = announcement} ->
         conn
 	|> render(:new, announcement: announcement)
@@ -27,7 +27,7 @@ defmodule AppWeb.Announcement.PageController do
 
 
   def edit(conn, %{"id" => id}) do
-    announcement = Announcement.edit_announcement(id);
+    announcement = Announcement.edit_announcement(id)
     render(conn, :edit, announcement: announcement)
   end
 
@@ -39,10 +39,26 @@ defmodule AppWeb.Announcement.PageController do
       {:ok, _} ->
         conn
         |> put_flash(:info, "Announcement content updated successfully!")
-        |> redirect(to: Routes.page_path(conn, :home))
+        |> redirect(to: Routes.admin_page_path(conn, :index))
       {:error, %Ecto.Changeset{} = announcement} ->
         conn
         |> render(:edit, announcement: announcement)
+    end
+  end
+
+  @doc """
+  Deletes an announcement
+  """
+  def delete(conn, %{"id" => id}) do
+    case Announcement.delete_announcement(id) do
+      {:ok, _announcement} ->
+        conn
+	|> put_flash(:info, "Announcement deleted successfully!")
+	|> redirect(to: Routes.admin_page_path(conn, :index))
+      {:error, _changeset} ->
+        conn
+	|> put_flash(:info, "Something went wrong!")
+	|> redirect(to: Routes.admin_page_path(conn, :index))
     end
   end
 end

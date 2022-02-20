@@ -3,6 +3,11 @@
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: username(@user.first_name, @user.last_name)) %>
 
 <div class="sub-container">
+  <div class="user-options">
+    <%= link "Edit Name", to: Routes.user_account_path(@conn, :edit_name, @conn.assigns.current_user.id) %>
+  <%= link "Change Password", to: Routes.user_account_path(@conn, :change_password, @conn.assigns.current_user.id) %>
+    <%= link "Reset Password", to: Routes.user_account_path(@conn, :reset_password, @user.id), method: :post %>
+  </div>
 
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
 

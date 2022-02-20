@@ -1,7 +1,7 @@
 defmodule AppWeb.PageController do
   use AppWeb, :controller
 
-  alias App.Query.Book
+  alias App.Query.Announcement
   
   def index(conn, _params) do
     conn
@@ -9,8 +9,9 @@ defmodule AppWeb.PageController do
   end
 
   def home(conn, _params) do
+    announcement = Announcement.list_announcements
     conn
-    |> render("index.html")
+    |> render("index.html", announcement: announcement)
   end
 
   def term_of_use(conn, _params) do
