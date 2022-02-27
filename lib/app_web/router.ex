@@ -19,6 +19,8 @@ defmodule AppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/users/all", PageController, :users
+    get "/books/all", PageController, :books
     get "/home", PageController, :home
     get "/terms-of-use", PageController, :term_of_use
     get "/privacy-policy", PageController, :privacy_policy

@@ -17,18 +17,18 @@
     color: #136ad5;
 }
 
-#announcement-option-container {
+#announcement-container {
     display: block;
 }
 
-#announcement-option-container a {
+#announcement-container a {
     background-color: #fff;
     color: #136ad5;
     border-bottom: .1px solid #eee;
     padding: 8px;
     font-size: 14px;
 }
-#announcement-option-container a:hover {
+#announcement-container a:hover {
     background-color: #0099e5;
     color: #fff;
 }
@@ -65,7 +65,7 @@ nav #schoolname {
     position: relative;
 }
 nav #tagname {
-    margin: 0;
+    margin: -5px;
     padding: 0 0 10px 0;
     font-size: 12px;
     color: #808080;

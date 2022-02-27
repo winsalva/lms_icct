@@ -1,0 +1,20 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
+  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Users") %>
+
+  <div class="sub-container">
+    <div class="menu-categories-container">
+      <a href="<%= Routes.admin_page_path(@conn, :list_admins) %>">
+	<div class="menu-category bg-border-lightblue">
+	  Admins <%= length(@admins) %>
+	</div>
+      </a>
+
+      <a href="<%= Routes.user_page_path(@conn, :index) %>">
+	<div class="menu-category bg-border-lightblue">
+	  Users <%= length(@users) %>
+	</div>
+      </a>
+    </div>
+  </div>
+</div>

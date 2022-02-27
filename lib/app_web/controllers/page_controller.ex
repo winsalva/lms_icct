@@ -1,7 +1,23 @@
 defmodule AppWeb.PageController do
   use AppWeb, :controller
 
-  alias App.Query.Announcement
+  plug :ensure_admin_logged_in when action in [:users]
+  alias App.Query.{Announcement, User, Admin, Book}
+
+  def users(conn, _params) do
+    admins = Admin.list_admins()
+    users = User.list_users
+    params = [
+      admins: admins,
+      users: users
+    ]
+    render(conn, "users.html", params)
+  end
+
+  def books(conn, _params) do
+    books = Book.list_books()
+    render(conn, "books.html", books: books)
+  end
   
   def index(conn, _params) do
     conn

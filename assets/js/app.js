@@ -38,3 +38,6 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+import {announcement} from "./util";
+
+announcement()
