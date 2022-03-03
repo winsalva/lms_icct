@@ -9,7 +9,8 @@ defmodule AppWeb.Admin.PageController do
     Admin,
     User,
     Book,
-    Lend
+    Lend,
+    Announcement
   }
 
   def list_admins(conn, _params) do
@@ -22,12 +23,14 @@ defmodule AppWeb.Admin.PageController do
     users = User.list_users
     books = Book.list_books
     lends = Lend.list_lends
+    announcement = Announcement.list_announcements
 
     assigns = [
       admins: admins,
       users: users,
       books: books,
-      lends: lends
+      lends: lends,
+      announcement: announcement
     ]
     render(conn, :index, assigns)
   end

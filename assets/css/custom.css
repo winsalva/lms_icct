@@ -18,7 +18,7 @@
 }
 
 #announcement-container {
-    display: block;
+    display: none;
 }
 
 #announcement-container a {

@@ -14,6 +14,8 @@
         <li><strong>AUTHOR:</strong> <%= @book.author %></li>
         <li><strong>CATEGORY:</strong> <%= @book.category %></li>
         <li><strong>COPIES:</strong> <%= @book.copies %></li>
+	<li><strong>AVAILABLE:</strong> <%= @book.available %></li>
+        <li><strong>LEND DURATION:</strong> <%= @book.lend_duration %> days</li>
       </ul>
     </div>
     <img src="/images/book.png"/>
@@ -28,7 +30,7 @@
   <%= error_tag f, :pickup_date %>
   
   <label>
-    <%= checkbox f, :accept_term %> I accept terms and conditions
+    <%= checkbox f, :accept_term %> I accept <%= link "terms and conditions.", to: "#" %>
   </label>
   <%= error_tag f, :accept_term %>
   

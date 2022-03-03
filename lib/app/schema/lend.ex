@@ -11,6 +11,7 @@ defmodule App.Schema.Lend do
     field :penalty, :integer
     field :accept_term, :boolean, default: false
     field :pickup_date, :string
+    field :status, :string
     timestamps()
   end
 
@@ -20,14 +21,16 @@ defmodule App.Schema.Lend do
     :date_returned,
     :penalty,
     :accept_term,
-    :pickup_date
+    :pickup_date,
+    :status
   ]
 
   @required_fields [
     :book_id,
     :user_id,
     :accept_term,
-    :pickup_date
+    :pickup_date,
+    :status
   ]
 
   @doc false

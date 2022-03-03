@@ -1,0 +1,33 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
+  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Approved Requested Books") %>
+  <div class="sub-container">
+
+    <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+
+    <%= if @approved_requested_books == [] do %>
+    <h3 align="center">No records yet</h3>
+    <% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Student Name</th>
+        <th>Pick-Up Date</th>
+	<th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for approved_request <- @approved_requested_books do %>
+          <tr>
+            <td><%= link approved_request.book.title, to: Routes.book_page_path(@conn, :show, approved_request.book.id) %></td>
+            <td><%= approved_request.book.author %></td>
+            <td><%= link approved_request.user.first_name, to: Routes.user_account_path(@conn, :show, approved_request.user.id) %></td>
+            <td><%= approved_request.pickup_date %></td>
+	    <td><%= link "Release", to: Routes.lend_page_path(@conn, :release_book, approved_request.id), method: :post %></td>
+          </tr>
+          <% end %>
+    </tbody>
+  </table>
+  <% end %>

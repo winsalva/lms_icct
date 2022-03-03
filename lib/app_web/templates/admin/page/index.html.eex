@@ -1,35 +1,23 @@
 <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 <div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Admin Dashboard") %>
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Announcement") %>
 
 <div class="sub-container">
-
-  <div class="menu-categories-container">
-
-    <a href="<%= Routes.admin_page_path(@conn, :list_admins) %>">
-    <div class="menu-category bg-border-lightblue">
-      Admins <%= length(@admins) %>
-    </div>
-    </a>
-
-    <a href="<%= Routes.user_page_path(@conn, :index) %>">
-    <div class="menu-category bg-border-lightblue">
-      Users <%= length(@users) %>
-    </div>
-    </a>
-
-    <a href="<%= Routes.book_page_path(@conn, :index) %>">
-    <div class="menu-category bg-border-lightblue">
-      Books <%= length(@books) %>
-    </div>
-    </a>
-
-    <a href="<%= Routes.lend_page_path(@conn, :index) %>">
-    <div class="menu-category bg-border-lightblue">
-      Lends <%= length(@lends) %>
-    </div>
-    </a>
-   
+  <div class="user-options">
+    <%= if announcement() == 0 do %>
+    <%= link "New Announcement", to: Routes.announcement_page_path(@conn, :new) %>
+    <% else %>
+    <%= link "Edit", to: Routes.announcement_page_path(@conn, :edit, announcement()) %>
+    <%= link "Delete", to: Routes.announcement_page_path(@conn, :delete, announcement()), method: :delete, data: [confirm: "Are you sure?"] %>
+    <% end %>
+  </div>
+  
+  <div  class="landing-page-contents">
+    <%= if @announcement == [] do %>
+    <p align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <% else %>
+    <%= raw(as_html(@announcement.body)) %>
+    <% end %>
   </div>
   <br>
 </div>

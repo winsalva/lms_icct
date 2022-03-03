@@ -12,7 +12,7 @@
 
       <a href="<%= Routes.user_page_path(@conn, :index) %>">
 	<div class="menu-category bg-border-lightblue">
-	  Users <%= length(@users) %>
+	  Students <%= length(@users) %>
 	</div>
       </a>
     </div>

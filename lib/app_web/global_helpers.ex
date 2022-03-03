@@ -1,5 +1,12 @@
 defmodule AppWeb.GlobalHelpers do
 
+  @doc """
+  Accepts a timestamp and return date year, month and day..
+  """
+  def get_date(date) do
+    "#{date.year}-#{date.day}-#{date.month}"
+  end
+
   def announcement do
     announcement = App.Query.Announcement.list_announcements
     if announcement == [] do

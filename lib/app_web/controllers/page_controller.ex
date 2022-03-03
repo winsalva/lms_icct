@@ -1,8 +1,27 @@
 defmodule AppWeb.PageController do
   use AppWeb, :controller
 
-  plug :ensure_admin_logged_in when action in [:users]
-  alias App.Query.{Announcement, User, Admin, Book}
+  plug :ensure_admin_logged_in when action in [:users, :transactions]
+  alias App.Query.{Announcement, User, Admin, Book, Lend}
+
+  @doc """
+  Get all transaction records.
+  """
+  def transactions(conn, _params) do
+    released_books = Lend.list_released_books()
+    approved_requested_books = Lend.list_approved_requested_books()
+    requested_books = Lend.list_requested_books()
+    returned_books = Lend.list_returned_books()
+
+    params = [
+      returned_books: returned_books,
+      released_books: released_books,
+      approved_requested_books: approved_requested_books,
+      requested_books: requested_books
+    ]
+    
+    render(conn, "transactions.html", params)
+  end
 
   def users(conn, _params) do
     admins = Admin.list_admins()

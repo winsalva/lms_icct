@@ -3,8 +3,18 @@
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Books") %>
 
 <div class="sub-container">
-  <br>
-  <h2 class="center">Books here</h2>
-  <br>
+  <div class="menu-categories-container">
+    <a href="<%= Routes.book_page_path(@conn, :new) %>">
+      <div class="menu-category bg-border-lightblue">
+	Add Book
+      </div>
+    </a>
+
+    <a href="<%= Routes.book_page_path(@conn, :index) %>">
+      <div class="menu-category bg-border-lightblue">
+	View Books
+      </div>
+    </a>
+  </div>
 </div>
 </div>

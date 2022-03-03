@@ -4,9 +4,13 @@
 
 <div class="sub-container">
   <div class="user-options">
+    <%= if @conn.assigns.current_user do %>
     <%= link "Edit Name", to: Routes.user_account_path(@conn, :edit_name, @conn.assigns.current_user.id) %>
-  <%= link "Change Password", to: Routes.user_account_path(@conn, :change_password, @conn.assigns.current_user.id) %>
-    <%= link "Reset Password", to: Routes.user_account_path(@conn, :reset_password, @user.id), method: :post %>
+    <%= link "Change Password", to: Routes.user_account_path(@conn, :change_password, @conn.assigns.current_user.id) %>
+    <% end %>
+    <%= if @conn.assigns.current_admin do %>
+  <%= link "Reset Password", to: Routes.user_account_path(@conn, :reset_password, @user.id), method: :post %>
+  <% end %>
   </div>
 
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
@@ -17,13 +21,13 @@
   <table>
     <thead>
       <tr>
-        <th colspan="7"><h3 align="center">Borrowed Books</h3></th>
+        <th colspan="7"><h3 align="center">Transaction Records</h3></th>
       </tr>
       <tr>
         <th>Title</th>
         <th>Author</th>
-        <th>Copies</th>
         <th>Issued</th>
+	<th>Status</th>
         <th>Return Date</th>
 	<th>Penalty</th>
       </tr>
@@ -34,15 +38,20 @@
           <tr>
             <td><%= link borrow.book.title, to: Routes.book_page_path(@conn, :show, borrow.book.id) %></td>
             <td><%= borrow.book.author %></td>
-            <td><%= borrow.copies %></td>
-            <td><%= borrow.inserted_at %></td>
+            <td><%= borrow.updated_at %></td>
+	    <%= case borrow.status do %>
+	    <% "Requested" -> %>
+      <td class="color-lightblue"><%= borrow.status %></td>
+      <% "Approved" -> %>
+      <td class="color-lightblue"><%= borrow.status %></td>
+      <% "Released" -> %>
+      <td class="color-green"><%= borrow.status %></td>
+      <% "Returned" -> %>
+      <td class="color-yellow"><%= borrow.status %></td>
+      <% end %>
+	    
             <td><%= borrow.expected_date_return %></td>
-	    <td><%= calculate_penalty(borrow.expected_date_return, borrow.date_returned) %></td>
-	    <%= if borrow.date_returned == nil do %>
-	    <td><%= link "Return", to: Routes.lend_page_path(@conn, :return_lend, borrow.id) %></td>
-	    <% else %>
-	    <td><%= link "Returned", to: "" %></td>
-	    <% end %>
+	    <td>
           </tr>
 	  
           <% end %>

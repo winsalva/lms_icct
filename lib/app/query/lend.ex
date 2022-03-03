@@ -5,6 +5,58 @@ defmodule App.Query.Lend do
 
   import Ecto.Query, warn: false
 
+  @doc """
+  List all requested books
+  """
+  def list_requested_books do
+    query =
+      from l in Lend,
+        where: l.status == "Requested",
+	order_by: [desc: :inserted_at],
+	preload: [:user, :book]
+
+    Repo.all(query)
+  end
+
+  @doc """
+  List all returned books
+  """
+  def list_returned_books do
+    query =
+      from l in Lend,
+        where: l.status == "Returned",
+        order_by: [desc: :updated_at],
+        preload: [:user, :book]
+
+    Repo.all(query)
+  end
+
+  @doc """
+  List all approved requested books
+  """
+  def list_approved_requested_books do
+    query =
+      from l in Lend,
+        where: l.status == "Approved",
+	order_by: [desc: :inserted_at],
+	preload: [:user, :book]
+
+    Repo.all(query)
+  end
+
+  @doc """
+  List all released books
+  """
+  def list_released_books do
+    query =
+      from l in Lend,
+        where: l.status == "Released",
+        order_by: [desc: :inserted_at],
+        preload: [:user, :book]
+
+    Repo.all(query)
+  end
+
   def new_lend do
     %Lend{}
     |> Lend.changeset()

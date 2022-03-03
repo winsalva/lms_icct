@@ -21,6 +21,7 @@ defmodule AppWeb.Router do
     get "/", PageController, :index
     get "/users/all", PageController, :users
     get "/books/all", PageController, :books
+    get "/transactions/all", PageController, :transactions
     get "/home", PageController, :home
     get "/terms-of-use", PageController, :term_of_use
     get "/privacy-policy", PageController, :privacy_policy
@@ -78,7 +79,14 @@ defmodule AppWeb.Router do
     get "/new/:book_id", PageController, :new
     post "/", PageController, :create
     get "/", PageController, :index
-    get "/:id", PageController, :return_lend
+    get "/books/:id", PageController, :return_lend
+    post "/books/approve-requests/:id", PageController, :approve_request
+    post "/books/release-books/:id", PageController, :release_book
+    post "/books/return-book/:id", PageController, :return_book
+    get "/requested-books", PageController, :requested_books
+    get "/approved-requested-books", PageController, :approved_requested_books
+    get "/released-books", PageController, :released_books
+    get "/returned-books", PageController, :returned_books
 
   end
 

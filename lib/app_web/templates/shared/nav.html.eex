@@ -8,22 +8,8 @@
   <%= link "Home", to: Routes.page_path(@conn, :index) %>
   <%= link "Users", to: Routes.page_path(@conn, :users) %>
   <%= link "Books", to: Routes.page_path(@conn, :books) %>
-  <%= link "Add Admin", to: Routes.admin_page_path(@conn, :new) %>
-  <%= link "View Admins", to: Routes.admin_page_path(@conn, :list_admins) %>
-  <%= link "View Users", to: Routes.user_page_path(@conn, :index) %>
-  <%= link "Add Book", to: Routes.book_page_path(@conn, :new) %>
-  <%= link "View Books", to: Routes.book_page_path(@conn, :index) %>
-  <%= link "Lended Books", to: Routes.lend_page_path(@conn, :index) %>
-  <%= link "Transactions", to: "#" %>
-  <a onclick="toggleAnnouncement();">Announcements</a>
-  <div id="announcement-container">
-    <%= if announcement() == 0 do %>
-    <%= link "New", to: Routes.announcement_page_path(@conn, :new) %>
-    <% else %>
-    <%= link "Edit", to: Routes.announcement_page_path(@conn, :edit, announcement()) %>
-    <%= link "Delete", to: Routes.announcement_page_path(@conn, :delete, announcement()), method: :delete, data: [confirm: "Are you sure?"] %>
-    <% end %>
-  </div>
+  <%= link "Transactions", to: Routes.page_path(@conn, :transactions) %>
+  <%= link "Announcements", to: Routes.admin_page_path(@conn, :index) %>
   <% end %>
 
   <%= if @conn.assigns.current_user do %>
@@ -33,7 +19,6 @@
   </div>
   <%= link "Home", to: Routes.page_path(@conn, :index) %>
   <%= link "Books", to: Routes.book_page_path(@conn, :index) %>
-  <%= link "Transactions", to: "#" %>
   <% end %>
 
   <%= if @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
