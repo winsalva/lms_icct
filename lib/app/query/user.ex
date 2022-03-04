@@ -22,6 +22,14 @@ defmodule App.Query.User do
     Repo.get(User, id)
   end
 
+  @doc """
+  Delete a user.
+  """
+  def delete_user(id) do
+    get_user(id)
+    |> Repo.delete()
+  end
+
   def edit_user(id) do
     get_user(id)
     |> User.changeset()

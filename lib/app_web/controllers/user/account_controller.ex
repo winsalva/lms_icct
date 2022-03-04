@@ -123,4 +123,20 @@ defmodule AppWeb.User.AccountController do
       |> redirect(to: Routes.page_path(conn, :index))
     end
   end
+
+  @doc """
+  Delete a user's account.
+  """
+  def delete(conn, %{"id" => id}) do
+    case User.delete_user(id) do
+      {:ok, user} ->
+        conn
+	|> put_flash(:info, "#{user.first_name}\'s account was deleted successfully.")
+	|> redirect(to: Routes.user_page_path(conn, :index))
+      {:error, _} ->
+        conn
+	|> put_flash(:error, "Something went wrong.")
+	|> redirect(to: Routes.user_page_path(conn, :index))
+    end
+  end
 end

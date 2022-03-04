@@ -38,7 +38,6 @@ defmodule App.Schema.Lend do
     lend
     |> cast(params, @allowed_fields)
     |> validate_required(@required_fields)
-    |> assoc_constraint(:user)
     |> assoc_constraint(:book)
     |> validate_acceptance(:accept_term, message: "Please accept terms and conditions")
   end
