@@ -16,6 +16,7 @@
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
 
   <%= if @borrows == [] do %>
+  <br />
   <h3 align="center">No records yet</h3>
   <% else %>
   <table>
@@ -26,8 +27,8 @@
       <tr>
         <th>Title</th>
         <th>Author</th>
-        <th>Issued</th>
 	<th>Status</th>
+	<th>Issued Date</th>
         <th>Return Date</th>
 	<th>Penalty</th>
       </tr>
@@ -38,18 +39,18 @@
           <tr>
             <td><%= link borrow.book.title, to: Routes.book_page_path(@conn, :show, borrow.book.id) %></td>
             <td><%= borrow.book.author %></td>
-            <td><%= borrow.updated_at %></td>
 	    <%= case borrow.status do %>
 	    <% "Requested" -> %>
-      <td class="color-lightblue"><%= borrow.status %></td>
-      <% "Approved" -> %>
-      <td class="color-lightblue"><%= borrow.status %></td>
-      <% "Released" -> %>
-      <td class="color-green"><%= borrow.status %></td>
-      <% "Returned" -> %>
-      <td class="color-yellow"><%= borrow.status %></td>
-      <% end %>
-	    
+              <td class="color-lightblue"><%= borrow.status %></td>
+            <% "Approved" -> %>
+              <td class="color-lightblue"><%= borrow.status %></td>
+            <% "Released" -> %>
+              <td class="color-green"><%= borrow.status %></td>
+            <% "Returned" -> %>
+              <td class="color-yellow"><%= borrow.status %></td>
+            <% end %>
+      
+	    <td><%= borrow.inserted_at %></td>
             <td><%= borrow.expected_date_return %></td>
 	    <td>
           </tr>

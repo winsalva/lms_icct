@@ -2,7 +2,14 @@ defmodule AppWeb.PageController do
   use AppWeb, :controller
 
   plug :ensure_admin_logged_in when action in [:users, :transactions]
-  alias App.Query.{Announcement, User, Admin, Book, Lend}
+  
+  alias App.Query.{
+    Announcement,
+    User,
+    Admin,
+    Book,
+    Lend
+  }
 
   @doc """
   Get all transaction records.
@@ -24,18 +31,50 @@ defmodule AppWeb.PageController do
   end
 
   def users(conn, _params) do
-    admins = Admin.list_admins()
-    users = User.list_users
     params = [
-      admins: admins,
-      users: users
+      admins: nil,
+      students: nil
     ]
     render(conn, "users.html", params)
   end
 
+  @doc """
+  Search user.
+  """
+  def search_users(conn, %{"category" => category, "query" => query}) do
+    if category == "Admin" do
+      search_result = Admin.search_admin(query)
+      params = [
+	admins: search_result,
+	students: nil
+      ]
+      render(conn, "users.html", params)
+    else
+      search_result = User.search_student(query)
+      params = [
+        admins: nil,
+        students: search_result
+      ]
+      render(conn, "users.html", params)
+    end
+  end
+
   def books(conn, _params) do
-    books = Book.list_books()
-    render(conn, "books.html", books: books)
+    params = [
+      books: nil
+    ]
+    render(conn, "books.html", params)
+  end
+
+  @doc """
+  Search book
+  """
+  def search_books(conn, %{"category" => category, "title" => title}) do
+    result = Book.search_book(category, title)
+    params = [
+      books: result
+    ]
+    render(conn, "books.html", params)
   end
   
   def index(conn, _params) do

@@ -6,23 +6,23 @@
 <%= form_for @admin, Routes.admin_page_path(@conn, :create), fn f -> %>
 <%= if @admin.action do %>
 <div class="alert alert-danger">
-  <p>Something went wrong.Check the errors below.</p>
+  <p>Oops, something went wrong. Pĺease check the errors below.</p>
 </div>
 <% end %>
 <label>Username</label>
-<%= text_input f, :username %>
+<%= text_input f, :username, placeholder: "Enter new admin username.." %>
 <%= error_tag f, :username %>
 
 <label>Email</label>
-<%= text_input f, :email %>
+<%= text_input f, :email, placeholder: "Enter new admin email.." %>
 <%= error_tag f, :email %>
 
 <label>Password</label>
-<%= text_input f, :password %>
+<%= text_input f, :password, placeholder: "At least 8 characters.." %>
 <%= error_tag f, :password %>
 
 <label>Confirm password</label>
-<%= text_input f, :password_confirmation %>
+<%= text_input f, :password_confirmation, placeholder: "Re-type password.." %>
 <%= error_tag f, :password_confirmation %>
 
 <%= submit "Save" %>

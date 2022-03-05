@@ -13,7 +13,9 @@
         <li><strong>TITLE:</strong> <%= @book.title %></li>
         <li><strong>AUTHOR:</strong> <%= @book.author %></li>
         <li><strong>CATEGORY:</strong> <%= @book.category %></li>
+	<%= if @conn.assigns.current_admin do %>
         <li><strong>COPIES:</strong> <%= @book.copies %></li>
+	<% end %>
 	<li><strong>AVAILABLE:</strong> <%= @book.available %></li>
         <li><strong>LEND DURATION:</strong> <%= @book.lend_duration %> days</li>
       </ul>
@@ -30,13 +32,10 @@
   <%= error_tag f, :pickup_date %>
   
   <label>
-    <%= checkbox f, :accept_term %> I accept <%= link "terms and conditions.", to: "#" %>
+    <%= checkbox f, :accept_term %> I accept <%= link "terms and conditions.", to: "#", data: [confirm: "Accepting our terms and conditions means you allow us to cancel your book reservation when you failed to pick it within 1-2 days upon approval. You are also held responsible to pay penalties if you failed to return the book within allowed lend days."] %>
   </label>
   <%= error_tag f, :accept_term %>
-  
-
   <br>
-  
   <%= submit "Request Book" %>
   <% end %>
 </div>

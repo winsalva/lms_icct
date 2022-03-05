@@ -3,18 +3,77 @@
   <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Users") %>
 
   <div class="sub-container">
-    <div class="menu-categories-container">
-      <a href="<%= Routes.admin_page_path(@conn, :list_admins) %>">
-	<div class="menu-category bg-border-lightblue">
-	  Admins <%= length(@admins) %>
-	</div>
-      </a>
+    <%= if @conn.assigns.current_admin do %>
+    <div class="user-options">
+      <%= if @conn.assigns.current_admin.super_admin do %>
+      <%= link "Add New Admin", to: Routes.admin_page_path(@conn, :new) %>
+      <%= link "View Admin Accounts", to: Routes.admin_page_path(@conn, :list_admins) %>
+      <% end %>
+      <%= link "View Student Accounts", to: Routes.user_page_path(@conn, :index) %>                           </div>
+    <% end %>
 
-      <a href="<%= Routes.user_page_path(@conn, :index) %>">
-	<div class="menu-category bg-border-lightblue">
-	  Students <%= length(@users) %>
-	</div>
-      </a>
+    <%= form_for @conn, Routes.page_path(@conn, :search_users), fn f -> %>
+    <label>CATEGORY:
+      <%= select f, :category, [options: ["Admin": "Admin", "Student": "Student"]] %>
+    </label>
+    <div style="display:flex;">
+    <%= text_input f, :query, placeholder: "Search username or lastname.." %>
+    <%= submit "Search" %>
     </div>
-  </div>
+    <% end %>
+
+    <%= cond do %>
+    <% @admins == nil && @students == nil -> %>
+    <p></p>
+    <% @admins != nil && @admins != [] -> %>
+    <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for admin <- @admins do %>
+          <tr>
+            <%= if @current_admin.id == admin.id do %>
+            <td><%= link admin.username, to: Routes.admin_page_path(@conn, :show, admin.id) %></td>
+            <% else %>
+            <td><%= admin.username %></td>
+            <% end %>
+          <td><%= admin.email %></td>
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+    <% @students != nil && @students != [] -> %>
+      <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Approved?</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for user <- @students do %>
+        <tr>
+          <td><%= link username(user.first_name, user.last_name), to: Routes.user_account_path(@conn, :show, user.id) %></td>
+          <td><%= user.student_id %></td>
+          <td><%= user.email %></td>
+          <%= if user.approve do %>
+          <td><%= link "True", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></td>
+          <% else %>
+          <td><%= link "False", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></td>
+          <% end %>
+          <td><%= link "Delete", to: Routes.user_account_path(@conn, :delete, user.id), method: :delete, class: "color-red", data: [confirm: "Are you sure to delete this account?"] %></td>
+        </tr>
+        <% end %>
+  </tbody>
+      </table>
+      <% true -> %>
+    <p>No results found!</p>
+    <% end %>
 </div>

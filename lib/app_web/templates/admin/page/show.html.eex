@@ -14,11 +14,6 @@
         <td><%= link "Edit", to: Routes.admin_account_path(@conn, :edit_username, @admin.id) %></td>
       </tr>
       <tr>
-        <td><b>Email: </b></td>
-        <td><%= @admin.email %></td>
-        <td><%= link "Edit", to: "#" %></td>
-      </tr>
-      <tr>
         <td><b>Password: </b></td>
         <td>******</td>
         <td><%= link "Edit", to: Routes.admin_account_path(@conn, :change_password, @admin.id) %></td>

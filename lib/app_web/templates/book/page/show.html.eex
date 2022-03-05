@@ -35,5 +35,6 @@
     <%= link "Already Borrowed", to: "" %>
     <% end %>
   </div>
+  <br/>
 </div>
 </div>

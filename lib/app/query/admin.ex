@@ -3,6 +3,17 @@ defmodule App.Query.Admin do
   alias App.Schema.Admin
   import Ecto.Query, warn: false
 
+  @doc """
+  Search admin by username.
+  """
+  def search_admin(username) do
+    Repo.all(Admin)
+    |> Enum.filter(fn a -> String.upcase(a.username) == String.upcase(username) end)
+  end
+
+  @doc """
+  Checks if there is already an admin registered or not.
+  """
   def has_admin? do
     case Repo.all(Admin) do
       [] -> nil

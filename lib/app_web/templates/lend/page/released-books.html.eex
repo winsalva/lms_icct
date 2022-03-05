@@ -6,6 +6,7 @@
     <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
 
     <%= if @released_books == [] do %>
+    <br/>
     <h3 align="center">No records yet</h3>
     <% else %>
   <table>

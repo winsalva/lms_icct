@@ -3,8 +3,9 @@
 <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Users") %>
 
 <div class="sub-container">
-<%= if @users == [] do %>
-<h3 class="center">No users yet.</h3>
+  <%= if @users == [] do %>
+  <br/>
+  <h3 class="center">No records yet.</h3>
 <% else %>
 <table>
   <thead>
@@ -12,7 +13,8 @@
       <th>Name</th>
       <th>ID</th>
       <th>Email</th>
-      <th>Approve</th>
+      <th>Approve?</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>

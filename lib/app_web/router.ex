@@ -20,7 +20,9 @@ defmodule AppWeb.Router do
 
     get "/", PageController, :index
     get "/users/all", PageController, :users
+    post "/users/all", PageController, :search_users
     get "/books/all", PageController, :books
+    post "/books/all", PageController, :search_books
     get "/transactions/all", PageController, :transactions
     get "/home", PageController, :home
     get "/terms-of-use", PageController, :term_of_use

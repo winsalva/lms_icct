@@ -5,6 +5,17 @@ defmodule App.Query.Book do
 
   import Ecto.Query, warn: false
 
+  @doc """
+  Search book.
+  """
+  def search_book(category, title) do
+    query =
+      from b in Book,
+        where: b.category == ^category
+
+    Repo.all(query)
+    |> Enum.filter(fn b -> String.upcase(b.title) == String.upcase(title) end)
+  end
 
   def new_book do
     %Book{}

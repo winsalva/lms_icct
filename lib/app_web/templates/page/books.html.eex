@@ -1,20 +1,57 @@
 <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 <div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Books") %>
+  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Books") %>
+  <div class="sub-container">
+    <%= if @conn.assigns.current_admin do %>
+    <div class="user-options">
+      <%= link "Add New Book", to: Routes.book_page_path(@conn, :new) %>
+      <%= link "View All Books", to: Routes.book_page_path(@conn, :index) %>
+    </div>
+    <% end %>
+    <%= if @conn.assigns.current_user do %>
+    <div class="user-options">
+      <%= link "View All Books", to: Routes.book_page_path(@conn, :index) %>
+    </div>
+    <% end %>
+    
+    <%= form_for @conn, Routes.page_path(@conn, :search_books), fn f -> %>
+    <label>Category: 
+  <%= select f, :category, [options: [
+      "Circulation": "Circulation",
+      "Filipiniana": "Filipiniana",
+      "Fiction": "Fiction"
+      ]] %>
+  </label>
+    <div style="display:flex;">
+    <%= text_input f, :title, placeholder: "Search book title.." %>
+    <%= submit "Search" %>
+    </div>
+    <% end %>
 
-<div class="sub-container">
-  <div class="menu-categories-container">
-    <a href="<%= Routes.book_page_path(@conn, :new) %>">
-      <div class="menu-category bg-border-lightblue">
-	Add Book
+  <%= cond do %>
+  <% @books == nil -> %>
+  <p></p>
+  <% @books != nil && @books != [] -> %>
+  <div class="uploads-container">
+      <%= for book <- @books do %>
+      <div class="upload-container" data-aos="fade-up">
+        <a href="<%= Routes.book_page_path(@conn, :show, book.id) %>">
+          <img src="/images/book.png"/>
+        <div class="upload-title-description">
+          <p class="upload-title">
+            <strong><%= book.title %></strong>
+          </p>
+          <div class="upload-description">
+            Available: <%= book.available %>
+          </div>
+        </div>
+        </a>
       </div>
-    </a>
-
-    <a href="<%= Routes.book_page_path(@conn, :index) %>">
-      <div class="menu-category bg-border-lightblue">
-	View Books
-      </div>
-    </a>
+      <% end %>
   </div>
-</div>
+  <% true -> %>
+      <p>No results found!</p>
+      <% end %>
+  </div>
+  <br>
 </div>

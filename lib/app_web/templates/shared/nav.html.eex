@@ -3,7 +3,7 @@
   <%= if @conn.assigns.current_admin do %>
   <div class="icon-container">
     <img src="/images/profile-icon.png"/>
-    <p><%= link "Admin Dashboard", to: Routes.admin_page_path(@conn, :index) %></p>
+    <p><%= link "Admin Dashboard", to: Routes.admin_page_path(@conn, :show, @conn.assigns.current_admin.id) %></p>
   </div>
   <%= link "Home", to: Routes.page_path(@conn, :index) %>
   <%= link "Users", to: Routes.page_path(@conn, :users) %>
@@ -16,9 +16,10 @@
   <div class="icon-container">
     <img src="/images/profile-icon.png"/>
     <p><%= link username(@conn.assigns.current_user.first_name, @conn.assigns.current_user.last_name), to: Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %></p>
+    <p id="student-id">#<%= @conn.assigns.current_user.student_id %></p>
   </div>
   <%= link "Home", to: Routes.page_path(@conn, :index) %>
-  <%= link "Books", to: Routes.book_page_path(@conn, :index) %>
+  <%= link "Books", to: Routes.page_path(@conn, :books) %>
   <% end %>
 
   <%= if @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>

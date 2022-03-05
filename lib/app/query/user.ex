@@ -3,6 +3,14 @@ defmodule App.Query.User do
   alias App.Schema.User
 
 
+  @doc """
+  Search admin by username.
+  """
+  def search_student(last_name) do
+    Repo.all(User)
+    |> Enum.filter(fn s -> String.upcase(s.last_name) == String.upcase(last_name) end)
+  end
+
   def new_user do
     %User{}
     |> User.changeset()
