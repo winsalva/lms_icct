@@ -28,11 +28,11 @@
   <%= form_for @lend, Routes.lend_page_path(@conn, :create, %{book_id: @book.id}), fn f -> %>
 
   <label>Pick Up Date</label>
-  <%= select f, :pickup_date, options: ["Tomorrow": "Tomorrow", "Next Day": "Next Day"] %>
-  <%= error_tag f, :pickup_date %>
+  <%= select f, :pick_up_date, options: ["Tomorrow": "Tomorrow", "Next Day": "Next Day"] %>
+  <%= error_tag f, :pick_up_date %>
   
   <label>
-    <%= checkbox f, :accept_term %> I accept <%= link "terms and conditions.", to: "#", data: [confirm: "Accepting our terms and conditions means you allow us to cancel your book reservation when you failed to pick it within 1-2 days upon approval. You are also held responsible to pay penalties if you failed to return the book within allowed lend days."] %>
+    <%= checkbox f, :accept_term %> I accept <%= link "terms and conditions.", to: "#", data: [confirm: "Accepting our terms and conditions means you allow us to automatically cancel your book reservation when you failed to pick it within your specified date upon approval. We have also the right to approve or reject your reservation. You are also held responsible to pay penalties if you failed to return the book within allowed lend days."] %>
   </label>
   <%= error_tag f, :accept_term %>
   <br>

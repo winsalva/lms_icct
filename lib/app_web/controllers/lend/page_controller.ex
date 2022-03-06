@@ -99,10 +99,18 @@ defmodule AppWeb.Lend.PageController do
   def create(conn, %{"lend" => params, "book_id" => book_id}) do
     book = Book.get_book(book_id)
     user = conn.assigns.current_user
+    pick_up_date =
+      if params["pick_up_date"] == "Tomorrow" do
+        Date.add(Date.utc_today(), 1)
+      else
+        Date.add(Date.utc_today(), 2)
+      end
+      
     params =
       Map.put(params, "book_id", book_id)
       |> Map.put("user_id", user.id)
       |> Map.put("status", "Requested")
+      |> Map.put("pick_up_date", pick_up_date)
 
     case Lend.insert_lend(params) do
       {:ok, lend} ->

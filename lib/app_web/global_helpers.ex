@@ -1,6 +1,18 @@
 defmodule AppWeb.GlobalHelpers do
 
   @doc """
+  Calculate pick up date based on user pick up date preference.
+  """
+  def calculate_pickup_date(date) do
+    case Date.diff(Date.utc_today(), date) do
+      0 -> "Today"
+      -1 -> "Tomorrow"
+      -2 -> "Next Day"
+      _ -> "Lapsed Already"
+    end
+  end
+
+  @doc """
   Accepts a timestamp and return date year, month and day..
   """
   def get_date(date) do

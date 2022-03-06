@@ -6,11 +6,11 @@ defmodule App.Schema.Lend do
     belongs_to :book, App.Schema.Book
     belongs_to :user, App.Schema.User
     field :copies, :integer
-    field :expected_date_return, :date
+    field :release_date, :date
     field :date_returned, :date
     field :penalty, :integer
     field :accept_term, :boolean, default: false
-    field :pickup_date, :string
+    field :pick_up_date, :date
     field :status, :string
     timestamps()
   end
@@ -21,7 +21,8 @@ defmodule App.Schema.Lend do
     :date_returned,
     :penalty,
     :accept_term,
-    :pickup_date,
+    :release_date,
+    :pick_up_date,
     :status
   ]
 
@@ -29,7 +30,7 @@ defmodule App.Schema.Lend do
     :book_id,
     :user_id,
     :accept_term,
-    :pickup_date,
+    :pick_up_date,
     :status
   ]
 

@@ -22,13 +22,14 @@
   <table>
     <thead>
       <tr>
-        <th colspan="7"><h3 align="center">Transaction Records</h3></th>
+        <th colspan="7"><h3 align="center"><strong>Transaction Records</strong></h3></th>
       </tr>
       <tr>
         <th>Title</th>
         <th>Author</th>
 	<th>Status</th>
-	<th>Issued Date</th>
+	<th>Release Date</th>
+	<th>Duration</th>
         <th>Return Date</th>
 	<th>Penalty</th>
       </tr>
@@ -50,9 +51,10 @@
               <td class="color-yellow"><%= borrow.status %></td>
             <% end %>
       
-	    <td><%= borrow.inserted_at %></td>
-            <td><%= borrow.expected_date_return %></td>
-	    <td>
+            <td>2022-12-12</td>
+            <td>7 days</td>
+            <td>2022-12-12</td>
+	    <td>₱5000.00</td>
           </tr>
 	  
           <% end %>
