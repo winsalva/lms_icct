@@ -90,8 +90,8 @@ defmodule App.Query.Lend do
   def user_borrowed?(user_id, book_id) do
     query =
       from l in Lend,
-        where: l.user_id == ^user_id and l.book_id == ^book_id and is_nil(l.date_returned)
-
+        where: l.user_id == ^user_id and l.book_id == ^book_id and is_nil(l.date_returned) and l.status == "Requested" or l.status == "Approved" or l.status == "Released"
+	
     Repo.one(query)
   end
 

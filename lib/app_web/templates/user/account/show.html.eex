@@ -46,15 +46,24 @@
             <% "Approved" -> %>
               <td class="color-lightblue"><%= borrow.status %></td>
             <% "Released" -> %>
-              <td class="color-green"><%= borrow.status %></td>
+              <td class="color-green">On hand</td>
             <% "Returned" -> %>
               <td class="color-yellow"><%= borrow.status %></td>
-            <% end %>
-      
+              <% "Rejected" -> %>
+	      <td><%= borrow.status %></td>
+              <% end %>
+
+	      <%= if borrow.status == "Requested" || borrow.status == "Rejected" || borrow.status == "Approved" do %>
+               <td>N/A</td>
+               <td>N/A</td>
+               <td>N/A</td>
+      <td>N/A</td>
+      <% else %>
             <td>2022-12-12</td>
             <td>7 days</td>
             <td>2022-12-12</td>
-	    <td>₱5000.00</td>
+      <td>₱5000.00</td>
+      <% end %>
           </tr>
 	  
           <% end %>

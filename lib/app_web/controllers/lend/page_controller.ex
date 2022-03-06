@@ -11,6 +11,17 @@ defmodule AppWeb.Lend.PageController do
   alias App.Query.{Lend, Book}
 
   @doc """
+  Get all out of stock books.
+  """
+  def out_of_stock_books(conn, _params) do
+    out_of_stock_books = Book.list_out_of_stock_books()
+    params = [
+      books: out_of_stock_books
+    ]
+    render(conn, "out-of-stock-books.html", params)
+  end
+
+  @doc """
   Get all returned books.
   """
   def returned_books(conn, _params) do
@@ -67,6 +78,22 @@ defmodule AppWeb.Lend.PageController do
   end
 
   @doc """
+  Reject requested book
+  """
+  def reject_request(conn, %{"id" => id}) do
+    case Lend.update_lend(id, %{status: "Rejected", accept_term: true}) do
+      {:ok, _lend} ->
+        conn
+        |> put_flash(:info, "A requested book was rejected successfully.")
+        |> redirect(to: Routes.lend_page_path(conn, :requested_books))
+      {:error, _} ->
+        conn
+        |> put_flash(:error, "Something went wrong!")
+        |> redirect(to: Routes.lend_page_path(conn, :requested_books))
+    end
+  end
+
+  @doc """
   Release a book.
   """
   def release_book(conn, %{"id" => id}) do
@@ -98,6 +125,9 @@ defmodule AppWeb.Lend.PageController do
 
   def create(conn, %{"lend" => params, "book_id" => book_id}) do
     book = Book.get_book(book_id)
+    reserved = book.reserved
+    available = book.available
+    
     user = conn.assigns.current_user
     pick_up_date =
       if params["pick_up_date"] == "Tomorrow" do
@@ -114,6 +144,9 @@ defmodule AppWeb.Lend.PageController do
 
     case Lend.insert_lend(params) do
       {:ok, lend} ->
+        # Update reserved and available field values
+        Book.update_book(book.id, %{reserved: reserved + 1, available: available - 1})
+	
         conn
 	|> put_flash(:info, "You requested to reserve a book titled \"#{book.title}\". Kindly check your transaction records for the status of your requested book(s).")
 	|> redirect(to: Routes.book_page_path(conn, :index))

@@ -15,6 +15,8 @@
 	<li><strong>CATEGORY:</strong> <%= @book.category %></li>
 	<%= if @conn.assigns.current_admin do %>
 	<li><strong>COPIES:</strong> <%= @book.copies %></li>
+	<li><strong>LENDED:</strong> <%= @book.lended %></li>
+	<li><strong>RESERVED:</strong> <%= @book.reserved %></li>
 	<% end %>
 	<li><strong>AVAILABLE:</strong> <%= @book.available %></li>
 	<li><strong>LEND DURATION:</strong> <%= @book.lend_duration %> days</li>

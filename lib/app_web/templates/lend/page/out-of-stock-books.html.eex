@@ -1,0 +1,39 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Out of stock Books") %>
+
+<div class="sub-container">
+
+  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+
+  <%= if @books == [] do %>
+  <br>
+  <h2 align="center">No out of stock books yet</h2>
+  <br>
+  <% else %>
+  <div class="sub-container">
+    <%= if @books == [] do %>
+    <h3 class="center">Coming soon..</h3>
+    <% else %>
+    <div class="uploads-container">
+      <%= for book <- @books do %>
+      <div class="upload-container" data-aos="fade-up">
+        <a href="<%= Routes.book_page_path(@conn, :show, book.id) %>">
+          <img src="/images/book.png"/>
+        <div class="upload-title-description">
+          <p class="upload-title">
+            <strong><%= book.title %></strong>
+          </p>
+          <div class="upload-description">
+            Available: <%= book.available %>
+          </div>
+        </div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+</div>

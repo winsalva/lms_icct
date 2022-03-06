@@ -31,7 +31,19 @@ defmodule App.Query.Book do
   def list_books do
     query =
       from b in Book,
+        where: b.available > 0,
         order_by: [desc: :updated_at]
+
+    Repo.all(query)
+  end
+
+  @doc """
+  List all out of stock books.
+  """
+  def list_out_of_stock_books do
+    query =
+      from b in Book,
+        where: b.available < 1
 
     Repo.all(query)
   end

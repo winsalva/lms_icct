@@ -12,6 +12,7 @@ defmodule App.Schema.Book do
     field :copies, :integer
     field :lended, :integer, default: 0
     field :available, :integer, default: 0
+    field :reserved, :integer, default: 0
     field :lend_duration, :integer
     timestamps()
   end
@@ -25,6 +26,7 @@ defmodule App.Schema.Book do
     :copies,
     :lended,
     :available,
+    :reserved,
     :lend_duration
   ]
 

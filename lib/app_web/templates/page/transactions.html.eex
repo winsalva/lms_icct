@@ -26,7 +26,12 @@
       </a>
       <a href="<%= Routes.user_page_path(@conn, :index) %>">
         <div class="menu-category bg-border-lightblue">
-          Un returned books
+          Unreturned Books
+        </div>
+      </a>
+      <a href="<%= Routes.lend_page_path(@conn, :out_of_stock_books) %>">
+        <div class="menu-category bg-border-lightblue">
+          Out of stock Books <%= length(@out_of_stock_books) %>
         </div>
       </a>
     </div>
