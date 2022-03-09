@@ -48,9 +48,14 @@ defmodule AppWeb.Lend.PageController do
   @doc """
   Return a book
   """
-  def return_book(conn, %{"id" => id}) do
+  def return_book(conn, %{"book_id" => book_id, "id" => id}) do
+    book = Book.get_book(book_id)
+    lended = book.lended
+    available = book.available
     case Lend.update_lend(id, %{status: "Returned", accept_term: true}) do
       {:ok, _lend} ->
+        # Update book reserved and available field values
+        Book.update_book(book.id, %{lended: lended - 1, available: available + 1})
         conn
         |> put_flash(:info, "A book was returned successfully.")
         |> redirect(to: Routes.lend_page_path(conn, :released_books))
@@ -80,9 +85,15 @@ defmodule AppWeb.Lend.PageController do
   @doc """
   Reject requested book
   """
-  def reject_request(conn, %{"id" => id}) do
+  def reject_request(conn, %{"book_id" => book_id, "id" => id}) do
+    book = Book.get_book(book_id)
+    reserved = book.reserved
+    available = book.available
+    
     case Lend.update_lend(id, %{status: "Rejected", accept_term: true}) do
       {:ok, _lend} ->
+        # Update book reserved and available field values
+        Book.update_book(book.id, %{reserved: reserved - 1, available: available + 1})
         conn
         |> put_flash(:info, "A requested book was rejected successfully.")
         |> redirect(to: Routes.lend_page_path(conn, :requested_books))
@@ -96,9 +107,15 @@ defmodule AppWeb.Lend.PageController do
   @doc """
   Release a book.
   """
-  def release_book(conn, %{"id" => id}) do
-    case Lend.update_lend(id, %{status: "Released", accept_term: true}) do
+  def release_book(conn, %{"book_id" => book_id, "id" => id}) do
+    book = Book.get_book(book_id)
+    reserved = book.reserved
+    lended = book.lended
+    
+    case Lend.update_lend(id, %{status: "Released", release_date: Date.utc_today(), accept_term: true}) do
       {:ok, _lend} ->
+        # Update book reserved and available field values
+        Book.update_book(book.id, %{reserved: reserved - 1, lended: lended + 1})
         conn
         |> put_flash(:info, "Released a book successfully.")
         |> redirect(to: Routes.lend_page_path(conn, :approved_requested_books))
@@ -144,7 +161,7 @@ defmodule AppWeb.Lend.PageController do
 
     case Lend.insert_lend(params) do
       {:ok, lend} ->
-        # Update reserved and available field values
+        # Update book reserved and available field values
         Book.update_book(book.id, %{reserved: reserved + 1, available: available - 1})
 	
         conn
@@ -173,5 +190,13 @@ defmodule AppWeb.Lend.PageController do
 	|> put_flash(:error, "Something went wrong")
 	|> redirect(to: Routes.user_account_path(conn, :show, conn.assigns.current_user.id))
     end
+  end
+
+  @doc """
+  Display overdue books.
+  """
+  def overdue_books(conn, _params) do
+    overdue_books = Lend.list_overdue_books()
+    render(conn, "overdue-book.html", overdue_books: overdue_books)
   end
 end

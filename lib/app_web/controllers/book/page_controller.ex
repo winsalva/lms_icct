@@ -82,7 +82,7 @@ defmodule AppWeb.Book.PageController do
       render(conn, :show, params)
     else
       book = Book.get_book(id)
-      borrow = nil
+      borrow = []
       params = [
         book: book,
 	borrow: borrow

@@ -20,13 +20,15 @@ defmodule AppWeb.PageController do
     requested_books = Lend.list_requested_books()
     returned_books = Lend.list_returned_books()
     out_of_stock_books = Book.list_out_of_stock_books()
+    overdue_books = Lend.list_overdue_books()
 
     params = [
       returned_books: returned_books,
       released_books: released_books,
       approved_requested_books: approved_requested_books,
       requested_books: requested_books,
-      out_of_stock_books: out_of_stock_books
+      out_of_stock_books: out_of_stock_books,
+      overdue_books: overdue_books
     ]
     
     render(conn, "transactions.html", params)

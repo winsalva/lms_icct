@@ -5,6 +5,46 @@ defmodule App.Query.Lend do
 
   import Ecto.Query, warn: false
 
+
+  @doc """
+  List overdue books.
+  """
+  def list_overdue_books do
+    query =
+      from l in Lend,
+        where: l.status == "Overdue",
+	preload: [:user, :book]
+
+    Repo.all(query)
+  end
+  
+  @doc """
+  Checks for all overdue pick up dates.
+  """
+  def overdue_pickup_dates do
+    query =
+      from l in Lend,
+        where: l.status == "Requested" or l.status == "Approved"
+
+    Repo.all(query)
+    |> Enum.filter(fn l -> Date.diff(Date.utc_today(), l.pick_up_date) > 0 end)
+    |> Enum.each(fn l -> update_lend(l.id, %{status: "Rejected"}) end)
+  end
+
+  @doc """
+  Check overdue released books.
+  """
+  def overdue_released_books do
+    query =
+      from l in Lend,
+        where: l.status == "Released",
+	preload: [:book]
+
+    Repo.all(query)
+    |> Enum.filter(fn l -> Date.diff(Date.utc_today(), Date.add(l.release_date, l.book.lend_duration)) > 0 end)
+    |> Enum.each(fn l -> update_lend(l.id, %{status: "Overdue"}) end)
+  end
+
   @doc """
   List all requested books
   """
@@ -90,9 +130,9 @@ defmodule App.Query.Lend do
   def user_borrowed?(user_id, book_id) do
     query =
       from l in Lend,
-        where: l.user_id == ^user_id and l.book_id == ^book_id and is_nil(l.date_returned) and l.status == "Requested" or l.status == "Approved" or l.status == "Released"
+        where: (l.user_id == ^user_id and l.book_id == ^book_id and l.status == "Requested") or (l.user_id == ^user_id and l.book_id == ^book_id and l.status == "Approved") or (l.user_id == ^user_id and l.book_id == ^book_id and l.status == "Released") or (l.user_id == ^user_id and l.book_id == ^book_id and l.status == "Overdue")
 	
-    Repo.one(query)
+    Repo.all(query)
   end
 
   def get_lend(id) do

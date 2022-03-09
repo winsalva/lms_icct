@@ -13,6 +13,13 @@ defmodule AppWeb.GlobalHelpers do
   end
 
   @doc """
+  Calculate expected book return date from release date and lend duration.
+  """
+  def calculate_return_date(release_date, lend_duration) do
+    Date.add(release_date, lend_duration)
+  end
+
+  @doc """
   Accepts a timestamp and return date year, month and day..
   """
   def get_date(date) do
@@ -28,29 +35,16 @@ defmodule AppWeb.GlobalHelpers do
     end
   end
 
-  def calculate_penalty(expected_date, date_returned) do
-    cond do
-      date_returned != nil ->
-        if Date.compare(expected_date, date_returned) == :gt do
-	  0
-	else
-	  y = (date_returned.year - expected_date.year) * 365
-	  m = (date_returned.month - expected_date.month) * 30
-	  d = date_returned.day - expected_date.day
-	  (y + m + d) * 50
-	end
-      date_returned == nil ->
-        if Date.compare(expected_date, Date.utc_today) == :gt do
-	  0
-	else
-	  y = (date_returned.year - expected_date.year) * 365
-          m = (date_returned.month - expected_date.month) * 30
-          d = date_returned.day - expected_date.day
-          (y + m + d) * 50
-        end
-      true ->
-        0
-    end	
+  @doc """
+  Calculate the penalty of the borrower based on the lapsed days at 50 per day.
+  """
+  def calculate_penalty(release_date, lend_duration) do
+    days = Date.diff(calculate_return_date(release_date, lend_duration), Date.utc_today())
+    if days < 0 do
+      abs(days) * 50 # penalty is days * 50
+    else
+      "N/A"
+    end
   end
 
   def enum_with_index(list) do

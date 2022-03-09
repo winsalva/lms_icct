@@ -26,8 +26,8 @@
       </tr>
       <tr>
         <th>Title</th>
-        <th>Author</th>
 	<th>Status</th>
+	<th>Pick-Up Date</th>
 	<th>Release Date</th>
 	<th>Duration</th>
         <th>Return Date</th>
@@ -39,7 +39,6 @@
       <%= for borrow <- @borrows do %>
           <tr>
             <td><%= link borrow.book.title, to: Routes.book_page_path(@conn, :show, borrow.book.id) %></td>
-            <td><%= borrow.book.author %></td>
 	    <%= case borrow.status do %>
 	    <% "Requested" -> %>
               <td class="color-lightblue"><%= borrow.status %></td>
@@ -50,20 +49,49 @@
             <% "Returned" -> %>
               <td class="color-yellow"><%= borrow.status %></td>
               <% "Rejected" -> %>
-	      <td><%= borrow.status %></td>
+               <td><%= borrow.status %></td>
+	       <% "Overdue" -> %>
+	       <td class="color-red"><%= borrow.status %></td>
               <% end %>
 
-	      <%= if borrow.status == "Requested" || borrow.status == "Rejected" || borrow.status == "Approved" do %>
+	      <%= case borrow.status do %>
+	      <% "Requested" -> %>
                <td>N/A</td>
                <td>N/A</td>
                <td>N/A</td>
-      <td>N/A</td>
-      <% else %>
-            <td>2022-12-12</td>
-            <td>7 days</td>
-            <td>2022-12-12</td>
-      <td>₱5000.00</td>
-      <% end %>
+               <td>N/A</td>
+	       <td>N/A</td>
+	       <% "Rejected" -> %>
+	       <td>N/A</td>
+               <td>N/A</td>
+               <td>N/A</td>
+               <td>N/A</td>
+               <td>N/A</td>
+	       <% "Approved" -> %>
+	       <td><%= calculate_pickup_date(borrow.pick_up_date) %></td>
+               <td>N/A</td>
+               <td>N/A</td>
+               <td>N/A</td>
+               <td>N/A</td>
+	       <% "Released" -> %>
+	       <td>N/A</th>
+               <td><%= borrow.release_date %></td>
+               <td><%= borrow.book.lend_duration %> days</td>
+               <td><%= calculate_return_date(borrow.release_date, borrow.book.lend_duration) %></td>
+               <td>N/A</td>
+	       <% "Returned" -> %>
+	       <td>N/A</td>
+               <td>N/A</td>
+               <td>N/A</td>
+               <td>N/A</td>
+               <td>N/A</td>
+	       <% "Overdue" -> %>
+               <td>N/A</td>
+	       <td><%= borrow.release_date %></td>
+               <td><%= borrow.book.lend_duration %></td>
+               <td><%= calculate_return_date(borrow.release_date, borrow.book.lend_duration) %></td>
+               <td><%= calculate_penalty(borrow.release_date, borrow.book.lend_duration) %></td>
+	       <% end %>
           </tr>
 	  
           <% end %>

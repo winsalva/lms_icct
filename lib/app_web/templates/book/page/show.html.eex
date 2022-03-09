@@ -30,10 +30,10 @@
     <%= link "Edit", to: Routes.book_page_path(@conn, :edit, @book.id) %>
     <%= link "Delete", to: Routes.book_page_path(@conn, :delete, @book.id), method: :delete, data: [confirm: "Are you sure?"] %>
     <% end %>
-    <%= if @conn.assigns.current_user && @borrow == nil || @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
+    <%= if @conn.assigns.current_user && @borrow == [] || @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
     <%= link "Borrow", to: Routes.lend_page_path(@conn, :new, @book.id) %>
     <% end %>
-    <%= if @conn.assigns.current_user && @borrow do %>
+    <%= if @conn.assigns.current_user && @borrow != [] do %>
     <%= link "Already Borrowed", to: "" %>
     <% end %>
   </div>
