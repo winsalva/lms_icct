@@ -26,8 +26,8 @@ defmodule App.Periodically do
     {:noreply, state}
   end
 
-  # 86400 * 1000
+  # 86400 * 1000 = 1 day
   defp schedule_work() do
-    Process.send_after(self(), :work, 60 * 1000)
+    Process.send_after(self(), :work, 86400 * 1000)
   end
 end

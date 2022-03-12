@@ -24,7 +24,7 @@
           <tr>
             <td><%= link approved_request.book.title, to: Routes.book_page_path(@conn, :show, approved_request.book.id) %></td>
             <td><%= approved_request.book.author %></td>
-            <td><%= link approved_request.user.first_name, to: Routes.user_account_path(@conn, :show, approved_request.user.id) %></td>
+            <td><%= link username(approved_request.user.first_name, approved_request.user.last_name), to: Routes.user_account_path(@conn, :show, approved_request.user.id) %></td>
             <td><%= calculate_pickup_date(approved_request.pick_up_date) %></td>
 	    <td><%= link "Release", to: Routes.lend_page_path(@conn, :release_book, approved_request.book.id, approved_request.id), method: :post %></td>
           </tr>

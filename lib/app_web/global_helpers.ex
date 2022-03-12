@@ -23,7 +23,7 @@ defmodule AppWeb.GlobalHelpers do
   Accepts a timestamp and return date year, month and day..
   """
   def get_date(date) do
-    "#{date.year}-#{date.day}-#{date.month}"
+    "#{date.year}-#{date.month}-#{date.day}"
   end
 
   def announcement do

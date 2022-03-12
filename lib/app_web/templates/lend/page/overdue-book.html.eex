@@ -29,7 +29,7 @@
             <td><%= overdue_book.release_date %></td>
             <td><%= overdue_book.book.lend_duration %> days</td>
             <td><%= calculate_return_date(overdue_book.release_date, overdue_book.book.lend_duration) %></td>
-            <td><%= calculate_penalty(overdue_book.release_date, overdue_book.book.lend_duration) %></td>
+            <td>₱<%= calculate_penalty(overdue_book.release_date, overdue_book.book.lend_duration) %></td>
             <td>Paid</td>
           </tr>
 
