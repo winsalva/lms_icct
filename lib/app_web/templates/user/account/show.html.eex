@@ -88,7 +88,7 @@
 	       <% "Overdue" -> %>
                <td>N/A</td>
 	       <td><%= borrow.release_date %></td>
-               <td><%= borrow.book.lend_duration %></td>
+               <td><%= borrow.book.lend_duration %> days</td>
                <td><%= calculate_return_date(borrow.release_date, borrow.book.lend_duration) %></td>
                <td>₱<%= calculate_penalty(borrow.release_date, borrow.book.lend_duration) %></td>
 	       <% end %>
