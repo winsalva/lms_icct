@@ -28,7 +28,7 @@ defmodule App.Query.Lend do
 
     Repo.all(query)
     |> Enum.filter(fn l -> Date.diff(Date.utc_today(), l.pick_up_date) > 0 end)
-    |> Enum.each(fn l -> update_lend(l.id, %{status: "Rejected"}) end)
+    |> Enum.each(fn l -> update_lend(l.id, %{status: "Rejected", accept_term: true}) end)
   end
 
   @doc """
@@ -42,7 +42,7 @@ defmodule App.Query.Lend do
 
     Repo.all(query)
     |> Enum.filter(fn l -> Date.diff(Date.utc_today(), Date.add(l.release_date, l.book.lend_duration)) > 0 end)
-    |> Enum.each(fn l -> update_lend(l.id, %{status: "Overdue"}) end)
+    |> Enum.each(fn l -> update_lend(l.id, %{status: "Overdue", accept_term: true}) end)
   end
 
   @doc """
