@@ -1,10 +1,10 @@
 <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 <div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "About Us") %>
-
-<div class="sub-container">
-  <br>
-  <h2 class="center">About us content here</h2>
-  <br>
-</div>
+  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "About Us") %>
+  <div class="sub-container">
+    <div class="page-content">
+      <p><strong>Philippine Christian University online library management system</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
+      <p>The integrated library software are developed in consultation with the help of senior library professionals and it is currently used by the senior high school library at PCU.</p>
+    </div>
+  </div>
 </div>

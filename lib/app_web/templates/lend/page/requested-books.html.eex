@@ -25,7 +25,7 @@
             <td><%= link request.book.title, to: Routes.book_page_path(@conn, :show, request.book.id) %></td>
             <td><%= request.book.author %></td>
             <td><%= link username(request.user.first_name, request.user.last_name), to: Routes.user_account_path(@conn, :show, request.user.id) %></td>
-            <td><%= calculate_pickup_date(request.pick_up_date) %></td>
+            <td><%= request.pick_up_date %></td>
             <td><%= link "Approve", to: Routes.lend_page_path(@conn, :approve_request, request.id), method: :post %> | <%= link "Reject", to: Routes.lend_page_path(@conn, :reject_request, request.book.id, request.id), method: :post, data: [confirm: "Are you sure to reject this request?"] %></td>
             <td>
           </tr>

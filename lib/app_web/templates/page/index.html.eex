@@ -1,6 +1,9 @@
 
 
 <nav>
+  <div id="pcu-logo">
+    <img src="/images/pcu-logo.webp"/>
+  </div>
   <div id="schoolname">Philippine Christian University
   <p id="tagname">Online Library Management System</p></div>
   <div class="menus">

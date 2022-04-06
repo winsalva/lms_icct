@@ -1,3 +1,8 @@
+#pcu-logo {
+    margin: 0 0 1rem 0.5rem;
+    width: 50px;
+    height: 50px;
+}
 .fb-icon {
     background-image: url("/images/brokerage-fb.png");
 }

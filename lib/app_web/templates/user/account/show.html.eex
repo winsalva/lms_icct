@@ -56,7 +56,7 @@
 
 	      <%= case borrow.status do %>
 	      <% "Requested" -> %>
-               <td><%= calculate_pickup_date(borrow.pick_up_date) %></td>
+               <td><%= borrow.pick_up_date %></td>
                <td>N/A</td>
                <td>N/A</td>
                <td>N/A</td>
@@ -68,7 +68,7 @@
                <td>N/A</td>
                <td>N/A</td>
 	       <% "Approved" -> %>
-	       <td><%= calculate_pickup_date(borrow.pick_up_date) %></td>
+	       <td><%= borrow.pick_up_date %></td>
                <td>N/A</td>
                <td>N/A</td>
                <td>N/A</td>

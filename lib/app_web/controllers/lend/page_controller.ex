@@ -199,4 +199,25 @@ defmodule AppWeb.Lend.PageController do
     overdue_books = Lend.list_overdue_books()
     render(conn, "overdue-book.html", overdue_books: overdue_books)
   end
+
+  @doc """
+  Return an overdue book
+  """
+  def return_overdue_book(conn, %{"book_id" => book_id, "id" => id}) do
+    book = Book.get_book(book_id)
+    lended = book.lended
+    available = book.available
+    case Lend.update_lend(id, %{status: "Returned", accept_term: true}) do
+      {:ok, _lend} ->
+        # Update book reserved and available field values
+        Book.update_book(book.id, %{lended: lended - 1, available: available + 1})
+        conn
+        |> put_flash(:info, "An overdue book was returned successfully.")
+        |> redirect(to: Routes.lend_page_path(conn, :overdue_books))
+      {:error, _} ->
+        conn
+        |> put_flash(:error, "Something went wrong!")
+        |> redirect(to: Routes.lend_page_path(conn, :overdue_books))
+    end
+  end
 end

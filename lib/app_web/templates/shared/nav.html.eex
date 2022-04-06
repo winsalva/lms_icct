@@ -2,7 +2,7 @@
   
   <%= if @conn.assigns.current_admin do %>
   <div class="icon-container">
-    <img src="/images/profile-icon.png"/>
+    <img src="/images/pcu-logo.webp"/>
     <p><%= link "Admin Dashboard", to: Routes.admin_page_path(@conn, :show, @conn.assigns.current_admin.id) %></p>
   </div>
   <%= link "Home", to: Routes.page_path(@conn, :index) %>
@@ -24,8 +24,8 @@
 
   <%= if @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
   <div class="icon-container">
-    <img src="/images/profile-icon.png"/>
-    <p>PCU LOGO</p>
+    <img src="/images/pcu-logo.webp"/>
+    <p>PCU - LMS</p>
   </div>
   <%= link "Home", to: Routes.page_path(@conn, :index) %>
   <% end %>

@@ -86,6 +86,7 @@ defmodule AppWeb.Router do
     post "/books/reject-requests/:book_id/:id", PageController, :reject_request
     post "/books/release-books/:book_id/:id", PageController, :release_book
     post "/books/return-book/:book_id/:id", PageController, :return_book
+    post "/books/return-overdue-book/:book_id/:id", PageController, :return_overdue_book
     get "/requested-books", PageController, :requested_books
     get "/approved-requested-books", PageController, :approved_requested_books
     get "/released-books", PageController, :released_books

@@ -30,7 +30,7 @@
             <td><%= overdue_book.book.lend_duration %> days</td>
             <td><%= calculate_return_date(overdue_book.release_date, overdue_book.book.lend_duration) %></td>
             <td>₱<%= calculate_penalty(overdue_book.release_date, overdue_book.book.lend_duration) %></td>
-            <td>Paid</td>
+            <td><%= link "Return", to: Routes.lend_page_path(@conn, :return_overdue_book, overdue_book.book.id, overdue_book.id), method: :post %></td>
           </tr>
 
           <% end %>
