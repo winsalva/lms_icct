@@ -1,5 +1,3 @@
-
-
 <nav>
   <div id="pcu-logo">
     <img src="/images/pcu-logo.webp"/>
@@ -15,21 +13,32 @@
 
 <div class="sub-container">
   <div class="landing-page-content-container">
+  <!--
     <p class="landing-page-titles"align="center">ANNOUCEMENTS</p>
-    <div  class="landing-page-contents"><%= if @announcement == [] do %>
+    <div  class="landing-page-contents"><% if @announcement == [] do %>
       <p align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <% else %>
-      <%= raw(as_html(@announcement.body)) %>
+      <% raw(as_html(@announcement.body)) %>
       <% end %>
     </div>
-  <p class="landing-page-titles"align="center">INTRODUCTIONS</p>
-<p  class="landing-page-contents"align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+-->
+    <Section class="img-slider">
+  <div class="slider-container">
+    
+    <div class="slide">
+      <img src="/images/pcu-image1.webp">
+    </div>
+    
+    <div class="slide">
+      <img src="/images/pcu-image2.jpeg">
+    </div>
 
-<p class="landing-page-titles" align="center">GALLERY</p>
-<p class="landing-page-contents" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-<p class="landing-page-titles" align="center">OTHER OPTIONS</p>
-  <p class="landing-page-contents" align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis.</p>
+    <div class="slide">
+      <img src="/images/pcu-image3.jpeg">
+    </div>
+    
+  </div>
+</Section>
   </div>
 </div>  
 

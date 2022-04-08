@@ -1,10 +1,52 @@
 <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 <div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Terms Of Use") %>
+  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Terms Of Use") %>
+ 
+  <div class="sub-container">
+    <div class="page-content">
 
-<div class="sub-container">
-  <br>
-  <h2 class="center">Terms of use content here</h2>
-  <br>
-</div>
+      <h3><strong>Library Rules:</strong></h3>
+      <p>As a member of the University you have agreed to the following terms and conditions of use for the Online Library management system Please pay particular attention to clauses 2, 3 and 6 in the General terms of use.</p>
+      <blockquote>
+	<p>"I acknowledge and agree that resources and their content the "Licensed Material" are protected by copyright as stated in the <em>Copyright Acknowledgement</em> and their use is subject to limitations and Agreements which are summarized in the Terms of Use listed below.</p>
+	<p>Details of Agreements for specific resources are available online, and I undertake to read these when I first log in to use each specific resources.</p>
+	<p>I shall regard any passwords provided as personal to me and I undertake not to divulge such to a third party."</p>
+      </blockquote>
+
+      <h4><strong>I) GENERAL TERMS OF USE</strong></h4>
+      <p>Each person must read and abide by Copyright Acknowledgement.</p>
+      <div class="page-content">
+	<ul>
+	  <li>Use of the Licensed Material is restricted to the following purposes: teaching; research; personal educational development; administration and management of the business of the University; and development work associated with any of the aforementioned.</li>
+	  <li>Use of the Licensed Material is not permitted for consultancy or services leading to commercial exploitation of the Licensed Material nor for work of significant benefit to the employer of students on industrial placement or part-time courses without prior agreement of the Vendor.</li>
+	  <li>Users may print, or download and save, single copies of extracts of the Licensed Material (for example, one chapter, one article or results of searches of the data) for their own personal use.</li>
+	  <li>Users must comply with the provisions of law relating to the misuse of computing facilities, and shall not deliberately impair or undermine the usability or performance of computing facilities, the communication network or stored information.</li>
+	  <li>Users are required to take all reasonable precautions to maintain integrity of passwords and any other security measures.</li>
+	  <li>Users are required to comply with any special conditions of use relating to individual databases which may be given in the user documentation available to registered users.</li>
+	  <li>Users are required to respect Intellectual Property rights, including copyright and database right, in the Licensed Material. Failure to do so may result in:</li>
+	  <ul>
+	    <li>the imposition of restrictions on use of IT Facilities and Systems;</li>
+	    <li>withdrawal of access to all Authorised Users;</li>
+	    <li>withdrawal of offending material;</li>
+	    <li>fines, </li>
+	    <li>and recovery of any costs incurred by the University as a result of the breach.</li>
+	  </ul>
+	</ul>
+      </div>
+
+      <h4><strong>II) COPYRIGHT ACKNOWLEDGEMENT</strong></h4>
+      <blockquote><em>"I agree</em> that my usage of any Software or Computer readable Datasets, hereafter referred to as the Product, issued or otherwise made available to me by a School or Department of The University of Reading is subject to the following conditions:"</blockquote>
+      <ul>
+	<li>I will ensure that all the requirements of the agreements or contracts under which the Product is held by The University will be maintained. (Copies of the relevant agreements or contracts may be seen by application to the School or Department which made the Product available).</li>
+	<li>I will not remove or alter the Copyright Statement on any copies of Product used by me.</li>
+	<li>I will ensure the Security and Confidentiality of any copy released to me, and will not make any further copies from it or knowingly permit others to do so.</li>
+	<li>I will use the Product for the purposes defined in the Agreement, and only on computer systems covered by the Agreement.</li>
+	<li>I will not incorporate a modified version of the Product in any program written by me without express permission of the Licensor.</li>
+	<li>I will not reverse engineer or decompile the Product or attempt to do so without such permission explicitly being permitted within the terms of the Agreement for the use of the Product.</li>
+	<li>I will return all copies of the Product at the end of the course/year/period of employment or when requested to do so."</li>
+      </ul>
+
+      <p><strong>The University of Reading reserves its right to take legal action against individuals who cause it to be involved in legal proceedings as a result of violation of its licensing agreements.</strong></p>
+    </div>
+  </div>
 </div>

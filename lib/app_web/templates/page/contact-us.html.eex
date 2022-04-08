@@ -3,15 +3,15 @@
   <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Contact Us") %>
   <div class="sub-container">
     <div class="page-content">
-      <div>
+      <div class="contacts">
 	<img src="/images/pcu-tel.png"/>
 	<span> (+632) 8523-2186</span>
       </div>
-      <div>
+      <div class="contacts">
 	<img src="/images/pcu-email.png"/>
 	<span>library.dasmarinas@pcu.edu.ph</span>
       </div>
-      <div>
+      <div class="contacts">
 	<img src="/images/pcu-location.png"/>
 	<span>emilio aguinaldo highway sampaloc 1 dasmarinas city cavite 4114</span>
       </div>
