@@ -13,32 +13,22 @@
 
 <div class="sub-container">
   <div class="landing-page-content-container">
-  <!--
     <p class="landing-page-titles"align="center">ANNOUCEMENTS</p>
-    <div  class="landing-page-contents"><% if @announcement == [] do %>
+    <div  class="landing-page-contents"><%= if @announcement == [] do %>
       <p align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <% else %>
-      <% raw(as_html(@announcement.body)) %>
+      <%= raw(as_html(@announcement.body)) %>
       <% end %>
     </div>
--->
-    <Section class="img-slider">
-  <div class="slider-container">
-    
-    <div class="slide">
-      <img src="/images/pcu-image1.webp">
-    </div>
-    
-    <div class="slide">
-      <img src="/images/pcu-image2.jpeg">
-    </div>
 
-    <div class="slide">
+    <div class="slider-container">
+    
+    <div class="slider-wrapper">
+      <img src="/images/pcu-image1.webp">
+      <img src="/images/pcu-image2.jpeg">
       <img src="/images/pcu-image3.jpeg">
     </div>
-    
-  </div>
-</Section>
+    <br>
   </div>
 </div>  
 

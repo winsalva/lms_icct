@@ -1,24 +1,38 @@
-.img-slider {
-    position: relative;
-    width: 100vw;
-    height: 400px;
-}
-.img-slider .slider-container {
-    position: absolute;
-    width: 300%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    animation: slider 26s infinite;
-}
-.img-slider .slider-container .slide {
-    position: relative;
-    width: 33.33333333%;
-    height: 100%;
-    float: left;
-    overflow: hidden
+
+/* styles for home page image animation */
+@keyframes slide {
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    65%{
+        transform: translateX(-100%);
+    }
+    70%{
+        transform: translateX(-200%);
+    }
+    100%{
+        transform: translateX(-200%);
+    }
 }
 
+.slider-container{
+    overflow: hidden;
+    border: 10px solid #ffffff;
+    border-radius: 8px;
+    box-shadow: 10px 25px 30px rgba(0,0,0,0.3);
+}
+
+.slider-wrapper{
+    width: 100%;
+    display: flex;
+    animation: slide 12s infinite;
+}
 
 .contacts {
     display: flex;
