@@ -13,6 +13,16 @@
 
 <div class="sub-container">
   <div class="landing-page-content-container">
+    <div class="slider-container">
+    
+    <div class="slider-wrapper">
+      <img src="/images/pcu-image1.webp">
+      <img src="/images/pcu-image2.jpeg">
+      <img src="/images/pcu-image3.jpeg">
+    </div>
+
+    <br>
+
     <p class="landing-page-titles"align="center">ANNOUCEMENTS</p>
     <div  class="landing-page-contents"><%= if @announcement == [] do %>
       <p align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -21,14 +31,7 @@
       <% end %>
     </div>
 
-    <div class="slider-container">
-    
-    <div class="slider-wrapper">
-      <img src="/images/pcu-image1.webp">
-      <img src="/images/pcu-image2.jpeg">
-      <img src="/images/pcu-image3.jpeg">
-    </div>
-    <br>
+    <p align="center"><strong>Philippine Christian University online library management system</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
   </div>
 </div>  
 
