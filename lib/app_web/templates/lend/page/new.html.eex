@@ -28,7 +28,7 @@
   <%= form_for @lend, Routes.lend_page_path(@conn, :create, %{book_id: @book.id}), fn f -> %>
 
   <label>Pick Up Date</label>
-  <%= select f, :pick_up_date, options: ["Tomorrow": "Tomorrow", "Next Day": "Next Day"] %>
+  <%= select f, :pick_up_date, options: [{tomorrow(), "Tomorrow"}, {next_day(), "Next Day"}] %>
   <%= error_tag f, :pick_up_date %>
   
   <label>

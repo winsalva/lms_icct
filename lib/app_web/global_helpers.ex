@@ -1,5 +1,15 @@
 defmodule AppWeb.GlobalHelpers do
 
+  def tomorrow do
+    date = Date.add(Date.utc_today, 1)
+    "#{date.year}-#{date.month}-#{date.day}"
+  end
+
+  def next_day do
+    date = Date.add(Date.utc_today, 2)
+    "#{date.year}-#{date.month}-#{date.day}"
+  end
+
   @doc """
   Calculate pick up date based on user pick up date preference.
   """
