@@ -18,6 +18,8 @@ defmodule AppWeb.Router do
   scope "/", AppWeb do
     pipe_through :browser
 
+    get "/*fallback", PageController, :fallback
+
     get "/", PageController, :index
     get "/users/all", PageController, :users
     post "/users/all", PageController, :search_users

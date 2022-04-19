@@ -11,6 +11,10 @@ defmodule AppWeb.PageController do
     Lend
   }
 
+  def fallback(conn, _params) do
+    render(conn, "fallback.html")
+  end
+
   @doc """
   Get all transaction records.
   """
