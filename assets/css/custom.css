@@ -114,7 +114,7 @@ nav #schoolname {
     font-weight: bold;
     padding: 0;
     position: relative;
-    margin-left: -25rem;
+    margin-left: .5rem;
 }
 nav #tagname {
     margin: -5px;
@@ -124,6 +124,9 @@ nav #tagname {
     word-spacing: 5px;
     text-align: center;
     letter-spacing: 2px;
+}
+.logo-name-container {
+    display: flex;
 }
 nav .menus {
     /*padding-top: 15px;*/

@@ -1,9 +1,14 @@
 <nav>
-  <div id="pcu-logo">
-    <img src="/images/pcu-logo.webp"/>
+  <div class="logo-name-container">  
+    <div id="pcu-logo">
+      <img src="/images/pcu-logo.webp"/>  
+    </div>
+    
+    <div id="schoolname">Philippine Christian University
+      <p id="tagname">Online Library Management System</p>
+    </div>
   </div>
-  <div id="schoolname">Philippine Christian University
-  <p id="tagname">Online Library Management System</p></div>
+  
   <div class="menus">
     <li><a href="<%= Routes.session_path(@conn, :new) %>">SIGN IN</a></li>
     <li><a href="<%= Routes.page_path(@conn, :contact_us) %>">CONTACT US</a></li>
