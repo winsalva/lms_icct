@@ -12,6 +12,7 @@ defmodule App.Schema.Lend do
     field :accept_term, :boolean, default: false
     field :pick_up_date, :date
     field :status, :string
+    field :return_condition, :string
     timestamps()
   end
 
@@ -23,7 +24,8 @@ defmodule App.Schema.Lend do
     :accept_term,
     :release_date,
     :pick_up_date,
-    :status
+    :status,
+    :return_condition
   ]
 
   @required_fields [

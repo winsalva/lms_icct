@@ -46,16 +46,39 @@ defmodule AppWeb.GlobalHelpers do
   end
 
   @doc """
-  Calculate the penalty of the borrower based on the lapsed days at 50 per day.
+  Calculate the penalty of the borrower based on the lapsed days at 1 per day.
   """
   def calculate_penalty(release_date, lend_duration) do
     days = Date.diff(calculate_return_date(release_date, lend_duration), Date.utc_today())
+    penalty =
     if days < 0 do
-      abs(days) * 50 # penalty is days * 50
+      abs(days) * 1 # penalty is days * 1
     else
-      "N/A"
+      0
     end
+
+    penalty
   end
+
+  @doc """
+  Calculate penalty including book condition
+  """
+  def calculate_penalty2(release_date, lend_duration, book_condition) do
+    book_condition_penalty =
+      if book_condition == "Good Condition" do
+        0
+      end
+    book_condition_penalty =
+      if book_condition == "Partly Damage" do
+        50
+      end
+    book_condition_penalty =
+      if book_condition == "Totally Damage" do
+        100
+      end
+
+    book_condition_penalty + calculate_penalty(release_date, lend_duration)
+  end   
 
   def enum_with_index(list) do
     Enum.with_index(list)

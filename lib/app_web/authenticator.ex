@@ -31,9 +31,11 @@ defmodule AppWeb.Authenticator do
         |> assign(:current_user, nil)
 
       admin == nil and user != nil ->
+        lends = App.Query.Lend.user_has_approved_requested_books(user.id)
         conn
         |> assign(:current_admin, nil)
         |> assign(:current_user, user)
+	|> assign(:lends, lends)
 
       true ->
         conn

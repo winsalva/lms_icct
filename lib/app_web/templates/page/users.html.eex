@@ -6,6 +6,7 @@
     <%= if @conn.assigns.current_admin do %>
     <div class="user-options">
       <%= if @conn.assigns.current_admin.super_admin do %>
+      <%= link "Add Student Accounts", to: Routes.user_account_path(@conn, :new) %>
       <%= link "Add New Admin", to: Routes.admin_page_path(@conn, :new) %>
       <%= link "View Admin Accounts", to: Routes.admin_page_path(@conn, :list_admins) %>
       <% end %>

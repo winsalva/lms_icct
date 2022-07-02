@@ -16,12 +16,13 @@
     
     <%= form_for @conn, Routes.page_path(@conn, :search_books), fn f -> %>
     <label>Category: 
-  <%= select f, :category, [options: [
-      "Circulation": "Circulation",
-      "Filipiniana": "Filipiniana",
-      "Fiction": "Fiction"
-      ]] %>
-  </label>
+      <%= select f, :category, [options: [
+	  "All": "All",
+	  "Circulation": "Circulation",
+	  "Filipiniana": "Filipiniana",
+	  "Fiction": "Fiction"
+	  ]] %>
+    </label>
     <div style="display:flex;">
     <%= text_input f, :title, placeholder: "Search book title.." %>
     <%= submit "Search" %>

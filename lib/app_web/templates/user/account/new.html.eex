@@ -1,6 +1,6 @@
 <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 <div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Create Account") %>
+<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Add Student Accounts") %>
 
 <div class="sub-container">
 <%= form_for @user, Routes.user_account_path(@conn, :create), fn f -> %>
@@ -9,33 +9,10 @@
   <p>Something went wrong. Please check the errors below.</p>
 </div>
 <% end %>
-<label>First name</label>
-<%= text_input f, :first_name, placeholder: "ex. Juan" %>
-<%= error_tag f, :first_name %>
+<label>Student Accounts</label>
+<%= textarea f, :accounts, placeholder: "List student accounts.." %>
 
-<label>Last name</label>
-<%= text_input f, :last_name, placeholder: "ex. Ramirez" %>
-<%= error_tag f, :last_name %>
-
-<label>Student Id</label>
-<%= text_input f, :student_id, placeholder: "Enter your student id.." %>
-<%= error_tag f, :student_id %>
-
-<label>PCU Email</label>
-<%= text_input f, :email, placeholder: "Enter your pcu email.." %>
-<%= error_tag f, :email %>
-
-<label>Password</label>
-<%= text_input f, :password, placeholder: "At least 6 characters.." %>
-<%= error_tag f, :password %>
-
-<label>Confirm password</label>
-<%= text_input f, :password_confirmation, placeholder: "Re-type your password.." %>
-<%= error_tag f, :password_confirmation %>
-
-<%= submit "Create account" %>
+<%= submit "Create Accounts" %>
 <% end %>
-
-<p class="center">Already have an account? <%= link "Log in.", to: Routes.session_path(@conn, :new) %></p>
 </div>
 </div>

@@ -34,6 +34,11 @@
           Out of stock Books <%= length(@out_of_stock_books) %>
         </div>
       </a>
+      <a href="<%= Routes.lend_page_path(@conn, :penalty_report) %>">
+        <div class="menu-category bg-border-lightblue">
+          Penalty Report
+        </div>
+      </a>
     </div>
     <br/>
   </div>

@@ -7,8 +7,7 @@ defmodule AppWeb.User.AccountController do
     :edit_name,
     :update_name
   ]
- 
-  
+   
   alias App.Query.{User, Lend}
 
   def reset_password(conn, %{"id" => id}) do
@@ -96,16 +95,22 @@ defmodule AppWeb.User.AccountController do
     render(conn, "new.html", user: user)
   end
 
-  def create(conn, %{"user" => params}) do
-    case User.insert_user(params) do
-      {:ok, user} ->
-        conn
-        |> put_flash(:info, "Your account was successfully created! Please wait or contact the admins for approval.")
-        |> redirect(to: Routes.session_path(conn, :new))
-      {:error, %Ecto.Changeset{} = user} ->
-        conn
-        |> render("new.html", user: user)
-    end
+  def create(conn, %{"user" => %{"accounts" => accounts}}) do
+    [_|s_accounts] =
+      String.split(accounts, "#")
+      |> Enum.map(&String.replace(&1, ["\r","\n"], ""))
+      |> Enum.map(&String.split(&1, ","))
+
+      Enum.map(s_accounts, fn [lrn, fname, lname] ->
+        id = lrn
+	fname = fname
+	lname = lname
+	email = String.downcase(String.first(fname) <> lname <> "@pcu.edu.ph")
+	password = "123xyz"
+	User.insert_user(%{student_id: id, first_name: fname, last_name: lname, email: email, password: password, password_confirmation: password, approve: true}) end)
+    conn
+    |> put_flash(:info, "Adding new student accounts... done!")
+    |> redirect(to: Routes.page_path(conn, :users))
   end
 
   def show(conn, %{"id" => id}) do

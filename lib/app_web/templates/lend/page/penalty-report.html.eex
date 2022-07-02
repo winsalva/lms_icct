@@ -1,0 +1,40 @@
+<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<div class="main">
+  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Penalty Report") %>
+
+  <div class="sub-container">
+    <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+    <%= if @lends == [] do %>
+    <br>
+    <h2 align="center">No available records yet</h2>
+    <br>
+    <% else %>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Borrower</th>
+          <th>Released</th>
+          <th>Duration</th>
+          <th>Returned</th>
+          <th>Condition</th>
+          <th>Penalty</th>
+        </tr>
+      </thead>
+      <tbody>
+	<%= for lend <- @lends do %>
+        <tr>
+          <td><%= link lend.book.title, to: Routes.book_page_path(@conn, :show, lend.book.id) %></td>
+          <td><%= link username(lend.user.first_name, lend.user.last_name), to: Routes.user_account_path(@conn, :show, lend.user.id) %></td>
+          <td><%= lend.release_date %></td>
+          <td><%= lend.book.lend_duration %> days</td>
+          <td><%= lend.date_returned %></td>
+          <td><%= lend.return_condition %></td>
+          <td>₱<%= calculate_penalty2(lend.release_date, lend.book.lend_duration, lend.return_condition) %></td>
+        </tr>
+	<% end %>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+</div>

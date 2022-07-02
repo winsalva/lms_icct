@@ -12,7 +12,6 @@
   <%= password_input f, :password, placeholder: "Enter your password.." %>
   <%= submit "Log in" %>
   <% end %>
-  <p class="center">No account yet? <%= link "Create account.", to: Routes.user_account_path(@conn, :new) %></p>
 </div>
 </div>
 

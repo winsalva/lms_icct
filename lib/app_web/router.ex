@@ -84,10 +84,13 @@ defmodule AppWeb.Router do
     post "/", PageController, :create
     get "/", PageController, :index
     get "/books/:id", PageController, :return_lend
+    get "/penalty/reports", PageController, :penalty_report
+    get "/books/return-lended-book/:id", PageController, :return_lended_book
     post "/books/approve-requests/:id", PageController, :approve_request
     post "/books/reject-requests/:book_id/:id", PageController, :reject_request
     post "/books/release-books/:book_id/:id", PageController, :release_book
-    post "/books/return-book/:book_id/:id", PageController, :return_book
+    post "/books/lends/return-conditions/:book_id/:id", PageController, :return_book_condition
+    post "/books/return-book", PageController, :return_book
     post "/books/return-overdue-book/:book_id/:id", PageController, :return_overdue_book
     get "/requested-books", PageController, :requested_books
     get "/approved-requested-books", PageController, :approved_requested_books

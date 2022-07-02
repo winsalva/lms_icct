@@ -7,6 +7,18 @@ defmodule AppWeb.Book.PageController do
   
   alias App.Query.{Book, Lend}
 
+
+  @doc """
+  Add admin remark for returned book condition
+  """
+  def return_book_condition(conn, %{"book_id" => book_id, "id" => id}) do
+    lend_details = %{
+      book_id: book_id,
+      id: id
+    }
+    render(conn, "return-book-condition.html", lend_details: lend_details)
+  end
+
   def index(conn, _params) do
     books = Book.list_books
     render(conn, :index, books: books)
@@ -17,29 +29,27 @@ defmodule AppWeb.Book.PageController do
     render(conn, :new, book: book)
   end
 
-  def create(conn, %{"book" => params}) do
-    category =
-      if params["category"] == "Circulation" do
-        3
-      else
-        7
-      end
-      
+  def create(conn, %{"book" => %{"books" => params}}) do
     admin = conn.assigns.current_admin
-    params =
-      Map.put(params, "admin_id", admin.id)
-      |> Map.put("lend_duration", category)
-      |> Map.put("available", params["copies"])
-      
-    case Book.insert_book(params) do
-      {:ok, book} ->
-        conn
-	|> put_flash(:info, "New book titled \"#{book.title}\" was added successfully!")
-	|> redirect(to: Routes.book_page_path(conn, :index))
-      {:error, %Ecto.Changeset{} = book} ->
-        conn
-	|> render(:new, book: book)
-    end
+
+    [_|books] =
+      String.split(params, "#")
+      |> Enum.map(&String.replace(&1, ["\r","\n"], ""))
+      |> Enum.map(&String.split(&1, ","))
+
+      Enum.map(books, fn [isbn, title, author, category, copies] ->
+        isbn = isbn
+        title = title
+        author = author
+	category = category
+	{available, _} = Integer.parse(copies)
+        admin_id = admin.id
+	lend_duration = if category == "Circulation", do: 3, else: 7 
+        Book.insert_book(%{isbn: isbn, title: title, author: author, category: category, available: available, copies: available, admin_id: admin_id, lend_duration: lend_duration}) end)
+
+    conn
+    |> put_flash(:info, "New books  was added successfully!")
+    |> redirect(to: Routes.book_page_path(conn, :index))
   end
 
   def edit(conn, %{"id" => id}) do

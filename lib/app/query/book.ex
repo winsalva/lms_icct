@@ -10,8 +10,13 @@ defmodule App.Query.Book do
   """
   def search_book(category, title) do
     query =
-      from b in Book,
-        where: b.category == ^category
+      if category == "All" do
+        from b in Book,
+	  select: b
+      else
+        from b in Book,
+	  where: b.category == ^category
+      end
 
     Repo.all(query)
     |> Enum.filter(fn b -> String.upcase(b.title) == String.upcase(title) end)

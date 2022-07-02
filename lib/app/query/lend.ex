@@ -5,6 +5,18 @@ defmodule App.Query.Lend do
 
   import Ecto.Query, warn: false
 
+  @doc """
+  Check if user has approved requested books
+  """
+  def user_has_approved_requested_books(user_id) do
+    list_lends()
+    |> Enum.filter(fn lend ->
+      if lend.user.id == user_id && lend.status == "Approved" do
+        lend
+      end
+    end)
+    |> length()
+  end
 
   @doc """
   List overdue books.
@@ -136,7 +148,12 @@ defmodule App.Query.Lend do
   end
 
   def get_lend(id) do
-    Repo.get(Lend, id)
+    query =
+      from l in Lend,
+        where: l.id == ^id,
+	preload: [:book, :user]
+
+    Repo.one(query)
   end
 
   def update_lend(id, params) do

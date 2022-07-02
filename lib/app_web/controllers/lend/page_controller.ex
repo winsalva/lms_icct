@@ -10,6 +10,16 @@ defmodule AppWeb.Lend.PageController do
   
   alias App.Query.{Lend, Book}
 
+  def penalty_report(conn, _params) do
+    lends = Lend.list_returned_books()
+    render(conn, "penalty-report.html", lends: lends)
+  end
+
+  def return_lended_book(conn, %{"id" => id}) do
+    lend = Lend.get_lend(id)
+    render(conn, "return-lended-book.html", lend: lend)
+  end
+
   @doc """
   Get all out of stock books.
   """
@@ -46,25 +56,37 @@ defmodule AppWeb.Lend.PageController do
   end
 
   @doc """
+  Add admin remark for returned book condition
+  """
+  def return_book_condition(conn, %{"book_id" => book_id, "id" => id}) do
+    lend_details = %{
+      book_id: book_id,
+      id: id
+    }
+    render(conn, "return-book-condition.html", book_id: book_id, id: id)
+  end
+
+  @doc """
   Return a book
   """
-  def return_book(conn, %{"book_id" => book_id, "id" => id}) do
+  def return_book(conn, %{"book_id" => book_id, "id" => id, "return_condition" => return_condition}) do
     book = Book.get_book(book_id)
     lended = book.lended
     available = book.available
-    case Lend.update_lend(id, %{status: "Returned", accept_term: true}) do
-      {:ok, _lend} ->
+    case Lend.update_lend(id, %{status: "Returned", accept_term: true, return_condition: return_condition, date_returned: Date.utc_today()}) do
+      {:ok, lend} ->
         # Update book reserved and available field values
         Book.update_book(book.id, %{lended: lended - 1, available: available + 1})
         conn
         |> put_flash(:info, "A book was returned successfully.")
-        |> redirect(to: Routes.lend_page_path(conn, :released_books))
+        |> redirect(to: Routes.lend_page_path(conn, :return_lended_book, lend.id))
       {:error, _} ->
         conn
         |> put_flash(:error, "Something went wrong!")
         |> redirect(to: Routes.lend_page_path(conn, :released_books))
     end
   end
+
   
   @doc """
   Approve requested book
