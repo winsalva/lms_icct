@@ -32,18 +32,15 @@ defmodule AppWeb.SessionController do
       false ->
         case User.get_user_by_email_and_password(email, password) do
         %App.Schema.User{} = user ->
-	lends = Lend.user_has_approved_requested_books(user.id)
 	  if password == "123xyz" do
             conn
 	    |> put_session(:user_id, user.id)
-	    |> put_session(:lends, lends)
 	    |> configure_session(renew: true)
 	    |> put_flash(:info, "Hi #{user.first_name}, you are using default password to login. Please change it to secure your account.")
 	    |> redirect(to: Routes.user_account_path(conn, :show, user.id))
 	  else
 	    conn
 	    |> put_session(:user_id, user.id)
-	    |> put_session(:lends, lends)
 	    |> configure_session(renew: true)
 	    |> put_flash(:info, "Welcome back #{user.first_name}!")
 	    |> redirect(to: Routes.user_account_path(conn, :show, user.id))

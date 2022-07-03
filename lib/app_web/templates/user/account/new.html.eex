@@ -10,7 +10,7 @@
 </div>
 <% end %>
 <label>Student Accounts</label>
-<%= textarea f, :accounts, placeholder: "List student accounts.." %>
+<%= textarea f, :accounts, placeholder: "Format\n#lrn,firstname,lastname" %>
 
 <%= submit "Create Accounts" %>
 <% end %>

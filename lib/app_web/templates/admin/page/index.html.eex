@@ -16,7 +16,8 @@
     <%= if @announcement == [] do %>
     <p align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <% else %>
-    <%= raw(as_html(@announcement.body)) %>
+    <br>
+    <div align="center"><%= raw(as_html(@announcement.body)) %></div>
     <% end %>
   </div>
   <br>

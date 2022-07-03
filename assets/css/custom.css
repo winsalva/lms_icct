@@ -1,7 +1,9 @@
 .lends {
     color: #fff;
-    padding: 5px;
+    padding: 2px 8px;
+    border-radius: 50%;
     background-color: red;
+    border: 1px solid red;
 }
 
 /* styles for home page image animation */

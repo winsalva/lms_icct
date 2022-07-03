@@ -17,7 +17,7 @@
 
   <%= if @borrows == [] do %>
   <br />
-  <h3 align="center">No records yet</h3>
+  <h3 align="center">No available records yet.</h3>
   <% else %>
   <table>
     <thead>
@@ -57,36 +57,36 @@
 	      <%= case borrow.status do %>
 	      <% "Requested" -> %>
                <td><%= borrow.pick_up_date %></td>
-               <td>N/A</td>
-               <td>N/A</td>
-               <td>N/A</td>
-	       <td>N/A</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+	       <td>---</td>
 	       <% "Rejected" -> %>
-	       <td>N/A</td>
-               <td>N/A</td>
-               <td>N/A</td>
-               <td>N/A</td>
-               <td>N/A</td>
+	       <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
 	       <% "Approved" -> %>
 	       <td><%= borrow.pick_up_date %></td>
-               <td>N/A</td>
-               <td>N/A</td>
-               <td>N/A</td>
-               <td>N/A</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
 	       <% "Released" -> %>
 	       <td>N/A</th>
                <td><%= borrow.release_date %></td>
                <td><%= borrow.book.lend_duration %> days</td>
                <td><%= calculate_return_date(borrow.release_date, borrow.book.lend_duration) %></td>
-               <td>N/A</td>
+               <td>---</td>
 	       <% "Returned" -> %>
-	       <td>N/A</td>
-               <td>N/A</td>
-               <td>N/A</td>
-               <td>N/A</td>
-               <td>N/A</td>
+	       <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
 	       <% "Overdue" -> %>
-               <td>N/A</td>
+               <td>---</td>
 	       <td><%= borrow.release_date %></td>
                <td><%= borrow.book.lend_duration %> days</td>
                <td><%= calculate_return_date(borrow.release_date, borrow.book.lend_duration) %></td>

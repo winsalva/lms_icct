@@ -29,6 +29,10 @@
     <br>
 
     <p align="center"><strong>Philippine Christian University online library management system</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
+
+    <%= if !(Date.compare(Date.utc_today(), @announcement.hide_date) == :gt) do %>
+    <div align="center"><%= raw(as_html(@announcement.body)) %></div>
+    <% end %>
   </div>
 </div>  
 

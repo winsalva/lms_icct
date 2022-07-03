@@ -15,8 +15,12 @@
   <%= if @conn.assigns.current_user do %>
   <div class="icon-container">
     <img src="/images/profile-icon.png"/>
-    <p><%= link username(@conn.assigns.current_user.first_name, @conn.assigns.current_user.last_name), to: Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %></p>
-    <span class="lends"><%= @conn.assigns.lends %></span>
+    <p><a href="<%= Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %>"><%= username(@conn.assigns.current_user.first_name, @conn.assigns.current_user.last_name) %>
+	<%= if @conn.assigns.lends > 0 do %>
+	<sup class="lends"><%= @conn.assigns.lends %></sup>
+	<% end %>
+      </a>
+    </p>
     <p id="student-id">#<%= @conn.assigns.current_user.student_id %></p>
   </div>
   <%= link "Home", to: Routes.page_path(@conn, :index) %>

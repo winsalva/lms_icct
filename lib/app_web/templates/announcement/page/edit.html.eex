@@ -7,6 +7,15 @@
     <%= textarea f, :body, placeholder: "You can use mark down syntax.." %>
     <%= error_tag f, :body %>
 
+    <label>Display Until</label>
+    <%= date_select f, :hide_date, year: [options: 2022..2025], builder: fn b -> %>
+    <%= b.(:day, []) %> / <%= b.(:month, []) %> /
+    <%= b.(:year, []) %>
+    <% end %>
+    <%= error_tag f, :hide_date %>
+
+    <br><br>
+
     <%= submit "Save" %>
     <% end %>
   </div>
