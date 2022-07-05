@@ -11,7 +11,7 @@ defmodule AppWeb.User.AccountController do
   alias App.Query.{User, Lend}
 
   def reset_password(conn, %{"id" => id}) do
-    default_password = "abcxyz"
+    default_password = "123xyz"
     params = %{
       password: default_password,
       password_confirmation: default_password
