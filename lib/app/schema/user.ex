@@ -10,7 +10,7 @@ defmodule App.Schema.User do
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :seen, :boolean, default: false
-    field :approve, :boolean, default: false
+    field :approve, :boolean, default: true
     timestamps([type: :utc_datetime_usec])
   end
 
