@@ -16,7 +16,7 @@
   <div class="icon-container">
     <img src="/images/profile-icon.png"/>
     <p><a href="<%= Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %>"><%= username(@conn.assigns.current_user.first_name, @conn.assigns.current_user.last_name) %>
-	<%= if @conn.assigns.lends > 0 do %>
+	<%= if @conn.assigns.lends != nil && @conn.assigns.lends > 0 do %>
 	<sup class="lends"><%= @conn.assigns.lends %></sup>
 	<% end %>
       </a>
