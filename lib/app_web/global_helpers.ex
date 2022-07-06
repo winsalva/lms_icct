@@ -1,5 +1,9 @@
 defmodule AppWeb.GlobalHelpers do
 
+  def user_has_approved_requested_books(user_id) do
+    App.Query.Lend.user_has_approved_requested_books(user_id)
+  end
+
   def tomorrow do
     date = Date.add(Date.utc_today, 1)
     "#{date.year}-#{date.month}-#{date.day}"

@@ -16,8 +16,8 @@
   <div class="icon-container">
     <img src="/images/profile-icon.png"/>
     <p><a href="<%= Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %>"><%= username(@conn.assigns.current_user.first_name, @conn.assigns.current_user.last_name) %>
-	<%= if @conn.assigns.lends != nil && @conn.assigns.lends > 0 do %>
-	<sup class="lends"><%= @conn.assigns.lends %></sup>
+	<%= if user_has_approved_requested_books(@conn.assigns.current_user.id) > 0 do %>
+	<sup class="lends"><%= user_has_approved_requested_books(@conn.assigns.current_user.id) %></sup>
 	<% end %>
       </a>
     </p>
