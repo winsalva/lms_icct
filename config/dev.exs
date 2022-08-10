@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # username will be the name use to configure
 # postgres. ex: `create user brokerage`
