@@ -20,6 +20,7 @@
     65%{
         transform: translateX(-100%);
     }
+    
     70%{
         transform: translateX(-200%);
     }
@@ -112,8 +113,8 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 10px 15px 0 15px;
-    border: 1px solid #ddd;
-    background-color: #ddd;
+    border: 1px solid #136ad5;
+    background-color: #136ad5;
 }
 nav #schoolname {
     font-size: 22px;
@@ -123,15 +124,7 @@ nav #schoolname {
     position: relative;
     margin-left: .5rem;
 }
-nav #tagname {
-    margin: -5px;
-    padding: 0 0 10px 0;
-    font-size: 14px;
-    color: #808080;
-    word-spacing: 5px;
-    text-align: center;
-    letter-spacing: 2px;
-}
+
 .logo-name-container {
     display: flex;
 }
@@ -296,6 +289,7 @@ nav .menus {
     margin-top: 1rem;
     padding: 2rem 0 .5rem 0;
 }
+/*
 footer {
     background-color: #ddd;
     color: var(--white);
@@ -324,6 +318,7 @@ footer {
     padding: 0;
     color: #808080;
 }
+*/
 .image-container {
     margin-bottom: 1rem;
 }

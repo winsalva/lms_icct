@@ -1,4 +1,80 @@
 @media only screen and (min-width: 768px) {
+
+    body {
+        background-image: url("/images/lib-bg.jpg");
+        background-repeat: no-repeat;
+        height: 100%;
+        background-size: cover;
+    }
+    .main {
+	display: flex;
+	background-color: #136ad5;
+    }
+    .sub-container {
+	background-color: #fff;
+	margin-bottom: -1rem;
+	padding: 1rem;
+    }
+    .sidenav-container {
+	height: 100%;
+	width: 40%;
+	background-color: #136ad5; /* Blue */
+	padding: 1.5rem 1.5rem 1.5rem 1.5rem;;
+    }
+
+    /* The navigation menu links */
+    .sidenav-container a {
+	font-weight: bold;
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 16px;
+	color: #000;
+	display: block;
+	text-align: left;
+    }
+    .sidenav-container a:hover {
+	color: #fff;
+	font-weight: bold;
+    }
+    .icons {
+	display: none;
+    }
+    .back-nav-container {
+	background-color: #fff;
+	display: flex;
+	flex-direction: row;
+	padding: .5rem 0;
+    }
+    .back-nav-container > .back-nav-title {
+	color: #136ad5;
+	font-size: 1.8rem;
+	position: relative;
+    }
+    .logo-name-container {
+	padding-left: 1rem;
+    }
+    #lib-logo {
+	max-width: 5.5rem;
+	max-height: 5.5rem;
+    }
+    .logo-name-container > #schoolname {
+	color: #fff;
+	padding-left: 0.5rem;
+    }
+    #schoolname > #tagname {
+	font-size: 1.6rem;
+	color: #000;
+    }
+    .menus > li > a {
+	color: #000;
+    }
+    .menus > li > a:hover {
+	color: #fff;
+    }
+
+    #home-page-content-container {
+	padding: 3rem 3rem 3rem 2rem;
+    }
     .uploads-container {
 	margin: -1rem;
       display: grid;
@@ -9,5 +85,40 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
+  }
+  footer {
+    background-color: #136ad5;
+    color: var(--white);
+    margin-top: 0;
+    padding: 2rem 0 4rem 0;
+  }
+  .footer-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+  }
+  .footer-options li a {
+      color: #000;
+      font-size: 1.4rem;
+      font-weight: bold;
+  }
+  .footer-options li a:hover {
+    color: #fff;
+  }
+  .footer-options li {
+    list-style: none;
+    text-align: center;
+  }
+  .copyright p {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.2rem;
+  }
+  .footer-company-name {
+      color: #fff;
+      font-weight: bold;
+      font-size: 2.5rem;
   }
 }

@@ -1,17 +1,17 @@
 <nav>
   <div class="logo-name-container">  
-    <div id="pcu-logo">
+    <div id="lib-logo">
       <img src="/images/pcu-logo.webp"/>  
     </div>
     
-    <div id="schoolname">Philippine Christian University
-      <p id="tagname">Online Library Management System</p>
+    <div id="schoolname">DEBESMSCAT
+      <p id="tagname">Library Information Management System</p>
     </div>
   </div>
   
   <div class="menus">
     <li><a href="<%= Routes.session_path(@conn, :new) %>">SIGN IN</a></li>
-    <li><a href="<%= Routes.page_path(@conn, :contact_us) %>">CONTACT US</a></li>
+    <!--<li><a href="<%= Routes.page_path(@conn, :contact_us) %>">CONTACT US</a></li>-->
     <li><a href="<%= Routes.page_path(@conn, :about_us) %>">ABOUT</a></li>
   </div>
 </nav>
@@ -21,19 +21,25 @@
     <div class="slider-container">
     
     <div class="slider-wrapper">
-      <img src="/images/pcu-image1.webp">
-      <img src="/images/pcu-image2.jpeg">
-      <img src="/images/pcu-image3.jpeg">
+      <img src="/images/lib-image1.jpg">
+      <img src="/images/lib-image2.jpg">
+      <img src="/images/lib-image3.jpg">
     </div>
+    
+    <div id="home-page-content-container">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi suscipit lacus id vulputate lobortis. Nam massa justo, porttitor ac tortor eu, sagittis vulputate neque. Aliquam porttitor erat ac ultricies fermentum. Pellentesque quis sem a metus semper porttitor.</p>
+      <p>Aenean elementum vestibulum enim, sed suscipit nisi volutpat et. Morbi vehicula sodales purus, a tempor diam pellentesque ut. Nulla nec dui nec purus mattis dictum. Sed non nibh accumsan, sodales quam vitae, fermentum nisl. Curabitur mollis tincidunt efficitur. Donec tincidunt volutpat tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Pellentesque mollis accumsan nunc, in eleifend odio aliquet ac. Etiam ligula nibh, pellentesque posuere tempor et, dignissim in magna. Nulla laoreet, diam nec mollis vulputate, ante sem tempus augue, eget aliquam enim magna a tortor.</p>
+    </div>
+    
+    <!--
+    <p align="center"><strong>Online library management system</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
 
-    <br>
-
-    <p align="center"><strong>Philippine Christian University online library management system</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
-
-    <%= if @announcement != [] && @announcement.hide_date != nil && !(Date.compare(Date.utc_today(), @announcement.hide_date) == :gt) do %>
-    <div align="center"><%= raw(as_html(@announcement.body)) %></div>
-    <% end %>
-  </div>
+    < if announcement != [] && announcement.hide_date != nil && !(Date.compare(Date.utc_today(), announcement.hide_date) == :gt) do %>
+    <div align="center">< raw(as_html(announcement.body)) ></div>
+    < end >
+    </div>
+    -->
 </div>  
 
 <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

@@ -1,9 +1,6 @@
 <footer>
-  <p class="footer-company-name">Online Library Management System</p>
-  <div class="under-line"></div>
-
-  <div class="footer-options">
-  
+  <p class="footer-company-name">Library Information Management System</p>
+  <div class="footer-options">  
     <li><%= link "Home", to: Routes.page_path(@conn, :index) %></li>
     <li><%= link "About Us", to: Routes.page_path(@conn, :about_us) %></li>
     <li><%= link "Terms Of Use", to: Routes.page_path(@conn, :term_of_use) %></li>
@@ -12,15 +9,14 @@
     <li><%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %></li>
     <% else %>
     <li><%= link "Sign In", to: Routes.session_path(@conn, :new) %></li>
-    <li><%= link "Contact Us", to: Routes.page_path(@conn, :contact_us) %></li>
+    <!--<li>< link "Contact Us", to: Routes.page_path(@conn, :contact_us) ></li>
+	-->
     <% end %>
-  
   </div>
 
   <div class="copyright">
     <p>Copyright &copy; 2022 <%= company_name() %>. <p>
       <p>All Rights Reserved.</p>
   </div>
-  
 </footer>
 

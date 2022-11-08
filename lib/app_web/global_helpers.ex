@@ -93,7 +93,7 @@ defmodule AppWeb.GlobalHelpers do
   end
 
   def company_name do
-    "Philippine Christian University"
+    "DEBESMSCAT"
   end
 
   @doc """
