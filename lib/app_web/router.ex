@@ -54,7 +54,10 @@ defmodule AppWeb.Router do
   scope "/users", AppWeb.User, as: :user do
     pipe_through :browser
 
-    get "/", PageController, :index
+    resources "/", PageController, only: [
+      :index, :new, :create
+    ]
+    
     resources "/accounts", AccountController, only: [:new, :create, :show, :delete]
 
     get "/accounts/:id/edit-name", AccountController, :edit_name

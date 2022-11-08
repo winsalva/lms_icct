@@ -1,0 +1,39 @@
+<div class="session-form-login">
+  <div><p class="close-btn" onclick="back();">&times</div>
+  <%= form_for @user, Routes.user_page_path(@conn, :create), fn f -> %>
+  <h2 align="center"><strong>REGISTER</strong></h2>
+
+  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+  <br/>
+
+  <label>First Name</label>
+  <%= text_input f, :first_name, placeholder: "ex. John.." %>
+  <%= error_tag f, :first_name %>
+
+  <label>Last Name</label>
+  <%= text_input f, :last_name, placeholder: "ex. Smith.." %>
+  <%= error_tag f, :last_name %>
+
+  <label>Student ID</label>
+  <%= text_input f, :student_id, placeholder: "ex. 12345.." %>
+  <%= error_tag f, :student_id %>
+  
+  <label>Email</label>
+  <%= text_input f, :email, placeholder: "Enter your email.."  %>
+  <%= error_tag f, :email %>
+
+  <label>Password</label>
+  <%= password_input f, :password, placeholder: "at least 6 characters.." %>
+  <%= error_tag f, :password %>
+
+  <label>Confirm Password</label>
+  <%= password_input f, :password_confirmation, placeholder: "Retype your password.." %>
+  <%= error_tag f, :password_confirmation %>
+
+  <div align="center">
+    <br /><br />
+    <%= submit "Create Account" %>
+  </div>
+  <% end %>
+  <div align="center">Already have an account? <strong><%= link "Log in", to: Routes.session_path(@conn, :new) %></strong></div>
+</div>
