@@ -35,5 +35,5 @@
     <%= submit "Log in" %>
   </div>
   <% end %>
-  <div align="center"><span style="color:#fff;">No account yet?</span> <strong><%= link "Register", to: Routes.user_page_path(@conn, :new) %></strong></div>
+  <div align="center">No account yet? <strong><%= link "Register", to: Routes.user_page_path(@conn, :new) %></strong></div>
 </div>

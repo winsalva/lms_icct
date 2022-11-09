@@ -124,8 +124,9 @@
   }
 
   /* session form */
-    .session-form-login {
-        border: 1.5px solid #136ad5;
+  .session-form-login {
+      background-color: #c4dff6;
+        border: 1px solid #136ad5;
         border-radius: 5px;
         width: 35%;
        /* height: 100%;*/
@@ -133,8 +134,9 @@
         padding: 2.5rem;
     }
 
-    .session-form {
-        border: 1.5px solid #1769ff;
+  .session-form {
+      background-color: #c4dff6;
+        border: 1px solid #1769ff;
         border-radius: 5px;
         width: 35%;
         /*height: 100%;*/

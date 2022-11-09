@@ -31,9 +31,9 @@
   <%= error_tag f, :password_confirmation %>
 
   <div align="center">
-    <br /><br />
+    <br />
     <%= submit "Create Account" %>
   </div>
   <% end %>
-  <div align="center"><span style="color:#fff;">Already have an account?</span> <strong><%= link "Log in", to: Routes.session_path(@conn, :new) %></strong></div>
+  <div align="center">Already have an account? <strong><%= link "Log in", to: Routes.session_path(@conn, :new) %></strong></div>
 </div>
