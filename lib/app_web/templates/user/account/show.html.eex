@@ -26,7 +26,7 @@
     <!--
 	< render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: username(@user.first_name, @user.last_name)) >
 	  -->
-    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "My Account") %>
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "") %>
   <div class="user-options">
     <%= if @conn.assigns.current_user do %>
     <%= link "Edit Name", to: Routes.user_account_path(@conn, :edit_name, @conn.assigns.current_user.id) %>

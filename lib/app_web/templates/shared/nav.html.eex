@@ -1,34 +1,35 @@
 <div class="sidenav-container">  
   <%= if @conn.assigns.current_admin do %>
-  <%= link "Home", to: Routes.page_path(@conn, :index) %>
-  <!-- 
+
+  <%= link "Admin Dashboard", to: "" %>
+  <!--
+  < link "Home", to: Routes.page_path(@conn, :index) > 
   < link "Users", to: Routes.page_path(@conn, :users) >
   < link "Books", to: Routes.page_path(@conn, :books) >
   < link "Transactions", to: Routes.page_path(@conn, :transactions) >
     < link "Announcements", to: Routes.admin_page_path(@conn, :index) >
       -->
+
+     <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %>
   <% end %>
 
   <%= if @conn.assigns.current_user do %>
   <%= link "Home", to: Routes.page_path(@conn, :index) %>
   <!--
-  < link "Books", to: Routes.page_path(@conn, :books) >-->
+      < link "Books", to: Routes.page_path(@conn, :books) >-->
+    <%= link "About Us", to: Routes.page_path(@conn, :about_us) %>
+  <%= link "Contact Us", to: Routes.page_path(@conn, :contact_us) %>
+    <%= link "Terms of Use", to: Routes.page_path(@conn, :term_of_use) %>
+    <%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %>
+    <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %>
   <% end %>
 
   <%= if @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
-  <%= link "Home", to: Routes.page_path(@conn, :index) %>
-  <% end %>
-	  
+  <%= link "Home", to: Routes.page_path(@conn, :index) %>  
   <%= link "About Us", to: Routes.page_path(@conn, :about_us) %>
   <%= link "Contact Us", to: Routes.page_path(@conn, :contact_us) %>
     <%= link "Terms of Use", to: Routes.page_path(@conn, :term_of_use) %>
     <%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %>
-    
-    <%= if @conn.assigns.current_admin || @conn.assigns.current_user do %>
-
-    <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %>
-	 
-    <% else %>
     <%= link "Sign In", to: Routes.session_path(@conn, :new) %>
     <% end %>
 </div>
