@@ -10,9 +10,11 @@
   </div>
 
   <div class="menus">
+    <!--
     <li><a href="<%= Routes.session_path(@conn, :new) %>">SIGN IN</a></li>
     <li><a href="<%= Routes.page_path(@conn, :contact_us) %>">CONTACT US</a></li>
     <li><a href="<%= Routes.page_path(@conn, :about_us) %>">ABOUT</a></li>
+    -->
   </div>
 </nav>
 

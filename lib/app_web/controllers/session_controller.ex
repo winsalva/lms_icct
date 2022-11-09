@@ -28,7 +28,10 @@ defmodule AppWeb.SessionController do
         conn
         |> put_session(:admin_id, admin.id)
         |> configure_session(renew: true)
-        |> redirect(to: Routes.page_path(conn, :transactions))
+	|> redirect(to: Routes.user_page_path(conn, :index))
+	
+	## Temporary redirection
+        #|> redirect(to: Routes.page_path(conn, :transactions))
       false ->
         case User.get_user_by_email_and_password(email, password) do
         %App.Schema.User{} = user ->

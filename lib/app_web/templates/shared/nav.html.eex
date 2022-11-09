@@ -1,13 +1,16 @@
 <div class="sidenav-container">  
   <%= if @conn.assigns.current_admin do %>
   <%= link "Home", to: Routes.page_path(@conn, :index) %>
-  <%= link "Users", to: Routes.page_path(@conn, :users) %>
-  <%= link "Books", to: Routes.page_path(@conn, :books) %>
-  <%= link "Transactions", to: Routes.page_path(@conn, :transactions) %>
-  <%= link "Announcements", to: Routes.admin_page_path(@conn, :index) %>
+  <!-- 
+  < link "Users", to: Routes.page_path(@conn, :users) >
+  < link "Books", to: Routes.page_path(@conn, :books) >
+  < link "Transactions", to: Routes.page_path(@conn, :transactions) >
+    < link "Announcements", to: Routes.admin_page_path(@conn, :index) >
+      -->
   <% end %>
 
   <%= if @conn.assigns.current_user do %>
+  <!--
   <div class="icon-container">
     <img src="/images/profile-icon.png"/>
     <p><a href="<%= Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %>"><%= username(@conn.assigns.current_user.first_name, @conn.assigns.current_user.last_name) %>
@@ -18,8 +21,10 @@
     </p>
     <p id="student-id">#<%= @conn.assigns.current_user.student_id %></p>
   </div>
+  -->
   <%= link "Home", to: Routes.page_path(@conn, :index) %>
-  <%= link "Books", to: Routes.page_path(@conn, :books) %>
+  <!--
+  <%= link "Books", to: Routes.page_path(@conn, :books) %>-->
   <% end %>
 
   <%= if @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
@@ -28,11 +33,13 @@
 	  
   <%= link "About Us", to: Routes.page_path(@conn, :about_us) %>
   <%= link "Contact Us", to: Routes.page_path(@conn, :contact_us) %>
-    <%= link "Terms Of Use", to: Routes.page_path(@conn, :term_of_use) %>
+    <%= link "Terms of Use", to: Routes.page_path(@conn, :term_of_use) %>
     <%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %>
     
     <%= if @conn.assigns.current_admin || @conn.assigns.current_user do %>
+
     <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %>
+	 
     <% else %>
     <%= link "Sign In", to: Routes.session_path(@conn, :new) %>
     <% end %>

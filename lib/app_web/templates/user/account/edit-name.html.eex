@@ -1,15 +1,12 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
-<div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Edit Account Name") %>
+<div class="session-form-login">
+  <div><p class="close-btn" onclick="back();">&times</div>
+  <%= form_for @user, Routes.user_account_path(@conn, :update_name, %{id: @user.data.id}), fn f -> %>
+  <h2 align="center"><strong>EDIT NAME</strong></h2>
 
-<div class="sub-container">
-<%= form_for @user, Routes.user_account_path(@conn, :update_name, %{id: @user.data.id}), fn f -> %>
-<%= if @user.action do %>
-<div class="alert alert-danger">
-  <p>Something went wrong. Please check the errors below.</p>
-</div>
-<% end %>
-<label>First name</label>
+  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+  <br/>
+
+  <label>First name</label>
 <%= text_input f, :first_name, placeholder: "ex. Juan" %>
 <%= error_tag f, :first_name %>
 
@@ -20,7 +17,9 @@
 <label>Current password</label>
 <%= password_input f, :password, placeholder: "Enter your current password to save this changes.." %>
 
-<%= submit "Save Changes" %>
-<% end %>
-</div>
+  <div align="center">
+    <br /><br />
+    <%= submit "Save Changes" %>
+  </div>
+  <% end %>
 </div>

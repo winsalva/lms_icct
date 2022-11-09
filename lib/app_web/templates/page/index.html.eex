@@ -17,6 +17,9 @@
 </nav>
 
 <div class="sub-container">
+
+  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+  
   <div class="landing-page-content-container">
     <div class="slider-container">
     

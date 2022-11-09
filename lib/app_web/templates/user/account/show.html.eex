@@ -1,8 +1,32 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
-<div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: username(@user.first_name, @user.last_name)) %>
+<nav>
+  <div class="logo-name-container">
+    <div id="lib-logo">
+      <img src="/images/pcu-logo.webp"/>
+    </div>
 
-<div class="sub-container">
+    <div id="schoolname">DEBESMSCAT
+      <p id="tagname">Library Information Management System</p>
+    </div>
+  </div>
+
+  <div class="menus">
+    <!--
+    <li><a href="<%= Routes.session_path(@conn, :new) %>">SIGN IN</a></li>
+    <li><a href="<%= Routes.page_path(@conn, :contact_us) %>">CONTACT US</a></li>
+    <li><a href="<%= Routes.page_path(@conn, :about_us) %>">ABOUT</a></li>
+    -->
+  </div>
+</nav>
+
+<div class="main">
+  <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+
+  <div class="sub-container">
+    <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+    <!--
+	< render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: username(@user.first_name, @user.last_name)) >
+	  -->
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "My Account") %>
   <div class="user-options">
     <%= if @conn.assigns.current_user do %>
     <%= link "Edit Name", to: Routes.user_account_path(@conn, :edit_name, @conn.assigns.current_user.id) %>
@@ -13,11 +37,29 @@
   <% end %>
   </div>
 
-  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
-
+  <table>
+    <thead>
+      <tr>
+	<th>First Name</th>
+	<th>Last Name</th>
+	<th>Student ID</th>
+	<th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+	<td><%= @user.first_name %></td>
+	<td><%= @user.last_name %></td>
+	<td><%= @user.student_id %></td>
+	<td><%= @user.email %></td>
+      </tr>
+    </tbody>
+  </table>
+  
   <%= if @borrows == [] do %>
   <br />
   <h3 align="center">No available records yet.</h3>
+  <br>
   <% else %>
   <table>
     <thead>
@@ -97,7 +139,8 @@
           <% end %>
     </tbody>
   </table>
-  <% end %>
+<% end %>
+<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
 	    
 </div>
 </div>
