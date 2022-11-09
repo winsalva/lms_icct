@@ -125,7 +125,7 @@
 
   /* session form */
     .session-form-login {
-        border: 1px solid #136ad5;
+        border: 1.5px solid #136ad5;
         border-radius: 5px;
         width: 35%;
        /* height: 100%;*/
@@ -134,7 +134,7 @@
     }
 
     .session-form {
-        border: 1px solid #1769ff;
+        border: 1.5px solid #1769ff;
         border-radius: 5px;
         width: 35%;
         /*height: 100%;*/
