@@ -13,18 +13,18 @@
   <!--
   <div class="icon-container">
     <img src="/images/profile-icon.png"/>
-    <p><a href="<%= Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %>"><%= username(@conn.assigns.current_user.first_name, @conn.assigns.current_user.last_name) %>
-	<%= if user_has_approved_requested_books(@conn.assigns.current_user.id) > 0 do %>
+    <p><a href="< Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) >">< username(@conn.assigns.current_user.first_name, @conn.assigns.current_user.last_name) >
+	< if user_has_approved_requested_books(@conn.assigns.current_user.id) > 0 do >
 	<sup class="lends"><%= user_has_approved_requested_books(@conn.assigns.current_user.id) %></sup>
-	<% end %>
+	< end >
       </a>
     </p>
-    <p id="student-id">#<%= @conn.assigns.current_user.student_id %></p>
+    <p id="student-id">#< @conn.assigns.current_user.student_id ></p>
   </div>
   -->
   <%= link "Home", to: Routes.page_path(@conn, :index) %>
   <!--
-  <%= link "Books", to: Routes.page_path(@conn, :books) %>-->
+  < link "Books", to: Routes.page_path(@conn, :books) >-->
   <% end %>
 
   <%= if @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
