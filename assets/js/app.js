@@ -7,7 +7,7 @@ AOS.init()
 // The MiniCssExtractPlugin is used to separate it out into
 // its own CSS file.
 import "../css/app.css"
-
+import 'font-awesome/css/font-awesome.css';
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
 // in "webpack.config.js".
