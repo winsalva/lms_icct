@@ -1,35 +1,26 @@
 <div class="sidenav-container">  
-  <%= if @conn.assigns.current_admin do %>
-
-  <%= link "Admin Dashboard", to: "" %>
-  <!--
-  < link "Home", to: Routes.page_path(@conn, :index) > 
-  < link "Users", to: Routes.page_path(@conn, :users) >
-  < link "Books", to: Routes.page_path(@conn, :books) >
-  < link "Transactions", to: Routes.page_path(@conn, :transactions) >
-    < link "Announcements", to: Routes.admin_page_path(@conn, :index) >
-      -->
-
-     <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %>
+  <%= if @conn.assigns.current_admin != nil do %>
+  <div><i class="fa fa-user"></i><%= link "Admin Dashboard", to: "" %></div>
+  <div><i class="fa fa-home"></i><%= link "Home", to: Routes.page_path(@conn, :index) %></div>
+  <div><i class="fa fa-users"></i><%= link "Users", to: Routes.page_path(@conn, :users) %></div>
+  <div><i class="fa fa-book"></i><%= link "Books", to: Routes.page_path(@conn, :books) %></div>
+  <div><i class="fa fa-exchange"></i><%= link "Transactions", to: Routes.page_path(@conn, :transactions) %></div>
+  <div><i class="fa fa-sign-in"></i><%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete, data: [confirm: "Are you sure?"] %></div>
   <% end %>
 
-  <%= if @conn.assigns.current_user do %>
-  <%= link "Home", to: Routes.page_path(@conn, :index) %>
-  <!--
-      < link "Books", to: Routes.page_path(@conn, :books) >-->
-    <%= link "About Us", to: Routes.page_path(@conn, :about_us) %>
-  <%= link "Contact Us", to: Routes.page_path(@conn, :contact_us) %>
-    <%= link "Terms of Use", to: Routes.page_path(@conn, :term_of_use) %>
-    <%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %>
-    <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %>
+  <%= if @conn.assigns.current_user != nil do %>
+  <div><i class="fa fa-user"></i><%= link "My Account", to: Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %></div>
+  <div><i class="fa fa-home"></i><%= link "Home", to: Routes.page_path(@conn, :index) %></div>
+  <div><i class="fa fa-book"></i><%= link "Books", to: Routes.page_path(@conn, :books) %></div>
+  <div><i class="fa fa-sign-in"></i><%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %></div>
   <% end %>
 
   <%= if @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
-  <%= link "Home", to: Routes.page_path(@conn, :index) %>  
-  <%= link "About Us", to: Routes.page_path(@conn, :about_us) %>
-  <%= link "Contact Us", to: Routes.page_path(@conn, :contact_us) %>
-    <%= link "Terms of Use", to: Routes.page_path(@conn, :term_of_use) %>
-    <%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %>
-    <%= link "Sign In", to: Routes.session_path(@conn, :new) %>
+  <div><i class="fa fa-home"></i><%= link "Home", to: Routes.page_path(@conn, :index) %></div>  
+  <div><i class="fa fa-info-circle"></i><%= link "About Us", to: Routes.page_path(@conn, :about_us) %></div>
+  <div><i class="fa fa-address-book"></i><%= link "Contact Us", to: Routes.page_path(@conn, :contact_us) %></div>
+    <div><i class="fa fa-gavel"></i><%= link "Terms of Use", to: Routes.page_path(@conn, :term_of_use) %></div>
+    <div><i class="fa fa-lock"></i><%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %></div>
+    <div><i class="fa fa-sign-in"></i><%= link "Sign In", to: Routes.session_path(@conn, :new) %></div>
     <% end %>
 </div>

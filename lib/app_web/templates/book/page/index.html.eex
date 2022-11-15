@@ -1,39 +1,56 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<nav>
+  <div class="logo-name-container">
+    <div id="lib-logo">
+      <img src="/images/pcu-logo.webp"/>
+    </div>
+
+    <div id="schoolname">DEBESMSCAT
+      <p id="tagname">Library Information Management System</p>
+    </div>
+  </div>
+</nav>
+
 <div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Books") %>
+  <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
-<div class="sub-container">
-
-  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
-
-  <%= if @books == [] do %>
-  <br>
-  <h2 align="center">No Books Available Yet</h2>
-  <br>
-  <% else %>
   <div class="sub-container">
-    <%= if @books == [] do %>
-    <h3 class="center">Coming soon..</h3>
-    <% else %>
-    <div class="uploads-container">
-      <%= for book <- @books do %>
-      <div class="upload-container" data-aos="fade-up">
-        <a href="<%= Routes.book_page_path(@conn, :show, book.id) %>">
-          <img src="/images/book.png"/>
-        <div class="upload-title-description">
-          <p class="upload-title">
-            <strong><%= book.title %></strong>
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Books") %>
+
+    <div class="page-content">
+
+
+      <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+
+      <%= if @books == [] do %>
+      <br>
+      <h4 align="center">No Books Available Yet</h4>
+      <br>
+      <% else %>
+      <div class="sub-container">
+	<%= if @books == [] do %>
+	<h3 class="center">Coming soon..</h3>
+	<% else %>
+	<div class="uploads-container">
+	  <%= for book <- @books do %>
+	      <div class="upload-container" data-aos="fade-up">
+		<a href="<%= Routes.book_page_path(@conn, :show, book.id) %>">
+		  <img src="/images/book.png"/>
+		  <div class="upload-title-description">
+		    <p class="upload-title">
+		      <strong><%= book.title %></strong>
           </p>
-          <div class="upload-description">
+		    <div class="upload-description">
             Available: <%= book.available %>
-          </div>
-        </div>
-        </a>
+		    </div>
+		  </div>
+		</a>
+	      </div>
+	      <% end %>
+	</div>
+	<% end %>
       </div>
       <% end %>
     </div>
-    <% end %>
+    <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
   </div>
-  <% end %>
-</div>
 </div>

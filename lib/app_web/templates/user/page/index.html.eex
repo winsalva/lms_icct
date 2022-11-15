@@ -8,54 +8,48 @@
       <p id="tagname">Library Information Management System</p>
     </div>
   </div>
-
-  <div class="menus">
-    <!--
-    <li><a href="<%= Routes.session_path(@conn, :new) %>">SIGN IN</a></li>
-    <li><a href="<%= Routes.page_path(@conn, :contact_us) %>">CONTACT US</a></li>
-    <li><a href="<%= Routes.page_path(@conn, :about_us) %>">ABOUT</a></li>
-    -->
-  </div>
 </nav>
-
 
 <div class="main">
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
-<div class="sub-container">
-  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Users") %>
+  <div class="sub-container">
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Users") %>
 
-  <%= if @users == [] do %>
-  <br/>
-  <h3 class="center">No records yet.</h3>
-<% else %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>ID</th>
-      <th>Email</th>
-      <th>Approve?</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= for user <- @users do %>
-	<tr>
-	  <td><%= link username(user.first_name, user.last_name), to: Routes.user_account_path(@conn, :show, user.id) %></td>
-	  <td><%= user.student_id %></td>
-	  <td><%= user.email %></td>
-	  <%= if user.approve do %>
-	  <td><%= link "True", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></td>
-	  <% else %>
-	  <td><%= link "False", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></td>
-	  <% end %>
-	  <td><%= link "Delete", to: Routes.user_account_path(@conn, :delete, user.id), method: :delete, class: "color-red", data: [confirm: "Are you sure to delete this account?"] %></td>
-	</tr>
-	<% end %>
-  </tbody>
-</table>
-<% end %>
-<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
-</div>
+    <div class="page-content">
+      <%= if @users == [] do %>
+      <br/>
+      <h3 class="center">No records yet.</h3>
+      <% else %>
+      <table>
+	<thead>
+	  <tr>
+	    <th>Name</th>
+	    <th>ID</th>
+	    <th>Email</th>
+	    <th>Approve?</th>
+	    <th></th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <%= for user <- @users do %>
+	      <tr>
+		<td><%= link username(user.first_name, user.last_name), to: Routes.user_account_path(@conn, :show, user.id) %></td>
+		<td><%= user.student_id %></td>
+		<td><%= user.email %></td>
+		<%= if user.approve do %>
+		<td><%= link "True", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></td>
+		<% else %>
+		<td><%= link "False", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></td>
+		<% end %>
+		<td><%= link "Delete", to: Routes.user_account_path(@conn, :delete, user.id), method: :delete, class: "color-red", data: [confirm: "Are you sure to delete this account?"] %></td>
+		</tr>
+	      <% end %>
+	</tbody>
+      </table>
+      <% end %>
+    </div>
+
+    <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+  </div>
 </div>

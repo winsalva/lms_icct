@@ -1,4 +1,8 @@
 <footer>
+  <div class="footer-logo-container">
+    <img src="/images/pcu-logo.webp"/>
+  </div>
+  
   <p class="footer-company-name">Library Information Management System</p>
   <div class="footer-options">  
     <li><%= link "Home", to: Routes.page_path(@conn, :index) %></li>

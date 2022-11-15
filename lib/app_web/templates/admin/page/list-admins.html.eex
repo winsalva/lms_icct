@@ -1,32 +1,46 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
-<div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Admins") %>
-<div class="sub-container">
-  
-  <%= if @admins == [] do %>
-  <h2 class="center">No admins yet!</h2>
-  <% else %>
-  <table>
-    <thead>
-      <tr>
-	<th>Name</th>
-	<th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= for admin <- @admins do %>
-          <tr>
-	    <%= if @current_admin.id == admin.id do %>
-            <td><%= link admin.username, to: Routes.admin_page_path(@conn, :show, admin.id) %></td>
-	    <% else %>
-	    <td><%= admin.username %></td>
-	    <% end %>
-          <td><%= admin.email %></td>
-        </tr>
-        <% end %>
-    </tbody>
-  </table>
-  <% end %>
-</div>
+<nav>
+  <div class="logo-name-container">
+    <div id="lib-logo">
+      <img src="/images/pcu-logo.webp"/>
+    </div>
 
+    <div id="schoolname">DEBESMSCAT
+      <p id="tagname">Library Information Management System</p>
+    </div>
+  </div>
+</nav>
+
+<div class="main">
+  <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+
+  <div class="sub-container">
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Admins") %>
+    <div class="page-content">
+      <%= if @admins == [] do %>
+      <h2 class="center">No admins yet!</h2>
+      <% else %>
+      <table>
+	<thead>
+	  <tr>
+	    <th>Name</th>
+	    <th>Email</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <%= for admin <- @admins do %>
+	      <tr>
+		<%= if @current_admin.id == admin.id do %>
+		<td><%= link admin.username, to: Routes.admin_page_path(@conn, :show, admin.id) %></td>
+		<% else %>
+		<td><%= admin.username %></td>
+		<% end %>
+		<td><%= admin.email %></td>
+	      </tr>
+	      <% end %>
+	</tbody>
+      </table>
+      <% end %>
+    </div>
+    <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+  </div>
 </div>

@@ -1,24 +1,37 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<nav>
+  <div class="logo-name-container">
+    <div id="lib-logo">
+      <img src="/images/pcu-logo.webp"/>
+    </div>
+
+    <div id="schoolname">DEBESMSCAT
+      <p id="tagname">Library Information Management System</p>
+    </div>
+  </div>
+</nav>
+
 <div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "My Admin Account") %>
+  <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+  <div class="sub-container">
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "About Us") %>
 
-<div class="sub-container">
-
-  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
-
-  <table>
-    <tbody>
-      <tr>
-        <td><b>Username: </b></td>
-        <td><%= @admin.username %></td>
-        <td><%= link "Edit", to: Routes.admin_account_path(@conn, :edit_username, @admin.id) %></td>
-      </tr>
-      <tr>
-        <td><b>Password: </b></td>
-        <td>******</td>
-        <td><%= link "Edit", to: Routes.admin_account_path(@conn, :change_password, @admin.id) %></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <div class="page-content">
+      <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+      <table>
+	<tbody>
+	  <tr>
+	    <td><b>Username: </b></td>
+	    <td><%= @admin.username %></td>
+	    <td><%= link "Edit", to: Routes.admin_account_path(@conn, :edit_username, @admin.id) %></td>
+	  </tr>
+	  <tr>
+	    <td><b>Password: </b></td>
+	    <td>******</td>
+	    <td><%= link "Edit", to: Routes.admin_account_path(@conn, :change_password, @admin.id) %></td>
+	  </tr>
+	</tbody>
+      </table>
+    </div>
+    <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+  </div>
 </div>

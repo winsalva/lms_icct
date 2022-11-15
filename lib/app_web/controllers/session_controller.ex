@@ -28,10 +28,7 @@ defmodule AppWeb.SessionController do
         conn
         |> put_session(:admin_id, admin.id)
         |> configure_session(renew: true)
-	|> redirect(to: Routes.user_page_path(conn, :index))
-	
-	## Temporary redirection
-        #|> redirect(to: Routes.page_path(conn, :transactions))
+	|> redirect(to: Routes.page_path(conn, :index))
       false ->
         case User.get_user_by_email_and_password(email, password) do
         %App.Schema.User{} = user ->
@@ -40,7 +37,7 @@ defmodule AppWeb.SessionController do
 	    |> put_session(:user_id, user.id)
 	    |> configure_session(renew: true)
 	    |> put_flash(:info, "Hi #{user.first_name}, you are using default password to login. Please change it to secure your account.")
-	    |> redirect(to: Routes.user_account_path(conn, :show, user.id))
+	    |> redirect(to: Routes.page_path(conn, :index))
 	  else
 	    conn
 	    |> put_session(:user_id, user.id)
@@ -60,5 +57,6 @@ defmodule AppWeb.SessionController do
     conn
     |> configure_session(drop: true)
     |> redirect(to: Routes.page_path(conn, :index))
+    |> halt()
   end
 end

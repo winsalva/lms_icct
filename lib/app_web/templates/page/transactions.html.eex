@@ -1,45 +1,66 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<nav>
+  <div class="logo-name-container">
+    <div id="lib-logo">
+      <img src="/images/pcu-logo.webp"/>
+    </div>
+
+    <div id="schoolname">DEBESMSCAT
+      <p id="tagname">Library Information Management System</p>
+    </div>
+  </div>
+</nav>
+
 <div class="main">
-  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Transactions") %>
+  <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
   <div class="sub-container">
-    <div class="menu-categories-container">
-      <a href="<%= Routes.lend_page_path(@conn, :released_books) %>">
-        <div class="menu-category bg-border-lightblue">
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Transactions") %>
+
+    <div class="page-content">
+      <div class="menu-categories-container">
+	<a href="<%= Routes.lend_page_path(@conn, :released_books) %>">
+	  <div class="menu-category bg-border-lightblue">
           Released Books <%= length(@released_books) %>
-        </div>
-      </a>
-      <a href="<%= Routes.lend_page_path(@conn, :requested_books) %>">
-        <div class="menu-category bg-border-lightblue">
+	  </div>
+	</a>
+
+	<a href="<%= Routes.lend_page_path(@conn, :requested_books) %>">
+	  <div class="menu-category bg-border-lightblue">
           Requested Books <%= length(@requested_books) %>
-        </div>
-      </a>
-      <a href="<%= Routes.lend_page_path(@conn, :approved_requested_books) %>">
-        <div class="menu-category bg-border-lightblue">
+	  </div>
+	</a>
+
+	<a href="<%= Routes.lend_page_path(@conn, :approved_requested_books) %>">
+	  <div class="menu-category bg-border-lightblue">
          Approved Requested Books <%= length(@approved_requested_books) %>
-        </div>
-      </a>
-      <a href="<%= Routes.lend_page_path(@conn, :returned_books) %>">
-        <div class="menu-category bg-border-lightblue">
+	  </div>
+	</a>
+
+	<a href="<%= Routes.lend_page_path(@conn, :returned_books) %>">
+	  <div class="menu-category bg-border-lightblue">
          Returned Books <%= length(@returned_books) %>
-        </div>
-      </a>
-      <a href="<%= Routes.lend_page_path(@conn, :overdue_books) %>">
-        <div class="menu-category bg-border-lightblue">
+	  </div>
+	</a>
+
+	<a href="<%= Routes.lend_page_path(@conn, :overdue_books) %>">
+	  <div class="menu-category bg-border-lightblue">
           Overdue Books <%= length(@overdue_books) %>
-        </div>
-      </a>
-      <a href="<%= Routes.lend_page_path(@conn, :out_of_stock_books) %>">
-        <div class="menu-category bg-border-lightblue">
+	  </div>
+	</a>
+
+	<a href="<%= Routes.lend_page_path(@conn, :out_of_stock_books) %>">
+	  <div class="menu-category bg-border-lightblue">
           Out of stock Books <%= length(@out_of_stock_books) %>
-        </div>
-      </a>
-      <a href="<%= Routes.lend_page_path(@conn, :penalty_report) %>">
-        <div class="menu-category bg-border-lightblue">
+	  </div>
+	</a>
+
+	<a href="<%= Routes.lend_page_path(@conn, :penalty_report) %>">
+	  <div class="menu-category bg-border-lightblue">
           Penalty Report
-        </div>
-      </a>
+	  </div>
+	</a>
+      </div>
     </div>
-    <br/>
+    <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
   </div>
 </div>

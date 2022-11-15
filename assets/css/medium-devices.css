@@ -1,5 +1,4 @@
 @media only screen and (min-width: 768px) {
-
     body {
         background-image: url("/images/lib-bg.jpg");
         background-repeat: no-repeat;
@@ -8,8 +7,8 @@
     }
     .main {
 	display: grid;
-	grid-template-columns: 1fr 4fr;
-	background-color: #136ad5;
+	grid-template-columns: 1fr 3.5fr;
+	background-color: #0069d9;
     }
     .sub-container {
 	background-color: #fff;
@@ -19,23 +18,29 @@
     .sidenav-container {
 	height: 100%;
 	/*width: 40%;*/
-	background-color: #136ad5; /* Blue */
-	padding: 1.5rem;
+	background-color: #0069d9; /* Blue */
     }
 
     /* The navigation menu links */
-    .sidenav-container a {
-	font-weight: bold;
-	padding: 6px 8px 6px 16px;
-	text-decoration: none;
+    .sidenav-container div {
+	padding: 5px 8px 5px 16px;
+	/*text-decoration: none;
 	font-size: 16px;
-	color: #000;
+	color: #000;*/
 	display: block;
 	text-align: left;
     }
-    .sidenav-container a:hover {
-	color: #fff;
+    .sidenav-container > div:hover {
+	background-color: #fff;
+    }
+    .sidenav-container > div > a {
+	font-size: 1.5rem;
+	color: #000;
 	font-weight: bold;
+	padding-left: 0.8rem;
+    }
+    .sidenav-container > div > i {
+	padding-left: 1rem;
     }
     .icons {
 	display: none;
@@ -47,7 +52,7 @@
 	padding: .5rem 0;
     }
     .back-nav-container > .back-nav-title {
-	color: #136ad5;
+	color: #0069d9;
 	font-size: 1.8rem;
 	position: relative;
     }
@@ -88,19 +93,27 @@
       gap: 1rem;
   }
   footer {
-    background-color: #136ad5;
+    background-color: #0069d9;
     color: var(--white);
     margin-top: 0;
     padding: 2rem 0 4rem 0;
   }
+  .footer-logo-container {
+      text-align: center;
+      margin-top: 1rem;
+  }
+  .footer-logo-container > img {
+      max-width: 6rem;
+      max-height: 6rem;
+  }
   .footer-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: .5rem;
+    gap: .2rem;
   }
   .footer-options li a {
       color: #000;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: bold;
   }
   .footer-options li a:hover {
@@ -118,9 +131,10 @@
     font-size: 1.2rem;
   }
   .footer-company-name {
+      margin-top: -1rem;
       color: #fff;
       font-weight: bold;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
   }
 
   /* session form */
@@ -130,7 +144,7 @@
         border-radius: 5px;
         width: 35%;
        /* height: 100%;*/
-        margin: 20% auto;
+        margin: 15% auto;
         padding: 2.5rem;
     }
 
@@ -140,7 +154,7 @@
         border-radius: 5px;
         width: 35%;
         /*height: 100%;*/
-        margin: 20% auto;
+        margin: 15% auto;
         padding: 2.5rem;
     }
 }
