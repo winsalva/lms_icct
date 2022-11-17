@@ -1,23 +1,18 @@
+<div class="session-form-login">
+  <div><p class="close-btn" onclick="back();">&times</div>
+  <%= form_for @admin, Routes.admin_account_path(@conn, :update_username, %{id: @admin.data.id}), fn f -> %>
+  <h3 align="center"><strong>EDIT USERNAME</strong></h3>
 
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
-<div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Edit Admin Usename") %>
+  <label>Username (required)</label>
+  <%= text_input f, :username, placeholder: "ex. Jhon.." %>
+  <%= error_tag f, :username %>
 
-<div class="sub-container">
-<%= form_for @admin, Routes.admin_account_path(@conn, :update_username, %{id: @admin.data.id}), fn f -> %>
-<%= if @admin.action do %>
-<div class="alert alert-danger">
-  <p>Something went wrong. Please check the errors below.</p>
-</div>
-<% end %>
-<label>Username (required)</label>
-<%= text_input f, :username, placeholder: "ex. Jhon.." %>
-<%= error_tag f, :username %>
+  <label>Current password (required)</label>
+  <%= password_input f, :password, placeholder: "Enter your current password.." %>
 
-<label>Current password (required)</label>
-<%= password_input f, :password, placeholder: "Enter your current password to save this changes.." %>
-
-<%= submit "Save Changes" %>
-<% end %>
-</div>
+  <div align="center">
+    <br /><br />
+    <%= submit "Save Changes" %>
+  </div>
+  <% end %>
 </div>

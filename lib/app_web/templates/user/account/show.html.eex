@@ -8,50 +8,38 @@
       <p id="tagname">Library Information Management System</p>
     </div>
   </div>
-
-  <div class="menus">
-    <!--
-    <li><a href="<%= Routes.session_path(@conn, :new) %>">SIGN IN</a></li>
-    <li><a href="<%= Routes.page_path(@conn, :contact_us) %>">CONTACT US</a></li>
-    <li><a href="<%= Routes.page_path(@conn, :about_us) %>">ABOUT</a></li>
-    -->
-  </div>
 </nav>
 
 <div class="main">
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
   <div class="sub-container">
+    <div class="page-content">
     <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
-    <!--
-	< render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: username(@user.first_name, @user.last_name)) >
-	  -->
-    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "") %>
-  <div class="user-options">
-    <%= if @conn.assigns.current_user do %>
-    <%= link "Edit Name", to: Routes.user_account_path(@conn, :edit_name, @conn.assigns.current_user.id) %>
-    <%= link "Change Password", to: Routes.user_account_path(@conn, :change_password, @conn.assigns.current_user.id) %>
-    <% end %>
-    <%= if @conn.assigns.current_admin do %>
-  <%= link "Reset Password", to: Routes.user_account_path(@conn, :reset_password, @user.id), method: :post %>
-  <% end %>
-  </div>
 
   <table>
     <thead>
       <tr>
-	<th>First Name</th>
-	<th>Last Name</th>
 	<th>Student ID</th>
+	<th>Student Name</th>
 	<th>Email</th>
+	<th>Action</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-	<td><%= @user.first_name %></td>
-	<td><%= @user.last_name %></td>
 	<td><%= @user.student_id %></td>
+	<td><%= @user.first_name %> <%= @user.last_name %></td>
 	<td><%= @user.email %></td>
+	<%= if @conn.assigns.current_admin do %>
+	<td><%= link "Reset Password", to: Routes.user_account_path(@conn, :reset_password, @user.id), method: :post %></td>
+	<% end %>
+	<%= if @conn.assigns.current_user do %>
+	<td><%= link "Edit Name", to: Routes.user_account_path(@conn, :edit_name, @conn.assigns.current_user.id) %>
+	  &nbsp;&nbsp;&nbsp;
+	  <%= link "Change Password", to: Routes.user_account_path(@conn, :change_password, @conn.assigns.current_user.id) %>
+	  <% end %>
+	</td>
       </tr>
     </tbody>
   </table>
@@ -138,7 +126,8 @@
 	  
           <% end %>
     </tbody>
-  </table>
+</table>
+</div>
 <% end %>
 <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
 	    

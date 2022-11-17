@@ -1,38 +1,59 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<nav>
+  <div class="logo-name-container">
+    <div id="lib-logo">
+      <img src="/images/pcu-logo.webp"/>
+    </div>
+
+    <div id="schoolname">DEBESMSCAT
+      <p id="tagname">Library Information Management System</p>
+    </div>
+  </div>
+</nav>
+
 <div class="main">
-  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Released Books") %>
+  <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+
   <div class="sub-container">
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Released Books") %>
 
-    <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+    <div class="page-content">
+      <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
 
-    <%= if @released_books == [] do %>
-    <br/>
-    <h3 align="center">No records yet</h3>
-    <% else %>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Borrower</th>
-	<th>Released Date</th>
-	<th>Duration</th>
-	<th>Return Date</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= for released <- @released_books do %>
-          <tr>
-            <td><%= link released.book.title, to: Routes.book_page_path(@conn, :show, released.book.id) %></td>
-            <td><%= link username(released.user.first_name, released.user.last_name), to: Routes.user_account_path(@conn, :show, released.user.id) %></td>
-	    <td><%= released.release_date %></td>
-	    <td><%= released.book.lend_duration %> days</td>
-	    <td><%= calculate_return_date(released.release_date, released.book.lend_duration) %></td>
-            <td><%= link "Return", to: Routes.lend_page_path(@conn, :return_book_condition, released.book.id, released.id), method: :post %></td>
-            <td>
-          </tr>
+      <%= if @released_books == [] do %>
+      <br/>
+      <h3 align="center">No records available now</h3>
+      <% else %>
+      <table>
+	<thead>
+	  <tr>
+	    <th>Title</th>
+	    <th>Borrower</th>
+	    <th>Released Date</th>
+	    <th>Duration</th>
+	    <th>Return Date</th>
+	    <th>Action</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <%= for released <- @released_books do %>
+	      <tr>
+		<td><%= link released.book.title, to: Routes.book_page_path(@conn, :show, released.book.id) %></td>
+		<td><%= link username(released.user.first_name, released.user.last_name), to: Routes.user_account_path(@conn, :show, released.user.id) %></td>
+		<td><%= released.release_date %></td>
+		<td><%= released.book.lend_duration %> days</td>
+		<td><%= calculate_return_date(released.release_date, released.book.lend_duration) %></td>
+		<td><%= link "Return", to: Routes.lend_page_path(@conn, :return_book_condition, released.book.id, released.id), method: :post %></td>
+		<td>
 
-          <% end %>
-    </tbody>
-  </table>
-  <% end %>
+	      </tr>
+
+	      <% end %>
+	</tbody>
+      </table>
+
+      <% end %>
+    </div>
+    <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+  </div>
+</div>
+

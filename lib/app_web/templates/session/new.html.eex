@@ -1,20 +1,3 @@
-<!-- render(AppWeb.SharedView, "nav.html", conn: @conn) >
-<div class="main">
-< render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Sign in") >
-<div class="sub-container">
-
-  < render(AppWeb.SharedView, "flash-messages.html", conn: @conn) >
-  
-  < form_for @conn, Routes.session_path(@conn, :create), fn f -> >
-  <label>Email</label>
-  < text_input f, :email, placeholder: "Enter your email.." >
-  <label>Password</label>
-  < password_input f, :password, placeholder: "Enter your password.." >
-  < submit "Log in" >
-  < end >
-</div>
-</div>
--->
 
 <div class="session-form-login">
   <div><p class="close-btn" onclick="back();">&times</div>

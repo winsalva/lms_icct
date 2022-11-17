@@ -14,11 +14,9 @@
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
   <div class="sub-container">
-    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Books") %>
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Books") %>
 
     <div class="page-content">
-
-
       <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
 
       <%= if @books == [] do %>

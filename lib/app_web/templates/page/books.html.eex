@@ -16,20 +16,7 @@
   <div class="sub-container">
     <!-- render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Books") -->
 
-    <div class="page-content">
-      <%= if @conn.assigns.current_admin do %>
-      <div class="user-options">
-	<%= link "Add New Book", to: Routes.book_page_path(@conn, :new) %>
-	<%= link "View All Books", to: Routes.book_page_path(@conn, :index) %>
-      </div>
-      <% end %>
-
-      <%= if @conn.assigns.current_user do %>
-      <div class="user-options">
-	<%= link "View All Books", to: Routes.book_page_path(@conn, :index) %>
-      </div>
-      <% end %>
-    
+    <div class="page-content"> 
       <%= form_for @conn, Routes.page_path(@conn, :search_books), fn f -> %>
       <label>Category: 
 	<%= select f, :category, [options: [
@@ -37,7 +24,15 @@
 	  "Circulation": "Circulation",
 	  "Filipiniana": "Filipiniana",
 	  "Fiction": "Fiction"
-	  ]] %>
+	    ]] %>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= if @conn.assigns.current_admin do %>
+	<a href="<%= Routes.book_page_path(@conn, :new) %>"><i class="fa fa-plus-circle"></i>  Add Books</a>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="<%= Routes.book_page_path(@conn, :index) %>"><i class="fa fa-book"></i> View Books</a>
+	<% else %>
+	<a href="<%= Routes.book_page_path(@conn, :index) %>"><i class="fa fa-book"></i>  View Books</a>
+	<% end %>
       </label>
       <div style="display:flex;">
 	<%= text_input f, :title, placeholder: "Search book title.." %>

@@ -1,34 +1,57 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+<nav>
+  <div class="logo-name-container">
+    <div id="lib-logo">
+      <img src="/images/pcu-logo.webp"/>
+    </div>
+
+    <div id="schoolname">DEBESMSCAT
+      <p id="tagname">Library Information Management System</p>
+    </div>
+  </div>
+</nav>
+
 <div class="main">
-  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Approved Requested Books") %>
+  <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+
   <div class="sub-container">
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Approved Requested Books") %>
 
-    <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+    <div class="page-content">
+      <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
 
-    <%= if @approved_requested_books == [] do %>
-    <br/>
-    <h3 align="center">No records yet</h3>
-    <% else %>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Student Name</th>
-        <th>Pick-Up Date</th>
-	<th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= for approved_request <- @approved_requested_books do %>
-          <tr>
-            <td><%= link approved_request.book.title, to: Routes.book_page_path(@conn, :show, approved_request.book.id) %></td>
-            <td><%= approved_request.book.author %></td>
-            <td><%= link username(approved_request.user.first_name, approved_request.user.last_name), to: Routes.user_account_path(@conn, :show, approved_request.user.id) %></td>
-            <td><%= approved_request.pick_up_date %></td>
-	    <td><%= link "Release", to: Routes.lend_page_path(@conn, :release_book, approved_request.book.id, approved_request.id), method: :post %></td>
-          </tr>
-          <% end %>
-    </tbody>
-  </table>
-  <% end %>
+      <%= if @approved_requested_books == [] do %>
+      <br/>
+
+      <h3 align="center">No records yet</h3>
+
+      <% else %>
+
+      <table>
+	<thead>
+	  <tr>
+	    <th>Title</th>
+	    <th>Author</th>
+	    <th>Student Name</th>
+	    <th>Pick-Up Date</th>
+	    <th>Action</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <%= for approved_request <- @approved_requested_books do %>
+	      <tr>
+		<td><%= link approved_request.book.title, to: Routes.book_page_path(@conn, :show, approved_request.book.id) %></td>
+		<td><%= approved_request.book.author %></td>
+		<td><%= link username(approved_request.user.first_name, approved_request.user.last_name), to: Routes.user_account_path(@conn, :show, approved_request.user.id) %></td>
+		<td><%= approved_request.pick_up_date %></td>
+		<td><%= link "Release", to: Routes.lend_page_path(@conn, :release_book, approved_request.book.id, approved_request.id), method: :post %></td>
+	      </tr>
+	      <% end %>
+	</tbody>
+      </table>
+
+      <% end %>
+    </div>
+    <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+  </div>
+</div>
+

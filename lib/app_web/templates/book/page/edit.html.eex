@@ -1,15 +1,8 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
-<div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Edit Book") %>
 
-<div class="sub-container">
+<div class="session-form-login">
+  <div><p class="close-btn" onclick="back();">&times</div>
   <%= form_for @book, Routes.book_page_path(@conn, :update, @book.data), fn f -> %>
-  <%= if @book.action do %>
-  <div class="alert alert-danger">
-    <p>Oops, something went wrong. Please check the errors below.</p>
-  </div>
-  <% end %>
-
+  <h3 align="center"><strong>EDIT BOOK</strong></h3>
   <label>ISBN</label>
   <%= text_input f, :isbn, placeholder: "Enter book isbn #.." %>
   <%= error_tag f, :isbn %>
@@ -38,8 +31,9 @@
   <%= number_input f, :available, placeholder: "Enter update of available copies.." %>
   <%= error_tag f, :available %>
 
-  <%= submit "Save" %>
+  <div align="center">
+    <br /><br />
+    <%= submit "Save Changes" %>
+  </div>
   <% end %>
-</div>
-
 </div>

@@ -1,19 +1,23 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
-<div class="main">
-  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Return Book Condition") %>
-  <div class="sub-container">
 
-    <%= form_for @conn, Routes.lend_page_path(@conn, :return_book, %{book_id: @book_id, id: @id}), fn f -> %>
-    <label>Book Condition</label>
-    <%= select f, :return_condition, [options: [
-	"Good Condition": "Good Condition",
-	"Party Damage": "Partly Damage",
-	"Totally Damage": "Totally Damage"
-	]
-	] %>
+<div class="session-form-login">
+  <div><p class="close-btn" onclick="back();">&times</div>
+  <%= form_for @conn, Routes.lend_page_path(@conn, :return_book, %{book_id: @book_id, id: @id}), fn f -> %>
+  <h3 align="center"><strong>BOOK CONDITION</strong></h3>
 
+  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+  <br/>
+
+  <label>Select</label>
+  <%= select f, :return_condition, [options: [
+        "Good Condition": "Good Condition",
+        "Party Damage": "Partly Damage",
+        "Totally Damage": "Totally Damage"
+      ]
+    ] %>
+
+  <div align="center">
+    <br /><br />
     <%= submit "Save" %>
-    <% end %>
   </div>
+  <% end %>
 </div>
-

@@ -45,6 +45,46 @@
     .icons {
 	display: none;
     }
+    .uploads-container {
+	display: flex;
+	flex-direction: column;
+	margin: 1.5rem 0;
+	padding: 0 0 2rem 0;
+    }
+    .upload-container {
+	background-color: #fff;
+	/*border: 1px solid #;*/
+	margin: .5rem;
+	box-shadow: 4px 4px 4px #ddd;
+    }
+    .upload-container:hover {
+	box-shadow: 4px 4px 4px #ccc;
+    }
+    .upload-container img {
+	padding: 0;
+	margin: 0;
+    }
+    .upload-options {
+	margin: 2rem 0;
+	text-align: center;
+    }
+    .menu-categories-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+    }
+    .menu-categories-container a {
+	color: #000000;
+	font-weight: 450;
+    }
+    .menu-categories-container > a > div:hover {
+	background-color: #606c76;
+	border: 1px solid #606c76;
+    }
+    .menu-category {
+	padding: 3rem;
+	border-radius: 1rem;
+    }
     .back-nav-container {
 	background-color: #fff;
 	display: flex;

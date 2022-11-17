@@ -1,13 +1,14 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
-<div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "New Books") %>
 
-<div class="sub-container">
+<div class="session-form-login">
+  <div><p class="close-btn" onclick="back();">&times</div>
   <%= form_for @book, Routes.book_page_path(@conn, :create), fn f -> %>
-
-  <label>Book Entries</label>
+  <h3 align="center"><strong>ADD NEW BOOKS</strong></h3>
+ 
+  <label>Book Entries</labe>
   <%= textarea f, :books, placeholder: "Format:\n#isbn,title,author,category,copies" %>
-  <%= submit "Save" %>
+  <div align="center">
+    <br /><br />
+    <%= submit "Save Books" %>
+  </div>
   <% end %>
-</div>
 </div>

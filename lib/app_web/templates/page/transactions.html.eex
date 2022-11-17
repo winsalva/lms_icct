@@ -32,7 +32,7 @@
 
 	<a href="<%= Routes.lend_page_path(@conn, :approved_requested_books) %>">
 	  <div class="menu-category bg-border-lightblue">
-         Approved Requested Books <%= length(@approved_requested_books) %>
+         Approved Requests <%= length(@approved_requested_books) %>
 	  </div>
 	</a>
 
@@ -50,7 +50,7 @@
 
 	<a href="<%= Routes.lend_page_path(@conn, :out_of_stock_books) %>">
 	  <div class="menu-category bg-border-lightblue">
-          Out of stock Books <%= length(@out_of_stock_books) %>
+          Out of Stock Books <%= length(@out_of_stock_books) %>
 	  </div>
 	</a>
 

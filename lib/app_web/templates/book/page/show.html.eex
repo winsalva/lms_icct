@@ -1,42 +1,90 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
-<div class="main">
-<%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: @book.title) %>
-
-<div class="sub-container">
-
-  <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
-
-  <div class="book-container-show">
-    <div class="book-details-container">
-      <ul>
-	<li><strong>ISBN:</strong> <%= @book.isbn %></li>
-	<li><strong>TITLE:</strong> <%= @book.title %></li>
-	<li><strong>AUTHOR:</strong> <%= @book.author %></li>
-	<li><strong>CATEGORY:</strong> <%= @book.category %></li>
-	<%= if @conn.assigns.current_admin do %>
-	<li><strong>COPIES:</strong> <%= @book.copies %></li>
-	<li><strong>LENDED:</strong> <%= @book.lended %></li>
-	<li><strong>RESERVED:</strong> <%= @book.reserved %></li>
-	<% end %>
-	<li><strong>AVAILABLE:</strong> <%= @book.available %></li>
-	<li><strong>LEND DURATION:</strong> <%= @book.lend_duration %> days</li>
-      </ul>
+<nav>
+  <div class="logo-name-container">
+    <div id="lib-logo">
+      <img src="/images/pcu-logo.webp"/>
     </div>
-    <img src="/images/book.png"/>
-  </div>
 
-  <div class="book-container-options">
-    <%= if @conn.assigns.current_admin && @conn.assigns.current_user == nil do %>
-    <%= link "Edit", to: Routes.book_page_path(@conn, :edit, @book.id) %>
-    <%= link "Delete", to: Routes.book_page_path(@conn, :delete, @book.id), method: :delete, data: [confirm: "Are you sure?"] %>
-    <% end %>
-    <%= if @conn.assigns.current_user && @borrow == [] || @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
-    <%= link "Borrow", to: Routes.lend_page_path(@conn, :new, @book.id) %>
-    <% end %>
-    <%= if @conn.assigns.current_user && @borrow != [] do %>
-    <%= link "Already Borrowed", to: "" %>
-    <% end %>
+    <div id="schoolname">DEBESMSCAT
+      <p id="tagname">Library Information Management System</p>
+    </div>
   </div>
-  <br/>
+</nav>
+
+<div class="main">
+  <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+
+  <div class="sub-container">
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Book Details") %>
+
+    <div class="page-content">
+      <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+
+
+      <div class="book-container-show">
+
+	<div class="book-details-container">
+
+	  <ul>
+
+	    <li><strong>ISBN:</strong> <%= @book.isbn %></li>
+
+	    <li><strong>TITLE:</strong> <%= @book.title %></li>
+
+	    <li><strong>AUTHOR:</strong> <%= @book.author %></li>
+
+	    <li><strong>CATEGORY:</strong> <%= @book.category %></li>
+
+	    <%= if @conn.assigns.current_admin do %>
+
+	    <li><strong>COPIES:</strong> <%= @book.copies %></li>
+
+	    <li><strong>LENDED:</strong> <%= @book.lended %></li>
+
+	    <li><strong>RESERVED:</strong> <%= @book.reserved %></li>
+
+	    <% end %>
+
+	    <li><strong>AVAILABLE:</strong> <%= @book.available %></li>
+
+	    <li><strong>LEND DURATION:</strong> <%= @book.lend_duration %> days</li>
+
+	  </ul>
+
+	</div>
+
+	<img src="/images/book.png"/>
+
+      </div>
+
+
+      <div class="book-container-options">
+
+	<%= if @conn.assigns.current_admin && @conn.assigns.current_user == nil do %>
+
+	<%= link "Edit", to: Routes.book_page_path(@conn, :edit, @book.id) %>
+
+	<%= link "Delete", to: Routes.book_page_path(@conn, :delete, @book.id), method: :delete, data: [confirm: "Are you sure?"] %>
+
+	<% end %>
+
+	<%= if @conn.assigns.current_user && @borrow == [] || @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
+
+	<%= link "Borrow", to: Routes.lend_page_path(@conn, :new, @book.id) %>
+
+	<% end %>
+
+	<%= if @conn.assigns.current_user && @borrow != [] do %>
+
+	<%= link "Already Borrowed", to: "" %>
+
+	<% end %>
+
+      </div>
+
+      <br/>
+
+    </div>
+    <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+  </div>
 </div>
-</div>
+
