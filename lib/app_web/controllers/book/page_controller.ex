@@ -29,6 +29,52 @@ defmodule AppWeb.Book.PageController do
     render(conn, :new, book: book)
   end
 
+  def create_book(conn, %{"book" => %{"isbn" => isbn, "title" => title, "author" => author, "category" => category, "copies" => copies}}) do
+
+    admin_id = conn.assigns.current_admin.id
+    lend_duration = if category == "Circulati\
+on", do: 3, else: 7
+
+    copies =
+    cond do
+      Integer.parse(copies) == :error -> 1
+      {num, _} = Integer.parse(copies) ->
+        if num < 1 do
+	  0
+	else
+	  num
+	end
+      true -> 1
+    end
+
+    available =
+      if copies > 0 do
+        copies
+      else
+        0
+      end
+
+    params = %{
+      isbn: isbn,
+      title: title,
+      author: author,
+      category: category,
+      available: available,
+      copies: copies,
+      admin_id: admin_id,
+      lend_duration: lend_duration}
+    
+    case Book.insert_book(params) do
+      {:ok, book} ->
+        conn
+	|> put_flash(:info, "#{book.title} was added successfully!")
+	|> redirect(to: Routes.book_page_path(conn, :index))
+      {:error, %Ecto.Changeset{} = book} ->
+        conn
+	|> render(:new, book: book)
+    end
+  end
+
   def create(conn, %{"book" => %{"books" => params}}) do
     admin = conn.assigns.current_admin
 

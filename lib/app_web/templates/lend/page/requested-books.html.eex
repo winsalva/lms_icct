@@ -20,7 +20,7 @@
    
       <%= if @requested_books == [] do %>
       <br/>
-      <h3 align="center">No records yet</h3>
+      <p align="center">No records available now</p>
       <% else %>
       <table>
 	<thead>

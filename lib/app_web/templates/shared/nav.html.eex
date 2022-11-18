@@ -11,6 +11,7 @@
   <div><i class="fa fa-user"></i><%= link "My Account", to: Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %></div>
  
   <div><i class="fa fa-book"></i><%= link "Books", to: Routes.page_path(@conn, :books) %></div>
+  <div><i class="fa fa-exchange"></i><%= link "Transactions", to: Routes.user_account_path(@conn, :user_transactions, @conn.assigns.current_user.id) %></div>
   <div><i class="fa fa-sign-in"></i><%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete %></div>
   <% end %>
 

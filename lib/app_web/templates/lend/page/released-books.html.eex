@@ -21,7 +21,7 @@
 
       <%= if @released_books == [] do %>
       <br/>
-      <h3 align="center">No records available now</h3>
+      <p align="center">No records available now</p>
       <% else %>
       <table>
 	<thead>

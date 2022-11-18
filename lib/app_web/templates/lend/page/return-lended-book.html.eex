@@ -1,32 +1,50 @@
-<%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
-<div class="main">
-  <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Return Book") %>
-  <div class="sub-container">
+<nav>
+  <div class="logo-name-container">
+    <div id="lib-logo">
+      <img src="/images/pcu-logo.webp"/>
+    </div>
 
-    <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
-    <table>
-      <thead>
-	<tr>
-          <th>Title</th>
-	  <th>Borrower</th>
-	  <th>Released</th>
-	  <th>Duration</th>
-	  <th>Returned</th>
-	  <th>Condition</th>
-	  <th>Penalty</th>
-	</tr>
-      </thead>
-      <tbody>
-	<tr>
-	  <td><%= link @lend.book.title, to: Routes.book_page_path(@conn, :show, @lend.book.id) %></td>
-	  <td><%= link username(@lend.user.first_name, @lend.user.last_name), to: Routes.user_account_path(@conn, :show, @lend.user.id) %></td>
-	  <td><%= @lend.release_date %></td>
-	  <td><%= @lend.book.lend_duration %> days</td>
-	  <td><%= @lend.date_returned %></td>
-	  <td><%= @lend.return_condition %></td>
-	  <td>₱<%= calculate_penalty2(@lend.release_date, @lend.book.lend_duration, @lend.return_condition) %></td>
-	</tr>
-      </tbody>
-    </table>
+    <div id="schoolname">DEBESMSCAT
+      <p id="tagname">Library Information Management System</p>
+    </div>
+  </div>
+</nav>
+
+<div class="main">
+  <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+
+  <div class="sub-container">
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Return Lended Book") %>
+
+    <div class="page-content">
+
+      <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+      <table>
+	<thead>
+	  <tr>
+	    <th>Title</th>
+	    <th>Borrower</th>
+	    <th>Released</th>
+	    <th>Duration</th>
+	    <th>Returned</th>
+	    <th>Condition</th>
+	    <th>Penalty</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><%= link @lend.book.title, to: Routes.book_page_path(@conn, :show, @lend.book.id) %></td>
+	    <td><%= link username(@lend.user.first_name, @lend.user.last_name), to: Routes.user_account_path(@conn, :show, @lend.user.id) %></td>
+	    <td><%= @lend.release_date %></td>
+	    <td><%= @lend.book.lend_duration %> days</td>
+	    <td><%= @lend.date_returned %></td>
+	    <td><%= @lend.return_condition %></td>
+	    <td>₱ <%= calculate_penalty2(@lend.release_date, @lend.book.lend_duration, @lend.return_condition) %></td>
+	  </tr>
+	</tbody>
+      </table>
+    </div>
+    <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
   </div>
 </div>
+

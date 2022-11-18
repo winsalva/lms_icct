@@ -21,31 +21,20 @@
 
       <%= if @books == [] do %>
       <br>
-      <h4 align="center">No Books Available Yet</h4>
-      <br>
+      <p align="center">No books available yet.</p>
       <% else %>
-      <div class="sub-container">
-	<%= if @books == [] do %>
-	<h3 class="center">Coming soon..</h3>
-	<% else %>
-	<div class="uploads-container">
-	  <%= for book <- @books do %>
-	      <div class="upload-container" data-aos="fade-up">
-		<a href="<%= Routes.book_page_path(@conn, :show, book.id) %>">
-		  <img src="/images/book.png"/>
-		  <div class="upload-title-description">
-		    <p class="upload-title">
-		      <strong><%= book.title %></strong>
-          </p>
-		    <div class="upload-description">
-            Available: <%= book.available %>
-		    </div>
-		  </div>
-		</a>
-	      </div>
-	      <% end %>
-	</div>
-	<% end %>
+      <div class="uploads-container">
+	<%= for book <- @books do %>
+	    <div class="upload-container" data-aos="fade-up">
+	      <a href="<%= Routes.book_page_path(@conn, :show, book.id) %>">
+		<img src="/images/book.png"/>
+		<div class="upload-title-description">
+		  <p class="upload-title"><strong><%= book.title %></strong></p>
+		  <div class="upload-description">Available: <%= book.available %></div>
+		</div>
+	      </a>
+	    </div>
+	    <% end %>
       </div>
       <% end %>
     </div>

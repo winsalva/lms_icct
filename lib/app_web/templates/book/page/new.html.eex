@@ -1,14 +1,36 @@
 
 <div class="session-form-login">
   <div><p class="close-btn" onclick="back();">&times</div>
-  <%= form_for @book, Routes.book_page_path(@conn, :create), fn f -> %>
-  <h3 align="center"><strong>ADD NEW BOOKS</strong></h3>
+  <%= form_for @book, Routes.book_page_path(@conn, :create_book), fn f -> %>
+  <h3 align="center"><strong>ADD NEW BOOK</strong></h3>
  
-  <label>Book Entries</labe>
-  <%= textarea f, :books, placeholder: "Format:\n#isbn,title,author,category,copies" %>
+  <label>ISBN</label>
+  <%= text_input f, :isbn, placeholder: "1234" %>
+  <%= error_tag f, :isbn %>
+  
+  <label>Title</label>
+  <%= text_input f, :title, placeholder: "C++ Concepts" %>
+  <%= error_tag f, :title %>
+
+  <label>Author</label>
+  <%= text_input f, :author, placeholder: "John Smith" %>
+  <%= error_tag f, :author %>
+
+  <label>Category</label>
+  <%= select f, :category, [options: [
+      "Circulation": "Circulation",
+      "Filipiniana": "Filipiniana",
+      "Fiction": "Fiction"
+      ]], prompt: "Select" %>
+  <%= error_tag f, :category %>
+
+  <label>Copies</label>
+  <%= number_input f, :copies, placeholder: "250" %>
+  <%= error_tag f, :copies %>
+
   <div align="center">
     <br /><br />
-    <%= submit "Save Books" %>
+    <%= submit "Save Book" %>
   </div>
   <% end %>
 </div>

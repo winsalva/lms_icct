@@ -27,7 +27,7 @@
 	    ]] %>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<%= if @conn.assigns.current_admin do %>
-	<a href="<%= Routes.book_page_path(@conn, :new) %>"><i class="fa fa-plus-circle"></i>  Add Books</a>
+	<a href="<%= Routes.book_page_path(@conn, :new) %>"><i class="fa fa-plus-circle"></i>  Add Book</a>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="<%= Routes.book_page_path(@conn, :index) %>"><i class="fa fa-book"></i> View Books</a>
 	<% else %>

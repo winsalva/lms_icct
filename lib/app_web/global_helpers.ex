@@ -69,19 +69,21 @@ defmodule AppWeb.GlobalHelpers do
   """
   def calculate_penalty2(release_date, lend_duration, book_condition) do
     book_condition_penalty =
-      if book_condition == "Good Condition" do
-        0
-      end
-    book_condition_penalty =
-      if book_condition == "Partly Damage" do
-        50
-      end
-    book_condition_penalty =
-      if book_condition == "Totally Damage" do
-        100
+      case book_condition do
+        "Good Condition" -> 0
+	"Partly Damage" -> 50
+	"Totally Damage" -> 100
+	_ -> 0
       end
 
-    book_condition_penalty + calculate_penalty(release_date, lend_duration)
+    result =
+      if calculate_penalty(release_date, lend_duration) == nil || calculate_penalty(release_date, lend_duration) <= 0 do
+        0 + book_condition_penalty
+      else
+        calculate_penalty(release_date, lend_duration) + book_condition_penalty
+      end
+
+    result
   end   
 
   def enum_with_index(list) do

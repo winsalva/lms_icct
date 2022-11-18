@@ -37,7 +37,7 @@ defmodule AppWeb.SessionController do
 	    |> put_session(:user_id, user.id)
 	    |> configure_session(renew: true)
 	    |> put_flash(:info, "Hi #{user.first_name}, you are using default password to login. Please change it to secure your account.")
-	    |> redirect(to: Routes.page_path(conn, :index))
+	    |> redirect(to: Routes.user_account_path(conn, :show, user.id))
 	  else
 	    conn
 	    |> put_session(:user_id, user.id)

@@ -60,6 +60,7 @@ defmodule AppWeb.Router do
     
     resources "/accounts", AccountController, only: [:new, :create, :show, :delete]
 
+    get "/transactions/:user_id", AccountController, :user_transactions
     get "/accounts/:id/edit-name", AccountController, :edit_name
     put "/accounts/edit-name", AccountController, :update_name
     get "/accounts/:id/change-password", AccountController, :change_password
@@ -75,6 +76,7 @@ defmodule AppWeb.Router do
     pipe_through :browser
 
     resources "/", PageController
+    post "/add/new", PageController, :create_book
 
   end
 

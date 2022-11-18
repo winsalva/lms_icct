@@ -116,17 +116,17 @@ defmodule AppWeb.User.AccountController do
   def show(conn, %{"id" => id}) do
     {id, _} = Integer.parse(id)
     if conn.assigns.current_user && conn.assigns.current_user.id == id || conn.assigns.current_admin do
-      borrows = Lend.get_user_borrowed_books(id)
       user = User.get_user(id)
-        params = [
-	  user: user,
-	  borrows: borrows
-	]
-	render(conn, :show, params)
+      render(conn, :show, user: user)
     else
       conn
       |> redirect(to: Routes.page_path(conn, :index))
     end
+  end
+
+  def user_transactions(conn, %{"user_id" => user_id}) do
+    borrows = Lend.get_user_borrowed_books(user_id)
+    render(conn, "user-transactions.html", borrows: borrows)
   end
 
   @doc """

@@ -1,0 +1,106 @@
+<nav>
+  <div class="logo-name-container">
+    <div id="lib-logo">
+      <img src="/images/pcu-logo.webp"/>
+    </div>
+
+    <div id="schoolname">DEBESMSCAT
+      <p id="tagname">Library Information Management System</p>
+    </div>
+  </div>
+</nav>
+
+<div class="main">
+  <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
+  <div class="sub-container">
+    <div class="page-content">
+
+      <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+      <%= if @borrows == [] do %>
+      <br />
+      <h3 align="center">No available records yet.</h3>
+      <br>
+      <% else %>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="7"><h3 align="center"><strong>Transaction Records</strong></h3></th>
+          </tr>
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+	    <th>Pick-Up Date</th>
+            <th>Release Date</th>
+	    <th>Duration</th>
+	    <th>Return Date</th>
+	    <th>Penalty</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <%= for borrow <- @borrows do %>
+	      <tr>
+		<td><%= link borrow.book.title, to: Routes.book_page_path(@conn, :show, borrow.book.id) %></td>
+		<%= case borrow.status do %>
+		<% "Requested" -> %>
+	        <td class="color-lightblue"><%= borrow.status %></td>
+		<% "Approved" -> %>
+	        <td class="color-lightblue"><%= borrow.status %></td>
+		<% "Released" -> %>
+                <td class="color-green">On hand</td>
+		<% "Returned" -> %>
+                <td class="color-yellow"><%= borrow.status %></td>
+		<% "Rejected" -> %>
+               <td><%= borrow.status %></td>
+               <% "Overdue" -> %>
+               <td class="color-red"><%= borrow.status %></td>
+              <% end %>
+              <%= case borrow.status do %>
+              <% "Requested" -> %>
+               <td><%= borrow.pick_up_date %></td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <% "Rejected" -> %>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td><% "Approved" -> %>
+               <td><%= borrow.pick_up_date %></td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <% "Released" -> %>
+               <td>N/A</th>
+               <td><%= borrow.release_date %></td>
+               <td><%= borrow.book.lend_duration %> days</td>
+               <td><%= calculate_return_date(borrow.release_date, borrow.book.lend_duration) %></td>
+               <td>---</td>
+               <% "Returned" -> %>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td>
+               <td>---</td><% "Overdue" -> %>
+               <td>---</td>
+               <td><%= borrow.release_date %></td>
+               <td><%= borrow.book.lend_duration %> days</td>
+               <td><%= calculate_return_date(borrow.release_date, borrow.book.lend_duration) %></td>
+               <td>₱<%= calculate_penalty(borrow.release_date, borrow.book.lend_duration) %></td>
+               <% end %>
+           </tr>
+        <% end %>
+
+       </tbody>
+
+     </table>
+     <% end %>
+    </div>
+
+    <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+  </div>
+</div>
+	  
+	  

@@ -72,7 +72,12 @@ defmodule AppWeb.Lend.PageController do
   def return_book(conn, %{"book_id" => book_id, "id" => id, "return_condition" => return_condition}) do
     book = Book.get_book(book_id)
     lended = book.lended
-    available = book.available
+    available =
+      case book.available do
+        nil -> 0
+	_ -> book.available
+      end
+      
     case Lend.update_lend(id, %{status: "Returned", accept_term: true, return_condition: return_condition, date_returned: Date.utc_today()}) do
       {:ok, lend} ->
         # Update book reserved and available field values
