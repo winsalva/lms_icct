@@ -56,7 +56,7 @@
 
 	<a href="<%= Routes.lend_page_path(@conn, :penalty_report) %>">
 	  <div class="menu-category bg-border-lightblue">
-          Penalty Report
+          Generate Report
 	  </div>
 	</a>
       </div>
