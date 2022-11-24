@@ -16,35 +16,40 @@
   </div>
 </nav>
 
-<div class="sub-container">
+<div class="sm-nav-container">
+  <img src="/images/pcu-logo.webp"/>
+  <h1>DEBESMSCAT</h1>
+  <p>LIBRARY INFORMATION MANAGEMENT SYSTEM</p>
+
+  <div id="sm-open-close-toggle-container">
+    <div id="open">&#8801;</div>
+    <div id="close">&times;</div>
+  </div>
+  <div id="sm-nav-options-container">
+    <div><%= link "LOGIN", to: Routes.session_path(@conn, :new) %></div>
+    <div><%= link "REGISTER", to: Routes.user_page_path(@conn, :new) %></div>
+  </div>
+
+</div>
+
+<div class="sub-container">  
 
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
   
   <div class="landing-page-content-container">
+
     <div class="slider-container">
-    
-    <div class="slider-wrapper">
-      <img src="/images/lib-image1.jpg">
-      <img src="/images/lib-image2.jpg">
-      <img src="/images/lib-image3.jpg">
+      <div class="slider-wrapper">
+	<img src="/images/lib-image1.jpg"/>
+	<img src="/images/lib-image2.jpg"/>
+	<img src="/images/lib-image3.jpg"/>
+      </div>
     </div>
 
-    <!--
     <div id="home-page-content-container">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi suscipit lacus id vulputate lobortis. Nam massa justo, porttitor ac tortor eu, sagittis vulputate neque. Aliquam porttitor erat ac ultricies fermentum. Pellentesque quis sem a metus semper porttitor.</p>
-      <p>Aenean elementum vestibulum enim, sed suscipit nisi volutpat et. Morbi vehicula sodales purus, a tempor diam pellentesque ut. Nulla nec dui nec purus mattis dictum. Sed non nibh accumsan, sodales quam vitae, fermentum nisl. Curabitur mollis tincidunt efficitur. Donec tincidunt volutpat tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <p>Pellentesque mollis accumsan nunc, in eleifend odio aliquet ac. Etiam ligula nibh, pellentesque posuere tempor et, dignissim in magna. Nulla laoreet, diam nec mollis vulputate, ante sem tempus augue, eget aliquam enim magna a tortor.</p>
+      <p><strong>DEBESMSCAT Online library Information Management System</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
     </div>
-    -->
-    
-    <!--
-    <p align="center"><strong>Online library management system</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
-
-    < if announcement != [] && announcement.hide_date != nil && !(Date.compare(Date.utc_today(), announcement.hide_date) == :gt) do >
-    <div align="center">< raw(as_html(announcement.body)) ></div>
-    < end >
-    </div>
-    -->
-</div>  
+  </div>
+</div>
 
 <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

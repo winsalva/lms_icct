@@ -36,4 +36,5 @@
   </div>
   <% end %>
   <div align="center">Already have an account? <strong><%= link "Log in", to: Routes.session_path(@conn, :new) %></strong></div>
+  <br>
 </div>

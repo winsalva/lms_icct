@@ -1,4 +1,12 @@
 <div class="back-nav-container">
-  <div class="icons arrow-back" onclick="back()"></div>
+  <div><i class="fa fa-arrow-left" onclick="back();"></i></div>
   <div class="back-nav-title"><%= @title %></div>
+  <div id="openNav" class="back-nav-menu">&#8801;</div>
 </div>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" id="closeNav">&times;</a>
+  <%= link "Home", to: "#" %>
+  <%= link "Test", to: "#" %>
+</div>
+

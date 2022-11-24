@@ -10,10 +10,16 @@
 	grid-template-columns: 1fr 3.5fr;
 	background-color: #0069d9;
     }
+    .sm-nav-container {
+	display: none;
+    }
     .sub-container {
 	background-color: #fff;
 	margin-bottom: -1rem;
 	padding: 1rem;
+    }
+    #home-page-content-container {
+        display: none;
     }
     .sidenav-container {
 	height: 100%;

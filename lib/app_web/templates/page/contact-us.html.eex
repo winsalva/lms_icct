@@ -8,14 +8,6 @@
       <p id="tagname">Library Information Management System</p>
     </div>
   </div>
-
-  <div class="menus">
-    <!--
-    <li><a href="<%= Routes.session_path(@conn, :new) %>">SIGN IN</a></li>
-    <li><a href="<%= Routes.page_path(@conn, :contact_us) %>">CONTACT US</a></li>
-    <li><a href="<%= Routes.page_path(@conn, :about_us) %>">ABOUT</a></li>
-    -->
-  </div>
 </nav>
 
 <div class="main">
@@ -40,3 +32,4 @@
     <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
   </div>
 </div>
+

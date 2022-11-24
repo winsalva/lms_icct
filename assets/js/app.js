@@ -41,5 +41,8 @@ liveSocket.connect()
 window.liveSocket = liveSocket
 
 //import {announcement} from "./util";
+import { openNav, closeNav } from "./util";
 
 //announcement()
+closeNav()
+openNav()

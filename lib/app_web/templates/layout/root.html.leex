@@ -17,6 +17,23 @@
     </div>
 
     <script>
+      
+      // open and close toggles
+      let open = document.getElementById("open");
+      let close = document.getElementById("close");
+      let menus = document.getElementById("sm-nav-options-container");
+
+      open.addEventListener('click', () => {
+          close.style.display = "block";
+          menus.style.display = "block";
+          open.style.display = "none";
+      });
+
+      close.addEventListener('click', () => {
+          open.style.display = "block";
+          menus.style.display = "none";
+          close.style.display = "none";
+      });
       function back() {
 	  window.history.back();
       }   
