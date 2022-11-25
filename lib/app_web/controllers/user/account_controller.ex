@@ -70,19 +70,29 @@ defmodule AppWeb.User.AccountController do
     render(conn, "edit-name.html", user: user)
   end
 
-  def update_name(conn, %{"id" => id, "user" => %{"first_name" => first_name, "last_name" => last_name, "password" => password}}) do
+  def update_name(conn, %{"id" => id, "user" => %{"first_name" => first_name, "last_name" => last_name, "password" => password, "email" => email, "library_id" => library_id, "year" => year, "section" => section, "course" => course}}) do
     user_email = conn.assigns.current_user.email
     user_id = conn.assigns.current_user.id
 
+    params = %{
+      "first_name": first_name,
+      "last_name": last_name,
+      "email": email,
+      "library_id": library_id,
+      "year": year,
+      "section": section,
+      "course": course
+    }
+
     with _user = %App.Schema.User{} <- User.get_user_by_email_and_password(user_email, password),
-      {:ok, _user} <- User.update_user(id, %{first_name: first_name, last_name: last_name}) do
+      {:ok, _user} <- User.update_user(id, params) do
         conn
-	|> put_flash(:info, "Your name was updated successfully.")
+	|> put_flash(:info, "Your profile was updated successfully.")
 	|> redirect(to: Routes.user_account_path(conn, :show, user_id))
     else
       false ->
         conn
-	|> put_flash(:error, "Something went wrong. Failed to update your name!")
+	|> put_flash(:error, "Something went wrong. Failed to update your profile.")
 	|> redirect(to: Routes.user_account_path(conn, :show, user_id))
       {:error, %Ecto.Changeset{} = user} ->
         conn

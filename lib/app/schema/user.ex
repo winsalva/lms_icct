@@ -6,6 +6,10 @@ defmodule App.Schema.User do
     field :first_name, :string
     field :last_name, :string
     field :student_id, :string
+    field :library_id, :string
+    field :year, :string
+    field :section, :string
+    field :course, :string
     field :email, :string
     field :password, :string, virtual: true
     field :hashed_password, :string
@@ -19,6 +23,10 @@ defmodule App.Schema.User do
     :first_name,
     :last_name,
     :student_id,
+    :library_id,
+    :year,
+    :section,
+    :course,
     :email,
     :hashed_password,
     :seen,
@@ -29,6 +37,10 @@ defmodule App.Schema.User do
     :first_name,
     :last_name,
     :student_id,
+    :library_id,
+    :year,
+    :section,
+    :course,
     :email,
     :hashed_password,
     :seen,
@@ -40,7 +52,7 @@ defmodule App.Schema.User do
     user
     |> cast(params, @allowed_fields)
     |> validate_required(@required_fields)
-    |> validate_format(:email, ~r/@/)
+    |> validate_format(:email, ~r/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
     |> unique_constraint(:email)
     |> unique_constraint(:student_id)
   end

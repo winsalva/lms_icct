@@ -14,18 +14,17 @@
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
   <div class="sub-container">
-    <!-- render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Users") -->
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Users") %>
 
     <div class="page-content">
       <%= form_for @conn, Routes.page_path(@conn, :search_users), fn f -> %>
 
       <label>CATEGORY:
 	<%= select f, :category, [options: ["Admin": "Admin", "Student": "Student"]] %>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	
 	<%= if @conn.assigns.current_admin do %>
-	<a href="<%= Routes.admin_page_path(@conn, :list_admins) %>"><i class="fa fa-users"></i>  Admins</a>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<%= Routes.user_page_path(@conn, :index) %>"><i class="fa fa-users"></i>  Students</a>
+	<a class="hide" href="<%= Routes.admin_page_path(@conn, :list_admins) %>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-users"></i>&nbsp;Admins</a>
+	<a href="<%= Routes.user_page_path(@conn, :index) %>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-users"></i>&nbsp;Students</a>
 	<% end %>
       </label>
 
@@ -60,12 +59,37 @@
 	</tbody>
       </table>
       <% @students != nil && @students != [] -> %>
+	  <div class="sm-user-details">
+	    <%= for user <- @students do %>
+		<dl>
+		  <dt>Name</dt>
+		  <dd><%= link username(user.first_name, user.last_name), to: Routes.user_account_path(@conn, :show, user.id) %></dd>
+                  <dt>Email</dt>
+		  <dd><%= user.email %></dd>
+		  <dt>Course</dt>
+		  <dd><%= user.course %></dd>
+		  <dt>Approve</dt>
+
+		  <%= if user.approve do %>
+		  <dd><%= link "True", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></dd>
+                    <% else %>
+                    <dd><%= link "False", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></dd>
+                    <% end %>
+		    <dt>Action</dt>
+                    <dd><%= link "Delete", to: Routes.user_account_path(@conn, :delete, user.id), method: :delete, class: "color-red", data: [confirm: "Are you sure to delete this account?"] %></dd>
+                </dl>
+		<hr/>
+		<% end %>
+	  </div>
+	  
+	  <div class="l-user-details">
 	  <table>
 	    <thead>
 	      <tr>
 		<th>Name</th>
 		<th>ID</th>
 		<th>Email</th>
+		<th>Course</th>
 		<th>Approved?</th>
 		<th></th>
 	      </tr>
@@ -75,6 +99,7 @@
 		  <tr>
 		    <td><%= link username(user.first_name, user.last_name), to: Routes.user_account_path(@conn, :show, user.id) %></td>
 		    <td><%= user.student_id %></td>		    <td><%= user.email %></td>
+		    <td><%= user.course %></td>
 		    <%= if user.approve do %>
 		    <td><%= link "True", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></td>
 		    <% else %>
@@ -85,10 +110,12 @@
 		  <% end %>
 	    </tbody>
 	  </table>
+	  </div>
 	  <% true -> %>
 	      <p>No results found!</p>
 	      <% end %>
     </div>
+    <br><br>
     <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
   </div>
 </div>

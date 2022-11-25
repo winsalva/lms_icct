@@ -21,11 +21,28 @@
       <br/>
       <h3 class="center">No records yet.</h3>
       <% else %>
+      <div class="sm-user-details">
+	<dl>
+	<%= for user <- @users do %>
+	  <div class="users">
+	    <dt><b><i class="fa fa-user"></i>&nbsp;&nbsp;<%= link username(user.first_name, user.last_name), to: Routes.user_account_path(@conn, :show, user.id) %></b></dt>
+	    <%= if user.approve do %>
+                <dd><%= link "Approved", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post, data: [confirm: "Do you want to cancel approval for this account?"] %><%= link "Delete", to: Routes.user_account_path(@conn, :delete, user.id), method: :delete, class: "color-red", data: [confirm: "Are you sure to delete this account?"] %></dd>
+                <% else %>
+            <dd><%= link "Unapprove", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post, data: [confirm: "Do you want to approve this account?"] %><%= link "Delete", to: Routes.user_account_path(@conn, :delete, user.id), method: :delete, class: "color-red", data: [confirm: "Are you sure to delete this account?"] %></dd>
+            <% end %>
+	  </div>
+	  <% end %>
+	</dl>
+      </div>
+      
+      <div class="l-user-details">
       <table>
 	<thead>
 	  <tr>
 	    <th>Name</th>
 	    <th>ID</th>
+	    <th>Course</th>
 	    <th>Email</th>
 	    <th>Approve?</th>
 	    <th></th>
@@ -36,6 +53,7 @@
 	      <tr>
 		<td><%= link username(user.first_name, user.last_name), to: Routes.user_account_path(@conn, :show, user.id) %></td>
 		<td><%= user.student_id %></td>
+		<td><%= user.course %></td>
 		<td><%= user.email %></td>
 		<%= if user.approve do %>
 		<td><%= link "True", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></td>
@@ -47,6 +65,7 @@
 	      <% end %>
 	</tbody>
       </table>
+      </div>
       <% end %>
     </div>
 

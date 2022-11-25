@@ -6,6 +6,10 @@
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
   <br/>
 
+  <label>Student ID</label>
+  <%= text_input f, :student_id, placeholder: "ex. 12345.." %>
+  <%= error_tag f, :student_id %>
+
   <label>First Name</label>
   <%= text_input f, :first_name, placeholder: "ex. John.." %>
   <%= error_tag f, :first_name %>
@@ -14,13 +18,25 @@
   <%= text_input f, :last_name, placeholder: "ex. Smith.." %>
   <%= error_tag f, :last_name %>
 
-  <label>Student ID</label>
-  <%= text_input f, :student_id, placeholder: "ex. 12345.." %>
-  <%= error_tag f, :student_id %>
-  
   <label>Email</label>
-  <%= text_input f, :email, placeholder: "Enter your email.."  %>
+  <%= text_input f, :email, placeholder: "ex. johnsmith@gmail.com.."  %>
   <%= error_tag f, :email %>
+
+  <label>Library Card ID</label>
+  <%= text_input f, :library_id, placeholder: "ex. 5432.." %>
+  <%= error_tag f, :library_id %>
+
+  <label>Year</label>
+  <%= text_input f, :year, placeholder: "ex. 2.." %>
+  <%= error_tag f, :year %>
+
+  <label>Section</label>
+  <%= text_input f, :section, placeholder: "ex. 1A.." %>
+  <%= error_tag f, :section %>
+
+  <label>Course</label>
+  <%= text_input f, :course, placeholder: "ex. BSIS.." %>
+  <%= error_tag f, :course %>
 
   <label>Password</label>
   <%= password_input f, :password, placeholder: "at least 6 characters.." %>

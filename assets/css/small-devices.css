@@ -8,6 +8,7 @@
 	justify-content: space-between;
 	background-color: #eef;
 	color: #0069d9;
+	border-bottom: 1px solid #ccc;
     }
     .back-nav-container i {
 	font-size: 2.5rem;
@@ -26,6 +27,40 @@
     .back-nav-container .back-nav-menu:hover {
 	opacity: 0.5;
     }
+    .book-details-container ul > li {
+	list-style: none;
+    }
+    .book-container-show img {
+	display: none;
+    }
+    .book-container-show {
+	display: flex;
+	flex-direction: column;
+    }
+    .book-container-show i {
+	text-align: center;
+	font-size: 12rem;
+	padding-bottom: 2rem;
+    }
+    .book-container-options a:hover {
+	background-color: #eef;
+    }
+    .book-container {
+	border: 1px solid #0069d9;
+	border-radius: .5rem;
+	margin-bottom: 2rem;
+	padding: .5rem 1rem;
+    }
+    .book-container p {
+	margin: 0;
+	font-size: 2rem;
+	font-weight: 600;
+    }
+    .book-container div {
+	font-size: 1.4rem;
+	font-weight: 400;
+    }
+    
     /* session form */
     .close-btn {
 	font-weight: bold;
@@ -38,7 +73,7 @@
     footer {
 	padding-top: 4rem;
 	background-color: #eef;
-	border-top: 1rem solid #000;
+	border-top: 1rem solid #0069d9;
     }
     footer > .footer-logo-container {
 	text-align: center;
@@ -76,12 +111,27 @@
 	font-weight: 400;
 	font-size: 1.2rem;
     }
+    .hide {
+	display: none;
+    }
+    .hr {
+	color: #0069d9;
+    }
     #home-page-content-container {
         padding: 2rem 0 1rem 0;
 	text-align: justify;
     }
     .landing-page-content-container {
 	padding: 1rem 0rem;
+    }
+    .l-transactions {
+	display: none;
+    }
+    .l-user-details {
+	display: none;
+    }
+    dt {
+	font-weight: 500;
     }
     nav {
 	display: none;
@@ -148,6 +198,40 @@
     .sub-container {
 	background-color: #eef;
     }
+    .sm-user-details i {
+	font-size: 6rem;
+	padding-bottom: 1rem;
+    }
+    .sm-user-details h3 {
+	font-size: 1.4rem;
+	font-weight: 600;
+	color: #808080;
+    }
+    .sm-user-details p {
+	font-size: 2.8rem;
+	margin: 0;
+	padding: 0;
+    }
+    .sm-user-details > dl > .users {
+	padding: .5rem;
+	border: 1px solid #0069d9;
+	margin-bottom: 1rem;
+	border-radius: 5px;
+    }
+    .sm-user-details > dl > .users >dt b > i {
+	font-size: 2.5rem;
+	padding-left: 1rem;
+    }
+    .sm-user-details > dl > .users > dt a {
+	font-weight: 500;
+	font-size: 2rem;
+    }
+    .sm-user-details > dl > .users > dd a {
+	margin-right: 3rem;
+    }
+    .sm-hide {
+	display: none;
+    }
 
     
     /* The side navigation menu */
@@ -179,7 +263,7 @@
     /* When you mouse over the navigation links, change their color */
     .sidenav a:hover {
 	color: #222;
-	background-color: #eef;
+	background-color: #fff;
 	opacity: 0.8;
     }
     /* Position and style the close button (top right corner) */
@@ -199,4 +283,10 @@
 	background-color: #0069d9;
 	color: #222;
     }
+    .upload-container {
+	text-align: center;
+	border-radius: 1rem;
+	margin-bottom: 1rem;
+    }
+	
 }

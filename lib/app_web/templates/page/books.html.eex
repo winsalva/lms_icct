@@ -14,7 +14,7 @@
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
   <div class="sub-container">
-    <!-- render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Books") -->
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Books") %>
 
     <div class="page-content"> 
       <%= form_for @conn, Routes.page_path(@conn, :search_books), fn f -> %>
@@ -27,11 +27,11 @@
 	    ]] %>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<%= if @conn.assigns.current_admin do %>
-	<a href="<%= Routes.book_page_path(@conn, :new) %>"><i class="fa fa-plus-circle"></i>  Add Book</a>
+	<a href="<%= Routes.book_page_path(@conn, :new) %>"><i class="fa fa-plus-circle"></i>  <span class="sm-hide">Add Book</span></a>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<%= Routes.book_page_path(@conn, :index) %>"><i class="fa fa-book"></i> View Books</a>
+	<a href="<%= Routes.book_page_path(@conn, :index) %>"><i class="fa fa-book"></i>  <span class="sm-hide">View Books</span></a>
 	<% else %>
-	<a href="<%= Routes.book_page_path(@conn, :index) %>"><i class="fa fa-book"></i>  View Books</a>
+	<a href="<%= Routes.book_page_path(@conn, :index) %>"><i class="fa fa-book"></i>  <span class="sm-hide">View Books</span></a>
 	<% end %>
       </label>
       <div style="display:flex;">
@@ -46,7 +46,7 @@
       <% @books != nil && @books != [] -> %>
       <div class="uploads-container">
 	<%= for book <- @books do %>
-	    <div class="upload-container" data-aos="fade-up">
+	    <div class="upload-container">
 	      <a href="<%= Routes.book_page_path(@conn, :show, book.id) %>">
 		<img src="/images/book.png"/>
 		<div class="upload-title-description">
@@ -64,6 +64,7 @@
       <% true -> %>
 	<p>No results found!</p>
 	<% end %>
+	<br>
       </div>
     
     <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

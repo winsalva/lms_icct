@@ -13,14 +13,39 @@
 <div class="main">
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
   <div class="sub-container">
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Transaction History") %>
     <div class="page-content">
 
       <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
       <%= if @borrows == [] do %>
       <br />
-      <h3 align="center">No available records yet.</h3>
+      <h3 align="center">No available records yeta.</h3>
       <br>
       <% else %>
+      <!-- small devices -->
+      <div class="sm-transactions">
+	<%= for borrow <- @borrows do %>
+	    <div class="book-container">
+	      <p><i class="fa fa-book"></i>  <%= link borrow.book.title, to: Routes.book_page_path(@conn, :show, borrow.book.id) %></p>
+	      <div>Status: <span class="<%= get_class_status(borrow.status) %>"><%= borrow.status %></span></div>
+	      <div>Pickup Date: <%= borrow.pick_up_date %></div>
+	      <div>Release Date: <%= borrow.release_date %></div>
+	      <div>Duration: <%= borrow.book.lend_duration %></div>
+	      <div>Return Date: <%= calculate_return_date(borrow.release_date, borrow.book.lend_duration) %></div>
+	      <div>Penalty</div>
+	      <%= if borrow.status == "Overdue" do %>
+	      <div>Penalty: ₱<%= calculate_penalty(borrow.release_date, borrow.book.lend_duration) %></div>
+	      <% end %>
+	      <div><%= link "View Details", to: "" %></div>
+	 
+	    </div>
+	    <% end %>
+	    
+      </div>
+    
+
+      <!-- large devices -->
+      <div class="l-transactions">
       <table>
         <thead>
           <tr>
@@ -83,7 +108,8 @@
                <td>---</td>
                <td>---</td>
                <td>---</td>
-               <td>---</td><% "Overdue" -> %>
+               <td>---</td>
+               <% "Overdue" -> %>
                <td>---</td>
                <td><%= borrow.release_date %></td>
                <td><%= borrow.book.lend_duration %> days</td>
@@ -95,7 +121,9 @@
 
        </tbody>
 
-     </table>
+</table>
+</div>
+
      <% end %>
     </div>
 

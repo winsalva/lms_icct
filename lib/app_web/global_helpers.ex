@@ -4,6 +4,12 @@ defmodule AppWeb.GlobalHelpers do
     App.Query.Lend.user_has_approved_requested_books(user_id)
   end
 
+  def get_class_status(status) do
+    case status do
+      "Requested" -> "color-lightblue"
+    end
+  end
+
   def tomorrow do
     date = Date.add(Date.utc_today, 1)
     "#{date.year}-#{date.month}-#{date.day}"

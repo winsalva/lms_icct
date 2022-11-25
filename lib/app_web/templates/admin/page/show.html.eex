@@ -13,7 +13,7 @@
 <div class="main">
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
   <div class="sub-container">
-    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Account") %>
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Admin Account") %>
 
     <div class="page-content">
       <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
@@ -22,12 +22,12 @@
 	  <tr>
 	    <td><b>Username: </b></td>
 	    <td><%= @admin.username %></td>
-	    <td><%= link "Edit", to: Routes.admin_account_path(@conn, :edit_username, @admin.id) %></td>
+	    <td><%= link "Change", to: Routes.admin_account_path(@conn, :edit_username, @admin.id) %></td>
 	  </tr>
 	  <tr>
 	    <td><b>Password: </b></td>
 	    <td>******</td>
-	    <td><%= link "Edit", to: Routes.admin_account_path(@conn, :change_password, @admin.id) %></td>
+	    <td><%= link "Change", to: Routes.admin_account_path(@conn, :change_password, @admin.id) %></td>
 	  </tr>
 	</tbody>
       </table>

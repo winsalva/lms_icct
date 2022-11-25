@@ -17,9 +17,9 @@ defmodule AppWeb.User.PageController do
 
   def create(conn, %{"user" => params}) do
     case User.insert_user(params) do
-      {:ok, _user} ->
+      {:ok, user} ->
         conn
-	|> put_flash(:info, "Your account was successfully created. Please wait for an admin approval.")
+	|> put_flash(:info, "Hi #{user.first_name}, your account was created successfully. Please wait for an admin approval before you can log in to your account.")
 	|> redirect(to: Routes.page_path(conn, :index))
       {:error, %Ecto.Changeset{} = user} ->
         conn

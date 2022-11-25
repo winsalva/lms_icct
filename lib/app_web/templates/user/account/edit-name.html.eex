@@ -1,18 +1,38 @@
 <div class="session-form-login">
   <div><p class="close-btn" onclick="back();">&times</div>
   <%= form_for @user, Routes.user_account_path(@conn, :update_name, %{id: @user.data.id}), fn f -> %>
-  <h2 align="center"><strong>EDIT NAME</strong></h2>
+  <h2 align="center"><strong>EDIT PROFILE</strong></h2>
 
   <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
   <br/>
 
   <label>First name</label>
-<%= text_input f, :first_name, placeholder: "ex. Juan" %>
-<%= error_tag f, :first_name %>
+  <%= text_input f, :first_name, placeholder: "ex. Juan" %>
+  <%= error_tag f, :first_name %>
 
-<label>Last name</label>
-<%= text_input f, :last_name, placeholder: "ex. Ramirez" %>
-<%= error_tag f, :last_name %>
+  <label>Last name</label>
+  <%= text_input f, :last_name, placeholder: "ex. Ramirez" %>
+  <%= error_tag f, :last_name %>
+
+  <label>Email</label>
+  <%= text_input f, :email, placeholder: "ex. johnsmith@gmail.com.."  %>
+  <%= error_tag f, :email %>
+
+  <label>Library Card ID</label>
+  <%= text_input f, :library_id, placeholder: "ex. 5432.." %>
+  <%= error_tag f, :library_id %>
+
+  <label>Year</label>
+  <%= text_input f, :year, placeholder: "ex. 2.." %>
+  <%= error_tag f, :year %>
+
+  <label>Section</label>
+  <%= text_input f, :section, placeholder: "ex. 1A.." %>
+  <%= error_tag f, :section %>
+
+  <label>Course</label>
+  <%= text_input f, :course, placeholder: "ex. BSIS.." %>
+  <%= error_tag f, :course %>
 
 <label>Current password</label>
 <%= password_input f, :password, placeholder: "Enter your current password to save this changes.." %>

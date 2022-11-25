@@ -14,14 +14,47 @@
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
   <div class="sub-container">
-    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Account") %>
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "User Profile") %>
+
     <div class="page-content">
       <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
+      <div class="sm-user-details" align="center">
+	<i class="fa fa-user"></i>
+	<p><%= username(@user.first_name, @user.last_name) %></p>
+	<h3>Name</h3>
+	<p><%= @user.student_id %></p>
+	<h3>Student ID</h3>
+	<p><%= @user.library_id %></p>
+	<h3>Library Card ID</h3>
+	<p><%= @user.course %></p>
+	<h3>Course</h3>
+	<p><%= @user.year %></p>
+	<h3>Year</h3>
+	<p><%= @user.section %></p>
+	<h3>Section</h3>
+	<p><%= @user.email %></p>
+	<h3>Email</h3>
+	<%= if @conn.assigns.current_admin do\
+	    %>
+	<br>
+	<%= button "Reset Password", to: Routes.user_account_path(@conn, :reset_password, @user.id), method: :post %>
+	<% end %>
+	
+	<%= if @conn.assigns.current_user do %>
+	<%= link "Edit Profile", to: Routes.user_account_path(@conn, :edit_name, @conn.assigns.current_user.id) %>
+	&nbsp;&nbsp;&nbsp;
+	<%= link "Change Password", to: Routes.user_account_path(@conn, :change_password, @conn.assigns.current_user.id) %>
+	<% end %>
+	
+      </div>
+      
+      <div class="l-user-details">
       <table>
 	<thead>
 	  <tr>
 	    <th>ID</th>
 	    <th>Name</th>
+	    <th>Course</th>
 	    <th>Email</th>
 	    <th>Action</th>
 	  </tr>
@@ -30,6 +63,7 @@
 	  <tr>
 	    <td><%= @user.student_id %></td>
 	    <td><%= @user.first_name %> <%= @user.last_name %></td>
+	    <td><%= @user.course %><td>
 	    <td><%= @user.email %></td>
 	    <%= if @conn.assigns.current_admin do %>
 	    <td><%= link "Reset Password", to: Routes.user_account_path(@conn, :reset_password, @user.id), method: :post %></td>
@@ -44,6 +78,8 @@
 	  </tr>
 	</tbody>
       </table>
+      </div>
+ 
     </div>
     <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
   </div>

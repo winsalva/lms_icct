@@ -6,7 +6,26 @@
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" id="closeNav">&times;</a>
-  <%= link "Home", to: "#" %>
-  <%= link "Test", to: "#" %>
+  <%= if @conn.assigns.current_admin != nil do %>
+  <a href="<%= Routes.admin_page_path(@conn, :show, @conn.assigns.current_admin.id) %>"><i class="fa fa-user"></i>&nbsp;&nbsp;Admin Account</a>
+
+  <a href="<%= Routes.page_path(@conn, :users) %>"><i class="fa fa-users"></i>&nbsp;&nbsp;Users</a>
+
+  <a href="<%= Routes.page_path(@conn, :books) %>"><i class="fa fa-book"></i>&nbsp;&nbsp;Books</a>
+
+  <a href="<%= Routes.page_path(@conn, :transactions) %>"><i class="fa fa-exchange"></i>&nbsp;&nbsp;Transaction History</a>
+
+  <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete, data: [confirm: "Are you sure?"] %>
+  <% end %>
+
+  <%= if @conn.assigns.current_user != nil do %>
+  <a href="<%= Routes.user_account_path(@conn, :show, @conn.assigns.current_user.id) %>"><i class="fa fa-user"></i>&nbsp;&nbsp;My Account</a>
+
+  <a href="<%= Routes.page_path(@conn, :books) %>"><i class="fa fa-book"></i>&nbsp;&nbsp;Books</a>
+
+  <a href="<%= Routes.user_account_path(@conn, :user_transactions, @conn.assigns.current_user.id) %>"><i class="fa fa-exchange"></i>&nbsp;&nbsp;Transaction History</a>
+
+  <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete, data: [confirm: "Are you sure?"] %>
+  <% end %>
 </div>
 
