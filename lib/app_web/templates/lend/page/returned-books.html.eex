@@ -24,6 +24,18 @@
       <p align="center">No records available now</p>
       <% else %>
 
+      <!-- small devices -->
+      <div class="sm-transactions">
+        <%= for returned <- @returned_books do %>
+            <div class="book-container">
+              <p><i class="fa fa-book"></i>  <%= link returned.book.title, to: Routes.book_page_path(@conn, :show, returned.book.id) %></p>
+              <div>Author: <%= returned.book.author %></div>
+              <div>Borrower: <%= link username(returned.user.first_name, returned.user.last_name), to: Routes.user_account_path(@conn, :show, returned.user.id) %></div>
+              <div>Date Returned: <%= get_date(returned.updated_at) %></div>
+            <% end %>
+      </div>
+
+      <div class="l-transactions">
       <table>
 	<thead>
 	  <tr>
@@ -45,6 +57,7 @@
 	      <% end %>
 	</tbody>
       </table>
+      </div>
 
       <% end %>
     </div>

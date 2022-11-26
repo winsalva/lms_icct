@@ -7,6 +7,12 @@ defmodule AppWeb.GlobalHelpers do
   def get_class_status(status) do
     case status do
       "Requested" -> "color-lightblue"
+      "Approved" -> "color-lightblue"
+      "Released" -> "color-green"
+      "Returned" -> "color-yellow"
+      "Rejected" -> "color-red"
+      "Overdue" -> "color-red"
+      _ -> "color-lightblue"
     end
   end
 
@@ -43,7 +49,7 @@ defmodule AppWeb.GlobalHelpers do
   Accepts a timestamp and return date year, month and day..
   """
   def get_date(date) do
-    "#{date.year}-#{date.month}-#{date.day}"
+    "#{date.month}-#{date.day}-#{date.year}"
   end
 
   def announcement do

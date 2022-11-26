@@ -19,7 +19,7 @@ defmodule App.Query.Book do
       end
 
     Repo.all(query)
-    |> Enum.filter(fn b -> String.upcase(b.title) == String.upcase(title) end)
+    |> Enum.filter(fn b -> (String.upcase(b.title) == String.upcase(title) && b.available != 0) end)
   end
 
   def new_book do

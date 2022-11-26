@@ -23,7 +23,20 @@
       <br/>
       <p align="center">No records available now</p>
       <% else %>
+      <!-- small devices -->
+      <div class="sm-transactions">
+        <%= for request <- @approved_requested_books do %>
+            <div class="book-container">
+              <p><i class="fa fa-book"></i>  <%= link request.book.title, to: Routes.book_page_path(@conn, :show, request.book.id) %></p>
+              <div>Author: <%= request.book.author %></div>
+              <div>Student Name: <%= link username(request.user.first_name, request.user.last_name), to: Routes.user_account_path(@conn, :show, request.user.id) %></div>
+              <div>Pick-Up Date: <%= get_date(request.pick_up_date) %></div>
+              <div>Action: <%= link "Release", to: Routes.lend_page_path(@conn, :release_book, request.book.id, request.id), method: :post %></div>
+            </div>
+            <% end %>
+      </div>
 
+      <div class="l-transactions">
       <table>
 	<thead>
 	  <tr>
@@ -46,6 +59,7 @@
 	      <% end %>
 	</tbody>
       </table>
+      </div>
 
       <% end %>
     </div>

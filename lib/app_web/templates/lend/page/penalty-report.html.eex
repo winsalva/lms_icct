@@ -23,6 +23,21 @@
       <p align="center">No records available now</p>
       <br>
       <% else %>
+      <!-- small devices -->
+      <div class="sm-transactions">
+        <%= for lend <- @lends do %>
+            <div class="book-container">
+              <p><i class="fa fa-book"></i>  <%= link lend.book.title, to: Routes.book_page_path(@conn, :show, lend.book.id) %></p>
+              <div>Borrower: <%= link username(lend.user.first_name, lend.user.last_name), to: Routes.user_account_path(@conn, :show, lend.user.id) %></div>
+	      <div>Released: <%= get_date(lend.release_date) %></div>
+	      <div>Duration: <%= lend.book.lend_duration %> days</div>
+	      <div>Returned: <%= get_date(lend.date_returned) %></div>
+	      <div>Condition: <%= lend.return_condition %></div>
+              <div>Penalty: ₱ <%= calculate_penalty2(lend.release_date, lend.book.lend_duration, lend.return_condition) %></div>
+            <% end %>
+      </div>
+
+      <div class="l-transactions">
       <table>
 	<thead>
 	  <tr>
@@ -49,6 +64,7 @@
 	      <% end %>
 	</tbody>
       </table>
+      </div>
       <% end %>
     </div>
     <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

@@ -19,6 +19,8 @@
     }
     .back-nav-container .back-nav-title {
 	color: #0069d9;
+	padding: 0;
+	margin: 0;
     }
     .back-nav-container .back-nav-menu {
 	font-size: 3rem;
@@ -49,7 +51,7 @@
 	border: 1px solid #0069d9;
 	border-radius: .5rem;
 	margin-bottom: 2rem;
-	padding: .5rem 1rem;
+	padding: 1rem 1.5rem;
     }
     .book-container p {
 	margin: 0;
@@ -59,6 +61,7 @@
     .book-container div {
 	font-size: 1.4rem;
 	font-weight: 400;
+	color: #222;
     }
     
     /* session form */
@@ -69,6 +72,9 @@
     }
     .close-btn:hover {
 	color: #c0c0c0;
+    }
+    #l-footer {
+	display: none;
     }
     footer {
 	padding-top: 4rem;

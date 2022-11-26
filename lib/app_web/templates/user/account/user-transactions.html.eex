@@ -27,16 +27,54 @@
 	<%= for borrow <- @borrows do %>
 	    <div class="book-container">
 	      <p><i class="fa fa-book"></i>  <%= link borrow.book.title, to: Routes.book_page_path(@conn, :show, borrow.book.id) %></p>
-	      <div>Status: <span class="<%= get_class_status(borrow.status) %>"><%= borrow.status %></span></div>
-	      <div>Pickup Date: <%= borrow.pick_up_date %></div>
-	      <div>Release Date: <%= borrow.release_date %></div>
-	      <div>Duration: <%= borrow.book.lend_duration %></div>
-	      <div>Return Date: <%= calculate_return_date(borrow.release_date, borrow.book.lend_duration) %></div>
-	      <div>Penalty</div>
-	      <%= if borrow.status == "Overdue" do %>
-	      <div>Penalty: ₱<%= calculate_penalty(borrow.release_date, borrow.book.lend_duration) %></div>
+	      <div>Status: <span class="<%= get_class_status(borrow.status) %>">
+		  <%= if borrow.status == "Released" do %>
+		  On hand
+		  <% else %>
+		  <%= borrow.status %>
+		  <% end %>
+	      </span></div>
+
+	      <%= case borrow.status do %>
+	      <% "Requested" -> %>
+	      <div>Pickup Date: <%= get_date(borrow.pick_up_date) %></div>
+	      <div>Release Date: N/A</div>
+	      <div>Duration: N/A</div>
+	      <div>Return Date: N/A</div>
+	      <div>Penalty: N/A</div>
+	      <% "Rejected" -> %>
+	      <div>Pickup Date: N/A</div>
+              <div>Release Date: N/A</div>
+              <div>Duration: N/A</div>
+              <div>Return Date: N/A</div>
+              <div>Penalty: N/A</div>
+	      <% "Approved" -> %>
+              <div>Pickup Date: <%= get_date(borrow.pick_up_date) %></div>
+              <div>Release Date: N/A</div>
+              <div>Duration: N/A</div>
+              <div>Return Date: N/A</div>
+              <div>Penalty: N/A</div>
+	      <% "Released" -> %>
+              <div>Pickup Date: N/A</div>
+              <div>Release Date: <%= get_date(borrow.release_date) %></div>
+              <div>Duration: <%= borrow.book.lend_duration %> days</div>
+              <div>Return Date: <%= get_date(calculate_return_date(borrow.release_date, borrow.book.lend_duration)) %></div>
+              <div>Penalty: N/A</div>
+	      <% "Returned" -> %>
+              <div>Pickup Date: N/A</div>
+              <div>Release Date: N/A</div>
+              <div>Duration: N/A</div>
+              <div>Return Date: N/A</div>
+              <div>Penalty: N/A</div>
+	      <% "Overdue" -> %>
+              <div>Pickup Date: N/A</div>
+              <div>Release Date: <%= get_date(borrow.release_date) %></div>
+              <div>Duration: <%= borrow.book.lend_duration %> days</div>
+              <div>Return Date: <%= get_date(calculate_return_date(borrow.release_date, borrow.book.lend_duration)) %></div>
+              <div>Penalty: ₱<%= calculate_penalty(borrow.release_date, borrow.book.lend_duration) %></div>
+	      <% _others -> %>
+	      <div>Something went wrong</div>
 	      <% end %>
-	      <div><%= link "View Details", to: "" %></div>
 	 
 	    </div>
 	    <% end %>

@@ -18,7 +18,7 @@
 
     <div class="page-content">
       <p><strong>DEBESMSCAT online library information management system</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
-      <p>The integrated library software are developed in consultation with the help of senior library professionals and it is currently used by the senior high school library at PCU.</p>
+      <p>The integrated library software are developed in consultation with the help of senior library professionals and it is currently used by the senior high school library at DEBESMSCAT.</p>
     </div>
     <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
   </div>

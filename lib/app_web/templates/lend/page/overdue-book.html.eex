@@ -22,6 +22,23 @@
       <br/>
       <p align="center">No records available now</p>
       <% else %>
+
+      <!-- small devices -->
+      <div class="sm-transactions">
+        <%= for lend <- @overdue_books do %>
+            <div class="book-container">
+              <p><i class="fa fa-book"></i>  <%= link lend.book.title, to: Routes.book_page_path(@conn, :show, lend.book.id) %></p>
+              <div>Borrower: <%= link username(lend.user.first_name, lend.user.last_name), to: Routes.user_account_path(@conn, :show, lend.user.id) %></div>
+              <div>Release Date: <%= get_date(lend.release_date) %></div>
+              <div>Duration: <%= lend.book.lend_duration %> days</div>
+              <div>Return Date: <%= calculate_return_date(lend.release_date, lend.book.lend_duration) %></div>
+	      <div>Penalty: ₱<%= calculate_penalty(lend.release_date, lend.book.lend_duration) %></div>
+	      <div>Action: <%= link "Return", to: Routes.lend_page_path(@conn, :return_overdue_book, lend.book.id, lend.id), method: :post %></div>
+	    </div>
+            <% end %>
+      </div>
+
+      <div class="l-transactions">
       <table>
 	<thead>
 	  <tr>
@@ -48,6 +65,7 @@
 	      <% end %>
 	</tbody>
       </table>
+      </div>
 
       <% end %>
     </div>

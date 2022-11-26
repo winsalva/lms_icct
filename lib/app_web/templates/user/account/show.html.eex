@@ -63,7 +63,7 @@
 	  <tr>
 	    <td><%= @user.student_id %></td>
 	    <td><%= @user.first_name %> <%= @user.last_name %></td>
-	    <td><%= @user.course %><td>
+	    <td><%= @user.course %></td>
 	    <td><%= @user.email %></td>
 	    <%= if @conn.assigns.current_admin do %>
 	    <td><%= link "Reset Password", to: Routes.user_account_path(@conn, :reset_password, @user.id), method: :post %></td>

@@ -27,5 +27,14 @@
 
   <%= link "Log Out", to: Routes.session_path(@conn, :delete), method: :delete, data: [confirm: "Are you sure?"] %>
   <% end %>
+
+  <%= if @conn.assigns.current_user == nil && @conn.assigns.current_admin == nil do %>
+  <a href="<%= Routes.page_path(@conn, :index) %>"><i class="fa fa-home"></i>  Home</a>
+  <a href="<%= Routes.page_path(@conn, :about_us) %>"><i class="fa fa-info-circle"></i>  About Us</a>
+  <a href="<%= Routes.page_path(@conn, :contact_us) %>"><i class="fa fa-address-book"></i>  Contact Us</a>
+    <a href="<%= Routes.page_path(@conn, :term_of_use) %>"><i class="fa fa-gavel"></i>  Term Of Use</a>
+    <a href="<%= Routes.page_path(@conn, :privacy_policy) %>"><i class="fa fa-lock"></i>  Peivacy Policy</a>
+    <a href="<%= Routes.session_path(@conn, :new) %>"><i class="fa fa-sign-in"></i>  Sign In</a>
+    <% end %>
 </div>
 

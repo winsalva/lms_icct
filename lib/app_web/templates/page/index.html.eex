@@ -11,7 +11,6 @@
   
   <div class="menus">
     <li><a href="<%= Routes.session_path(@conn, :new) %>">SIGN IN</a></li>
-    <!--<li><a href="<%= Routes.page_path(@conn, :contact_us) %>">CONTACT US</a></li>-->
     <li><a href="<%= Routes.page_path(@conn, :about_us) %>">ABOUT</a></li>
   </div>
 </nav>
@@ -28,6 +27,7 @@
   <div id="sm-nav-options-container">
     <div><%= link "LOGIN", to: Routes.session_path(@conn, :new) %></div>
     <div><%= link "REGISTER", to: Routes.user_page_path(@conn, :new) %></div>
+  
   </div>
 
 </div>
@@ -47,9 +47,33 @@
     </div>
 
     <div id="home-page-content-container">
+      <br>
       <p><strong>DEBESMSCAT Online library Information Management System</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
+      <p>The integrated library software are developed in consultation with the help of senior library professionals and it is currently used by the senior high school library at DEBESMSCAT.</p>
     </div>
   </div>
 </div>
 
-<%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
+<footer id="h-footer">
+  <div class="footer-logo-container">
+    <img src="/images/pcu-logo.webp"/>
+  </div>
+
+  <p class="footer-company-name">Library Information Management System</p>
+  <div class="footer-options">
+    <li><%= link "Home", to: Routes.page_path(@conn, :index) %></li>
+    <li><%= link "About Us", to: Routes.page_path(@conn, :about_us) %></li>
+    <li><%= link "Terms Of Use", to: Routes.page_path(@conn, :term_of_use) %></li>
+    <li><%= link "Privacy Policy", to: Routes.page_path(@conn, :privacy_policy) %></li>
+    <%= if @conn.assigns.current_admin || @conn.assigns.current_user do %>
+    <% else %>
+    <li><%= link "Sign In", to: Routes.session_path(@conn, :new) %></li>
+    <li><%= link "Contact Us", to: Routes.page_path(@conn, :contact_us) %></li>
+    <% end %>
+  </div>
+
+  <div class="copyright">
+    <p>Copyright &copy; 2022 <%= company_name() %>. <p>
+      <p>All Rights Reserved.</p>
+  </div>
+</footer>

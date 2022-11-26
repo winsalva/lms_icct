@@ -23,6 +23,22 @@
       <br/>
       <p align="center">No records available now</p>
       <% else %>
+      <!-- small devices -->
+      <div class="sm-transactions">
+        <%= for released <- @released_books do %>
+            <div class="book-container">
+              <p><i class="fa fa-book"></i>  <%= link released.book.title, to: Routes.book_page_path(@conn, :show, released.book.id) %></p>
+              <div>Borrower: <%= link username(released.user.first_name, released.user.last_name), to: Routes.user_account_path(@conn, :show, released.user.id) %></div>
+              <div>Release Date: <%= released.release_date %></div>
+              <div>Duration: <%= released.book.lend_duration %> days</div>
+              <div>Return Date: <%= calculate_return_date(released.release_date, released.book.lend_duration) %></div>
+              <div>Action: <%= link "Return", to: Routes.lend_page_path(@conn, :return_book_condition, released.book.id, released.id), method: :post %></div>
+	    </div>
+	    <% end %>
+      </div>
+      
+      <!-- large devices -->
+      <div class="l-transactions">
       <table>
 	<thead>
 	  <tr>
@@ -50,6 +66,7 @@
 	      <% end %>
 	</tbody>
       </table>
+      </div>
 
       <% end %>
     </div>

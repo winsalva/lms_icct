@@ -14,7 +14,7 @@
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
   <div class="sub-container">
-    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Out of Stock Books") %>
+    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Out Of Stock Books") %>
 
     <div class="page-content">
       <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>
@@ -26,7 +26,7 @@
       <% else %>
       <div class="uploads-container">
 	<%= for book <- @books do %>
-	    <div class="upload-container" data-aos="fade-up">
+	    <div class="upload-container">
 	      <a href="<%= Routes.book_page_path(@conn, :show, book.id) %>">
 		<img src="/images/book.png"/>
 		<div class="upload-title-description">
