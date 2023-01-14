@@ -21,6 +21,9 @@ defmodule App.Query.Admin do
     end
   end
 
+  @doc """
+  Register new admin
+  """
   def new_admin do
     %Admin{}
     |> Admin.changeset()
