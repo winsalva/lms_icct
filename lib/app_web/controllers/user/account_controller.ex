@@ -126,11 +126,16 @@ defmodule AppWeb.User.AccountController do
   def show(conn, %{"id" => id}) do
     {id, _} = Integer.parse(id)
     if conn.assigns.current_user && conn.assigns.current_user.id == id || conn.assigns.current_admin do
+      if conn.assigns.current_user && conn.assigns.current_user.id == id do
+        User.update_user(id, %{seen_approval: true})
+      end
+      
       user = User.get_user(id)
       render(conn, :show, user: user)
     else
       conn
       |> redirect(to: Routes.page_path(conn, :index))
+      |> halt()
     end
   end
 

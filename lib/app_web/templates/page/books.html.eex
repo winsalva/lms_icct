@@ -14,8 +14,6 @@
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
   <div class="sub-container">
-    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Books") %>
-
     <div class="page-content"> 
       <%= form_for @conn, Routes.page_path(@conn, :search_books), fn f -> %>
       <label>Category: 
@@ -25,16 +23,8 @@
 	  "Filipiniana": "Filipiniana",
 	  "Fiction": "Fiction"
 	    ]] %>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<%= if @conn.assigns.current_admin do %>
-	<a href="<%= Routes.book_page_path(@conn, :new) %>"><i class="fa fa-plus-circle"></i>  <span class="sm-hide">Add Book</span></a>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<%= Routes.book_page_path(@conn, :index) %>"><i class="fa fa-book"></i>  <span class="sm-hide">View Books</span></a>
-	<% else %>
-	<a href="<%= Routes.book_page_path(@conn, :index) %>"><i class="fa fa-book"></i>  <span class="sm-hide">View Books</span></a>
-	<% end %>
       </label>
-      <div style="display:flex;">
+      <div style="display:flex;margin-top:-1rem;">
 	<%= text_input f, :title, placeholder: "Search book title.." %>
 	<%= submit "Search" %>
       </div>
@@ -64,7 +54,7 @@
       <% true -> %>
 	<p>No results found!</p>
 	<% end %>
-	<br>
+	<br><br>
       </div>
     
     <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>

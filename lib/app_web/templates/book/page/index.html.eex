@@ -14,7 +14,14 @@
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
   <div class="sub-container">
-    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Books") %>
+    <div style="display:flex;">
+      <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Books") %>
+      <%= if @conn.assigns.current_admin do %>
+      <a class="back-nav-options" href="<%= Routes.book_page_path(@conn, :new) %>"><i class="fa fa-plus-circle"></i>&nbsp;Add New</a>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;
+      <% end %>
+
+      <a class="back-nav-options" href="<%= Routes.page_path(@conn, :books) %>"><i class="fa fa-search"></i>&nbsp;Search</a>
+    </div>
 
     <div class="page-content">
       <%= render(AppWeb.SharedView, "flash-messages.html", conn: @conn) %>

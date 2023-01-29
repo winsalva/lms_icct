@@ -29,7 +29,7 @@ defmodule AppWeb.Book.PageController do
     render(conn, :new, book: book)
   end
 
-  def create_book(conn, %{"book" => %{"isbn" => isbn, "title" => title, "author" => author, "category" => category, "copies" => copies}}) do
+  def create_book(conn, %{"book" => %{"isbn" => isbn, "accession_number" => accession_number, "title" => title, "author" => author, "category" => category, "copies" => copies}}) do
 
     admin_id = conn.assigns.current_admin.id
     lend_duration = if category == "Circulati\
@@ -57,6 +57,7 @@ on", do: 3, else: 7
     params = %{
       isbn: isbn,
       title: title,
+      accession_number: accession_number,
       author: author,
       category: category,
       available: available,

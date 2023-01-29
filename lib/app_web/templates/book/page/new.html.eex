@@ -7,6 +7,10 @@
   <label>ISBN</label>
   <%= text_input f, :isbn, placeholder: "1234" %>
   <%= error_tag f, :isbn %>
+
+  <label>Accession No.</label>
+  <%= text_input f, :accession_number, placeholder: "123456" %>
+  <%= error_tag f, :accession_number %>
   
   <label>Title</label>
   <%= text_input f, :title, placeholder: "C++ Concepts" %>

@@ -15,6 +15,7 @@ defmodule App.Schema.User do
     field :hashed_password, :string
     field :seen, :boolean, default: false
     field :approve, :boolean, default: false
+    field :seen_approval, :boolean, default: false
     timestamps([type: :utc_datetime_usec])
   end
 
@@ -30,7 +31,8 @@ defmodule App.Schema.User do
     :email,
     :hashed_password,
     :seen,
-    :approve
+    :approve,
+    :seen_approval
   ]
 
   @required_fields [
@@ -44,7 +46,8 @@ defmodule App.Schema.User do
     :email,
     :hashed_password,
     :seen,
-    :approve
+    :approve,
+    :seen_approval
   ]
 
   @doc false

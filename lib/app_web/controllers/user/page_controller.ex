@@ -7,6 +7,7 @@ defmodule AppWeb.User.PageController do
 
   def index(conn, _params) do
     users = User.list_users
+    User.set_unseen_accounts_to_true()
     render(conn, "index.html", users: users)
   end
 

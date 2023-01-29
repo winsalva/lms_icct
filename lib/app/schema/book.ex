@@ -14,6 +14,7 @@ defmodule App.Schema.Book do
     field :available, :integer, default: 0
     field :reserved, :integer, default: 0
     field :lend_duration, :integer
+    field :accession_number, :string
     timestamps()
   end
 
@@ -27,7 +28,8 @@ defmodule App.Schema.Book do
     :lended,
     :available,
     :reserved,
-    :lend_duration
+    :lend_duration,
+    :accession_number
   ]
 
   @doc false

@@ -55,7 +55,9 @@
 	    <th>ID</th>
 	    <th>Name</th>
 	    <th>Course</th>
+	    <th>Year&Section</th>
 	    <th>Email</th>
+	    <th>Approved</th>
 	    <th>Action</th>
 	  </tr>
 	</thead>
@@ -64,7 +66,9 @@
 	    <td><%= @user.student_id %></td>
 	    <td><%= @user.first_name %> <%= @user.last_name %></td>
 	    <td><%= @user.course %></td>
+	    <td><%= @user.year %> <%= @user.section %></td>
 	    <td><%= @user.email %></td>
+	    <td><%= @user.approve %></td>
 	    <%= if @conn.assigns.current_admin do %>
 	    <td><%= link "Reset Password", to: Routes.user_account_path(@conn, :reset_password, @user.id), method: :post %></td>
 	    <% end %>

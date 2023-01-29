@@ -60,7 +60,7 @@
 		<% else %>
 		<td><%= link "False", to: Routes.user_account_path(@conn, :approve_disapprove_user, user.id), method: :post %></td>
 		<% end %>
-		<td><%= link "Delete", to: Routes.user_account_path(@conn, :delete, user.id), method: :delete, class: "color-red", data: [confirm: "Are you sure to delete this account?"] %></td>
+		<td><%= link "Remove", to: Routes.user_account_path(@conn, :delete, user.id), method: :delete, class: "color-red", data: [confirm: "Are you sure to delete this account?"] %></td>
 		</tr>
 	      <% end %>
 	</tbody>

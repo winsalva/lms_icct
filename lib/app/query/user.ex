@@ -2,7 +2,31 @@ defmodule App.Query.User do
   alias App.Repo
   alias App.Schema.User
 
+  import Ecto.Query, warn: false
 
+  @doc """
+  Get new registered or unseen user accounts..
+  """
+  def get_new_registered_unseen_accounts do
+    query =
+      from u in User,
+        where: u.seen == false
+
+    Repo.all(query)
+  end
+
+  @doc """
+  Set unseen accounts to true
+  """
+  def set_unseen_accounts_to_true do
+    Repo.all(User)
+    |> Enum.each(fn user ->
+      if user.seen == false do
+        update_user(user.id, %{seen: true})
+      end
+    end)
+  end
+  
   @doc """
   Search admin by username.
   """
