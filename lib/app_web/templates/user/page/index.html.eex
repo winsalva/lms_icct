@@ -14,7 +14,14 @@
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
   <div class="sub-container">
-    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Users") %>
+    <div style="display:flex;">
+      <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Listing Users") %>
+      <%= if @conn.assigns.current_admin do %>
+      <a class="back-nav-options" href="<%= Routes.admin_page_path(@conn, :list_admins) %>"><i class="fa fa-users"></i>&nbsp;Admins</a>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;
+      <% end %>
+
+      <a class="back-nav-options" href="<%= Routes.page_path(@conn, :users) %>"><i class="fa fa-search"></i>&nbsp;Search</a>
+    </div>
 
     <div class="page-content">
       <%= if @users == [] do %>

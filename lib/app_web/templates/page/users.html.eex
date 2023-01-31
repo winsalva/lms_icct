@@ -14,18 +14,11 @@
   <%= render(AppWeb.SharedView, "nav.html", conn: @conn) %>
 
   <div class="sub-container">
-    <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Users") %>
-
     <div class="page-content">
       <%= form_for @conn, Routes.page_path(@conn, :search_users), fn f -> %>
 
       <label>CATEGORY:
 	<%= select f, :category, [options: ["Admin": "Admin", "Student": "Student"]] %>
-	
-	<%= if @conn.assigns.current_admin do %>
-	<a class="hide" href="<%= Routes.admin_page_path(@conn, :list_admins) %>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-users"></i>&nbsp;Admins</a>
-	<a href="<%= Routes.user_page_path(@conn, :index) %>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-users"></i>&nbsp;Students</a>
-	<% end %>
       </label>
 
       <div style="display:flex;">

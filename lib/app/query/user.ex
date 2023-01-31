@@ -19,12 +19,11 @@ defmodule App.Query.User do
   Set unseen accounts to true
   """
   def set_unseen_accounts_to_true do
-    Repo.all(User)
-    |> Enum.each(fn user ->
-      if user.seen == false do
-        update_user(user.id, %{seen: true})
-      end
-    end)
+    query =
+      from u in User,
+        where: u.seen == false
+
+    Repo.update_all(query, set: [seen: true])
   end
   
   @doc """

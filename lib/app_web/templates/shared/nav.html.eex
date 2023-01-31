@@ -1,7 +1,7 @@
 <div class="sidenav-container">  
   <%= if @conn.assigns.current_admin != nil do %>
   <div><i class="fa fa-user"></i><%= link "Admin Dashboard", to: Routes.admin_page_path(@conn, :show, @conn.assigns.current_admin.id) %></div>
-  <div><i class="fa fa-users"></i><%= link "Users", to: Routes.page_path(@conn, :users) %>
+  <div><i class="fa fa-users"></i><%= link "Users", to: Routes.user_page_path(@conn, :index) %>
     <!-- Check if there are new registered accounts -->
     <%= if get_new_registered_unseen_user_accounts() > 0 do %>
     <sup class="side-bar-notifications"><%= get_new_registered_unseen_user_accounts() %></sup>
