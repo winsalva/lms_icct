@@ -6,9 +6,9 @@ import Config
 # ex: `alter user brokerage password 'postgres';`
 # Configure your database
 config :app, App.Repo,
-  username: "brokerage",
+  username: "postgres",
   password: "postgres",
-  database: "brokerage",
+  database: "app_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
