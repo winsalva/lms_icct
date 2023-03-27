@@ -1,10 +1,10 @@
 <nav>
   <div class="logo-name-container">
     <div id="lib-logo">
-      <img src="/images/pcu-logo.webp"/>
+      <img src="/images/lib-logo.png"/>
     </div>
 
-    <div id="schoolname">DEBESMSCAT
+    <div id="schoolname">ICCT COLLEGES
       <p id="tagname">Library Information Management System</p>
     </div>
   </div>

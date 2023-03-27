@@ -1,10 +1,10 @@
 <nav>
   <div class="logo-name-container">
     <div id="lib-logo">
-      <img src="/images/pcu-logo.webp"/>
+      <img src="/images/lib-logo.png"/>
     </div>
 
-    <div id="schoolname">DEBESMSCAT
+    <div id="schoolname">ICCT COLLEGES
       <p id="tagname">Library Information Management System</p>
     </div>
   </div>
@@ -25,7 +25,7 @@
     <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "Privacy Policy") %>
 
     <div class="page-content">
-      <p><strong>DEBESMSCAT</strong>, a distinctively strong Christian university integrating faith, character and service gives significance to its mandate in compliance with the requirements under RA 10173 known as the <em>Data Privacy Act</em> of 2012 the value of every individual’s right to privacy and safeguarding confidentially personal information obtained, and is committed to secure all documents responsibly. It defines what information will be collected or gathered and the details on how collected information be protected without incurring violation of individual’s personal privacy.</p>
+      <p><strong>ICCT COLLEGES</strong>, a distinctively strong Christian university integrating faith, character and service gives significance to its mandate in compliance with the requirements under RA 10173 known as the <em>Data Privacy Act</em> of 2012 the value of every individual’s right to privacy and safeguarding confidentially personal information obtained, and is committed to secure all documents responsibly. It defines what information will be collected or gathered and the details on how collected information be protected without incurring violation of individual’s personal privacy.</p>
       <p>This Privacy Policy statement simplifies how personal information of data subjects whose personal, sensitive or privileged information are being obtained, stored, used, shared, processed, generated, protected and/ or withheld in custody by the university. And, it is in general in scope and applies to all service units of the university unless amended when needed.</p>
 
       <h3><strong>Classification of Personal Information</strong></h3>
@@ -50,19 +50,19 @@ directly ascertained by the entity holding the information, or when put together
 	thereby explains how personal information are accumulated.</p>
       <h4><strong>A. Information we gather</strong></h4>
       <ul>
-	<li>DEBESMSCAT gathers the following information only as indicated through the following:
+	<li>ICCT COLLEGES gathers the following information only as indicated through the following:
 	  Personal Information, as follows, to wit : name, residential address, email address,  telephone number, mobile number, date of birth, passport details (for foreign nationals). The university will also issue applicant/student identification number once he/she is officially enrolled /registered in the University;</li>
 	<li>Education background and/or employment portfolio: to include school(s)and/or universities enrolled or concluded, programs and course completed, date(s) of completion, and the institution(s) where it was completed and employment as well.</li>
 	<li>Family or personal dealings, and academic and other extracurricular interests for assessment purpose, to avail scholarships/student financial aids/assistance;</li>
 	<li>Sensitive personal information to include such as : marital status, age, race, education religious and political affiliations, sexual preferences or practices, criminal record, health /medical history or memberships details, religious or philosophical beliefs and ethnicity, social security number (SSS for private worker), government service insurance system number (GSIS for government worker)/ , licenses or its denials, suspension or revocation, and tax returns.</li>
-	<li>Websites other than PCU websites are not kept by the university except IP address and System log files, but allows the university to create and host sites or pages (e.g. any social media platform).</li>
+	<li>Websites other than ICCT websites are not kept by the university except IP address and System log files, but allows the university to create and host sites or pages (e.g. any social media platform).</li>
       </ul>
 
-      <p>PCU computers serves to allow us to log and information collected from the system consists only of the following:</p>
+      <p>ICCT computers serves to allow us to log and information collected from the system consists only of the following:</p>
       <ul>
 	<li>a. Internet Address (IP number) of the website from which you linked</li>
 	<li>b. Name of the Internet domain from which you access the internet</li>
-	<li>c. Date and time (you visited PCU website</li>
+	<li>c. Date and time (you visited ICCT website)</li>
       </ul>
 
       <h4><strong>B. How to collect</strong></h4>

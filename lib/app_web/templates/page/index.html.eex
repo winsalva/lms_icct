@@ -1,10 +1,10 @@
 <nav>
   <div class="logo-name-container">  
     <div id="lib-logo">
-      <img src="/images/pcu-logo.webp"/>  
+      <img src="/images/lib-logo.png"/>  
     </div>
     
-    <div id="schoolname">DEBESMSCAT
+    <div id="schoolname">ICCT COLLEGES
       <p id="tagname">Library Information Management System</p>
     </div>
   </div>
@@ -16,8 +16,8 @@
 </nav>
 
 <div class="sm-nav-container">
-  <img src="/images/pcu-logo.webp"/>
-  <h1>DEBESMSCAT</h1>
+  <img src="/images/lib-logo.png"/>
+  <h1>ICCT COLLEGES</h1>
   <p>LIBRARY INFORMATION MANAGEMENT SYSTEM</p>
 
   <div id="sm-open-close-toggle-container">
@@ -48,15 +48,15 @@
 
     <div id="home-page-content-container">
       <br>
-      <p><strong>DEBESMSCAT Online library Information Management System</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
-      <p>The integrated library software are developed in consultation with the help of senior library professionals and it is currently used by the senior high school library at DEBESMSCAT.</p>
+      <p><strong>ICCT COLLEGES Online library Information Management System</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
+      <p>The integrated library software are developed in consultation with the help of senior library professionals and it is currently used by the senior high school library at ICCT COLLEGES.</p>
     </div>
   </div>
 </div>
 
 <footer id="h-footer">
   <div class="footer-logo-container">
-    <img src="/images/pcu-logo.webp"/>
+    <img src="/images/lib-logo.png"/>
   </div>
 
   <p class="footer-company-name">Library Information Management System</p>

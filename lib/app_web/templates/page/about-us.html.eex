@@ -1,10 +1,10 @@
 <nav>
   <div class="logo-name-container">
     <div id="lib-logo">
-      <img src="/images/pcu-logo.webp"/>
+      <img src="/images/lib-logo.png"/>
     </div>
 
-    <div id="schoolname">DEBESMSCAT
+    <div id="schoolname">ICCT COLLEGES
       <p id="tagname">Library Information Management System</p>
     </div>
   </div>
@@ -17,8 +17,8 @@
     <%= render(AppWeb.SharedView, "back-navigation.html", conn: @conn, title: "About Us") %>
 
     <div class="page-content">
-      <p><strong>DEBESMSCAT online library information management system</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
-      <p>The integrated library software are developed in consultation with the help of senior library professionals and it is currently used by the senior high school library at DEBESMSCAT.</p>
+      <p><strong>ICCT COLLEGES online library information management system</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
+      <p>The integrated library software are developed in consultation with the help of senior library professionals and it is currently used by the senior high school library at ICCT COLLEGES.</p>
     </div>
     <%= render(AppWeb.SharedView, "footer.html", conn: @conn) %>
   </div>
