@@ -53,7 +53,8 @@ defmodule App.MixProject do
       {:pbkdf2_elixir, "~> 1.4"},
       {:earmark, "> 0.0.0"},
       {:nimble_totp, "> 0.0.0"},
-      {:eqrcode, "> 0.0.0"}
+      {:eqrcode, "> 0.0.0"},
+      {:ranch, ">= 0.0.0", manager: :rebar3, override: true}
     ]
   end
 
