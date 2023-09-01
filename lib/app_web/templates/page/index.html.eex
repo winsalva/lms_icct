@@ -4,7 +4,7 @@
       <img src="/images/lib-logo.png"/>  
     </div>
     
-    <div id="schoolname">ICCT COLLEGES
+    <div id="schoolname"><%= company_name() %>
       <p id="tagname">Library Information Management System</p>
     </div>
   </div>
@@ -17,7 +17,7 @@
 
 <div class="sm-nav-container">
   <img src="/images/lib-logo.png"/>
-  <h1>ICCT COLLEGES</h1>
+  <h1><%= company_name() %></h1>
   <p>LIBRARY INFORMATION MANAGEMENT SYSTEM</p>
 
   <div id="sm-open-close-toggle-container">
@@ -48,8 +48,8 @@
 
     <div id="home-page-content-container">
       <br>
-      <p><strong>ICCT COLLEGES Online library Information Management System</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
-      <p>The integrated library software are developed in consultation with the help of senior library professionals and it is currently used by the senior high school library at ICCT COLLEGES.</p>
+      <p><strong>[<%= company_name() %>] Online library Information Management System</strong> is a highly integrated, user-friendly, and compatible library automated system for complete computerization of all the in-house operations of library. The library management software is intuitive, efficient, and compliant.</p>
+      <p>The integrated library software are developed in consultation with the help of senior library professionals and it is currently used by the senior high school library at [<%= company_name() %>].</p>
     </div>
   </div>
 </div>
@@ -73,7 +73,7 @@
   </div>
 
   <div class="copyright">
-    <p>Copyright &copy; 2022 <%= company_name() %>. <p>
+    <p>Copyright &copy; 2023 <%= company_name() %>. <p>
       <p>All Rights Reserved.</p>
   </div>
 </footer>
